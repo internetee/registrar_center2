@@ -1,0 +1,56 @@
+<% content_for(:title) { "EIS | #{t('domains.renew.title')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('domains.renew.title') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--domains--renew">
+    <div class="page--content">
+        <div class="wrapper">
+            <div class="row center-xs">
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <div class="paper paper__light">
+                        <div class="paper--content">
+                            <%= form_with scope: :domain, url: domain_renew_path,
+                                                          class: 'form', 
+                                                          data: { turbo: true }  do |form| %>
+                                <div class="form--row">
+                                    <%= form.label :name, "#{t('domains.form.name')} *", class: 'form--label' %>
+                                    <div class="form--field">
+                                        <div class="form--input">
+                                            <%= form.text_field :name, value: params[:domain_name], class: 'input',
+                                                                       required: true %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form--row">
+                                    <%= form.label :exp_date, "#{t('domains.form.curExpDate')} *", class: 'form--label' %>
+                                    <div class="form--field">
+                                        <div class="form--input small">
+                                            <%= form.date_field :exp_date, class: 'datepicker', required: true %>
+                                            <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form--row">
+                                    <%= form.label :period, "#{t('domains.form.period')} *", class: 'form--label' %>
+                                    <div class="form--field">
+                                        <div class="form--input small">
+                                            <%= simple_select_tag "domain[period]",
+                                              options_for_select(ApplicationHelper::DOMAIN_PERIODS, '1y'), required: true %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form--actions">
+                                    <%= form.submit t(:renew), class: 'button button--primary' %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        

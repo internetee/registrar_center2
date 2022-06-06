@@ -1,0 +1,23 @@
+<div class="page--block--header">
+    <h2><%= t('domains.show.dns_keys') %></h2>
+</div>
+<table class="table__basic">
+    <thead>
+        <tr>
+            <th><%= t('domains.show.flag') %></th>
+            <th><%= t('domains.show.public_key') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @domain[:dnssec_keys].each do |key| %>
+            <tr>
+                <td><%= key[:flags] %></td>
+                <td>
+                    <span class="break-text">
+                        <%= "#{key[:flags]} #{key[:protocol]} #{key[:public_key]}" %>
+                    </span>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

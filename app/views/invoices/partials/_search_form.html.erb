@@ -1,0 +1,95 @@
+<%= form_with scope: :search, method: :get do |form| %>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4 col-xs">
+            <div class="form--field">
+                <div class="form--input large">
+                    <%= button_tag(type: 'submit', class: 'button button--primary') do %>
+                        <i class="fas fa-arrow-right"></i>
+                    <% end %>
+                    <%= form.text_field :number_str_matches, 'aria-label': t(:search),
+                                                              class: 'input search',
+                                                              placeholder: t('invoices.index.search_number'),
+                                                              value: params[:search]&.dig(:number_str_matches) %>
+                </div>
+                <%= toggle_filter %>
+            </div>
+        </div>
+    </div>
+    <div id="filters" class="form--filters">
+        <div class="row bottom-xs">
+            <div class="col-xs-auto">
+                <%= form.label :due_date_gteq, t('invoices.index.due_date'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= form.date_field :due_date_gteq, class: 'datepicker', value: params[:search]&.dig(:due_date_gteq) %>
+                        <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                    </div>
+                    <span class="form--sep">-</span>
+                    <div class="form--input small">
+                        <%= form.date_field :due_date_lteq, class: 'datepicker', value: params[:search]&.dig(:due_date_lteq) %>
+                        <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-auto">
+                <%= form.label :account_activity_created_at_gteq, t('invoices.index.receipt_date'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= form.date_field :account_activity_created_at_gteq, class: 'datepicker',
+                                            value: params[:search]&.dig(:account_activity_created_at_gteq) %>
+                        <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                    </div>
+                    <span class="form--sep">-</span>
+                    <div class="form--input small">
+                        <%= form.date_field :account_activity_created_at_lteq, class: 'datepicker',
+                                            value: params[:search]&.dig(:account_activity_created_at_lteq) %>
+                        <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <%= form.label :status, t('invoices.index.status'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= simple_select_tag "search[status]",
+                            options_for_select(@statuses, params[:search]&.dig(:status)) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-auto">
+                <%= form.label :number_gteq, t('invoices.index.number_range'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= form.text_field :number_gteq, class: 'input',
+                                            value: params[:search]&.dig(:number_gteq) %>
+                    </div>
+                    <span class="form--sep">-</span>
+                    <div class="form--input small">
+                        <%= form.text_field :number_lteq, class: 'input',
+                                            value: params[:search]&.dig(:number_lteq) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-auto">
+                <%= form.label :total_gteq, t('invoices.index.total_range'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= form.text_field :total_gteq, class: 'input',
+                                            value: params[:search]&.dig(:total_gteq) %>
+                    </div>
+                    <span class="form--sep">-</span>
+                    <div class="form--input small">
+                        <%= form.text_field :total_lteq, class: 'input',
+                                            value: params[:search]&.dig(:total_lteq) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-auto col-xs-12">
+                <div class="form--actions">
+                    <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
+                    <%= button_tag t(:clear_filter), type: 'reset', class: 'button button--link' %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

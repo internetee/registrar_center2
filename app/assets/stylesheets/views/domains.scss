@@ -1,0 +1,20 @@
+.page {
+    &--domains-bulkchange {
+        .paper {
+            @include min-screen(767px) {
+                margin-bottom: -20px;
+            }
+            @include min-screen(1224px) {
+                margin-bottom: -40px;
+            }
+        }
+        .search-results {
+            @include min-screen(767px) {
+                margin-top: -20px;
+            }
+            @include min-screen(1224px) {
+                margin-top: -40px;
+            }
+        }
+    }
+}

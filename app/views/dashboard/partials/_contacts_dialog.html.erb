@@ -1,0 +1,15 @@
+<div class="dialog" id="contacts">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2><%= t('dashboard.index.contacts_dialog_title') %></h2>
+            </div>
+            <div class="paper--content">
+                <%= contacts.join(', ') %>
+            </div>
+        </div>
+    </div>
+</div>

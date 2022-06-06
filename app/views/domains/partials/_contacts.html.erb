@@ -1,0 +1,21 @@
+<div class="page--block--header">
+    <h2><%= t('domains.show.contacts') %></h2>
+</div>
+<table class="table__basic">
+    <thead>
+        <tr>
+            <th><%= t('domains.show.contact_type') %></th>
+            <th><%= t('domains.show.contact_name') %></th>
+            <th><%= t('domains.show.contact_id') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @domain[:contacts].each do |contact| %>
+        <tr>
+            <th><%= contact[:type] %></th>
+            <td><%= contact[:name] %></td>
+            <td><%= contact[:code] %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

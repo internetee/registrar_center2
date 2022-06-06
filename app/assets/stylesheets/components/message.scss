@@ -1,0 +1,42 @@
+.message {
+    text-align: center;
+    background-color: $black;
+    color: $white;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 0;
+    margin-bottom: 40px;
+    animation: appear-then-fade 5s both;
+
+    @include min-screen(768px) {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    @include min-screen(1224px) {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    &:before {
+        @include fa();
+        margin-right: 10px;
+    }
+    &__info {
+        &:before {
+            content: "\f05a";
+        }
+    }
+    &__alert {
+        background-color: $orange;
+        &:before {
+            content: "\f071";
+        }
+    }
+    &__notice {
+        background-color: $green;
+        &:before {
+            content: '\f00c';
+        }
+    }
+}

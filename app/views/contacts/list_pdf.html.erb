@@ -1,0 +1,22 @@
+<table class="table" width="100%">
+    <thead>
+        <tr>
+            <th><%= t('contacts.index.csv.name') %></th>
+            <th><%= t('contacts.index.csv.id') %></th>
+            <th><%= t('contacts.index.csv.ident') %></th>
+            <th><%= t('contacts.index.csv.created_at') %></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% contacts.each do |contact| %>
+            <tr>
+                <td><%= contact[:name] %></td>
+                <td><%= contact[:code] %></td>
+                <td><%= view.ident_for(contact) %></td>
+                <td><%= l(contact[:created_at].to_datetime, format: :short) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <td>
+            <%== pagy_info(@pagy, item_name: t('account.index.items', count: @pagy.count)) %>
+        </td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th><%= sort_link(nil, :description) %></th>
+            <th><%= sort_link(nil, :activity_type) %></th>
+            <th><%= sort_link(nil, :created_at) %></th>
+            <th><%= sort_link(nil, :sum) %></th>
+            <th><%= sort_link(nil, :new_balance) %></th>
+            <th><%= sort_link(nil, :updator_str) %></th>
+        </tr>
+    </thead>
+    <% if @response.count.positive? %>
+        <tbody>
+            <% @activities.each do |activity| %>
+                <%= render 'account/partials/activity', activity: activity %>
+            <% end %>
+        </tbody>
+    <% end %>
+</table>

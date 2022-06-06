@@ -1,0 +1,34 @@
+<div class="dialog" id="invoice_send">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2><%= t('invoices.index.send_invoice') %></h2>
+            </div>
+            <div class="paper--content">
+                <%= form_with scope: :invoice, url: send_invoice_path, class: 'form' do |form| %>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form--row">
+                                <%= form.label :recipient, "#{t('invoices.index.recipient')} *", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= form.email_field :recipient, required: true,
+                                                                         autofocus: true,
+                                                                         class: 'input' %>
+                                    </div>
+                                </div>
+                            </div>
+                            <%= form.hidden_field :id %>
+                        </div>
+                    </div>
+                    <div class="form--actions">
+                        <%= form.submit t(:send), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

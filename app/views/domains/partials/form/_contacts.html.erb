@@ -1,0 +1,39 @@
+<div class="form--wrapper contact-nested-form-wrapper", data-new-record='true'>
+    <div class="form--header">
+        <h3><%= "#{t('domains.form.contact')} #{k if k != 1}" %></h3>
+        <div class="form--header--actions">
+            <%= render 'domains/partials/form/action_links', type: 'contact',
+                                                             removable: removable %>
+        </div>
+    </div>
+    <div class="form--row">
+        <% lbl = v['type'] == ApplicationHelper::CONTACT_TYPE[:tech] ? t('domains.form.tech_contact') : t('domains.form.admin_contact') %>
+        <%= label_tag "domain_contacts_attributes_#{k}_code", lbl, class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <% contact = "#{v['code']} #{v['name']}" %>
+                <% options = "<option value=''></option><option value=#{v['code']} selected>#{contact}</option>" %>
+                <%= dynamic_select_tag "domain[contacts_attributes][#{k}][code]", v['code'].present? ? raw(options) : [],
+                                                                                  class: 'contact_dynamic_select',
+                                                                                  required: true,
+                                                                                 'data-nested-form-target': 'contact' %>
+            </div>
+        </div>
+    </div>
+    <div class="form--row">
+        <div class="form--field">
+            <% attr = "domain[contacts_attributes][#{k}][type]" %>
+            <%= radio_button_tag attr, 'tech', v['type'] == ApplicationHelper::CONTACT_TYPE[:tech],
+                                       'data-action': 'nested-form#toggleContactType',
+                                       'data-value': t('domains.form.tech_contact'),
+                                       class: 'form--radio' %>
+            <%= label_tag "domain_contacts_attributes_#{k}_type_tech", t('domains.form.tech'), value: 'tech', class: 'form--radiolabel' %>
+            <%= radio_button_tag attr, 'admin', v['type'] == ApplicationHelper::CONTACT_TYPE[:admin],
+                                       'data-action': 'nested-form#toggleContactType',
+                                       'data-value': t('domains.form.admin_contact'),
+                                       class: 'form--radio' %>
+            <%= label_tag "domain_contacts_attributes_#{k}_type_admin", t('domains.form.admin'), value: 'admin', class: 'form--radiolabel' %>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,72 @@
+<div class="form--header">
+    <h3><%= t('domains.form.info') %></h3>
+</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= form.label :name, "#{t('domains.form.name')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :name, class: 'input',
+                                               value: @domain_params[:name],
+                                               readonly: (@domain_params[:name] ? true : false),
+                                               required: true %>
+                </div>
+            </div>
+        </div>
+        <% unless @domain_params[:name] %>
+            <div class="form--row">
+                <%= form.label :period, "#{t('domains.form.period')} *", class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input">
+                        <%= simple_select_tag "domain[period]",
+                            options_for_select(ApplicationHelper::DOMAIN_PERIODS, @domain_params[:period]) %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= label_tag 'domain_registrant_code', "#{t('domains.form.registrant')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <% if @domain_params[:registrant].present? %>
+                        <% options = "<option value=''></option><option value='#{@domain[:registrant][:code]}' selected>#{@domain_params[:registrant]}</option>" %>
+                        <%= dynamic_select_tag 'domain[registrant][code]', raw(options),
+                                                                           class: 'contact_dynamic_select',
+                                                                           required: true %>
+                    <% else %>
+                        <%= dynamic_select_tag 'domain[registrant][code]', [],
+                                                                           class: 'contact_dynamic_select',
+                                                                           required: true %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <% if @domain_params[:name] %>
+            <div class="form--row">
+                <div class="form--field">
+                    <div class="checkbox">
+                        <% onclick = "return (confirm('" + t('domains.form.verified_confirm') + "') ? true : false);" %>
+                        <%= check_box_tag 'domain[registrant][verified]', true, false,
+                                                                          onclick: onclick %>
+                        <%= label_tag 'domain_registrant_verified' do %>
+                            <span><%= t('domains.form.verified') %></span>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <% if !@domain_params[:name] || @domain_params[:dispute] %>
+            <div class="form--row">
+                <%= form.label :reserved_pw,  t('domains.form.reserved_pw'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input">
+                          <%= form.text_field :reserved_pw, class: 'input' %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

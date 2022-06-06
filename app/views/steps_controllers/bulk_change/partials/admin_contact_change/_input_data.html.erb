@@ -1,0 +1,44 @@
+<div class="wrapper">
+    <div class="row center-xs">
+        <div class="col-md-4 col-sm-8 col-xs-12">
+            <div class="paper paper__light">
+                <%= form_with scope: :bulk_change, url: wizard_path, method: :patch, class: 'form' do |form| %>
+                    <div class="form--row">
+                        <div class="form--header">
+                            <h3><%= t("steps_controllers.bulk_change.#{@attrs[:type].underscore}") %></h3>
+                        </div>
+                        <p><%= t('steps_controllers.bulk_change.admin_contact_replace_info') %></p>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :current_contact_id, t('steps_controllers.bulk_change.current_admin_contact_id'), class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <% contact = @attrs[:current_contact_id] %>
+                                <% selected = "<option value=''></option><option value=#{contact} selected>#{contact}</option>" %>
+                                <%= dynamic_select_tag 'bulk_change[current_contact_id]', contact.present? ? raw(selected) : [],
+                                                                                          class: 'contact_dynamic_select',
+                                                                                          required: true %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :new_contact_id, t('steps_controllers.bulk_change.new_admin_contact_id'), class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <% contact = @attrs[:new_contact_id] %>
+                                <% selected = "<option value=''></option><option value=#{contact} selected>#{contact}</option>" %>
+                                <%= dynamic_select_tag 'bulk_change[new_contact_id]', contact.present? ? raw(selected) : [],
+                                                                                      class: 'contact_dynamic_select',
+                                                                                      required: true %>
+                            </div>
+                        </div>
+                    </div>
+                    <%= form.hidden_field :form_steps, value: [step.to_sym] %>
+                    <div class="form--actions">
+                          <%= form.submit t('steps_controllers.bulk_change.next_step'), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

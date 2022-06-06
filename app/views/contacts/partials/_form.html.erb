@@ -1,0 +1,32 @@
+<%= form_with scope: :contact, url: @contact.nil? ? contacts_path : update_contact_path,
+                               class: 'form form__styled',
+                               multipart: true,
+                               data: { turbo: true } do |form| %>
+    <%= form.hidden_field :code, value: @contact&.dig(:code) %>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <%= render 'contacts/partials/form/ident', form: form %>
+        </div>
+    </div>
+    <span class="form--break"></span>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <%= render 'contacts/partials/form/general', form: form %>
+        </div>
+    </div>
+    <span class="form--break"></span>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <%= render 'contacts/partials/form/address', form: form %>
+        </div>
+    </div>
+    <span class="form--break"></span>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+            <%= render 'contacts/partials/form/legal', form: form %>
+            <div class="form--actions">
+                <%= form.submit t(:save), class: 'button button--primary' %>
+            </div>
+        </div>
+    </div>
+<% end %>

@@ -1,0 +1,37 @@
+<div class="page--block--header">
+    <h2><%= t('domains.show.general') %></h2>
+</div>
+<table class="table__basic">
+    <tbody>
+        <tr>
+            <th><%= t 'domains.show.transfer_code' %></th>
+            <td><%= @domain[:transfer_code] %></td>
+        </tr>
+        <tr>
+            <th><%= t 'domains.show.registrant' %></th>
+            <td><%= "#{@domain[:registrant][:name]} (#{@domain[:registrant][:code]})" %></td>
+        </tr>
+        <tr>
+            <th><%= t 'domains.show.registered' %></th>
+            <td><%= l @domain[:created_at].to_datetime %></td>
+        </tr>
+        <tr>
+            <th><%= t(:valid_to) %></th>
+            <td><%= l @domain[:expire_time].to_datetime %></td>
+        </tr>
+        <tr>
+            <th><%= t(:created_at) %></th>
+            <td><%= l @domain[:created_at].to_datetime %></td>
+        </tr>
+        <tr>
+            <th><%= t(:updated_at) %></th>
+            <td>
+                <% if @domain[:updated_at].to_datetime != @domain[:created_at].to_datetime %>
+                    <%= l @domain[:updated_at].to_datetime %>
+                <% else %>
+                    <%= t 'domains.show.not_updated' %>
+                <% end %>
+            </td>
+        </tr>
+    </tbody>
+</table>

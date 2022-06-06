@@ -1,0 +1,187 @@
+<div class="container">
+    <div id="header" class="row">
+        <div class="col-sm-6 left">
+            <div id="header-content">
+                <h1><%= "#{t('invoices.index.number')} #{invoice[:number]}" %></h1>
+            </div>
+        </div>
+        <div class="col-sm-6 right">
+            <%= image_tag wicked_pdf_asset_base64('eis-logo-black-et.png') %>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 left">
+            <h4><%= t('invoices.show.details') %></h4>
+            <hr>
+            <dl class="dl-horizontal">
+                <dt><%= t('invoices.show.issue_date') %></dt>
+                <dd><%= l invoice[:issue_date].to_date %></dd>
+
+                <% if invoice[:cancelled_at].present? %>
+                    <dt><%= t('invoices.show.cancelled_at') %></dt>
+                    <dd><%= l invoice[:cancelled_at].to_date %></dd>
+                <% end %>
+
+                <dt><%= t('invoices.show.due_date') %></dt>
+                <% if invoice[:cancelled_at].present? %>
+                    <dd><%= t('invoices.index.cancelled') %></dd>
+                <% else %>
+                    <dd><%= l invoice[:due_date].to_date %></dd>
+                <% end %>
+
+                <dt><%= t('invoices.show.receipt_date') %></dt>
+                <% if invoice[:paid] %>
+                    <dd><%= l invoice[:receipt_date].to_date %></dd>
+                <% elsif invoice[:cancelled_at].present? %>
+                    <dd><%= t('invoices.index.cancelled') %></dd>
+                <% else %>
+                    <dd class="text-danger"><%= t('invoices.index.cancelled') %></dd>
+                <% end %>
+
+                <dt><%= t('invoices.show.issuer') %></dt>
+                <dd><%= invoice[:seller][:contact_name] %></dd>
+
+                <dt><%= t('invoices.show.payment_term') %></dt>
+                <dd><%= t('invoices.show.prepayment') %></dd>
+
+                <dt><%= t('invoices.index.number') %></dt>
+                <dd><%= invoice[:number] %></dd>
+              
+                <% if invoice[:description].present? %>
+                    <dt><%= t('invoices.show.description') %></dt>
+                    <dd><%= invoice[:description] %></dd>
+                <% end %>
+
+                <dt><%= t('invoices.show.ref_no') %></dt>
+                <dd><%= invoice[:reference_no] %></dd>
+            </dl>
+        </div>
+        <div class="col-sm-6 right">
+            <h4><%= t('invoices.show.client') %></h4>
+            <hr>
+            <dl class="dl-horizontal">
+                <dt><%= t('invoices.show.name') %></dt>
+                <dd><%= invoice[:buyer][:name] %></dd>
+
+                <dt><%= t('invoices.show.reg_no') %></dt>
+                <dd><%= invoice[:buyer][:reg_no] %></dd>
+
+                <% if invoice[:buyer][:address].present? %>
+                    <dt><%= t('invoices.show.address') %></dt>
+                    <dd><%= invoice[:buyer][:address] %></dd>
+                <% end %>
+
+                <% if invoice[:buyer][:country].present? %>
+                    <dt><%= t('invoices.show.country') %></dt>
+                    <dd><%= invoice[:buyer][:country] %></dd>
+                <% end %>
+
+                <% if invoice[:buyer][:phone].present? %>
+                    <dt><%= t('invoices.show.phone') %></dt>
+                    <dd><%= invoice[:buyer][:phone] %></dd>
+                <% end %>
+
+                <% if invoice[:buyer][:url].present? %>
+                    <dt><%= t('invoices.show.url') %></dt>
+                    <dd><%= invoice[:buyer][:url] %></dd>
+                <% end %>
+
+                <% if invoice[:buyer][:email].present? %>
+                    <dt><%= t('invoices.show.email') %></dt>
+                    <dd><%= invoice[:buyer][:email] %></dd>
+                <% end %>
+            </dl>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row pull-down">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-4"><%= t('invoices.show.item_description') %></th>
+                            <th class="col-xs-2"><%= t('invoices.show.unit') %></th>
+                            <th class="col-xs-1"><%= t('invoices.show.quantity') %></th>
+                            <th class="col-xs-3"><%= t('invoices.show.price') %></th>
+                            <th class="col-xs-2"><%= t('invoices.index.total') %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% invoice[:items].each do |item| %>
+                            <tr>
+                                <td><%= item[:description] %></td>
+                                <td><%= item[:unit] %></td>
+                                <td><%= item[:quantity] %></td>
+                                <td><%= view.currency(item[:price].to_f) %></td>
+                                <td><%= view.currency(item[:sum_without_vat].to_f) %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th><%= t('invoices.show.subtotal') %></th>
+                            <th><%= number_to_currency invoice[:total] %></th>
+                        </tr>
+                        <tr>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                            <th><%= "#{t('invoices.show.vat')} #{number_to_percentage(invoice[:vat_rate], precision: 1)}" %></th>
+                            <th><%= number_to_currency invoice[:vat_amount] %></th>
+                        </tr>
+                        <tr>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                            <th><%= t('invoices.show.total') %></th>
+                            <th><%= number_to_currency invoice[:total] %></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <hr>
+        <div class="row">
+            <div class="col-md-3 left">
+                <%= invoice[:seller][:name] %>
+                <br>
+                <%= invoice[:seller][:address] %>
+                <br>
+                <%= invoice[:seller][:country] %>
+                <br>
+                <%= "#{t('invoices.show.reg_no')}  #{invoice[:seller][:reg_no]}" %>
+                <br>
+                <%= "#{t('invoices.show.vat_no')}  #{invoice[:seller][:vat_no]}" %>
+            </div>
+            <div class="col-md-3 left">
+                <%= invoice[:seller][:phone] %>
+                <br>
+                <%= invoice[:seller][:email] %>
+                <br>
+                <%= invoice[:seller][:url] %>
+            </div>
+            <div class="col-md-3 text-right left">
+                <%= t('invoices.show.bank') %>
+                <br>
+                <%= t('invoices.show.iban') %>
+                <br>
+                <%= t('invoices.show.swift') %>
+            </div>
+            <div class="col-md-3 left">
+                <%= invoice[:seller][:bank] %>
+                <br>
+                <%= invoice[:seller][:iban] %>
+                <br>
+                <%= invoice[:seller][:swift] %>
+            </div>
+        </div>
+    </div>
+</div>

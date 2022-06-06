@@ -1,0 +1,60 @@
+<div class="form--header">
+    <h3><%= t('contacts.form.address') %></h3>
+</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= form.label :country_code, "#{t('contacts.form.country')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <% country_selected = @contact&.dig(:address, :country_code) || 'EE' %>
+                    <%= simple_select_tag "contact[country_code]",
+                                            ApplicationController.helpers.all_country_options(country_selected),
+                                            { required: true } %>
+                </div>
+            </div>
+        </div>
+        <div class="form--row">
+            <%= form.label :city, "#{t('contacts.form.city')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :city, class: 'input',
+                                               value: @contact&.dig(:address, :city),
+                                               required: true %>
+                </div>
+            </div>
+            
+        </div>
+        <div class="form--row">
+            <%= form.label :street, "#{t('contacts.form.street')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :street, class: 'input',
+                                                 value: @contact&.dig(:address, :street),
+                                                 required: true %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= form.label :state, "#{t('contacts.form.state')}", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :state, class: 'input',
+                                                value: @contact&.dig(:address, :state) %>
+                </div>
+            </div>
+        </div>
+         <div class="form--row">
+            <%= form.label :zip, "#{t('contacts.form.postcode')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :zip, class: 'input',
+                                              value: @contact&.dig(:address, :zip),
+                                              required: true %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

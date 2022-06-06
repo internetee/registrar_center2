@@ -1,0 +1,37 @@
+<div class="form--wrapper nameserver-nested-form-wrapper", data-new-record="<%= k == 'NEW_RECORD' %>">
+    <div class="form--header">
+        <h3><%= "#{t('domains.form.nameserver')} #{k if k != 1}" %></h3>
+        <div class="form--header--actions">
+            <%= render 'domains/partials/form/action_links', type: 'nameserver',
+                                                             removable: removable %>
+        </div>
+    </div>
+    <div class="form--row">
+        <%= label_tag "domain_nameservers_attributes_#{k}_hostname" , t('domains.form.hostname'), class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <%= text_field_tag "domain[nameservers_attributes][#{k}][hostname]", v['hostname'],
+                                                                                     class: 'input',
+                                                                                     'data-nested-form-target': 'nameserver' %>
+            </div>
+        </div>
+    </div>
+    <div class="form--row">
+        <%= label_tag "domain_nameservers_#{k}_ipv4" , 'IPv4', class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <%= text_field_tag "domain[nameservers_attributes][#{k}][ipv4]", v['ipv4'], class: 'input' %>
+            </div>
+        </div>
+    </div>
+    <div class="form--row">
+        <%= label_tag "domain_nameservers_attributes_#{k}_ipv6" , 'IPv6', class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <%= text_field_tag "domain[nameservers_attributes][#{k}][ipv6]", v['ipv6'], class: 'input' %>
+            </div>
+        </div>
+    </div>
+    <%= hidden_field_tag "domain[nameservers_attributes][#{k}][id]", v['id']  if v['id'] %>
+    <%= hidden_field_tag "domain[nameservers_attributes][#{k}][action]", 'add' %>
+</div>

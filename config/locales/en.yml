@@ -1,0 +1,433 @@
+en:
+  up_arrow_html: '<i class="fas fa-chevron-up"></i>'
+  down_arrow_html: '<i class="fas fa-chevron-down"></i>'
+  default_arrow_html: ''
+  sign_in: "Sign in"
+  sign_out: "Sign out"
+  back: "Back"
+  open_filter: "Open filter"
+  close_filter: "Close filter"
+  search: "Search"
+  edit: "Edit"
+  renew: "Renew"
+  save: "Save"
+  choose: "Choose"
+  add_more: "Add more"
+  delete: "Delete"
+  add: "Add"
+  pay: "LinkPay"
+  download: "Download"
+  send: "Send"
+  cancel: "Cancel"
+  enable: "Enable"
+  disable: "Disable"
+  transfer: "Transfer"
+  add_credit: "Add credit"
+  choose_file: "Choose file"
+  created_at: "Created"
+  updated_at: "Updated"
+  valid_to: "Valid to"
+  press_to_select: ""
+  start_typing: "Start typing to make a choice"
+  at: "@"
+  download_csv: "Download CSV"
+  download_pdf: "Download PDF"
+  bulk_change: "Bulk change"
+  filter: "Filter"
+  clear_filter: "Clear filter"
+  no_translation: "translation not available"
+  months:
+    one: "1 month"
+    other: "%{count} months"
+  years:
+    one: "1 year"
+    other: "%{count} years"
+
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M"
+      long: "%A, %e. %B %Y, %H:%M"
+      short: "%d.%m.%y, %H:%M"
+      date: "%Y-%m-%d"
+      date_long: "%d. %B %Y"
+      filename: "%Y-%m-%d_%H.%M"
+  
+  number:
+    currency:
+      format:
+        format: "%n %u"
+        separator: ","
+        delimiter: " "
+        precision: 2
+        unit: €
+  
+  date:
+    formats:
+      default: "%Y-%m-%d"
+  
+  auth:
+    sessions:
+      logged_in: "Successfully logged in!"
+      logged_out: "Logged out!"
+      already_authenticated: "Already authenticated!"
+      already_signed_out: "Already signed out!"
+      new:
+        title: "Eesti Interneti SA Registrar Portal"
+        login: "Sign in"
+        login_with_password: "Sign in with password"
+        login_with_id: "Sign in with identity document"
+        login_with_id_text: "Sign in using Estonian (incl. e-residents) ID card, mobile ID, Bank link or other EU citizen's electronic ID supported by EIDAS."
+        username: "Username"
+        password: "Password"
+  
+  dashboard:
+    index:
+      hi: "Hi"
+      last_visit: "Welcome back! Your last sign in was:"
+      saldo: "Saldo"
+      confirm: "Confirm"
+      activities: "Account activity"
+      activities_info: "Here's an overview of the changes to your domains, contacts, and credit"
+      invoices: "Billing history"
+      invoices_info: "Here's an overview of your paid and unpaid bills"
+      registrar_data: "Registrar data"
+      registrar_contact_info: "Contact info"
+      registrar_rep: "Representative company"
+      registrar_billing_info: "Billing info"
+      registrar_test_info: "Accreditation tests" 
+      registrar_test_info_text: "An overview of the tests I've passed"
+      no_new_messages: "You have no new messages"
+      dequeue: "Dequeue"
+      message_num: "Message #"
+      text: "Text"
+      queue_date: "Queue date"
+      name: "Name"
+      tr_status: "Status"
+      re_id: "Transfer to"
+      re_date: "Transfer requested at"
+      ac_id: "Transfer from"
+      ac_date: "Accept date"
+      ex_date: "Valid to"
+      contacts_dialog_title: "Updated contacts"
+      contacts: "Contacts"
+      operation: "Operation"
+      op_date: "Date"
+      sv_trid: "Operation ID"
+      who: "Who done it"
+      reason: "Reason"
+      and_more: "...and %{count} more"
+
+  domains:
+    index:
+      title: "Domains"
+      new_domain_added: "New domain added"
+      new_domain: "Add new domain"
+      transfer_domain: "Transfer domain"
+      find_domain: "Search domain"
+      name: "Name"
+      registrant_name: "Registrant name"
+      contact_ident: "Contact ident"
+      nameserver: "Nameserver"
+      date_range: "Date range"
+      status: "Status"
+      expire_time: "Expire date"
+      items: 
+        zero: "domains"
+        one: "domain"
+        other: "domains"
+      csv:
+        domain_name: "Domain"
+        transfer_code: "Transfer code"
+        registrant_name: "Registrant name"
+        registrant_code: "Registrant code"
+        expire_time: "Expire date"
+
+    form:
+      info: "Info"
+      name: "Name"
+      period: "Period"
+      registrant: "Registrant"
+      verified: "Verified"
+      verified_confirm: "Verified status is for cases when current registrant is the one applying for the update. Legal document signed by the registrant is required. Are you sure this update is properly verified with the registrant?"
+      reserved_pw: "Reserved pw"
+      contact: "Contact"
+      tech_contact: "Technical contact"
+      admin_contact: "Admin contact"
+      tech: "Tech"
+      admin: "Admin"
+      nameserver: "Nameserver"
+      hostname: "Hostname"
+      dns_key: "DNS key"
+      flags: "Flags"
+      protocol: "Protocol"
+      algorithm: "Algorithm"
+      public_key: "Public key"
+      legal_doc: "Legal document for domain registration"
+      legal_doc_info: "When creating a new domain, a signed domain registration application must be attached"
+      curExpDate: "Current expire date"
+      not_for_dnssec: "not for DNSSEC validation"
+    
+    show:
+      general: "General"
+      transfer_code: "Transfer code"
+      registrant: "Registrant"
+      registered: "Registered"
+      valid: "Valid to"
+      created: "Created"
+      updated: "Updated"
+      not_updated: "Domain not updated"
+      statuses: "Statuses"
+      contacts: "Contacts"
+      contact_type: "Contact type"
+      contact_name: "Name"
+      contact_id: "ID"
+      nameservers: "Nameservers"
+      hostname: "Hostname"
+      dns_keys: "DNS key"
+      flag: "Flag"
+      public_key: "Public key"
+    
+    edit:
+      title: "Edit domain"
+
+    delete:
+      title: "Delete domain"
+      legal_doc: "Legal document for domain deletion"
+
+    renew:
+      title: "Renew domain"
+
+    transfer:
+      title: "Transfer domain"
+      domain_name: "Domain name"
+      legal_doc: "Legal document"
+      transferred: 
+        one: "Domain has been successfully transferred."
+        other: "%{count} domains have been successfully transferred."
+      failed: " Failed domains: %{failed}"
+
+  steps_controllers:
+    bulk_change:
+      title: "Bulk change"
+      select_type: "Select type"
+      next_step: "Next step"
+      tech_contact_change: "Replace technical contact"
+      admin_contact_change: "Replace admin contact"
+      nameserver_change: "Replace nameserver"
+      registrar_change: "Replace registrar"
+      domain_renew: "Renew domains"
+      select_type_icon_html: '<i class="fas fa-pencil-alt"></i>'
+      input_data: 'Input data'
+      input_data_icon_html: '<i class="fas fa-list"></i>'
+      make_changes: 'Make changes'
+      make_changes_icon_html: '<i class="fas fa-check"></i>'
+      missing_param: "Missing parameters: %{param}"
+      type: "bulk change type"
+      tech_contact_replace_info: "Replace technical contact specified in 'Current contact ID' with the one in 'New contact ID' on any domain registered under this registrar"
+      current_contact_id: "Current contact ID"
+      new_contact_id: "New contact ID"
+      tech_contact_replace_confirm: "Please confirm you want to replace contact %{old_contact} with contact %{new_contact}"
+      confirm: "Confirm"
+      admin_contact_replace_info: "Bulk admin change is only allowed in case of old and new contact are sharing identical ident data ie for updating contact information"
+      current_admin_contact_id: "Current admin contact ID"
+      new_admin_contact_id: "New admin contact ID"
+      admin_contact_replace_confirm: "Please confirm you want to replace admin contact %{old_contact} with admin contact %{new_contact}"
+      ns_replace_info: "Replace nameserver specified in the 'old hostname' with the one in 'new hostname' with optional IPv4 and IPv6 addresses on any domain registered under this registrar"
+      old_hostname: "Old hostname (optional)"
+      new_hostname: "New hostname"
+      ipv_tooltip: "One IP per row"
+      upload_csv: "Upload CSV file"
+      upload_info: "CSV format, must have domain_name header. List of domains that nameserver change should be scoped to."
+      ns_replace_confirm1: "Please confirm you want to replace hostname %{old_hostname} with hostname %{new_hostname}"
+      ns_replace_confirm2: "Please confirm you want to add hostname %{hostname} to domains"
+      registrar_replace_confirm: "Please confirm you want to transfer %{count} domains"
+      current_balance: "Current balance"
+      expire_date_until: "Expire date until"
+      period: "Period"
+      choose_domains_for_renew: "Choose domains you want to renew"
+      domains_renew_confirm: "Please confirm you want to renew %{count} selected domains for period of %{period}"
+      selected: "Selected"
+
+  contacts:
+    index:
+      title: "Contacts"
+      new_contact: "Add new contact"
+      find_contact: "Search contact"
+      status: "Status"
+      created_at: "Created date range"
+      updated_at: "Updated date range"
+      code: "ID"
+      ident: "Ident"
+      ident_type: "Identi type"
+      email: "Email"
+      country_code: "Country"
+      contact_type: "Contact type"
+      name: "Name"
+      items: 
+        zero: "contacts"
+        one: "contact"
+        other: "contacts"
+      csv:
+        name: "Name"
+        id: "ID"
+        ident: "Ident"
+        email: "Email"
+        created_at: "Created at"
+        phone: "Phone"
+
+    form:
+      ident: "Ident"
+      country: "Country"
+      city: "City"
+      street: "Street"
+      state: "State"
+      postcode: "Postcode"
+      ident_type: "Type"
+      birthday_info: "Enter birthdate in format: YYYY-MM-DD"
+      general: "General"
+      name: "Name"
+      email: "Email"
+      phone: "Phone"
+      address: "Address"
+      legal_doc: "Legal document"
+      business_code: "Business code"
+      id_code: "ID code"
+      birthday: "Birthdate"
+
+    show:
+      general: "General"
+      domains: "Domains"
+      code: "ID"
+      auth_info: "Authinfo pw"
+      ident: "Ident"
+      email: "Email"
+      phone: "Phone"
+      statuses: "Statuses"
+      domain_name: "Domain name"
+      registrar_name: "Registrar"
+      valid_to: "Valid to"
+      roles: "Roles"
+      contact_types:
+        registrant: "Registrant"
+        tech: "Technical contact"
+        admin: "Admin contact"
+
+    delete:
+      title: "Delete contact"
+      legal_doc: "Legal document"
+  
+  bulk_actions:
+    replaced: "Nameserver have been successfully replaced"
+    added: "Nameserver have been successfully added"
+    affected_domains: "Affected domains"
+    skipped_domains: "Untouched domains"
+  
+  account:
+    index:
+      title: "Account activity"
+      search_description: "Search description"
+      receipt_date: "Receipt date"
+      description: "Description"
+      activity_type: "Type"
+      created_at: "Created at"
+      sum: "Sum"
+      new_balance: "New balance"
+      updator_str: "Updator"
+      items: 
+        zero: "activities"
+        one: "activity"
+        other: "activities"
+      csv:
+        description: "Description"
+        activity_type: "Type"
+        receipt_date: "Receipt date"
+        sum: "Sum"
+
+    show:
+      details: "Details"
+      billing_email: "Billing email"
+      billing_iban: "Billing IBAN"
+      edit_account: "Edit account"
+      edit_info: "Required for sending e-invoices to the bank"
+      auto_reload: "Balance Auto-Reload"
+      auto_reload_info: "Automatically reload your balance when it drops to a minimum threshold"
+      enabled: "Enabled"
+      enabled_state_details: "Reload %{amount} when your balance drops to %{threshold}"
+      disabled: "Disabled"
+      amount: "Amount"
+      threshold: "Threshold"
+      auto_reload_tooltip: "must be greater than or equal to %{min}"
+      linked_users: "Linked users"
+      user: "Username"
+      role: "Role"
+      switch: "Switch over"
+      switch_warning_html: "Are you sure you want to switch over to user <span class = 'username'></span>?"
+
+  invoices:
+    index:
+      title: "Billing history"
+      activities: "Account activities"
+      search_number: "Search number"
+      number: "Invoice nr."
+      due_date: "Due date"
+      receipt_date: "Receipt date"
+      status: "Status"
+      number_range: "Invoice number range"
+      total_range: "Total range"
+      paid: "Paid"
+      unpaid: "Unpaid"
+      cancelled: "Cancelled"
+      amount: "Amount"
+      description: "Description"
+      total: "Total"
+      send_invoice: "Send invoice"
+      recipient: "Recipient"
+      please_pay: "Please pay the following invoice"
+      cancel_warning_html: "Are you sure you want to cancel Invoice no. <span class = 'number'></span>?"
+      items: 
+        zero: "invoices"
+        one: "invoice"
+        other: "invoices"
+
+    show:
+      details: "Details"
+      issue_date: "Issue date"
+      cancelled_at: "Cancelled at"
+      due_date: "Due date"
+      receipt_date: "Receipt date"
+      payment_term: "Payment term"
+      prepayment: "Prepayment"
+      ref_no: "Reference no."
+      description: "Description"
+      seller: "Seller"
+      name: "Name"
+      reg_no: "Reg. nr."
+      iban: "Iban"
+      bank: "Bank"
+      swift: "SWIFT code"
+      vat_no: "VAT nr."
+      address: "Address"
+      country: "Country"
+      phone: "Phone"
+      url: "URL"
+      email: "Email"
+      contact_name: "Contact name"
+      buyer: "Payer"
+      issuer: "Issuer"
+      client: "Client"
+      items: "Items"
+      unit: "Unit"
+      quantity: "Quantity"
+      price: "Price"
+      subtotal: "Subtotal"
+      item_description: "Description"
+      vat: "VAT"
+      total: "Total"
+      
+  activemodel:
+    errors:
+      models:
+        authenticator:
+          attributes:
+            base: 
+              failure: "Authentication failure"

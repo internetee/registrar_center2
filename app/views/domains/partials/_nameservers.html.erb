@@ -1,0 +1,21 @@
+<div class="page--block--header">
+    <h2><%= t('domains.show.nameservers') %></h2>
+</div>
+<table class="table__basic">
+    <thead>
+    <tr>
+        <th><%= t('domains.show.hostname') %></th>
+        <th>IPv4</th>
+        <th>IPv6</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @domain[:nameservers].each do |ns| %>
+    <tr>
+        <td><%= ns[:hostname] %></td>
+        <td><%= ns[:ipv4].join(', ') %></td>
+        <td><%= ns[:ipv6].join(', ') %></td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>

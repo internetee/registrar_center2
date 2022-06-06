@@ -1,0 +1,39 @@
+<tr>
+    <td>
+        <%= link_to "#{t('invoices.index.number')} #{invoice[:number]}", invoice_path(invoice[:id]), 'data-turbo': true %>
+    </td>
+    <td><%= l invoice[:due_date].to_date %></td>
+    <% if invoice[:paid] %>
+        <td><%= l invoice[:receipt_date].to_date %></td>
+    <% elsif invoice[:cancelled] %>
+        <td class="text-grey"><%= t('invoices.index.cancelled') %></td>
+    <% else %>
+        <td class="text-danger">
+            <i class="fas fa-exclamation-triangle rediconcolor"></i>
+            <%= t('invoices.index.unpaid') %>
+        </td>
+    <% end %>
+    <td><%= currency(invoice[:total].to_f) %></td>
+    <td class="table--action">
+        <% if invoice[:payable] && invoice[:payment_link].present? %>
+            <%= link_to '<i class="fas fa-credit-card"></i>'.html_safe, invoice[:payment_link], target: :_blank %>
+        <% end %>
+    </td>
+    <td class="table--action">
+        <%= link_to '<i class="fas fa-download"></i>'.html_safe, download_invoice_path(invoice[:id]) %>
+    </td>
+    <td class="table--action">
+        <%= link_to '<i class="fas fa-envelope"></i>'.html_safe, 'javascript: void(0);',
+                                                                 'data-dialog': 'invoice_send',
+                                                                 'data-invoice-id': invoice[:id],
+                                                                 'data-recipient': invoice[:recipient] %>
+    </td>
+    <td class="table--action">
+        <% if invoice[:cancellable] %>
+            <%= link_to '<i class="fas fa-times rediconcolor"></i>'.html_safe, 'javascript: void(0);',
+                                                                               'data-dialog': 'invoice_cancel',
+                                                                               'data-invoice-id': invoice[:id],
+                                                                               'data-invoice-number': invoice[:number] %>
+        <% end %>
+    </td>
+</tr>

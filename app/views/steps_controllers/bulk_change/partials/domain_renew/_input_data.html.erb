@@ -1,0 +1,57 @@
+<div class="wrapper">
+    <div class="row center-xs">
+        <div class="col-md-4 col-sm-8 col-xs-12">
+            <div class="paper paper__light">
+                <%= form_with scope: :bulk_change, url: wizard_path, method: :patch, class: 'form' do |form| %>
+                    <div class="form--row">
+                        <div class="form--header">
+                            <h3><%= t("steps_controllers.bulk_change.#{@attrs[:type].underscore}") %></h3>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :current_balance, t('steps_controllers.bulk_change.current_balance'), class: 'form--label' %>
+                        <div class="form--field">
+                            <strong><%= "#{currency(current_user.balance[:amount].to_f)} #{current_user.balance[:currency]}" %></strong>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :expire_date, t('steps_controllers.bulk_change.expire_date_until'), class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.date_field :expire_date, class: 'datepicker', value: @attrs[:expire_date] %>
+                                <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :period, "#{t('steps_controllers.bulk_change.period')} *", class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= simple_select_tag "bulk_change[period]",
+                                    options_for_select(ApplicationHelper::DOMAIN_PERIODS.drop(1), @attrs[:period]),
+                                    required: true %>
+                            </div>
+                        </div>
+                    </div>
+                    <%= form.hidden_field :form_steps, value: [step.to_sym] %>
+                    <%= form.hidden_field :domain_filter, value: true %>
+                    <div class="form--actions">
+                          <%= form.submit t(:filter), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<% if @domains.present? %>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="page--block--header center">
+                <h2><%= t('steps_controllers.bulk_change.choose_domains_for_renew') %></h2>
+            </div>
+            <div class="page--content search-results" data-controller="checkbox-list">
+                <%= render 'steps_controllers/bulk_change/partials/domain_renew/domains_form' %>
+            </div>
+        </div>
+    </div>
+<% end %>

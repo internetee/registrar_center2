@@ -1,0 +1,14 @@
+<% content_for(:title) { "EIS | #{t('domains.edit.title')}: #{@domain[:name]}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= "#{t('domains.edit.title')}: #{@domain[:name]}" %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--domains--edit">
+    <div class="page--content">
+        <div class="wrapper">
+            <%= render 'domains/partials/form' %>
+        </div>
+    </div>
+</div>

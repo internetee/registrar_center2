@@ -1,0 +1,25 @@
+<div class="paper--header">
+    <h3><%= t('account.show.auto_reload') %></h3>
+</div>
+<div class="paper--content">
+    <% if @balance_auto_reload %>
+        <span class="label label-success"><%= t 'account.show.enabled' %></span>
+        <%= t 'account.show.enabled_state_details', amount: number_to_currency(@balance_auto_reload[:amount]),
+              threshold: number_to_currency(@balance_auto_reload[:threshold]) %>
+    <% else %>
+        <span class="text-muted"><%= t 'account.show.disabled' %></span>
+    <% end %>
+</div>
+<div class="paper--footer">
+    <% if @balance_auto_reload %>
+        <%= link_to t(:disable), disable_balance_auto_reload_path,
+                                                                  class: 'button button--danger' %>
+        <%= link_to t(:edit), 'javascript: void(0);',
+                    'data-dialog': 'edit_balance_reload',
+                    class: 'button button--primary' %>
+    <% else %>
+        <%= link_to t(:enable), 'javascript: void(0);',
+                    'data-dialog': 'edit_balance_reload',
+                    class: 'button button--secondary' %>
+    <% end %>
+</div>

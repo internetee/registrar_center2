@@ -1,0 +1,58 @@
+<article class="paper paper--text__center">
+    <header class="paper--header">
+        <h2><%= t('common.header.messages') %> <span>(<%= @notifications_count %>)</span></h2>
+        <% if @notification && @notifications_count.positive? %>
+            <nav class="menu--simple">
+                <ul>
+                    <li><%= link_to t('dashboard.index.dequeue'), mark_as_read_notification_path(@notification[:id]) %></li>
+                </ul>
+            </nav>
+        <% end %>
+    </header>
+    <div class="paper--content">
+        <% if @notification && @notifications_count.positive? %>
+            <table class="table table__basic compact">
+                <tbody>
+                    <tr>
+                        <th class="text-right"><%= t('dashboard.index.message_num') %></th>
+                        <td><%= @notification[:id] %></td>
+                    </tr>
+                    <tr>
+                        <th class="text-right"><%= t('dashboard.index.text') %></th>
+                        <td><%= @notification[:text] %></td>
+                    </tr>
+                    <tr>
+                        <th class="text-right"><%= t('dashboard.index.queue_date') %></th>
+                        <td><%= l @notification[:created_at].to_datetime %></td>
+                    </tr>
+                    <tr height="15px"></tr>
+                    <% if @notification[:attached_obj_data].present? %>
+                        <% if ['DomainTransfer', 'ContactUpdateAction'].include? @notification[:attached_obj_type] %>
+                            <% @notification[:attached_obj_data].each do |k, v| %>
+                                <tr>
+                                    <th class="text-right"><%= t("dashboard.index.#{k.underscore}") %></th>
+                                    <td>
+                                        <% if k.include?('Date') %>
+                                            <%= l(v.to_datetime) %>
+                                        <% elsif k == 'contacts' && v.is_a?(Array) %>
+                                            <% more = v.size - @max_contacts %>
+                                            <%= v.first(@max_contacts).pluck(:code).join(', ') %>
+                                            <% if more.positive? %>
+                                                <%= link_to "#{t('dashboard.index.and_more', count: more)}", 'javascript: void(0);', 'data-dialog': 'contacts' %>
+                                                <%= render 'dashboard/partials/contacts_dialog', contacts: v.pluck(:code) %>
+                                            <% end %>
+                                        <% else %>
+                                            <%= v %>
+                                        <% end %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        <% else %>
+            <%= t('dashboard.index.no_new_messages') %>
+        <% end %>
+    </div>
+</article>

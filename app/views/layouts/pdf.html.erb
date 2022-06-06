@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="<%= I18n.locale.to_s %>">
+    <head>
+        <meta charset='utf-8' />
+        <style>
+            html,
+            body {
+              margin:0;
+              padding:0;
+              height:100%;
+            }
+
+            .container {
+              margin: auto;
+              font-size: 12px;
+            }
+
+            .col-md-12 {
+
+            }
+
+            .col-md-6 {
+              width: 49%;
+              display: inline-block;
+            }
+
+            .col-xs-4 {
+              width: 33%;
+            }
+
+            .col-xs-2 {
+              width: 16%;
+            }
+
+            .col-md-3 {
+              width: 24%;
+              display: inline-block;
+            }
+
+            .left {
+              float: left;
+            }
+
+            .left {
+              padding-right: 5px;
+            }
+
+            .right {
+              float: right;
+            }
+
+            .text-right {
+              text-align: right;
+            }
+
+            dt {
+              float: left;
+              width: 100px;
+              clear: left;
+              text-align: right;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-weight: bold;
+              line-height: 1.42857;
+            }
+
+            dd {
+              margin-left: 120px;
+              line-height: 1.42857;
+            }
+
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              font-size: 12px;
+            }
+
+            th {
+              text-align: left;
+              border: 0px;
+              border-top: 1px solid #DDD;
+              padding: 6px;
+            }
+
+            thead th {
+              border-bottom: 2px solid #DDD;
+              border-top: 0px;
+            }
+
+            td {
+              border-top: 1px solid #DDD;
+            }
+
+            td {
+              padding: 6px;
+            }
+
+            .no-border {
+              border: 0px;
+            }
+
+            hr {
+              height: 1px;
+              border: 0;
+              color: #DDD;
+              background-color: #DDD;
+            }
+
+            .clear {
+              clear: both;
+            }
+
+            .pull-down {
+              margin-top: 50px;
+            }
+
+            #header {
+              position: relative;
+              min-height: 100px;
+            }
+
+            img {
+              width: 106px;
+              height: 102px;
+            }
+
+            #header-content {
+              position: absolute;
+              bottom: 0;
+            }
+
+            #footer {
+              position: fixed;
+              padding: 10px 10px 0px 10px;
+              bottom: 0;
+              width: 100%;
+              /* Height of the footer*/ 
+              height: 100px;
+            }
+
+            h1 {
+              margin-bottom: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <%= yield %>
+    </body>
+</html>

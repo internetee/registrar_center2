@@ -1,0 +1,60 @@
+<% if @contact.nil? %>
+    <% country_selected = 'EE' %>
+    <% type_selected = 'org' %>
+    <% ident_complete = false %>
+    <% ident = '' %>
+<% else %>
+    <% country_selected = @contact&.dig(:ident, :country_code) || 'EE' %>
+    <% type_selected = @contact&.dig(:ident, :type) || 'org' %>
+    <% ident_complete = @contact[:ident][:country_code].present? && @contact[:ident][:type].present? && @contact[:ident].present? %>
+    <% ident = @contact[:ident][:code] %>
+<% end %>
+<div class="form--header">
+    <h3><%= t('contacts.form.ident') %></h3>
+</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= form.label :ident_country_code, "#{t('contacts.form.country')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= simple_select_tag "contact[ident_country_code]",
+                                          ApplicationController.helpers.all_country_options(country_selected),
+                                          { disabled: ident_complete,
+                                            required: true,
+                                            id: 'country_code_select' } %>
+                    <%= form.hidden_field :ident_country_code, value: country_selected if ident_complete %>
+                </div>
+            </div>
+        </div>
+        <div class="form--row">
+            <%= form.label :ident_type, "#{t('contacts.form.ident_type')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= simple_select_tag "contact[ident_type]",
+                                          options_for_select(ApplicationHelper::IDENT_TYPES, type_selected),
+                                          { disabled: ident_complete,
+                                            required: true,
+                                            id: 'ident_type_select' } %>
+                    <%= form.hidden_field :ident_type, value: type_selected if ident_complete %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= form.label :ident, "#{t('contacts.form.ident')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :ident, class: 'input',
+                                                value: ident,
+                                                readonly: ident_complete,
+                                                required: true %>
+                </div>
+            </div>
+        </div>
+        <div class="form--row" id="insert_birthday_info" style="display: none;">
+            <p><%= t('contacts.form.birthday_info') %></p>
+        </div>
+    </div>
+</div>

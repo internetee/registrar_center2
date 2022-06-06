@@ -1,0 +1,23 @@
+<div class="form--header">
+    <h3><%= t('domains.form.legal_doc') %></h3>
+</div>
+<div class="form--row">
+    <p><%= t('domains.form.legal_doc_info') %></p>
+</div>
+<div class="form--row">
+    <div class="form--field">
+        <div class="form--input">
+            <ul class="file--list"></ul>
+            <%= form.label :legal_document, class: 'file' do %>
+                <% required = @domain.nil? && current_user.legaldoc_mandatory %>
+                <%= form.file_field :legal_document, class: 'not_visible',
+                                                     required: required,
+                                                     data: { legal_document: true },
+                                                     accept: legal_document_types %>
+                <i class="fas fa-folder-open"></i>
+                <strong><%= t(:choose_file) %></strong>
+                <span>(max. 8MB)</span>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<%= form_with url: contact_path, method: :get, class: 'filter',
+              data: { turbo: true } do |form| %>
+    <% @contact_types.each do |k, v| %>
+        <%= label_tag nil, class: 'filter--item' do %>
+            <% checked = params[:contact_types].present? ?  params[:contact_types].include?(v) : true %>
+            <%= check_box_tag 'contact_types[]', v, checked %>
+            <span><%= t("contacts.show.contact_types.#{k}") %></span>
+        <% end %>
+    <% end %>
+    <%= hidden_field_tag 'contact_types[]', '' %>
+    <%= hidden_field_tag 'contact_code', @contact[:code] %>
+    <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
+<% end %>

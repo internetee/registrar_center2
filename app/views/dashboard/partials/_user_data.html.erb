@@ -1,0 +1,31 @@
+<div class="user-data">
+    <h2><%= t('dashboard.index.registrar_data') %></h2>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <a href="" class="user-data--link">
+                    <i class="fas fa-user"></i>
+                    <h4><%= t('dashboard.index.registrar_contact_info') %></h4>
+                </a>
+                <p><%= @response.phone  %></p>
+                <p><%= @response.email %></p>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <a href="" class="user-data--link">
+                    <i class="fas fa-building"></i>
+                    <h4><%= t('dashboard.index.registrar_rep') %></h4>
+                </a>
+                <p><%= "#{@response.registrar_name} (#{@response.registrar_reg_no})" %></p>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <a href="" class="user-data--link">
+                    <i class="fas fa-user"></i>
+                    <h4><%= t('dashboard.index.registrar_billing_info') %></h4>
+                </a>
+                <p><%= @response.registrar_name %></p>
+                <p><%= @response.billing_email %></p>
+                <p><%= @response.billing_address %></p>
+            </div>
+        </div>
+    </div>
+</div>

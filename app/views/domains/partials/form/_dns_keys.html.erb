@@ -1,0 +1,49 @@
+<div class="form--wrapper dnskey-nested-form-wrapper", data-new-record="<%= k == 'NEW_RECORD' %>">
+    <div class="form--header">
+        <h3><%= "#{t('domains.form.dns_key')} #{k if k != 1}" %></h3>
+        <div class="form--header--actions">
+            <%= render 'domains/partials/form/action_links', type: 'dnskey',
+                                                             removable: removable %>
+        </div>
+    </div>
+    <div class="form--row">
+        <%= label_tag "domain_dnskeys_attributes_#{k}_flags" , t('domains.form.flags'), class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <%= simple_select_tag "domain[dnskeys_attributes][#{k}][flags]",
+                    options_for_select(ApplicationHelper::DNS_KEY_FLAGS, v['flags']),
+                    'data-nested-form-target': 'dnskey' %>
+            </div>
+        </div>
+    </div>
+    <div class="form--row">
+        <%= label_tag "domain_dnskeys_attributes_#{k}_protocol" , t('domains.form.protocol'), class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <%= simple_select_tag "domain[dnskeys_attributes][#{k}][protocol]",
+                    options_for_select(ApplicationHelper::DNS_KEY_PROTOCOLS, v['protocol']) %>
+            </div>
+        </div>
+    </div>
+    <div class="form--row">
+        <%= label_tag "domain_dnskeys_attributes_#{k}_alg" , t('domains.form.algorithm'), class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <%= simple_select_tag "domain[dnskeys_attributes][#{k}][alg]",
+                    options_for_select(ApplicationHelper::DNS_KEY_ALGORITHMS, v['alg']) %>
+            </div>
+        </div>
+    </div>
+    <div class="form--row">
+        <%= label_tag "domain_dnskeys_attributes_#{k}_public_key" , t('domains.form.public_key'),
+                                                                    class: 'form--label' %>
+        <div class="form--field">
+            <div class="form--input">
+                <%= text_field_tag "domain[dnskeys_attributes][#{k}][public_key]", v['public_key'],
+                                                                                   class: 'input' %>
+            </div>
+        </div>
+    </div>
+    <%= hidden_field_tag "domain[dnskeys_attributes][#{k}][id]", v['id']  if v['id'] %>
+    <%= hidden_field_tag "domain[dnskeys_attributes][#{k}][action]", 'add' %>
+</div>

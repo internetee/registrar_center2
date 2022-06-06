@@ -1,0 +1,24 @@
+<article class="paper paper--text__center">
+    <header class="paper--header">
+        <h2><%= t('common.header.contacts') %> <span>(<%= @contacts_count %>)</span></h2>
+        <nav class="menu--simple">
+            <ul>
+                <li><%= link_to t('contacts.index.new_contact'), new_contact_path %></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="paper--content">
+        <%= form_with scope: :search, url: contacts_path, method: :get, class: 'form' do |form| %>
+            <div class="form--row">
+                <div class="form--field">
+                    <div class="form--input large">
+                        <%= button_tag(type: 'submit', class: 'button button--primary') do %>
+                            <i class="fas fa-arrow-right"></i>
+                        <% end %>
+                        <%= form.text_field :name_matches, 'aria-label': t('contacts.index.find_contact'), class: 'input', placeholder: t('contacts.index.find_contact') %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</article>

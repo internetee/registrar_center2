@@ -1,0 +1,14 @@
+<% content_for(:title) { "EIS | #{t('contacts.index.new_contact')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('contacts.index.new_contact') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--contacts--add">
+    <div class="page--content">
+        <div class="wrapper">
+            <%= render 'contacts/partials/form' %>
+        </div>
+    </div>
+</div>

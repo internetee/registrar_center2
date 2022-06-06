@@ -1,0 +1,51 @@
+<% content_for(:title) { "EIS | #{t('contacts.delete.title')}: #{@contact[:name]}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= "#{t('contacts.delete.title')}: #{@contact[:name]}" %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--contacts--delete">
+    <div class="page--content">
+        <div class="wrapper">
+            <div class="row center-xs">
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <div class="paper paper__light">
+                        <div class="paper--content">
+                            <%= form_with scope: :contact, url: destroy_contact_path, method: :delete,
+                                                          class: 'form', 
+                                                          multipart: true,
+                                                          data: { turbo: true }  do |form| %>
+                                <div class="form--header">
+                                    <h3><%= t('contacts.delete.title') %></h3>
+                                </div>
+                                <div class="form--header">
+                                    <h3><%= t('contacts.delete.legal_doc') %></h3>
+                                </div>
+                                <div class="form--row">
+                                    <div class="form--field">
+                                        <div class="form--input">
+                                            <ul class="file--list"></ul>
+                                            <%= form.label :legal_document, class: 'file' do %>
+                                                <%= form.file_field :legal_document, class: 'not_visible',
+                                                                                     accept: legal_document_types %>
+                                                <i class="fas fa-folder-open"></i>
+                                                <strong><%= t(:choose_file) %></strong>
+                                                <span>(max. 8MB)</span>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%= form.hidden_field :code, value: @contact[:code] %>
+                                <div class="form--actions">
+                                    <%= form.submit t(:delete), class: 'button button--danger' %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        

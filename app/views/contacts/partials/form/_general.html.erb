@@ -1,0 +1,41 @@
+<div class="form--header">
+    <h3><%= t('contacts.form.general') %></h3>
+</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= form.label :name, "#{t('contacts.form.name')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :name, class: 'input',
+                                               value: @contact&.dig(:name),
+                                               required: true %>
+                </div>
+            </div>
+        </div>
+        <div class="form--row">
+            <%= form.label :email, "#{t('contacts.form.email')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.email_field :email, class: 'input',
+                                                 value: @contact&.dig(:email),
+                                                 required: true,
+                                                 pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="form--row">
+            <%= form.label :phone, "#{t('contacts.form.phone')} *", class: 'form--label' %>
+            <div class="form--field">
+                <div class="form--input">
+                    <%= form.text_field :phone, class: 'input',
+                                                value: @contact&.dig(:phone),
+                                                required: true,
+                                                placeholder: '+372.12323344' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

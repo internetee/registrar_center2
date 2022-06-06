@@ -1,0 +1,41 @@
+<div class="dialog" id="edit_account_details">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2><%= t('account.show.edit_account') %></h2>
+            </div>
+            <div class="paper--content">
+                <%= form_with scope: :account, url: account_path, method: :patch, class: 'form' do |form| %>
+                    <div class="form--row">
+                        <%= form.label :billing_email, "#{t('account.show.billing_email')} *", class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.email_field :billing_email, class: 'input',
+                                                                      value: @account[:billing_email], autofocus: true,
+                                                                      required: true,
+                                                                      pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :iban,  "#{t('account.show.billing_iban')} *", class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.text_field :iban, class: 'input',
+                                                            value: @account[:iban],
+                                                            maxlength: @account[:iban_max_length] %>
+                            </div>
+                            <%= tooltip t('account.show.edit_info') %>
+                        </div>
+                    </div>
+                    <div class="form--actions">
+                        <%= form.submit t(:save), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<% content_for(:title) { "EIS | Edit: #{@contact[:name]}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= "Edit: #{@contact[:name]}" %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--contacts--edit">
+    <div class="page--content">
+        <div class="wrapper">
+            <%= render 'contacts/partials/form' %>
+        </div>
+    </div>
+</div>

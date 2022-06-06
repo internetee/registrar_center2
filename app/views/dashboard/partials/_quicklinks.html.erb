@@ -1,0 +1,32 @@
+<div class="quicklinks">
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <% if can? :manage, 'Invoice' %>
+                    <div class="bills">
+                        <p><%= t('dashboard.index.saldo') %><strong><%= "#{currency(@balance[:amount].to_f)} #{@balance[:currency]}" %></strong></p>
+                        <%= link_to t(:add_credit), 'javascript: void(0);', 'data-dialog': 'add_credit', class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <% if can? :manage, 'Invoice' %>
+                    <%= link_to invoices_path, class: 'quicklinks--link' do %>
+                        <i class="fas fa-file-alt"></i>
+                        <span><%= t('dashboard.index.invoices') %></span>
+                    <% end %>
+                    <p><%= t('dashboard.index.invoices_info') %></p>
+                <% end %>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <% if can? :manage, 'Invoice' %>
+                    <%= link_to account_activities_path, class: 'quicklinks--link' do %>
+                        <i class="fas fa-list"></i>
+                        <span><%= t('dashboard.index.activities') %></span>
+                    <% end %>
+                    <p><%= t('dashboard.index.activities_info') %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

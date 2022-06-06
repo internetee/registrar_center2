@@ -1,0 +1,38 @@
+<% content_for(:title) { "EIS | #{t('common.header.homepage')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('.hi') %>, <%= current_user.username %></h1>
+        <% unless @response.last_login_date.nil? %>
+        <p><%= t('.last_visit') %> <%= pretty_date(@response.last_login_date.to_datetime) %></p>
+        <% end %>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--dashboard">
+    <%= render 'dashboard/partials/quicklinks' %>
+    <div class="search-boxes">
+        <div class="wrapper">
+            <div class="row">
+                <% if can? :info, 'Epp::Domain' %>
+                    <div class="col-md-6 col-xs-12">
+                        <%= render 'dashboard/partials/domains' %>
+                    </div>
+                <% end %>
+                <% if can? :check, 'Epp::Contact' %>
+                    <div class="col-md-6 col-xs-12">
+                        <%= render 'dashboard/partials/contacts' %>
+                    </div>
+                <% end %>
+            </div>
+            <% if can? :manage, 'poll' %>
+                <div class="row notifications">
+                    <div class="col-md-12 col-xs-12">
+                        <%= render 'dashboard/partials/notifications' %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <%= render 'dashboard/partials/user_data' %>
+</div>
+<%= render 'invoices/partials/add_credit_form' %>

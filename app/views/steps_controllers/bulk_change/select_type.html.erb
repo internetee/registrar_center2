@@ -1,0 +1,44 @@
+<% content_for(:title) { "EIS | #{t('steps_controllers.bulk_change.title')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('steps_controllers.bulk_change.title') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--domains-bulkchange">
+    <div class="page--header">
+        <div class="steps wrapper">
+            <div class="row center-xs">
+                <% wizard_steps.each do |s| %>
+                    <%= render 'steps_controllers/bulk_change/partials/step', wizard_step: s %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="row center-xs">
+            <div class="col-md-4 col-sm-8 col-xs-12">
+                <div class="paper paper__light">
+                    <%= form_with scope: :bulk_change, url: wizard_path,
+                                                       method: :patch,
+                                                       class: 'form' do |form| %>
+                        <div class="form--row">
+                            <%= form.label :type, "#{t('steps_controllers.bulk_change.select_type')} *", class: 'form--label' %>
+                            <div class="form--input">
+                                <%= simple_select_tag "bulk_change[type]",
+                                                      options_for_select(StepsControllers::BulkChangeController::TYPES,
+                                                      @attrs[:type]),
+                                                      required: true %>
+                            </div>
+                        </div>
+                        <%= form.hidden_field :form_steps, value: [step.to_sym] %>
+                        <div class="form--actions">
+                            <%= form.submit t('steps_controllers.bulk_change.next_step'), class: 'button button--primary' %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

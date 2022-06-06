@@ -1,0 +1,61 @@
+<% content_for(:title) { "EIS | #{@domain[:name]}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= @domain[:name] %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--domains--detail">
+    <div class="page--header">
+        <div class="wrapper">
+            <div class="row center-xs">
+                <div class="col-xs-auto">
+                    <%= link_to t(:edit), edit_domain_path(domain_name: @domain[:name]), class: 'button button--primary' %>
+                </div>
+                <div class="col-xs-auto">
+                    <%= link_to t(:renew), new_domain_renewal_path(domain_name: @domain[:name]), class: 'button button--primary' %>
+                </div>
+                <% unless (@domain[:statuses].keys & %w[pendingDelete pendingDeleteConfirmation]).any? %>
+                    <div class="col-xs-auto">
+                        <%= link_to t(:delete), delete_domain_path(domain_name: @domain[:name]), class: 'button button--danger' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'domains/partials/general' %>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'domains/partials/statuses' %>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'domains/partials/contacts' %>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'domains/partials/nameservers' %>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+               <%= render 'domains/partials/dns_keys' %>
+            </div>
+        </div>
+    </div>
+</div>

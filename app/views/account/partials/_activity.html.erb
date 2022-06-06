@@ -1,0 +1,12 @@
+<tr>
+    <td>
+        <%= activity[:description].present? ? activity[:description] : '-' %>
+    </td>
+    <td><%= activity[:type].present? ? activity[:type] : '' %></td>
+    <td><%= l activity[:created_at].to_datetime %></td>
+    <% cl = activity[:sum].to_f > 0.0 ? 'text-success' : 'text-danger' %>
+    <% sum = activity[:sum].to_f > 0.0 ? "+#{activity[:sum]} #{activity[:currency]}" : "#{activity[:sum]} #{activity[:currency]}" %>
+    <td class="<%= cl %>"><%= sum %></td>
+    <td><%= activity[:balance].present? ? "#{currency(activity[:balance].to_f)} EUR" : 'N/A' %></td>
+    <td><%= activity[:updator] %></td>
+</tr>

@@ -1,0 +1,10 @@
+<tr>
+    <td><%= link_to contact[:name], contact_path(contact_code: contact[:code]), 'data-turbo': true %></td>
+    <td><%= contact[:code] %></td>
+    <td><%= ident_for(contact) %></td>
+    <td><%= l(contact[:created_at].to_datetime, format: :short) %></td>
+    <td class="table--action">
+        <%= icon_link_to 'fas fa-pencil-alt', edit_contact_path(contact_code: contact[:code]), class: 'simple_tooltip', data: { 'tippy-content': t(:edit) } %>
+        <%= icon_link_to 'fas fa-trash-alt', delete_contact_path(contact_code: contact[:code]), class: 'simple_tooltip', data: { 'tippy-content': t(:delete) } %>
+    </td>
+</tr>

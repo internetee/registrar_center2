@@ -1,0 +1,20 @@
+<div class="col-md-4 col-sm-8 col-xs-12">
+    <div class="paper paper__light">
+        <%= form_with scope: :bulk_change, url: domain_bulk_renew_path,
+                                          class: 'form' do |form| %>
+            <div class="form--row">
+                <div class="form--header">
+                    <% period = ApplicationHelper::DOMAIN_PERIODS.find { |p| p[1] == @attrs[:period] }[0] %>
+                    <h4><%= t('steps_controllers.bulk_change.domains_renew_confirm', count: @attrs[:selected_domains].size,
+                                                                                     period: period) %>
+                    </h4>
+                </div>
+            </div>
+            <%= form.hidden_field :domains, value: @attrs[:selected_domains].join(',') %>
+            <%= form.hidden_field :renew_period, value: @attrs[:period] %>
+            <div class="form--actions">
+                <%= form.submit t('steps_controllers.bulk_change.confirm'), class: 'button button--primary' %>
+            </div>
+        <% end %>
+    </div>
+</div>

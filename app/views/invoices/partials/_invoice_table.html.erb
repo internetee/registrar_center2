@@ -1,0 +1,30 @@
+<table>
+    <tr>
+        <td>
+            <%== pagy_info(@pagy, item_name: t('invoices.index.items', count: @pagy.count) ) %>
+        </td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th><%= sort_link(nil, :number) %></th>
+            <th><%= sort_link(nil, :due_date) %></th>
+            <th><%= sort_link(nil, :receipt_date, [:receipt_date, :cancelled_at]) %></th>
+            <th><%= sort_link(nil, :total) %></th>
+            <th class="table--action"><%= t(:pay) %></th>
+            <th class="table--action"><%= t(:download) %></th>
+            <th class="table--action"><%= t(:send) %></th>
+            <th class="table--action"><%= t(:cancel) %></th>
+        </tr>
+    </thead>
+    <% if @response.count.positive? %>
+        <tbody>
+            <% @invoices.each do |invoice| %>
+                <%= render 'invoices/partials/invoice', invoice: invoice %>
+            <% end %>
+        </tbody>
+    <% end %>
+</table>
+<%= render 'invoices/partials/send_form' %>
+<%= render 'invoices/partials/cancel_form' %>

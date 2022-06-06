@@ -1,0 +1,26 @@
+<article class="paper paper--text__center">
+    <header class="paper--header">
+        <h2><%= t('common.header.domains') %> <span>(<%= @domains_count %>)</span></h2>
+        <nav class="menu--simple">
+            <ul>
+                <li><%= link_to t('domains.index.new_domain'), new_domain_path %></li>
+                <li><%= link_to t('domains.index.transfer_domain'), new_domain_transfer_path %></li>
+                <li><%= link_to t(:bulk_change), new_domain_bulk_change_path %></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="paper--content">
+        <%= form_with scope: :search, url: domains_path, method: :get, class: 'form' do |form| %>
+            <div class="form--row">
+                <div class="form--field">
+                    <div class="form--input large">
+                        <%= button_tag(type: 'submit', class: 'button button--primary') do %>
+                            <i class="fas fa-arrow-right"></i>
+                        <% end %>
+                        <%= form.text_field :name_matches, 'aria-label': t('domains.index.find_domain'), class: 'input', placeholder: t('domains.index.find_domain') %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</article>

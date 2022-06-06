@@ -1,0 +1,73 @@
+<%= form_with scope: :search, method: :get do |form| %>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4 col-xs">
+            <div class="form--field">
+                <div class="form--input large">
+                    <%= button_tag(type: 'submit', class: 'button button--primary') do %>
+                        <i class="fas fa-arrow-right"></i>
+                    <% end %>
+                    <%= form.text_field :name_matches, 'aria-label': t(:search), class: 'input search',
+                                                       placeholder: t(:search), value: params[:search]&.dig(:name_matches) %>
+                </div>
+                <%= toggle_filter %>
+            </div>
+        </div>
+    </div>
+    <div id="filters" class="form--filters">
+        <div class="row bottom-xs">
+            <div class="col-md-4 col-xs-12">
+                <%= form.label :registrant_id_eq, t('domains.index.registrant_name'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= dynamic_select_tag 'search[registrant_id_eq]', [], class: 'contact_dynamic_select' %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <%= form.label :contacts_ident_eq, t('domains.index.contact_ident'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= form.text_field :contacts_ident_eq, class: 'input', value: params[:search]&.dig(:contacts_ident_eq) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <%= form.label :nameservers_hostname_eq, t('domains.index.nameserver'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= form.text_field :nameservers_hostname_eq, class: 'input', value: params[:search]&.dig(:nameservers_hostname_eq) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <%= form.label t('domains.index.date_range'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= form.date_field :valid_to_gteq, class: 'datepicker', value: params[:search]&.dig(:valid_to_gteq) %>
+                        <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                    </div>
+                    <span class="form--sep">-</span>
+                    <div class="form--input small">
+                        <%= form.date_field :valid_to_lteq, class: 'datepicker', value: params[:search]&.dig(:valid_to_lteq) %>
+                        <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 col-xs-12">
+                <%= form.label :statuses_contains_array, t('domains.index.status'), class: 'form--label' %>
+                <div class="form--field">
+                    <div class="form--input small">
+                        <%= simple_select_tag "search[statuses_contains_array]",
+                          options_for_select(@statuses, params[:search]&.dig(:statuses_contains_array)), { multiple: true } %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="form--actions">
+                    <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
+                    <%= button_tag t(:clear_filter),  type: 'reset', class: 'button button--link reset_form' %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

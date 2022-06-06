@@ -1,0 +1,53 @@
+<table>
+    <tr>
+        <td>
+            <%== pagy_info(@pagy, item_name: t('domains.index.items', count: @pagy.count)) %>
+            <span data-checkbox-list-target="count" data-selected-text="<%= t('steps_controllers.bulk_change.selected') %>"></span>
+        </td>
+    </tr>
+</table>
+<%= form_with scope: :bulk_change, url: wizard_path, method: :patch, class: 'form' do |form| %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="table--action">
+                     <div class="checkbox">
+                          <%= check_box_tag 'check_all', nil, true,
+                                                         'data-action': 'checkbox-list#toggle',
+                                                         'data-checkbox-list-target': 'checkboxAll' %>
+                          <%= label_tag 'check_all', '' %>
+                      </div>
+                </th>
+                <th><%= t('domains.index.name') %></th>
+                <th><%= t('domains.index.registrant_name') %></th>
+                <th><%= t('domains.index.expire_time') %></th>
+                <th class="table--action"><%= t(:edit) %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @domains.each do |domain| %>
+                <tr>
+                    <th class="table--action">
+                        <div class="checkbox">
+                            <% checked = @attrs[:selected_domains].present? ? @attrs[:selected_domains].include?(domain[:name]) : true %>
+                            <%= form.check_box :selected_domains, { multiple: true, 
+                                                                    checked: checked,
+                                                                    'data-checkbox-list-target': 'checkbox',
+                                                                    'data-action': 'checkbox-list#onChecked' }, domain[:name], nil %>
+                            <%= label_tag "bulk_change_selected_domains_#{domain[:name].gsub('.','_')}", '' %>
+                        </div>
+                    </th>
+                    <td><%= link_to domain[:name], domain_path(domain_name: domain[:name]) %></td>
+                    <td><%= link_to domain[:registrant][:name], contact_path(contact_code: domain[:registrant][:code]), 'data-turbo': true %></td>
+                    <td><%= l domain[:expire_time].to_datetime %></td>
+                    <td class="table--action">
+                        <%= icon_link_to 'fas fa-pencil-alt', edit_domain_path(domain_name: domain[:name]) %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="form--actions">
+        <%= form.submit t('steps_controllers.bulk_change.next_step'), class: 'button button--primary' %>
+    </div>
+<% end %>

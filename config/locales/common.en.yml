@@ -1,0 +1,30 @@
+en:
+  common:
+    header:
+      open_portal: "Public portal"
+      auction_portal: "Auction portal"
+      registrar_portal: "Registrar portal"
+      registrant_portal: "Registrant portal"
+      homepage: "Avaleht"
+      domains: "Domeenid"
+      contacts: "Kontaktid"
+      invoices: "Arved"
+      messages: "Messages"
+
+    footer:
+      copyright: "© 2022 Estonian Internet Foundation"
+      address: "Paldiski mnt 80, 10617 Tallinn, Estonia"
+      registration_code: "Registration code: 90010019"
+      help_and_info: "Help & info"
+      domain_regulation: ".ee Domain Regulation"
+      faq: "Frequently asked questions"
+      statistics: "Statistics"
+      dispute_committee: "Domain Dispute Committee"
+      list_of_accredited_registrars: "List of .ee accredited registrars"
+      terms_and_conditions_for_registrars: "Terms and conditions for becoming a registrar"
+      partner_programme: "Elite Partner Program"
+      estonian_internet: "Estonian Internet"
+      contact_us: "Contact us!"
+      management: "Management"
+      documents: "Documents"
+      social_media: "Social media"

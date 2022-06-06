@@ -1,0 +1,18 @@
+<div class="page--block--header">
+    <h2><%= t('domains.show.statuses') %></h2>
+</div>
+<table class="table__basic">
+    <tbody>
+        <% @domain[:statuses].each do |status, notes| %>
+            <tr>
+                <th>
+                    <span class="chip">
+                        <%= t("statuses.domain.#{status}_icon_html", default: '') %> <%= t "statuses.domain.#{status}" %>
+                        <%= tooltip t("statuses.domain.#{status}_text", default: '') %>
+                    </span>
+                </th>
+                <td><%= notes %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

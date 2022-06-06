@@ -1,0 +1,12 @@
+<tr>
+    <td><%= link_to domain[:name], domain_path(domain_name: domain[:name]), 'data-turbo': true %></td>
+    <td><%= link_to domain[:registrant][:name], contact_path(contact_code: domain[:registrant][:code]), 'data-turbo': true %></td>
+    <td><%= l domain[:expire_time].to_datetime %></td>
+    <td class="table--action">
+        <%= icon_link_to 'fas fa-pencil-alt', edit_domain_path(domain_name: domain[:name]), class: 'simple_tooltip', data: { 'tippy-content': t(:edit) } %>
+        <%= icon_link_to 'fas fa-sync-alt', new_domain_renewal_path(domain_name: domain[:name]), class: 'simple_tooltip', data: { 'tippy-content': t(:renew) } %>
+        <% unless (domain[:statuses].keys & %w[pendingDelete pendingDeleteConfirmation]).any? %>
+            <%= icon_link_to 'fas fa-trash-alt', delete_domain_path(domain_name: domain[:name]), class: 'simple_tooltip', data: { 'tippy-content': t(:delete) } %>
+        <% end %>
+    </td>
+</tr>

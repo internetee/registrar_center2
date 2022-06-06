@@ -1,0 +1,66 @@
+<%= form_with scope: :domain, url: @domain.nil? ? domains_path : update_domain_path,
+                              class: 'form form__styled',
+                              multipart: true,
+                              data: { controller: 'nested-form', turbo: true } do |form| %>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <%= render 'domains/partials/form/info', form: form %>
+        </div>
+    </div>
+    <span class="form--break"></span>
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <template data-nested-form-target="contactTemplate">
+                <%= render 'domains/partials/form/contacts', k: 'NEW_RECORD',
+                                                             v: { 'type' => ApplicationHelper::CONTACT_TYPE[:tech] },
+                                                             removable: true %>
+            </template>
+            <% default_count = Rails.configuration.customization[:default_admin_contacts_count] %>
+            <% @domain_params[:contacts_attributes].each do |k, v| %>
+                <%= render 'domains/partials/form/contacts', k: k.to_i + 1,
+                                                             v: v,
+                                                             removable: k.to_i >= default_count %>
+            <% end %>
+            <!-- Inserted elements will be injected before that target. -->
+            <div data-nested-form-target="contactTarget"></div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <template data-nested-form-target="nameserverTemplate">
+                <%= render 'domains/partials/form/nameservers', k: 'NEW_RECORD',
+                                                                v: '',
+                                                                removable: true %>
+            </template>
+            <% default_count = Rails.configuration.customization[:default_nameservers_count] %>
+            <% @domain_params[:nameservers_attributes].each do |k, v| %>
+                <%= render 'domains/partials/form/nameservers', k: k.to_i + 1,
+                                                                v: v,
+                                                                removable: k.to_i >= default_count %>
+            <% end %>
+            <!-- Inserted elements will be injected before that target. -->
+            <div data-nested-form-target="nameserverTarget"></div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <template data-nested-form-target="dnskeyTemplate">
+                <%= render 'domains/partials/form/dns_keys', k: 'NEW_RECORD',
+                                                             v: '',
+                                                             removable: true %>
+            </template>
+            <% @domain_params[:dnskeys_attributes].each do |k, v| %>
+                <%= render 'domains/partials/form/dns_keys', k: k.to_i + 1,
+                                                             v: v,
+                                                             removable: k.to_i >= 1 %>
+            <% end %>
+            <!-- Inserted elements will be injected before that target. -->
+            <div data-nested-form-target="dnskeyTarget"></div>
+        </div>
+    </div>
+    <span class="form--break"></span>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+            <%= render 'domains/partials/form/legal', form: form %>
+            <div class="form--actions">
+                <%= form.submit t(:save), class: 'button button--primary' %>
+            </div>
+        </div>
+    </div>
+<% end %>

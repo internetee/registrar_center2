@@ -1,0 +1,88 @@
+<div class="wrapper">
+    <div class="row center-xs">
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            <div class="paper paper__light">
+                <%= form_with scope: :bulk_change, url: wizard_path,
+                                                  method: :patch,
+                                                  class: 'form', 
+                                                  multipart: true do |form| %>
+                    <div class="form--row">
+                        <div class="form--header">
+                            <h3><%= t("steps_controllers.bulk_change.#{@attrs[:type].underscore}") %></h3>
+                        </div>
+                        <p><%= t('steps_controllers.bulk_change.ns_replace_info') %></p>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :old_hostname, t('steps_controllers.bulk_change.old_hostname'), class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.text_field :old_hostname, class: 'input',
+                                                          value: @attrs[:old_hostname],
+                                                          required: false %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :new_hostname, t('steps_controllers.bulk_change.new_hostname'), class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.text_field :new_hostname, class: 'input',
+                                                          value: @attrs[:new_hostname],
+                                                          required: true %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :ipv4, 'Ipv4', class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.text_area :ipv4,  rows: 5, class: 'textarea',
+                                                          value: @attrs[:ipv4] %>
+                            </div>
+                            <%= tooltip t('steps_controllers.bulk_change.ipv_tooltip') %>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :ipv6, 'Ipv6', class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.text_area :ipv6, rows: 5, class: 'textarea',
+                                                          value: @attrs[:ipv6] %>
+                            </div>
+                            <%= tooltip t('steps_controllers.bulk_change.ipv_tooltip') %>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <div class="form--header">
+                            <h3><%= t('steps_controllers.bulk_change.upload_csv') %></h3>
+                            <div class="form--header--actions">
+                                  <%= tooltip t('steps_controllers.bulk_change.upload_info') %>
+                            </div>
+                        </div>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <ul class="file--list">
+                                    <% if @file_uploaded %>
+                                        <li class="file--item"><%= @attrs[:batch_file_name] %></li>
+                                    <% end %>
+                                </ul>
+                                <%= form.label :batch_file, class: 'file' do %>
+                                    <%= form.file_field :batch_file, class: 'not_visible',
+                                                                      required: !@file_uploaded,
+                                                                      accept: 'text/csv' %>
+                                    <i class="fas fa-folder-open"></i>
+                                    <strong><%= t(:choose_file) %></strong>
+                                    <span>(max. 8MB)</span>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <%= form.hidden_field :form_steps, value: [step.to_sym] %>
+                    <div class="form--actions">
+                          <%= form.submit t('steps_controllers.bulk_change.next_step'), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

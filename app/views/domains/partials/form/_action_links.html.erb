@@ -1,0 +1,6 @@
+<%= link_to t(:add_more), '#', 'data-action': 'nested-form#add',
+                              'data-value': type %>
+<% if removable %>
+    <%= link_to t(:delete), '#', 'data-action': 'nested-form#remove',
+                                'data-value': type %>
+<% end %>

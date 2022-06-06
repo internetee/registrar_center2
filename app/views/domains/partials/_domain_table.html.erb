@@ -1,0 +1,22 @@
+<table>
+    <tr>
+        <td>
+            <%== pagy_info(@pagy, item_name: t('domains.index.items', count: @pagy.count)) %>
+        </td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th><%= sort_link(nil, :name) %></th>
+            <th><%= sort_link(nil, :registrant_name) %></th>
+            <th><%= sort_link(nil, :expire_time) %></th>
+            <th class="table--action"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @domains.each do |domain| %>
+            <%= render 'domains/partials/domain', domain: domain %>
+        <% end %>
+    </tbody>
+</table>

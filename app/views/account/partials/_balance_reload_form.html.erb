@@ -1,0 +1,47 @@
+<div class="dialog" id="edit_balance_reload">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2><%= t('account.show.auto_reload') %></h2>
+                <p><%= t('account.show.auto_reload_info') %></p>
+            </div>
+            <div class="paper--content">
+                <%= form_with scope: :account, url: update_balance_auto_reload_path,
+                                               class: 'form' do |form| %>
+                    <div class="form--row">
+                        <%= form.label :auto_reload_amount, "#{t('account.show.amount')} *", class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.text_field :auto_reload_amount, class: 'input',
+                                                                         value: @account[:balance_auto_reload]&.dig('amount'),
+                                                                         autofocus: true,
+                                                                         required: true,
+                                                                         pattern: '^([0-9]*[1-9][0-9]*(\.[0-9]+)?|[0]+\.[0-9]*[1-9][0-9]*)$' %>
+                            </div>
+                            <%= tooltip t('account.show.auto_reload_tooltip', min: @min_deposit) %>
+                        </div>
+                    </div>
+                    <div class="form--row">
+                        <%= form.label :auto_reload_threshold, "#{t('account.show.threshold')} *", class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.text_field :auto_reload_threshold, class: 'input',
+                                                                            value: @account[:balance_auto_reload]&.dig('threshold'),
+                                                                            autofocus: true,
+                                                                            required: true,
+                                                                            pattern: '^([0-9]*[1-9][0-9]*(\.[0-9]+)?|[0]+\.[0-9]*[1-9][0-9]*)$' %>
+                            </div>
+                            <%= tooltip t('account.show.auto_reload_tooltip', min: '0.0') %>
+                        </div>
+                    </div>
+                    <div class="form--actions">
+                        <%= form.submit t(:save), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

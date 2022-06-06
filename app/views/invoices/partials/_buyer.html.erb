@@ -1,0 +1,13 @@
+<div class="page--block--header">
+    <h2><%= t('invoices.show.client') %></h2>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <% @invoice[:buyer].each do |k, v| %>
+        <tr>
+            <th><%= t("invoices.show.#{k}") %></th>
+            <td><%= v %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

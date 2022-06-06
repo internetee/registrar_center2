@@ -1,0 +1,58 @@
+<% content_for(:title) { "EIS | #{t('.login')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('.title') %></h1>
+    </div>
+<% end %>
+
+<div class="page">
+    <div class="page--content">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <article class="paper">
+                        <header class="paper--header">
+                            <h3><%= t('.login_with_id') %></h3>
+                        </header>
+                        <div class="paper--content">
+                            <div class="paper--text">
+                                <p><%= t('.login_with_id_text') %></p>
+                                <p><%= button_to t('.login'), "/auth/tara", data: { turbo: false }, class: "button button--primary" %></p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <article class="paper">
+                        <header class="paper--header">
+                            <h3><%= t('.login_with_password') %></h3>
+                        </header>
+                        <div class="paper--content">
+                            <%= form_with scope: 'session', url: login_path, method: :post, class: 'form' do |f| %>
+                                <div class="form--row">
+                                    <%= f.label :username, t('.username'), class: 'form--label' %>
+                                    <div class="form--field">
+                                        <div class="form--input">
+                                            <%= f.text_field :username, class: 'input'%>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form--row">
+                                    <%= f.label :password, t('.password'), class: 'form--label' %>
+                                    <div class="form--field">
+                                        <div class="form--input">
+                                            <%= f.password_field :password, class: 'input' %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form--actions">
+                                    <%= f.button t('.login'), type: 'submit', name: '', class: 'button button--primary' %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

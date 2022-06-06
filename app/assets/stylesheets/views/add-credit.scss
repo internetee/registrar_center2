@@ -1,0 +1,24 @@
+.page--add-credit {
+    .page--header {
+        padding: 40px 20px 20px;
+        @include min-screen(768px) {
+            margin-bottom: 0;
+            padding: 40px 40px 20px;
+        }
+        @include min-screen(1224px) {
+            margin-bottom: 0;
+            padding: 60px 50px 20px;
+        }
+    }
+    &-payment {
+        .tabs {
+            margin-top: -20px;
+            @include min-screen(768px) {
+                margin-top: -60px;
+            }
+            @include min-screen(991px) {
+                margin-top: -80px;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<% content_for(:title) { "EIS | #{t('domains.index.new_domain')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('domains.index.new_domain') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--domains--add">
+    <div class="page--content">
+        <div class="wrapper">
+            <%= render 'domains/partials/form' %>
+        </div>
+    </div>
+</div>
+
+

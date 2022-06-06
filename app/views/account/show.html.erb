@@ -1,0 +1,34 @@
+<% content_for(:title) { "EIS | #{current_user.username}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= current_user.username %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--account">
+    <div class="page--content">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="paper">
+                        <%= render 'account/partials/details' %>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="paper">
+                        <%= render 'account/partials/linked_users' %>
+                    </div>
+                </div>
+                <% if can? :manage, 'balance_auto_reload' %>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="paper">
+                            <%= render 'account/partials/balance_reload' %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render 'account/partials/details_form' %>
+<%= render 'account/partials/balance_reload_form' %>

@@ -1,0 +1,46 @@
+.checkbox {
+    cursor: pointer;
+    input {
+        display: none;
+        &:checked {
+            + label {
+                &:before {
+                    content: "\f00c";
+                    border-color: $base-blue;
+                }
+            }
+        }
+    }
+    label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            &:before {
+                border-color: $base-blue;
+            }
+        }
+        &:before {
+            @include fa();
+            display: block;
+            content: '';
+            flex: 0 0 20px;
+            width: 20px;
+            height: 20px;
+            line-height: 16px;
+            border: 2px solid $grey;
+            text-align: center;
+            color: $base-blue;
+            background: #fff;
+            border-radius: 5px;
+            transition: all .3s ease-in-out;
+        }
+        span {
+            display: block;
+            min-width: 1px;
+            max-width: 100%;
+            flex: 1 1 auto;
+            margin-left: 10px;
+        }
+    }
+}

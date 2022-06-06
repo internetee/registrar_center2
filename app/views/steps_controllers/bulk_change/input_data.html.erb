@@ -1,0 +1,20 @@
+<% content_for(:title) { "EIS | #{t('steps_controllers.bulk_change.title')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('steps_controllers.bulk_change.title') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--domains-bulkchange">
+    <div class="page--header">
+        <div class="steps wrapper">
+            <div class="row center-xs">
+                <% wizard_steps.each do |s| %>
+                    <%= render 'steps_controllers/bulk_change/partials/step', wizard_step: s %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <%= render "steps_controllers/bulk_change/partials/#{@attrs[:type].underscore}/#{step}" %>
+</div>
+  

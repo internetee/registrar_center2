@@ -1,0 +1,22 @@
+<div class="paper--header">
+    <h3><%= t('account.show.details') %></h3>
+</div>
+<div class="paper--content">
+    <form action="" class="form">
+        <div class="form--row">
+            <%= label_tag nil, t('account.show.billing_email'), class: 'form--label' %>
+            <div class="form--field">
+                <h4><%= @account[:billing_email] %></h4>
+            </div>
+        </div>
+        <div class="form--row">
+            <%= label_tag nil, t('account.show.billing_iban'), class: 'form--label' %>
+            <div class="form--field">
+                <h4><%= @account[:iban].present? ? @account[:iban] : '-' %></h4>
+            </div>
+        </div>
+        <div class="form--actions">
+            <%= link_to t(:edit), 'javascript: void(0);', 'data-dialog': 'edit_account_details', class: 'button button--primary' %>
+        </div>
+    </form>
+</div>

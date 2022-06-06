@@ -1,0 +1,17 @@
+<div class="form--header">
+    <h3><%= t('contacts.form.legal_doc') %></h3>
+</div>
+<div class="form--row">
+    <div class="form--field">
+        <div class="form--input">
+            <ul class="file--list"></ul>
+            <%= form.label :legal_document, class: 'file' do %>
+                <%= form.file_field :legal_document, class: 'not_visible',
+                                                     accept: legal_document_types %>
+                <i class="fas fa-folder-open"></i>
+                <strong><%=t(:choose_file) %></strong>
+                <span>(max. 8MB)</span>
+            <% end %>
+        </div>
+    </div>
+</div>

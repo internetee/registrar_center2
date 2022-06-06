@@ -1,0 +1,27 @@
+<div class="page--block--header">
+    <h2><%= t('contacts.show.general') %></h2>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('contacts.show.code') %></th>
+            <td><%= @contact[:code] %></td>
+        </tr>
+        <tr>
+            <th><%= t('contacts.show.auth_info') %></th>
+            <td><%= @contact[:auth_info] %></td>
+        </tr>
+        <tr>
+            <th><%= t('contacts.show.ident') %></th>
+            <td><%= ident_for(@contact) %></td>
+        </tr>
+        <tr>
+            <th><%= t('contacts.show.email') %></th>
+            <td><%= @contact[:email] %></td>
+        </tr>
+        <tr>
+            <th><%= t('contacts.show.phone') %></th>
+            <td><%= @contact[:phone] %></td>
+        </tr>
+    </tbody>
+</table>

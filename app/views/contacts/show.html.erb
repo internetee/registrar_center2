@@ -1,0 +1,55 @@
+<% content_for(:title) { "EIS | #{@contact[:name]}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= @contact[:name] %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--contacts--detail">
+    <div class="page--header">
+        <div class="wrapper">
+            <div class="row center-xs">
+                <div class="col-xs-auto">
+                    <%= link_to t(:edit), edit_contact_path(contact_code: @contact[:code]), class: 'button button--primary' %>
+                </div>
+                <div class="col-xs-auto">
+                     <%= link_to t(:delete), delete_contact_path(contact_code: @contact[:code]), class: 'button button--danger' %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'contacts/partials/general' %>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'contacts/partials/statuses' %>
+            </div>
+        </div>
+    </div>
+    <div class="page--header">
+        <div class="wrapper">
+            <div class="row between-xs">
+                <div class="col-xs-auto">
+                    <h2><%= t('.domains') %></h2>
+                </div>
+                <div class="col-xs-auto">
+                    <%= render 'contacts/partials/domain_filter' %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-xs-12">
+                <%= render 'contacts/partials/domains_table' %>
+                <%= render partial: 'common/pagination', locals: { pagy: @pagy } if @domains.size.positive? %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="page--block--header">
+    <h2><%= t('contacts.show.statuses') %></h2>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <% @contact[:statuses].each do |status, notes| %>
+            <tr>
+                <th>
+                    <span class="chip">
+                        <%= t("statuses.contact.#{status}_icon_html", default: '') %> <%= t "statuses.contact.#{status}" %>
+                        <%= tooltip t("statuses.contact.#{status}_text", default: '') %>
+                    </span>
+                </th>
+                <td><%= notes %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
