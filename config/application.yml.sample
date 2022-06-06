@@ -1,0 +1,22 @@
+shared:
+  default_domain_period: '1y'
+  show_ds_data_fields: false
+  default_nameservers_count: 2
+  default_admin_contacts_count: 1
+  default_tech_contacts_count: 1
+  # Custom legal document types. Changing this requires updating EPP extension schema for allowed legalDocEnumType values.
+  # System default for legal document types is: pdf,asice,sce,asics,scs,adoc,edoc,bdoc,ddoc,zip,rar,gz,tar,7z,odt,doc,docx
+  # legal_document_types: "pdf,asice,sce,asics,scs,adoc,edoc,bdoc,ddoc,zip,rar,gz,tar,7z,odt,doc,docx"
+  tara:
+    scheme: 'https'
+    host: 'test-auth.eeid.ee'
+    # port: 4444
+    issuer: 'https://test-auth.eeid.ee/hydra-public/'
+    authorization_endpoint: '/hydra-public/oauth2/auth'
+    token_endpoint: '/hydra-public/oauth2/token'
+    jwks_uri: '/hydra-public/.well-known/jwks.json'
+    identifier: '123'
+    secret: '123'
+    redirect_uri: 'https://registrar-center.test/auth/tara/callback'
+    ory_hydra_private: 'https://test-auth.eeid.ee/hydra-private'
+    scope: ['openid', 'idcard', 'mid', 'smartid']
