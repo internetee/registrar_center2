@@ -32,3 +32,5 @@
 /config/application.yml
 
 /vendor/gems
+
+.DS_Store

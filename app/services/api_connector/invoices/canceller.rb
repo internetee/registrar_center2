@@ -5,7 +5,7 @@ class ApiConnector
     class Canceller < ApiConnector
       ACTION = 'cancel_invoice'
       ENDPOINT = {
-        method: 'get',
+        method: 'put',
         endpoint: '/invoices',
       }.freeze
 

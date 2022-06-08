@@ -5,10 +5,10 @@ en:
       auction_portal: "Auction portal"
       registrar_portal: "Registrar portal"
       registrant_portal: "Registrant portal"
-      homepage: "Avaleht"
-      domains: "Domeenid"
-      contacts: "Kontaktid"
-      invoices: "Arved"
+      homepage: "Dashboard"
+      domains: "Domains"
+      contacts: "Contacts"
+      invoices: "Invoices"
       messages: "Messages"
 
     footer:

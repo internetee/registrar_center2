@@ -18,7 +18,7 @@ class ApiConnector
 
       def account_params(payload)
         {
-          account: payload.compact_blank.as_json,
+          account: payload.as_json,
         }
       end
     end
