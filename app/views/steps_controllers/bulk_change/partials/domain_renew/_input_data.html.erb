@@ -28,7 +28,7 @@
                         <div class="form--field">
                             <div class="form--input">
                                 <%= simple_select_tag "bulk_change[period]",
-                                    options_for_select(ApplicationHelper::DOMAIN_PERIODS.drop(1), @attrs[:period]),
+                                    options_for_select(t('domains.form.DOMAIN_PERIODS').drop(1), @attrs[:period]),
                                     required: true %>
                             </div>
                         </div>

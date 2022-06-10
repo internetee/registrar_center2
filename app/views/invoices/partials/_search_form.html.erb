@@ -52,7 +52,7 @@
                 <div class="form--field">
                     <div class="form--input small">
                         <%= simple_select_tag "search[status]",
-                            options_for_select(ApplicationHelper::INVOICE_STATUSES, params[:search]&.dig(:status)) %>
+                            options_for_select(t('invoices.index.INVOICE_STATUSES'), params[:search]&.dig(:status)) %>
                     </div>
                 </div>
             </div>

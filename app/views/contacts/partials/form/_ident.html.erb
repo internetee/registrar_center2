@@ -32,7 +32,7 @@
             <div class="form--field">
                 <div class="form--input">
                     <%= simple_select_tag "contact[ident_type]",
-                                          options_for_select(ApplicationHelper::IDENT_TYPES.drop(1), type_selected),
+                                          options_for_select(t('contacts.form.IDENT_TYPES').drop(1), type_selected),
                                           { disabled: ident_complete,
                                             required: true,
                                             id: 'ident_type_select' } %>

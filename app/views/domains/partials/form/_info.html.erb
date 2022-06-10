@@ -20,7 +20,7 @@
                 <div class="form--field">
                     <div class="form--input">
                         <%= simple_select_tag "domain[period]",
-                            options_for_select(ApplicationHelper::DOMAIN_PERIODS, @domain_params[:period]) %>
+                            options_for_select(t('domains.form.DOMAIN_PERIODS'), @domain_params[:period]) %>
                     </div>
                 </div>
             </div>

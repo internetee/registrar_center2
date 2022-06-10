@@ -1,66 +1,10 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  DOMAIN_PERIODS = [
-    [I18n.t(:choose), ''],
-    [I18n.t(:months, count: 3), '3m'],
-    [I18n.t(:months, count: 6), '6m'],
-    [I18n.t(:months, count: 9), '9m'],
-    [I18n.t(:years, count: 1), '1y'],
-    [I18n.t(:years, count: 2), '2y'],
-    [I18n.t(:years, count: 3), '3y'],
-    [I18n.t(:years, count: 4), '4y'],
-    [I18n.t(:years, count: 5), '5y'],
-    [I18n.t(:years, count: 6), '6y'],
-    [I18n.t(:years, count: 7), '7y'],
-    [I18n.t(:years, count: 8), '8y'],
-    [I18n.t(:years, count: 9), '9y'],
-    [I18n.t(:years, count: 10), '10y'],
-  ].freeze
-
-  DNS_KEY_FLAGS = [
-    [I18n.t(:choose), ''],
-    ["0 - #{I18n.t('domains.form.not_for_dnssec')}", 0],
-    ['256 - ZSK', 256],
-    ['257 - KSK', 257],
-  ].freeze
-
-  DNS_KEY_ALGORITHMS = [
-    [I18n.t(:choose), ''],
-    ['3 - DSA/SHA-1', 3],
-    ['5 - RSA/SHA-1', 5],
-    ['6 - DSA-NSEC3-SHA1', 6],
-    ['7 - RSASHA1-NSEC3-SHA1', 7],
-    ['8 - RSA/SHA-256', 8],
-    ['10 - RSA/SHA-512', 10],
-    ['13 - ECDSA Curve P-256 with SHA-256', 13],
-    ['14 - ECDSA Curve P-384 with SHA-384', 14],
-    ['15 - Ed25519', 15],
-    ['16 - Ed448', 16],
-  ].freeze
-
-  DNS_KEY_PROTOCOLS = [[I18n.t(:choose), ''], 3].freeze
-
-  DNS_KEY_DS_DIGEST_TYPES = [1, 2].freeze
-
   CONTACT_TYPE = {
     tech: 'TechDomainContact',
     admin: 'AdminDomainContact',
   }.freeze
-
-  IDENT_TYPES = [
-    [I18n.t(:choose), ''],
-    [I18n.t('contacts.form.business_code'), 'org'],
-    [I18n.t('contacts.form.id_code'), 'priv'],
-    [I18n.t('contacts.form.birthday'), 'birthday'],
-  ].freeze
-
-  INVOICE_STATUSES = [
-    [I18n.t(:choose), ''],
-    [I18n.t('invoices.index.paid'), 'account_activity_id_not_null'],
-    [I18n.t('invoices.index.unpaid'), 'account_activity_id_null'],
-    [I18n.t('invoices.index.cancelled'), 'cancelled_at_not_null'],
-  ].freeze
 
   if Rails.configuration.customization[:legal_document_types].present?
     LEGAL_DOC_TYPES = Rails.configuration.customization[:legal_document_types].split(',').map(&:strip)

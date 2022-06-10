@@ -11,7 +11,7 @@
         <div class="form--field">
             <div class="form--input">
                 <%= simple_select_tag "domain[dnskeys_attributes][#{k}][flags]",
-                    options_for_select(ApplicationHelper::DNS_KEY_FLAGS, v['flags']),
+                    options_for_select(t('domains.form.DNS_KEY_FLAGS'), v['flags']),
                     'data-nested-form-target': 'dnskey' %>
             </div>
         </div>
@@ -21,7 +21,7 @@
         <div class="form--field">
             <div class="form--input">
                 <%= simple_select_tag "domain[dnskeys_attributes][#{k}][protocol]",
-                    options_for_select(ApplicationHelper::DNS_KEY_PROTOCOLS, v['protocol']) %>
+                    options_for_select(t('domains.form.DNS_KEY_PROTOCOLS'), v['protocol']) %>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
         <div class="form--field">
             <div class="form--input">
                 <%= simple_select_tag "domain[dnskeys_attributes][#{k}][alg]",
-                    options_for_select(ApplicationHelper::DNS_KEY_ALGORITHMS, v['alg']) %>
+                    options_for_select(t('domains.form.DNS_KEY_ALGORITHMS'), v['alg']) %>
             </div>
         </div>
     </div>

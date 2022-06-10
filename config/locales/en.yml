@@ -167,6 +167,41 @@ en:
       legal_doc_info: "When creating a new domain, a signed domain registration application must be attached"
       curExpDate: "Current expire date"
       not_for_dnssec: "not for DNSSEC validation"
+      DOMAIN_PERIODS:
+        - ['Choose', '']
+        - ['3 months', '3m']
+        - ['6 months', '6m']
+        - ['9 months', '9m']
+        - ['1 year', '1y']
+        - ['2 years', '2y']
+        - ['3 years', '3y']
+        - ['4 years', '4y']
+        - ['5 years', '5y']
+        - ['6 years', '6y']
+        - ['7 years', '7y']
+        - ['8 years', '8y']
+        - ['9 years', '9y']
+        - ['10 years', '10y']
+      DNS_KEY_FLAGS:
+        - ['Choose', '']
+        - ['0 - not for DNSSEC validation', 0]
+        - ['256 - ZSK', 256]
+        - ['257 - KSK', 257]
+      DNS_KEY_ALGORITHMS:
+        - ['Choose', '']
+        - ['3 - DSA/SHA-1', 3]
+        - ['5 - RSA/SHA-1', 5]
+        - ['6 - DSA-NSEC3-SHA1', 6]
+        - ['7 - RSASHA1-NSEC3-SHA1', 7]
+        - ['8 - RSA/SHA-256', 8]
+        - ['10 - RSA/SHA-512', 10]
+        - ['13 - ECDSA Curve P-256 with SHA-256', 13]
+        - ['14 - ECDSA Curve P-384 with SHA-384', 14]
+        - ['15 - Ed25519', 15]
+        - ['16 - Ed448', 16]
+      DNS_KEY_PROTOCOLS:
+        - ['Choose', '']
+        - [3, 3]
     
     show:
       general: "General"
@@ -294,6 +329,11 @@ en:
       business_code: "Business code"
       id_code: "ID code"
       birthday: "Birthdate"
+      IDENT_TYPES:
+      - ['Choose', '']
+      - ['Business code', 'org']
+      - ['ID code', 'priv']
+      - ['Birthday', 'birthday']
 
     show:
       general: "General"
@@ -389,6 +429,11 @@ en:
         zero: "invoices"
         one: "invoice"
         other: "invoices"
+      INVOICE_STATUSES:
+      - ['Choose', '']
+      - ['Paid', 'account_activity_id_not_null']
+      - ['Unpaid', 'account_activity_id_null']
+      - ['Cancelled', 'cancelled_at_not_null']
 
     show:
       details: "Details"
