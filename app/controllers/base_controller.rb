@@ -32,7 +32,12 @@ class BaseController < ApplicationController
 
   def modify_search_params(params)
     params.to_unsafe_h.each_with_object({}) do |(k, v), a|
-      a[v] = 1 and next if k == 'status' && v.present?
+      if k == 'invoice_status' && v.present?
+        v.split('|').each do |vv|
+          a[vv] = 1
+        end
+        next
+      end
 
       a[k] = k.include?('_contains_array') && v.is_a?(Array) ? v.compact_blank.join(',') : v
     end.compact_blank

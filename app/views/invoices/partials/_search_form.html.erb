@@ -48,11 +48,11 @@
                 </div>
             </div>
             <div class="col-md-3 col-xs-12">
-                <%= form.label :status, t('invoices.index.status'), class: 'form--label' %>
+                <%= form.label :invoice_status, t('invoices.index.status'), class: 'form--label' %>
                 <div class="form--field">
                     <div class="form--input small">
-                        <%= simple_select_tag "search[status]",
-                            options_for_select(t('invoices.index.INVOICE_STATUSES'), params[:search]&.dig(:status)) %>
+                        <%= simple_select_tag "search[invoice_status]",
+                            options_for_select(t('invoices.index.INVOICE_STATUSES'), params[:search]&.dig(:invoice_status)) %>
                     </div>
                 </div>
             </div>

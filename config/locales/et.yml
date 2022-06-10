@@ -433,7 +433,7 @@ et:
       INVOICE_STATUSES:
       - ['Vali', '']
       - ['Makstud', 'account_activity_id_not_null']
-      - ['Maksmata', 'account_activity_id_null']
+      - ['Maksmata', 'account_activity_id_null|cancelled_at_null']
       - ['Tühistatud', 'cancelled_at_not_null']
 
     show:

@@ -432,7 +432,7 @@ en:
       INVOICE_STATUSES:
       - ['Choose', '']
       - ['Paid', 'account_activity_id_not_null']
-      - ['Unpaid', 'account_activity_id_null']
+      - ['Unpaid', 'account_activity_id_null|cancelled_at_null']
       - ['Cancelled', 'cancelled_at_not_null']
 
     show:
