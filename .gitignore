@@ -34,3 +34,8 @@
 /vendor/gems
 
 .DS_Store
+
+.env
+/config/credentials/staging.key
+
+/config/credentials/production.key
