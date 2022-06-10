@@ -35,7 +35,7 @@
                 <div class="form--field">
                     <div class="form--input small">
                         <%= simple_select_tag "search[ident_type_eq]",
-                          options_for_select([[t(:choose), '']] + ApplicationHelper::IDENT_TYPES, params[:search]&.dig(:ident_type_eq)) %>
+                          options_for_select(ApplicationHelper::IDENT_TYPES, params[:search]&.dig(:ident_type_eq)) %>
                     </div>
                 </div>
             </div>

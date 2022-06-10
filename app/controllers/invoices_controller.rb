@@ -11,7 +11,6 @@ class InvoicesController < BaseController
     handle_response(result); return if performed?
 
     @invoices = @response.invoices
-    @statuses = ApplicationHelper::INVOICE_STATUS
     @pagy = Pagy.new(count: @response.count, items: session[:page_size], page: @page)
   end
 

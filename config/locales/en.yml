@@ -74,8 +74,9 @@ en:
       new:
         title: "Eesti Interneti SA Registrar Portal"
         login: "Sign in"
-        login_with_password: "Sign in with password"
-        login_with_id: "Sign in with identity document"
+        login_with_password_title: "Sign in with password"
+        login_with_id_title: "Sign in with identity document"
+        login_with_id: "Sign in with EEID"
         login_with_id_text: "Sign in using Estonian (incl. e-residents) ID card, mobile ID, Bank link or other EU citizen's electronic ID supported by EIDAS."
         username: "Username"
         password: "Password"
