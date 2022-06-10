@@ -49,12 +49,13 @@ module ApplicationHelper
   }.freeze
 
   IDENT_TYPES = [
+    [I18n.t(:choose), ''],
     [I18n.t('contacts.form.business_code'), 'org'],
     [I18n.t('contacts.form.id_code'), 'priv'],
     [I18n.t('contacts.form.birthday'), 'birthday'],
   ].freeze
 
-  INVOICE_STATUS = [
+  INVOICE_STATUSES = [
     [I18n.t(:choose), ''],
     [I18n.t('invoices.index.paid'), 'account_activity_id_not_null'],
     [I18n.t('invoices.index.unpaid'), 'account_activity_id_null'],

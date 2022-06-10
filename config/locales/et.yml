@@ -74,8 +74,9 @@ et:
       new:
         title: "Eesti Interneti SA Registrar Portal"
         login: "Sisene"
-        login_with_password: "Logi sisse salasõnaga"
-        login_with_id: "Logi sisse isikut tõendava dokumendiga"
+        login_with_password_title: "Logi sisse salasõnaga"
+        login_with_id_title: "Logi sisse isikut tõendava dokumendiga"
+        login_with_id: "Logi sisse EEID'ga"
         login_with_id_text: "Sisene kasutades Eesti (sh e-residendi) ID kaarti, Mobiil-IDd, pangalinki või EU liikmeriikide elektroonset isikutunnistust (EIDAS)."
         username: "Kasutajanimi"
         password: "Salasõna"
