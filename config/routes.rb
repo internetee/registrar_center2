@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root 'dashboard#index'
 
     get 'login', to: 'auth/sessions#new'
-    post 'login', to: 'auth/sessions#create'
+    post 'auth/sessions/create', to: 'auth/sessions#create'
     get 'logout', to: 'auth/sessions#destroy'
 
     match '/auth/tara/callback', via: %i[get post], to: 'auth/tara#callback'
