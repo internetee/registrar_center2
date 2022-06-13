@@ -28,7 +28,7 @@
                             <h3><%= t('.login_with_password_title') %></h3>
                         </header>
                         <div class="paper--content">
-                            <%= form_with scope: 'session', url: auth_sessions_create_path, method: :post, class: 'form' do |f| %>
+                            <%= form_with scope: 'session', url: auth_sessions_create_path, method: :post, class: 'form',  data: { turbo: false } do |f| %>
                                 <div class="form--row">
                                     <%= f.label :username, t('.username'), class: 'form--label' %>
                                     <div class="form--field">
