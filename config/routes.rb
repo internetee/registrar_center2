@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  post 'auth/sessions/create', to: 'auth/sessions#create'
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     root 'dashboard#index'
 
     get 'login', to: 'auth/sessions#new'
-    post 'auth/sessions/create', to: 'auth/sessions#create'
     get 'logout', to: 'auth/sessions#destroy'
 
     match '/auth/tara/callback', via: %i[get post], to: 'auth/tara#callback'
