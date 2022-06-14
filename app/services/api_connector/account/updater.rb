@@ -6,7 +6,7 @@ class ApiConnector
       ACTION = 'update_account'
       ENDPOINT = {
         method: 'put',
-        endpoint: '/account',
+        endpoint: '/accounts',
       }.freeze
 
       def update_account(payload: nil)

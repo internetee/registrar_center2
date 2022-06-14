@@ -6,7 +6,7 @@ class ApiConnector
       ACTION = 'read_account_details'
       ENDPOINT = {
         method: 'get',
-        endpoint: '/account/details',
+        endpoint: '/accounts/details',
       }.freeze
 
       def read_account_details

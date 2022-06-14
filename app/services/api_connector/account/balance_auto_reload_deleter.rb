@@ -6,7 +6,7 @@ class ApiConnector
       ACTION = 'disable_auto_reload'
       ENDPOINT = {
         method: 'get',
-        endpoint: '/account/disable_auto_reload_balance',
+        endpoint: '/accounts/disable_auto_reload_balance',
       }.freeze
 
       def disable_auto_reload

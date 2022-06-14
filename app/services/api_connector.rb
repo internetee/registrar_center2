@@ -60,11 +60,19 @@ class ApiConnector
     Faraday.new(
       url: url,
       headers: headers.present? ? base_headers.merge!(headers) : base_headers,
-      ssl: {
-        client_cert: OpenSSL::X509::Certificate.new(File.read(ENV['cert_path'])),
-        client_key: OpenSSL::PKey::RSA.new(File.read(ENV['key_path'])),
-      }
+      ssl: ca_auth_params
     )
+  end
+
+  def ca_auth_params
+    return if Rails.env.test?
+
+    client_cert = File.read(ENV['cert_path'])
+    client_key = File.read(ENV['key_path'])
+    {
+      client_cert: OpenSSL::X509::Certificate.new(client_cert),
+      client_key: OpenSSL::PKey::RSA.new(client_key),
+    }
   end
 
   def base_headers

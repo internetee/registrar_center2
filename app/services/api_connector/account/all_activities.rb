@@ -5,7 +5,7 @@ class ApiConnector
     class AllActivities < ApiConnector
       ENDPOINT = {
         method: 'get',
-        endpoint: '/account',
+        endpoint: '/accounts',
       }.freeze
       ACTION = 'load_all_activities'
 

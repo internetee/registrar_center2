@@ -6,7 +6,7 @@ class ApiConnector
       ACTION = 'update_auto_reload'
       ENDPOINT = {
         method: 'post',
-        endpoint: '/account/update_auto_reload_balance',
+        endpoint: '/accounts/update_auto_reload_balance',
       }.freeze
 
       def update_auto_reload(payload: nil)
