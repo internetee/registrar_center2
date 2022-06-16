@@ -88,19 +88,6 @@ class DomainsController < BaseController
     redirect_to domains_path
   end
 
-  def transfer_info
-    conn = ApiConnector::Transfers::Reader.new(**auth_info)
-    cmd = conn.read_transfers(domain_name: domain_params[:domain_name])
-
-    if cmd.success
-      @messages = cmd.body['data']
-    elsif cmd.body['code'] == 2202
-      redirect_to controller: 'sessions', action: 'new'
-    else
-      internal_server_error
-    end
-  end
-
   def delete; end
 
   def destroy
@@ -110,32 +97,6 @@ class DomainsController < BaseController
 
     flash.notice = @message
     redirect_to domains_path
-  end
-
-  def add_hold
-    conn = ApiConnector::Statuses::Adder.new(**auth_info)
-    cmd = conn.add_client_hold(domain_name: domain_params[:domain_name])
-
-    if cmd.success
-      @messages = cmd.body['data']
-    elsif cmd.body['code'] == 2202
-      redirect_to controller: 'sessions', action: 'new'
-    else
-      internal_server_error
-    end
-  end
-
-  def remove_hold
-    conn = ApiConnector::Statuses::Remover.new(**auth_info)
-    cmd = conn.remove_client_hold(domain_name: domain_params[:domain_name])
-
-    if cmd.success
-      @messages = cmd.body['data']
-    elsif cmd.body['code'] == 2202
-      redirect_to controller: 'sessions', action: 'new'
-    else
-      internal_server_error
-    end
   end
 
   private

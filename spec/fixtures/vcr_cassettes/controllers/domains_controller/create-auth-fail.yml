@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/domains
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"name":"example.ee","reserved_pw":"VkI7yFfT6nZfEj","registrant":"1111111:0FEEDC3C","period_unit":"m","period":6,"nameservers_attributes":[{"hostname":"ns1.oberbrunner.net","ipv4":["219.175.134.244"],"ipv6":["647b:275:536e:1c6b:8d51:5e15:d6f5:184a"]},{"hostname":"ns2.kunze.org","ipv4":["134.156.204.100"],"ipv6":["a724:680a:9437:e459:a20d:5c53:df42:cd5f"]}],"admin_contacts":["1111111:65B7EB55"],"tech_contacts":["1111111:8E3736F2"],"dnskeys_attributes":[{"flags":"257","protocol":"3","alg":"8","public_key":"e087a47db0e31dbb162e4bb62da7a34322be3ff66fdcf65268225c4db3b37d79"}]}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 73a2fdfb-adcf-4e6a-8fc8-2259d1ab89fc
+      X-Runtime:
+      - '0.069380'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"veniam","password":"3S8gG7pLbYg","active":null}}'
+  recorded_at: Wed, 15 Jun 2022 13:04:07 GMT
+recorded_with: VCR 6.1.0

@@ -84,6 +84,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def store_auth_info(token:, data:)
+    uuid = SecureRandom.uuid
+    Rails.cache.write(uuid, { username: data[:username],
+                              registrar_name: data[:registrar_name],
+                              role: data[:roles].first,
+                              legaldoc_mandatory: data[:legaldoc_mandatory],
+                              balance: data[:balance],
+                              token: token,
+                              abilities: data[:abilities] }, expires_in: 2.hours)
+    uuid
+  end
+
   private
 
   def auth_info

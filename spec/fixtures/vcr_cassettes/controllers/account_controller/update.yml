@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/accounts
+    body:
+      encoding: UTF-8
+      string: '{"account":{"billing_email":"walter.raynor@bashirian-grady.com","iban":"GB39VVTG23958496415096"}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"c612837b3f2b03fe0154e46dcc09414c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 17f0a6e7-472a-4828-93e0-a5140e1bd2a4
+      X-Runtime:
+      - '1.096960'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Your account has been updated","data":{"account":{"billing_email":"walter.raynor@bashirian-grady.com","iban":"GB39VVTG23958496415096"}}}'
+  recorded_at: Thu, 16 Jun 2022 06:31:23 GMT
+recorded_with: VCR 6.1.0

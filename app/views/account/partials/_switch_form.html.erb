@@ -8,7 +8,7 @@
                 <h2 id="title"><%= t('account.show.switch_warning_html') %></h2>
             </div>
             <div class="paper--content">
-                <%= form_with scope: :session, url: switch_user_path, class: 'form' do |form| %>
+                <%= form_with scope: :account, url: switch_user_path, class: 'form' do |form| %>
                     <%= form.hidden_field :user_id  %>
                     <div class="form--actions">
                         <%= form.submit t('account.show.switch'), class: 'button button--primary' %>

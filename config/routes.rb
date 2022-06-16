@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     # be raised.
     get '/auth/failure', to: 'auth/tara#cancel'
 
-    post 'switch_user', to: 'auth/sessions#switch_user', as: :switch_user
-
     get 'dashboard', to: 'dashboard#index', as: :dashboard
 
     post 'domains/update', to: 'domains#update', as: :update_domain
@@ -60,6 +58,7 @@ Rails.application.routes.draw do
                                                as: :update_balance_auto_reload
     get 'account/disable_balance_auto_reload', to: 'account#disable_balance_auto_reload',
                                                as: :disable_balance_auto_reload
+    post 'account/switch_user', to: 'account#switch_user', as: :switch_user
     resource :account, controller: :account, only: %i[show update]
 
     get 'notifications/:id/mark_as_read', to: 'notifications#mark_as_read',

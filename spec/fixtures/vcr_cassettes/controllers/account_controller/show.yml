@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/accounts/details
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"8e8f1313fe4d3bdaa71f8b42077bcbca"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d2751508-94e9-455f-a060-829e9bbb15ae
+      X-Runtime:
+      - '0.131349'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"account":{"billing_email":"sadaddas@ee.ee","iban":"wefesfewfwfffwfwf32424234","iban_max_length":34,"linked_users":[{"id":8,"username":"billinguser","role":"billing"}],"balance_auto_reload":{"name":"threshold","amount":10.0,"threshold":10.0},"min_deposit":1.0}}}'
+  recorded_at: Wed, 15 Jun 2022 10:44:43 GMT
+recorded_with: VCR 6.1.0

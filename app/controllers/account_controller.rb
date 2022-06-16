@@ -52,6 +52,19 @@ class AccountController < BaseController
     redirect_to account_path
   end
 
+  def switch_user
+    conn = ApiConnector::Account::UserSwitcher.new(**auth_info)
+    result = conn.call_action(payload: switch_user_payload)
+    handle_response(result); return if performed?
+
+    sign_out
+    uuid = store_auth_info(token: @response.token,
+                           data: @response.registrar)
+    sign_in uuid
+    flash.notice = @message
+    redirect_to account_path
+  end
+
   private
 
   def account_params
@@ -64,6 +77,12 @@ class AccountController < BaseController
     {
       billing_email: account_params[:billing_email],
       iban: account_params[:iban],
+    }
+  end
+
+  def switch_user_payload
+    {
+      new_user_id: account_params[:user_id],
     }
   end
 

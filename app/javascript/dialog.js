@@ -9,7 +9,7 @@ export default class Dialog {
         switch (id) {
             case "switch_user":
                 this.target.querySelector('.username').innerHTML = elem.dataset.userName;
-                this.target.querySelector('#session_user_id').value = elem.dataset.userId;
+                this.target.querySelector('#account_user_id').value = elem.dataset.userId;
                 break;
             case "invoice_send":
                 this.target.querySelector('#invoice_recipient').value = elem.dataset.recipient;

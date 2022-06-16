@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/accounts/switch_user
+    body:
+      encoding: UTF-8
+      string: '{"account":{"new_user_id":"8"}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"36bc19bebc837bea50bf01b9a8e4d781"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a666136f-f865-4ad5-9699-c70b6e7aa663
+      X-Runtime:
+      - '0.097211'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"You are now signed in as a user \"billinguser\"","data":{"token":"<TOKEN>","registrar":{"id":8,"username":"billinguser","roles":["billing"],"registrar_name":"Sergei
+        ","legaldoc_mandatory":true,"balance":{"amount":"122.0","currency":"EUR"},"abilities":{"can":{"manage":{"Invoice":[],"Account":[],"deposit":[],"balance_auto_reload":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]},"create":{"registrant_domain_update_confirm":[]},"new":{"registrant_domain_update_confirm":[]}},"cannot":{}}}}}'
+  recorded_at: Wed, 15 Jun 2022 11:28:22 GMT
+recorded_with: VCR 6.1.0

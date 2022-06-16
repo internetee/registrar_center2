@@ -11,9 +11,40 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
-#
+require 'simplecov'
+SimpleCov.start 'rails'
+
+require 'vcr'
+require 'uri'
+
+module MyURI
+  def self.parse(url)
+    uri = URI.parse(url)
+    uri.scheme = 'http'
+    uri.host = 'registry'
+    uri.port = '3000'
+    uri
+  end
+end
+
+VCR.configure do |config|
+  config.uri_parser = MyURI
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data('<TOKEN>') do |interaction|
+    interaction.request.headers['Authorization'].first
+  end
+  config.filter_sensitive_data('<TOKEN>') { Rails.configuration.customization[:token] }
+  config.filter_sensitive_data('<ID_CODE>') { Rails.configuration.customization[:id_code] }
+  config.filter_sensitive_data('<PASSWORD>') { Rails.configuration.customization[:password] }
+  config.before_record do |i|
+    i.response.body.force_encoding('UTF-8')
+  end
+end
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.add_formatter 'Fuubar'
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -27,6 +58,9 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
+  # Save example status to re-run with --only-failures
+  config.example_status_persistence_file_path = 'spec/examples.txt'
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
