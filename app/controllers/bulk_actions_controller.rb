@@ -1,3 +1,4 @@
+require 'csv'
 # frozen_string_literal: true
 
 class BulkActionsController < BaseController

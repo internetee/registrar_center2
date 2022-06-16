@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/invoices/41
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"fe2a5ee799f463a86f5c4d9e5322ec01"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 12fc50dc-782f-4d9a-aa44-7e11c6d87bca
+      X-Runtime:
+      - '1.395546'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":41,"issue_date":"2022-06-10","cancelled_at":null,"paid":false,"payable":true,"cancellable":true,"receipt_date":null,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150017\u0026linkpay_token=k5t5xq\u0026order_reference=150017\u0026transaction_amount=66.0\u0026hmac=e322e75031a72de147e4364fe0f68fc6c36d3bda8888bd8da63823c96f1ff275","number":150017,"subtotal":"55.0","vat_amount":"11.0","vat_rate":"20.0","total":"66.0","description":null,"reference_no":"5044236","created_at":"2022-06-10T14:09:01.130+03:00","updated_at":"2022-06-10T14:09:02.817+03:00","due_date":"2022-07-10","currency":"EUR","seller":{"name":"Eesti
+        Interneti SA","reg_no":"90010019","iban":"EE557700771000598731","bank":"LHV
+        Pank","swift":"LHVBEE22","vat_no":"EE101286464","address":"Paldiski mnt 80,
+        Tallinn, Harjumaa, 10617","country":"Estonia","phone":"+372 727 1000","url":"www.internet.ee","email":"info@internet.ee","contact_name":"Martti
+        Õigus"},"buyer":{"name":"Sergei ","reg_no":"14836742","address":"Rõugu 2/2,
+        Tallinn, Harju, 13522","country":"Estonia","phone":"55631806","url":"https://bankwiser.eu","email":"sergei.tsoganov@internet.ee"},"items":[{"description":"prepayment","unit":"piece","quantity":1,"price":"55.0","sum_without_vat":"55.0","vat_amount":"11.0","total":"66.0"}],"recipient":"walter.raynor@bashirian-grady.com"}}}'
+  recorded_at: Thu, 16 Jun 2022 11:59:44 GMT
+recorded_with: VCR 6.1.0

@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    method: put
+    uri: http://registry:3000/repp/v1/invoices/41/cancel
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: 'null'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - 3ba6d645-c84d-471b-bc31-fefeb96cf78a
       X-Runtime:
-      - '0.106051'
+      - '0.115382'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"tempora","password":"SnYhXnF3wYeUjPsR","active":null}}'
+  recorded_at: Thu, 16 Jun 2022 12:30:11 GMT
 recorded_with: VCR 6.1.0

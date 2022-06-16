@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    method: put
+    uri: http://registry:3000/repp/v1/registrar/nameservers
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: '{"data":{"type":"nameserver","id":"ns1.oberbrunner.net","domains":["example.ee","example1.ee"],"attributes":{"hostname":"ns1.block.com","ipv4":["249.31.117.110"],"ipv6":["eef7:74e1:b76d:186:4a52:11a5:9be3:ffe2"]}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -19,8 +19,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -38,16 +38,18 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
+      Etag:
+      - W/"7d67ccac8c7405699544544e8f33fd44"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - acdd67cf-bc0e-4264-85bb-f3595f406886
       X-Runtime:
-      - '0.106051'
+      - '0.197618'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"type":"nameserver","id":"ns1.block.com","attributes":{"hostname":"ns1.block.com","ipv4":["249.31.117.110"],"ipv6":["eef7:74e1:b76d:186:4a52:11a5:9be3:ffe2"]},"affected_domains":[],"skipped_domains":["example.ee","example1.ee"]}}'
+  recorded_at: Thu, 16 Jun 2022 14:01:32 GMT
 recorded_with: VCR 6.1.0

@@ -93,9 +93,9 @@ RSpec.describe DomainsController, type: :controller do
       http_method: :post,
       params: {
         domain: {
-          name: 'example.ee',
-          exp_date: '2022-07-29',
-          period: '1y',
+          name: 'wwww.ee',
+          exp_date: '2022-12-16',
+          period: '6m',
         },
       },
     },

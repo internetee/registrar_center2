@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    uri: http://registry:3000/repp/v1/invoices/41/send_to_recipient
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: '{"invoice":{"id":"41","recipient":"tristan@kemmer-goyette.io"}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"81c38bf748b27427b95e5d7c6c0fd303"
+      - W/"3678a37173fec3fa4512bc6a1cc53280"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 41088bcc-f8c3-443c-a225-490b04d052bf
+      - f2ef30fe-742d-4bdc-ad07-a5955454e3e4
       X-Runtime:
-      - '1.845900'
+      - '4.604645'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"wwww.ee","id":"120bb8b4-a9ae-4a09-956c-6816bf367c24"}}}'
-  recorded_at: Thu, 16 Jun 2022 13:36:53 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":41,"number":150017,"paid":false,"payable":true,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150017\u0026linkpay_token=k5t5xq\u0026order_reference=150017\u0026transaction_amount=66.0\u0026hmac=e322e75031a72de147e4364fe0f68fc6c36d3bda8888bd8da63823c96f1ff275","receipt_date":null,"cancelled":false,"cancellable":true,"due_date":"2022-07-10","total":"66.0","recipient":"tristan@kemmer-goyette.io"}}}'
+  recorded_at: Thu, 16 Jun 2022 12:28:09 GMT
 recorded_with: VCR 6.1.0

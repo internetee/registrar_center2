@@ -2,10 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    uri: http://registry:3000/repp/v1/contacts
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: '{"contact":{"name":"Oscar Cruickshank","email":"fake@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"},"addr":{"country_code":"BJ","city":"Isaiahport","street":"Weber
+        Plain","zip":"04522-7000","state":null}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -19,8 +20,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -38,16 +39,18 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
+      Etag:
+      - W/"d39255461bc39504ba26e3e1b02f20fd"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - f2cc2118-8414-4057-b2c1-173db6fce9c7
       X-Runtime:
-      - '0.106051'
+      - '0.419266'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"contact":{"code":"1111111:90DAE9D2"}}}'
+  recorded_at: Thu, 16 Jun 2022 10:02:54 GMT
 recorded_with: VCR 6.1.0

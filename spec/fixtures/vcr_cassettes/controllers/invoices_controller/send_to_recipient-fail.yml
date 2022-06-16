@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    uri: http://registry:3000/repp/v1/invoices/41/send_to_recipient
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: '{"invoice":{"id":"41","recipient":""}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -19,8 +19,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 400
+      message: Bad Request
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - 335ad60b-5e62-4593-87eb-99db0fd10124
       X-Runtime:
-      - '0.106051'
+      - '1.287809'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"message":"Invoice recipient cannot be empty","data":{}}'
+  recorded_at: Thu, 16 Jun 2022 12:18:17 GMT
 recorded_with: VCR 6.1.0

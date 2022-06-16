@@ -1,18 +1,16 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    method: get
+    uri: http://registry:3000/repp/v1/contacts/1111111:8E3736F2?id=1111111:8E3736F2
     body:
-      encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - "<TOKEN>"
       User-Agent:
       - Faraday v2.3.0
-      Content-Type:
-      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -41,13 +39,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - 2a8a167c-b9d1-419c-9537-6e0f48059202
       X-Runtime:
-      - '0.106051'
+      - '0.067213'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"id","password":"ItVdTwKmY","active":null}}'
+  recorded_at: Thu, 16 Jun 2022 10:03:53 GMT
 recorded_with: VCR 6.1.0

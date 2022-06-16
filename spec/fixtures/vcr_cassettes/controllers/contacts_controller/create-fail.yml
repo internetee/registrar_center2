@@ -2,10 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    uri: http://registry:3000/repp/v1/contacts
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: '{"contact":{"name":"Juanita Littel","email":"joey@paucek.com","phone":"353-785-6959
+        x9212","ident":{"ident":"xxx","ident_type":"priv","ident_country_code":"EE"},"addr":{"country_code":null,"city":null,"street":null,"zip":null,"state":null}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -19,8 +20,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 400
+      message: Bad Request
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -41,13 +42,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - ec9e62f7-f259-444d-9676-872ac539298f
       X-Runtime:
-      - '0.106051'
+      - '0.962270'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":2003,"message":"param is missing or the value is empty: country_code.
+        Did you mean?  country_code.                city.                street.                state"}'
+  recorded_at: Thu, 16 Jun 2022 09:53:41 GMT
 recorded_with: VCR 6.1.0

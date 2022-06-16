@@ -194,14 +194,6 @@ class DomainsController < BaseController
     }
   end
 
-  def renew_payload
-    {
-      period: domain_params[:period],
-      period_unit: domain_params[:period_unit],
-      exp_date: domain_params[:exp_date],
-    }
-  end
-
   def parse_csv(params)
     return unless params.present?
 

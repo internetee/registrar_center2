@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    uri: http://registry:3000/repp/v1/invoices/add_credit
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: '{"invoice":{"amount":"100","description":"Fugiat est officiis odit."}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - cdacbaf0-85a0-4c58-908a-e0f9fb426b10
       X-Runtime:
-      - '0.106051'
+      - '0.115405'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"incidunt","password":"7YpEq9IcWc4ZyHhM","active":null}}'
+  recorded_at: Thu, 16 Jun 2022 12:33:17 GMT
 recorded_with: VCR 6.1.0

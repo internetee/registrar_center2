@@ -92,19 +92,6 @@ class ContactsController < BaseController
     redirect_to contact_path(contact_code: @response.contact[:code])
   end
 
-  def check
-    conn = ApiConnector::Contacts::AvailChecker.new(**auth_info)
-    cmd = conn.check_contact(id: contact_params[:id])
-
-    if cmd.success
-      @messages = cmd.body['data']
-    elsif cmd.body['code'] == 2202
-      redirect_to controller: 'sessions', action: 'new'
-    else
-      internal_server_error
-    end
-  end
-
   private
 
   def contact_params

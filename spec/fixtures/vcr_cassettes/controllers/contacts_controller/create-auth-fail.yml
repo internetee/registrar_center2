@@ -2,10 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: http://registry:3000/repp/v1/domains/wwww.ee/renew
+    uri: http://registry:3000/repp/v1/contacts
     body:
       encoding: UTF-8
-      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+      string: '{"contact":{"name":"Broderick McGlynn","email":"info@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"},"addr":{"country_code":"AF","city":"Harveyfurt","street":"Dakota
+        Track","zip":"37405-5868","state":null}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +42,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - e5b0c94b-92f7-4f7b-8dfc-c4991994b187
       X-Runtime:
-      - '0.106051'
+      - '0.076975'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"impedit","password":"HmDmZnLb4G","active":null}}'
+  recorded_at: Thu, 16 Jun 2022 10:02:11 GMT
 recorded_with: VCR 6.1.0
