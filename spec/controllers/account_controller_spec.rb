@@ -5,6 +5,7 @@ RSpec.describe AccountController, type: :controller do
     {
       method: :index,
       http_method: :get,
+      format: :csv,
     },
     {
       method: :show,

@@ -22,7 +22,9 @@ RSpec.shared_examples 'Base controller with auth' do |options|
       Rails.cache.write(uuid, auth_data_legal)
       VCR.use_cassette("#{cassette_path}/#{option[:method]}", match_requests_on: %i[path method]) do
         # p VCR.current_cassette.file
-        send(option[:http_method], option[:method], params: option[:params])
+        send(option[:http_method], option[:method],
+             format: option[:format],
+             params: option[:params])
       end
 
       expect([200, 302]).to include response.status

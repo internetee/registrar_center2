@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     resources :bulk_change, only: %i[show update], controller: 'steps_controllers/bulk_change'
     post 'bulk_actions/contact_replace', to: 'bulk_actions#contact_replace',
                                          as: :contact_bulk_replace
+    post 'bulk_actions/admin_contact_replace', to: 'bulk_actions#admin_contact_replace',
+                                               as: :admin_contact_bulk_replace
     post 'bulk_actions/nameserver_change', to: 'bulk_actions#nameserver_change',
                                            as: :nameserver_bulk_change
     post 'bulk_actions/domain_renew', to: 'bulk_actions#domain_renew',

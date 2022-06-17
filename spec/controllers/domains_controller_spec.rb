@@ -5,6 +5,7 @@ RSpec.describe DomainsController, type: :controller do
     {
       method: :index,
       http_method: :get,
+      format: :csv,
     },
     {
       method: :show,
@@ -104,8 +105,9 @@ RSpec.describe DomainsController, type: :controller do
       http_method: :post,
       params: {
         domain: {
-          name: 'example.ee',
-          transfer_code: Faker::Internet.device_token,
+          batch_file: "RG9tYWluO1RyYW5zZmVyIGNvZGUNCnd3d3cuZWU7YWQ0YmEyNWMzNjZiNDky\nNzgxZGU3NGMzNDg2ZjJlYzMNCnFxcS5lZTs1MzVkNTdhNTI1OGJhNTYxZDQ2\nOTMzOTc0MmQxMGM4OA==\n",
+          # name: 'example.ee',
+          # transfer_code: Faker::Internet.device_token,
         },
       },
     },

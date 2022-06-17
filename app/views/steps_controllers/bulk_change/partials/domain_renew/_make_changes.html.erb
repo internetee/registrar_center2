@@ -4,7 +4,7 @@
                                           class: 'form' do |form| %>
             <div class="form--row">
                 <div class="form--header">
-                    <% period = ApplicationHelper::DOMAIN_PERIODS.find { |p| p[1] == @attrs[:period] }[0] %>
+                    <% period = t('domains.form.DOMAIN_PERIODS').find { |p| p[1] == @attrs[:period] }[0] %>
                     <h4><%= t('steps_controllers.bulk_change.domains_renew_confirm', count: @attrs[:selected_domains].size,
                                                                                      period: period) %>
                     </h4>

@@ -1,12 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://registry:3000/repp/v1/contacts
+    method: put
+    uri: http://registry:3000/repp/v1/registrar/notifications/43
     body:
       encoding: UTF-8
-      string: '{"contact":{"name":"Mr. Lenita Sipes","email":"fake@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"},"addr":{"country_code":"MT","city":"South
-        Quentinshire","street":"Denesik Route","zip":"08826-6745","state":null}}}'
+      string: '{"notification":{"read":true}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -40,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"5508cc728f9073d3462fcfcd552fe5d9"
+      - W/"5f120386088380a737f9ab51b3e1fc74"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 172062aa-3564-449a-b23e-713113156ce2
+      - eca062fa-ada5-4b02-908a-401896a8b7e7
       X-Runtime:
-      - '1.353087'
+      - '0.128117'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"contact":{"code":"1111111:4005E3AB"}}}'
-  recorded_at: Fri, 17 Jun 2022 10:52:40 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"notification_id":43,"read":true}}'
+  recorded_at: Fri, 17 Jun 2022 06:51:14 GMT
 recorded_with: VCR 6.1.0

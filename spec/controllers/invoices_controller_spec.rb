@@ -5,6 +5,11 @@ RSpec.describe InvoicesController, type: :controller do
     {
       method: :index,
       http_method: :get,
+      params: {
+        search: {
+          invoice_status: 'account_activity_id_not_null',
+        },
+      },
     },
     {
       method: :show,
@@ -12,6 +17,7 @@ RSpec.describe InvoicesController, type: :controller do
       params: {
         id: 41,
       },
+      format: :pdf,
     },
     {
       method: :download,

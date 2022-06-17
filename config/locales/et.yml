@@ -284,6 +284,15 @@ et:
       choose_domains_for_renew: "Vali domeenid, mida soovid pikendada"
       domains_renew_confirm: "Palun kinnitage, et soovite uuendada %{count} valitud domeeni perioodiks %{period}"
       selected: "Valitud"
+
+    form:
+      TYPES:
+        - ['Vali', '']
+        - ['Tehnilise kontakti vahetus', 'tech-contact-change']
+        - ['Admin kontakti vahetus', 'admin-contact-change']
+        - ['Nimiserveri vahetus', 'nameserver-change']
+        - ['Registripidaja vahetus', 'registrar-change']
+        - ['Domeenide pikendamine', 'domain-renew']
   
   contacts:
     index:

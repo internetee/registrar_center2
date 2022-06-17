@@ -1,10 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe ContactsController, type: :controller do
+  file = File.join(Rails.root, '/spec/fixtures/files/legal_doc.pdf')
+  uploaded_file = Rack::Test::UploadedFile.new(File.open(file))
+
   options = [
     {
       method: :index,
       http_method: :get,
+      params: {
+        per_page: 10,
+        search: {
+          name_matches: Faker::Lorem.word,
+        },
+      },
+      format: :csv,
     },
     {
       method: :search,
@@ -74,6 +84,7 @@ RSpec.describe ContactsController, type: :controller do
           ident: '60001019906',
           ident_type: 'priv',
           ident_country_code: 'EE',
+          legal_document: uploaded_file,
         },
       },
     },

@@ -283,6 +283,16 @@ en:
       choose_domains_for_renew: "Choose domains you want to renew"
       domains_renew_confirm: "Please confirm you want to renew %{count} selected domains for period of %{period}"
       selected: "Selected"
+    
+    form:
+      TYPES:
+        - ['Choose', '']
+        - ['Replace technical contact', 'tech-contact-change']
+        - ['Replace admin contact', 'admin-contact-change']
+        - ['Replace nameserver', 'nameserver-change']
+        - ['Replace registrar', 'registrar-change']
+        - ['Renew domains', 'domain-renew']
+
 
   contacts:
     index:

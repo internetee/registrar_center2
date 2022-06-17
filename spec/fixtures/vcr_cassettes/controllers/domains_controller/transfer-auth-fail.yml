@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains/transfer
     body:
       encoding: UTF-8
-      string: '{"data":{"domain_transfers":[{"domain_name":"example.ee","transfer_code":"e1ea4573a07f5d7720e7bc180f7e2a47588cf9582a69357a53b3cf5f3559596e"}]}}'
+      string: '{"data":{"domain_transfers":[{"domain_name":"wwww.ee","transfer_code":"ad4ba25c366b492781de74c3486f2ec3"},{"domain_name":"qqq.ee","transfer_code":"535d57a5258ba561d469339742d10c88"}]}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 7c3b6749-19ff-424b-8353-d557ec1f4d7e
+      - 1f073026-bebf-4bd9-a771-445a5c8b27f1
       X-Runtime:
-      - '0.066915'
+      - '0.069485'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"velit","password":"WcQsSh6FbK","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 07:46:27 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"in","password":"PrI1fZyM9kIv4Lf","active":null}}'
+  recorded_at: Fri, 17 Jun 2022 13:10:31 GMT
 recorded_with: VCR 6.1.0

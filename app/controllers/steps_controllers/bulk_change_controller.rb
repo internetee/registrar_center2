@@ -10,15 +10,6 @@ module StepsControllers
 
     CSV_COL_SEPARATOR = ';'.freeze
 
-    TYPES = [
-      [I18n.t('.choose'), ''],
-      [I18n.t('steps_controllers.bulk_change.tech_contact_change'), 'tech-contact-change'],
-      [I18n.t('steps_controllers.bulk_change.admin_contact_change'), 'admin-contact-change'],
-      [I18n.t('steps_controllers.bulk_change.nameserver_change'), 'nameserver-change'],
-      [I18n.t('steps_controllers.bulk_change.registrar_change'), 'registrar-change'],
-      [I18n.t('steps_controllers.bulk_change.domain_renew'), 'domain-renew'],
-    ].freeze
-
     FORM_STEP_REQUIRED_PARAMS = {
       select_type: {},
       input_data: { 'tech-contact-change': %i[current_contact_id new_contact_id],

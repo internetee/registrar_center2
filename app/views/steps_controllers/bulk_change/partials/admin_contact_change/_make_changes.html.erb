@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-8 col-xs-12">
     <div class="paper paper__light">
-        <%= form_with scope: :bulk_change, url: contact_bulk_replace_path(type: 'admin'),
-                                          class: 'form' do |form| %>
+        <%= form_with scope: :bulk_change, url: admin_contact_bulk_replace_path,
+                                           class: 'form' do |form| %>
             <div class="form--row">
                 <div class="form--header">
                     <h4><%= t('steps_controllers.bulk_change.admin_contact_replace_confirm', old_contact: @attrs[:current_contact_id], new_contact: @attrs[:new_contact_id] ) %></h4>

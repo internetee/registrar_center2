@@ -12,11 +12,16 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 require 'simplecov'
-SimpleCov.start 'rails'
+
+SimpleCov.start 'rails' do
+  add_filter 'app/logging/'
+end
 
 require 'vcr'
 require 'uri'
 
+# This module is used for avoiding VCR cassettes host conflicts
+# during testing on staging environment
 module MyURI
   def self.parse(url)
     uri = URI.parse(url)

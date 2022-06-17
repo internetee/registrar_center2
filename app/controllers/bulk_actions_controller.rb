@@ -3,10 +3,21 @@ require 'csv'
 
 class BulkActionsController < BaseController
   def contact_replace
-    cl_name = params[:type] == 'admin' ? 'AdminContactReplace' : 'TechContactReplace'
-    conn = ActiveSupport::Inflector.constantize("ApiConnector::BulkActions::#{cl_name}")
-                                   .new(**auth_info)
+    # cl_name = params[:type] == 'admin' ? 'AdminContactReplace' : 'TechContactReplace'
+    # conn = ActiveSupport::Inflector.constantize("ApiConnector::BulkActions::#{cl_name}")
+    #                                .new(**auth_info)
 
+    conn = ApiConnector::BulkActions::TechContactReplace.new(**auth_info)
+    result = conn.call_action(payload: replace_contact_payload)
+    handle_response(result); return if performed?
+
+    create_replace_message(@response)
+    reset_bulk_change_cache
+    redirect_to domains_path
+  end
+
+  def admin_contact_replace
+    conn = ApiConnector::BulkActions::AdminContactReplace.new(**auth_info)
     result = conn.call_action(payload: replace_contact_payload)
     handle_response(result); return if performed?
 
