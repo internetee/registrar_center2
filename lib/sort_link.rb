@@ -27,7 +27,7 @@ class SortLink # rubocop:disable Metrics/ClassLength
   end
 
   def name
-    out = [raw(ERB::Util.h(@label_text)), raw(order_indicator)].compact
+    out = [ERB::Util.h(@label_text), order_indicator.html_safe].compact
     safe_join(out, ' ')
   end
 
