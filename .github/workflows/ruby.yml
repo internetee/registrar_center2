@@ -56,6 +56,8 @@ jobs:
 
       - name: Run Tests
         env:
+          REPP_HOST: http://registry:3000
+          REPP_ENDPOINT: /repp/v1
           RAILS_ENV: test
           COVERAGE: true
           DISABLE_SPRING: 1
