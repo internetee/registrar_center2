@@ -20,3 +20,11 @@ shared:
     redirect_uri: 'https://registrar-center.test/auth/tara/callback'
     ory_hydra_private: 'https://test-auth.eeid.ee/hydra-private'
     scope: ['openid', 'idcard', 'mid', 'smartid']
+
+test:
+  # NB! change this data only for real time Api requests and recording VCR responces,
+  # this data will be filtered in responses
+  username: 'user'
+  password: 'password'
+  token: 1234dsdasds
+  id_code: 38200011111

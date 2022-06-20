@@ -79,8 +79,12 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'capybara-screenshot'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'fuubar'
   gem 'selenium-webdriver'
+  gem 'simplecov', '0.17.1', require: false # CC last supported v0.17
+  gem 'vcr'
   gem 'webdrivers'
+  gem 'webmock'
 end

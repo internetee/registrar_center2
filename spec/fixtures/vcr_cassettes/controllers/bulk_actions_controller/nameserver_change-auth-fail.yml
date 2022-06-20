@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/registrar/nameservers
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"nameserver","id":"ns1.oberbrunner.net","domains":["example.ee","example1.ee"],"attributes":{"hostname":"ns1.block.com","ipv4":["249.31.117.110"],"ipv6":["eef7:74e1:b76d:186:4a52:11a5:9be3:ffe2"]}}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 517a83f3-930d-408e-94f5-871466e6ba1f
+      X-Runtime:
+      - '0.097854'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestias","password":"HsT5eWzL0","active":null}}'
+  recorded_at: Thu, 16 Jun 2022 14:01:32 GMT
+recorded_with: VCR 6.1.0

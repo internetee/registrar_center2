@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/domains/example.ee
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"name":"example.ee","registrant":{"code":"1111111:0E828F10"}}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"80d436dfda48bb2b66e7c8689bab3eb3"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d8d38a36-00fe-4b0c-ae91-0be02071d876
+      X-Runtime:
+      - '0.618775'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example.ee","id":"aaf75c0b-45f4-434c-b9e0-e824f4302ea0"}}}'
+  recorded_at: Wed, 15 Jun 2022 12:50:13 GMT
+recorded_with: VCR 6.1.0

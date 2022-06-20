@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://registry:3000/repp/v1/domains/contacts
+    body:
+      encoding: UTF-8
+      string: '{"current_contact_id":"1111111:65B7EB55","new_contact_id":"1111111:0E828F10"}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 6f55caa7-f860-442a-94e8-a4ec02bd7a2b
+      X-Runtime:
+      - '0.094702'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"at","password":"Sc1EsKcFcXwY2u","active":null}}'
+  recorded_at: Thu, 16 Jun 2022 13:44:29 GMT
+recorded_with: VCR 6.1.0

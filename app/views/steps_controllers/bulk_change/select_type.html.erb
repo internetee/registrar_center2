@@ -26,8 +26,7 @@
                             <%= form.label :type, "#{t('steps_controllers.bulk_change.select_type')} *", class: 'form--label' %>
                             <div class="form--input">
                                 <%= simple_select_tag "bulk_change[type]",
-                                                      options_for_select(StepsControllers::BulkChangeController::TYPES,
-                                                      @attrs[:type]),
+                                                      options_for_select(t('steps_controllers.form.TYPES'), @attrs[:type]),
                                                       required: true %>
                             </div>
                         </div>

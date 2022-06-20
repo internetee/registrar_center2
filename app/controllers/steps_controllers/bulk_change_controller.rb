@@ -10,21 +10,12 @@ module StepsControllers
 
     CSV_COL_SEPARATOR = ';'.freeze
 
-    TYPES = [
-      [I18n.t('.choose'), ''],
-      [I18n.t('steps_controllers.bulk_change.tech_contact_change'), 'tech-contact-change'],
-      [I18n.t('steps_controllers.bulk_change.admin_contact_change'), 'admin-contact-change'],
-      [I18n.t('steps_controllers.bulk_change.nameserver_change'), 'nameserver-change'],
-      [I18n.t('steps_controllers.bulk_change.registrar_change'), 'registrar-change'],
-      [I18n.t('steps_controllers.bulk_change.domain_renew'), 'domain-renew'],
-    ].freeze
-
     FORM_STEP_REQUIRED_PARAMS = {
       select_type: {},
       input_data: { 'tech-contact-change': %i[current_contact_id new_contact_id],
                     'admin-contact-change': %i[current_contact_id new_contact_id],
                     'nameserver-change': [:new_hostname],
-                    'registrar-change': [:batch_file],
+                    'registrar-change': [],
                     'domain-renew': %i[expire_date period] },
       make_changes: {},
     }.freeze
@@ -102,10 +93,10 @@ module StepsControllers
       attrs.merge(bulk_change_params)
     end
 
-    def finish_wizard_path
-      reset_bulk_change_cache
-      domains_path
-    end
+    # def finish_wizard_path
+    #   reset_bulk_change_cache
+    #   domains_path
+    # end
 
     def check_step_allowance
       redirect_to domains_path and return unless @attrs && step_allowed?

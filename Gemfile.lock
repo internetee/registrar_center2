@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 425581295d59839e1c4c19a0f4482886d1e9f373
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
+GIT
   remote: https://github.com/internetee/omniauth-tara.git
   revision: cec845ec3794532144c4976104a07e206d759aa6
   specs:
@@ -93,11 +101,16 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    capybara-screenshot (1.0.26)
+      capybara (>= 1.0, < 4)
+      launchy
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
-    countries (5.0.1)
+    countries (5.0.2)
       i18n_data (~> 0.16.0)
       sixarm_ruby_unaccent (~> 1.1)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     cssbundling-rails (1.1.0)
       railties (>= 6.0.0)
@@ -106,21 +119,19 @@ GEM
       reline (>= 0.2.7)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    docile (1.4.0)
     erubi (1.10.0)
-    factory_bot (6.2.1)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.2.0)
-      factory_bot (~> 6.2.0)
-      railties (>= 5.0.0)
-    faker (2.21.0)
-      i18n (>= 1.8.11, < 2)
     faraday (2.3.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.3)
+    fuubar (2.5.1)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    hashie (3.6.0)
+    hashdiff (1.0.1)
+    hashie (5.0.0)
     httpclient (2.8.3)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
@@ -134,10 +145,13 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
+    json (2.6.2)
     json-jwt (1.13.0)
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
+    launchy (2.5.0)
+      addressable (~> 2.7)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -166,8 +180,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
-    omniauth (1.9.0)
-      hashie (>= 3.4.6, < 3.7.0)
+    omniauth (1.9.1)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
     omniauth-rails_csrf_protection (0.1.2)
       actionpack (>= 4.2)
@@ -188,7 +202,7 @@ GEM
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-oauth2 (1.19.0)
       activesupport
       attr_required
@@ -245,14 +259,20 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    selenium-webdriver (4.2.0)
+    selenium-webdriver (4.2.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     simple_po_parser (1.1.6)
+    simplecov (0.17.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     sixarm_ruby_unaccent (1.2.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
@@ -282,6 +302,7 @@ GEM
     validate_url (1.0.15)
       activemodel (>= 3.0.0)
       public_suffix
+    vcr (6.1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -294,6 +315,10 @@ GEM
     webfinger (1.2.0)
       activesupport
       httpclient (>= 2.4)
+    webmock (3.14.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -313,12 +338,13 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  capybara-screenshot
   countries
   cssbundling-rails (>= 0.2.4)
   debug
-  factory_bot_rails
-  faker
+  faker!
   faraday
+  fuubar
   jbuilder
   jsbundling-rails
   omniauth-rails_csrf_protection
@@ -328,12 +354,15 @@ DEPENDENCIES
   rails (~> 7.0.2, >= 7.0.2.2)
   rspec-rails
   selenium-webdriver
+  simplecov (= 0.17.1)
   sprockets-rails
   stimulus-rails
   turbo-rails
   tzinfo-data
+  vcr
   web-console
   webdrivers
+  webmock
   wicked
   wicked_pdf
   wkhtmltopdf-binary (~> 0.12.6.5)
@@ -342,4 +371,4 @@ RUBY VERSION
    ruby 3.1.1p18
 
 BUNDLED WITH
-   2.3.14
+   2.3.15

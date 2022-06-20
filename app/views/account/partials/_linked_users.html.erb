@@ -18,7 +18,8 @@
                     <td class="table--action">
                         <%= link_to '<i class="fas fa-sign-in-alt"></i>'.html_safe, '#',
                                     'data-dialog': 'switch_user', 'data-user-id': user[:id],
-                                    'data-user-name': user[:username] %>
+                                    'data-user-name': user[:username],
+                                    class: 'switch_users_link' %>
                     </td>
                 </tr>
             <% end %>

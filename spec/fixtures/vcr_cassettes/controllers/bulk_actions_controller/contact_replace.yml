@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://registry:3000/repp/v1/domains/contacts
+    body:
+      encoding: UTF-8
+      string: '{"current_contact_id":"1111111:65B7EB55","new_contact_id":"1111111:0E828F10"}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"f28ea7f71eaa0de8087c282414a61514"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - f22acee1-64ba-4d58-9cf0-bc745e2fb76f
+      X-Runtime:
+      - '0.607088'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"affected_domains":["wwwww.ee"],"skipped_domains":["dsasds.ee"]}}'
+  recorded_at: Thu, 16 Jun 2022 13:44:29 GMT
+recorded_with: VCR 6.1.0

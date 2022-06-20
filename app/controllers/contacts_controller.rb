@@ -25,10 +25,11 @@ class ContactsController < BaseController
   def search
     conn = ApiConnector::Contacts::Finder.new(**auth_info)
     result = conn.call_action(q: params[:query], id: params[:id])
+
     if result.success
       render json: result.body[:data], status: :ok
     else
-      render json: [], status: :unprocessable_entity
+      respond_with_log_out(result.body[:message])
     end
   end
 
@@ -71,7 +72,7 @@ class ContactsController < BaseController
     handle_response(result); return if performed?
 
     flash.notice = @message
-    redirect_to contact_path(@response.contact[:id])
+    redirect_to contact_path(@response.contact[:code])
   end
 
   def edit
@@ -89,19 +90,6 @@ class ContactsController < BaseController
 
     flash.notice = @message
     redirect_to contact_path(contact_code: @response.contact[:code])
-  end
-
-  def check
-    conn = ApiConnector::Contacts::AvailChecker.new(**auth_info)
-    cmd = conn.check_contact(id: contact_params[:id])
-
-    if cmd.success
-      @messages = cmd.body['data']
-    elsif cmd.body['code'] == 2202
-      redirect_to controller: 'sessions', action: 'new'
-    else
-      internal_server_error
-    end
   end
 
   private

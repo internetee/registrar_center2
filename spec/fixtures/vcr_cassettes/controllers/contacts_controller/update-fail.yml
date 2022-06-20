@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/contacts/1111111:8E3736F2
+    body:
+      encoding: UTF-8
+      string: '{"contact":{"ident":{"ident":null,"ident_type":null,"ident_country_code":null},"addr":{"country_code":null,"city":null,"street":null,"zip":null,"state":null}}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 6256ec1b-1347-47eb-af3d-b2239b93b663
+      X-Runtime:
+      - '0.493619'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2003,"message":"param is missing or the value is empty: country_code.
+        Did you mean?  country_code.                city.                street.                state"}'
+  recorded_at: Thu, 16 Jun 2022 10:05:42 GMT
+recorded_with: VCR 6.1.0

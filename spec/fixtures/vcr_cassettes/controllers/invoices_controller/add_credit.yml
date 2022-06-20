@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/invoices/add_credit
+    body:
+      encoding: UTF-8
+      string: '{"invoice":{"amount":"100","description":"Fugiat est officiis odit."}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"1b9823b5f21147e21b51ce5ddf456f19"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 2965c45b-a878-4c04-96a0-70e0fb9e4e62
+      X-Runtime:
+      - '2.328544'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":42,"number":150018,"paid":false,"payable":true,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=Fugiat%20est%20officiis%20odit.\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150018\u0026linkpay_token=k5t5xq\u0026order_reference=150018\u0026transaction_amount=120.0\u0026hmac=cbf5bda908354ebcae08cf7a909a7018d0c5d3d3fb1f73641395a250e8589660","receipt_date":null,"cancelled":false,"cancellable":true,"due_date":"2022-07-16","total":"120.0","recipient":"walter.raynor@bashirian-grady.com"}}}'
+  recorded_at: Thu, 16 Jun 2022 12:33:17 GMT
+recorded_with: VCR 6.1.0

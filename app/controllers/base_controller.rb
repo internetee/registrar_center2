@@ -2,7 +2,10 @@ class BaseController < ApplicationController
   before_action :check_auth_info
 
   def check_auth_info
-    redirect_to login_url unless auth_info_present?
+    return if auth_info_present?
+
+    flash[:alert] = I18n.t(:session_expired)
+    redirect_to login_url
   end
 
   def set_pagy_params
