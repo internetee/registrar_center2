@@ -1,6 +1,7 @@
-class DomainsController < BaseController
+class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   before_action :set_pagy_params, only: :index
 
+  # rubocop:disable Metrics/MethodLength
   def index
     conn = ApiConnector::Domains::All.new(**auth_info)
     result = conn.call_action(q: search_params,
@@ -19,6 +20,7 @@ class DomainsController < BaseController
       format.csv { format_csv }
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def show
     conn = ApiConnector::Domains::Reader.new(**auth_info)
@@ -112,6 +114,7 @@ class DomainsController < BaseController
                   dnskeys_attributes: [%i[id flags protocol alg public_key action]])
   end
 
+  # rubocop:disable Metrics/MethodLength
   def default_params
     ret = {}
 
@@ -137,7 +140,9 @@ class DomainsController < BaseController
 
     ret.with_indifferent_access
   end
+  # rubocop:enable Metrics/MethodLength
 
+  # rubocop:disable Metrics/MethodLength
   def construct_params(domain)
     ret = default_params
     ret[:name] = domain[:name]
@@ -161,7 +166,9 @@ class DomainsController < BaseController
 
     ret
   end
+  # rubocop:enable Metrics/MethodLength
 
+  # rubocop:disable Metrics/MethodLength
   def domain_payload
     {
       name: domain_params[:name],
@@ -193,6 +200,7 @@ class DomainsController < BaseController
       exp_date: domain_params[:exp_date],
     }
   end
+  # rubocop:enable Metrics/MethodLength
 
   def parse_csv(params)
     return unless params.present?

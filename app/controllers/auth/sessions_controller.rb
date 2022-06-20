@@ -1,6 +1,6 @@
 module Auth
   class SessionsController < AuthController
-    before_action :require_no_authentication, only: %i[new create]
+    before_action :require_no_authentication, only: :new
     before_action :verify_signed_out_user, only: :destroy
 
     def new; end

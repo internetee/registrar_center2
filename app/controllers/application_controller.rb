@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
   end
 
   def can?(action, subject)
-    return false unless current_user.abilities[:can].present?
+    return false if current_user.abilities[:can].blank?
 
-    return false unless current_user.abilities[:can][action].present?
+    return false if current_user.abilities[:can][action].blank?
 
     current_user.abilities[:can][action].keys.include? subject
   end
@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
     Rails.cache.write session.id, @attrs.except(:batch_file), expires_in: 2.hours
   end
 
+  # rubocop:disable Metrics/MethodLength
   def handle_response(res)
     msg = res.body[:message]
     if res.success
@@ -57,6 +58,7 @@ class ApplicationController < ActionController::Base
       logger.info msg
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def internal_server_error
     render file: 'public/500.html',

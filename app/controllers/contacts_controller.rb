@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-class ContactsController < BaseController
+class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
   before_action :set_pagy_params, only: %i[index show]
+
+  # rubocop:disable Metrics/MethodLength
   # Get all the contacts
   def index
     conn = ApiConnector::Contacts::All.new(**auth_info)
@@ -21,6 +23,7 @@ class ContactsController < BaseController
       format.pdf { format_pdf }
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def search
     conn = ApiConnector::Contacts::Finder.new(**auth_info)
@@ -100,6 +103,7 @@ class ContactsController < BaseController
                                     :city, :street, :state, :zip, :legal_document)
   end
 
+  # rubocop:disable Metrics/MethodLength
   def contact_payload
     {
       id: contact_params[:code],
@@ -121,6 +125,7 @@ class ContactsController < BaseController
       legal_document: transform_legal_doc_params(contact_params[:legal_document]),
     }
   end
+  # rubocop:enable Metrics/MethodLength
 
   def format_csv
     raw_csv = ContactListCsvPresenter.new(contacts: @contacts,
@@ -133,8 +138,7 @@ class ContactsController < BaseController
                                                            locals: { contacts: @contacts,
                                                                      view: view_context },
                                                            layout: 'pdf')
-    pdf = WickedPdf.new.pdf_from_string(pdf_html, page_size: 'A4',
-                                                  orientation: 'Landscape',
+    pdf = WickedPdf.new.pdf_from_string(pdf_html, page_size: 'A4', orientation: 'Landscape',
                                                   header: { right: '[page] of [topage]' },
                                                   lowquality: true,
                                                   zoom: 1,

@@ -1,7 +1,7 @@
 <table>
     <tr>
         <td>
-            <%== pagy_info(@pagy, item_name: t('domains.index.items', count: @pagy.count)) %>
+            <%= raw pagy_info(@pagy, item_name: t('domains.index.items', count: @pagy.count)) %>
         </td>
     </tr>
 </table>

@@ -1,0 +1,3 @@
+Style/Semicolon:
+  Enabled: true
+  AllowAsExpressionSeparator: true

@@ -1,6 +1,7 @@
 class AccountController < BaseController
   before_action :set_pagy_params, only: :index
 
+  # rubocop:disable Metrics/MethodLength
   def index
     conn = ApiConnector::Account::AllActivities.new(**auth_info)
     result = conn.call_action(q: search_params,
@@ -16,6 +17,7 @@ class AccountController < BaseController
       format.csv { format_csv }
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def show
     result = ApiConnector::Account::Reader.call(**auth_info)
