@@ -35,6 +35,8 @@ plugins:
     checks:
       Rubocop/Style/ClassAndModuleChildren:
         enabled: false
+    config:
+      file: ".rubocop.yml"
 checks:
   method-lines:
     config:
