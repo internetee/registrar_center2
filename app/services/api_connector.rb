@@ -93,4 +93,3 @@ class ApiConnector
     "#{endpoint_url}/#{id}"
   end
 end
-

@@ -2,6 +2,7 @@
 # https://github.com/activerecord-hackery/ransack/blob/main/lib/ransack/helpers/form_helper.rb
 
 class SortLink # rubocop:disable Metrics/ClassLength
+  include ActionView::Helpers::OutputSafetyHelper
   def initialize(url, attribute, args, params)
     @url            = url
     @params         = parameters_hash(params)
@@ -26,10 +27,8 @@ class SortLink # rubocop:disable Metrics/ClassLength
   end
 
   def name
-    [ERB::Util.h(@label_text), order_indicator]
-      .compact
-      .join('&nbsp;'.freeze)
-      .html_safe
+    out = [raw(ERB::Util.h(@label_text)), raw(order_indicator)].compact
+    safe_join(out, ' ')
   end
 
   def url_options
@@ -64,7 +63,7 @@ class SortLink # rubocop:disable Metrics/ClassLength
   end
 
   def existing_sort_direction(field = @field)
-    return unless sort = detect_sort(@params[:search], field)
+    return unless (sort = detect_sort(@params[:search], field))
 
     sort.split(' ')[1]
   end
@@ -111,9 +110,8 @@ class SortLink # rubocop:disable Metrics/ClassLength
 
   def parse_sort(field)
     attr_name, new_dir = field.to_s.split(/\s+/)
-    if no_sort_direction_specified?(new_dir)
-      new_dir = detect_previous_sort_direction_and_invert_it(attr_name)
-    end
+    inverted = detect_previous_sort_direction_and_invert_it(attr_name)
+    new_dir = inverted if no_sort_direction_specified?(new_dir)
     "#{attr_name} #{new_dir}"
   end
 
@@ -122,7 +120,7 @@ class SortLink # rubocop:disable Metrics/ClassLength
   end
 
   def detect_previous_sort_direction_and_invert_it(attr_name)
-    if sort_dir = existing_sort_direction(attr_name)
+    if (sort_dir = existing_sort_direction(attr_name))
       direction_text(sort_dir)
     else
       default_sort_order(attr_name) || 'asc'.freeze

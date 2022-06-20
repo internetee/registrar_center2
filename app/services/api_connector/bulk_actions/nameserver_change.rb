@@ -30,4 +30,3 @@ class ApiConnector
     end
   end
 end
-
