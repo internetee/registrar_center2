@@ -8,7 +8,6 @@ RSpec.feature 'viewing contacts' do
                                                               allow_playback_repeats: true do
       visit contacts_path
 
-      print page.body
       click_button('Open filter')
       find('#search_country_code_eq').find(:option, 'Estonia', match: :first).select_option
 
