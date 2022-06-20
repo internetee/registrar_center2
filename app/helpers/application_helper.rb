@@ -17,18 +17,20 @@ module ApplicationHelper
 
   def back_link
     link_to :back, class: 'back-link' do
-      html = "<i class='fas fa-arrow-left'></i>"
-      html += "<span>#{t(:back)}</span>"
-      html.html_safe
+      out = []
+      out << content_tag(:i, nil, class: 'fas fa-arrow-left')
+      out << content_tag(:span, t(:back))
+      safe_join(out)
     end
   end
 
   def toggle_filter
     button_tag(data: { toggle: 'filters' }, type: '', class: 'button button--toggle') do
-      html = "<span>#{t(:open_filter)}</span>"
-      html += "<span>#{t(:close_filter)}</span>"
-      html += '<i class="fas fa-filter"></i>'
-      html.html_safe
+      out = []
+      out << content_tag(:span, t(:open_filter))
+      out << content_tag(:span, t(:close_filter))
+      out << content_tag(:i, nil, class: 'fas fa-filter')
+      safe_join(out)
     end
   end
 
@@ -61,10 +63,7 @@ module ApplicationHelper
 
     content_tag :div, class: 'tooltip',
                       data: { 'tippy-content': text } do
-      html = <<-HTML
-        <i class="fas fa-question"></i>
-      HTML
-      html.html_safe
+      content_tag(:i, nil, class: 'fas fa-question')
     end
   end
 
