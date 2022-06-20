@@ -1,11 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe DomainsController, type: :controller do
+  file = File.join(Rails.root, '/spec/fixtures/files/legal_doc.pdf')
+  uploaded_file = Rack::Test::UploadedFile.new(File.open(file))
+
   options = [
     {
       method: :index,
       http_method: :get,
       format: :csv,
+      params: {
+        search: {
+          s: 'name asc',
+        },
+      },
     },
     {
       method: :show,
@@ -23,6 +31,7 @@ RSpec.describe DomainsController, type: :controller do
           registrant: {
             verified: true,
           },
+          legal_document: uploaded_file,
         },
       },
     },

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'signing in user' do
   let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
+  let(:cassette) { 'signing_in_user/with_valid_credentials' }
 
   before do
     allow(Rails).to receive(:cache).and_return(memory_store)
@@ -20,6 +21,12 @@ RSpec.feature 'signing in user' do
     expect(page).to have_current_path(dashboard_path)
     expect(page).to have_content('Successfully logged in!')
     expect(page).to have_link('Sign out')
+
+    VCR.use_cassette cassette do
+      visit login_path
+      expect(page).to have_content('Already authenticated!')
+      expect(page).to have_current_path(root_path)
+    end
   end
 
   scenario 'with invalid credentials', :vcr do

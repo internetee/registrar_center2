@@ -1,5 +1,4 @@
 require 'capybara'
-
 # require 'capybara-screenshot/rspec'
 
 ## Headless!
@@ -29,6 +28,5 @@ Capybara.configure do |config|
   driver = ENV['HEADLESS'] || ENV['H'] ? :headless_chrome : :selenium_chrome
   config.javascript_driver = driver
   config.default_max_wait_time = 7
+  config.ignore_hidden_elements = false
 end
-
-Capybara.ignore_hidden_elements = true

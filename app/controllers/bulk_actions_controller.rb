@@ -42,6 +42,7 @@ class BulkActionsController < BaseController
 
     handle_response(result); return if performed?
 
+    reset_bulk_change_cache
     redirect_to domains_path
   end
 

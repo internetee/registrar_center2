@@ -6,18 +6,6 @@ module ApplicationHelper
     admin: 'AdminDomainContact',
   }.freeze
 
-  if Rails.configuration.customization[:legal_document_types].present?
-    LEGAL_DOC_TYPES = Rails.configuration.customization[:legal_document_types].split(',').map(&:strip)
-  else
-    LEGAL_DOC_TYPES = %w[pdf asice asics sce scs adoc edoc bdoc ddoc zip rar gz tar 7z odt
-                         doc docx].freeze
-  end
-
-  def app_form_with(model: nil, scope: nil, url: nil, format: nil, **options, &block)
-    options = options.reverse_merge(builder: AppFormBuilder)
-    form_with(model: model, scope: scope, url: url, format: format, **options, &block)
-  end
-
   def currency(amount)
     amount ||= 0
     format('%01.2f', amount.round(2)).sub(/\./, ',')
@@ -81,9 +69,9 @@ module ApplicationHelper
   end
 
   def legal_document_types
-    types = LEGAL_DOC_TYPES.dup
-    types.delete('ddoc')
-    ".#{types.join(',.')}"
+    legal_doc_types = Rails.configuration.customization[:legal_document_types].split(',').map(&:strip)
+    legal_doc_types.delete('ddoc')
+    ".#{legal_doc_types.join(',.')}"
   end
 
   def ident_for(contact)

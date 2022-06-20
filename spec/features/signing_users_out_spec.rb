@@ -1,21 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'signing out signed in user' do
-  let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
-  let(:cassette) { 'signing_in_user/with_valid_credentials' }
-
-  before do
-    allow(Rails).to receive(:cache).and_return(memory_store)
-    Rails.cache.clear
-
-    VCR.use_cassette cassette do
-      visit root_path
-
-      fill_in 'Username', with: Rails.configuration.customization[:username]
-      fill_in 'Password', with: Rails.configuration.customization[:password]
-      click_button 'Sign in'
-    end
-  end
+RSpec.feature 'signing out user' do
+  include_context 'Common context with valid login'
 
   scenario 'with sign out link' do
     VCR.use_cassette cassette do
@@ -27,6 +13,10 @@ RSpec.feature 'signing out signed in user' do
       expect(page).to have_content('Logged out!')
       expect(page).to have_current_path(login_path)
       expect(page).not_to have_link('Sign out')
+
+      visit logout_path
+      expect(page).to have_content('Already signed out!')
+      expect(page).to have_current_path(login_path)
     end
   end
 

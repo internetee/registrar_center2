@@ -6,7 +6,7 @@
         <%= icon_link_to 'fas fa-pencil-alt', edit_domain_path(domain_name: domain[:name]), class: 'simple_tooltip', data: { 'tippy-content': t(:edit) } %>
         <%= icon_link_to 'fas fa-sync-alt', new_domain_renewal_path(domain_name: domain[:name]), class: 'simple_tooltip', data: { 'tippy-content': t(:renew) } %>
         <% unless (domain[:statuses].keys & %w[pendingDelete pendingDeleteConfirmation]).any? %>
-            <%= icon_link_to 'fas fa-trash-alt', delete_domain_path(domain_name: domain[:name]), class: 'simple_tooltip', data: { 'tippy-content': t(:delete) } %>
+            <%= icon_link_to 'fas fa-trash-alt', delete_domain_path(domain_name: domain[:name]), class: 'delete_domain_link simple_tooltip', data: { 'tippy-content': t(:delete) } %>
         <% end %>
     </td>
 </tr>

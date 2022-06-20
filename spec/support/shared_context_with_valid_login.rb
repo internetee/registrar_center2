@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.feature 'bulk updating domains' do
+RSpec.shared_context 'Common context with valid login' do
   let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
   let(:cassette) { 'signing_in_user/with_valid_credentials' }
 
@@ -15,9 +13,5 @@ RSpec.feature 'bulk updating domains' do
       fill_in 'Password', with: Rails.configuration.customization[:password]
       click_button 'Sign in'
     end
-  end
-
-  scenario 'with selected bulk update type', :vcr do
-
   end
 end
