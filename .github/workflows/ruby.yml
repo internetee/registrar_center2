@@ -66,7 +66,6 @@ jobs:
           yarn install --check-files
           bundle exec rails assets:precompile
           bundle exec rspec
-          yarn test
       - name: Save coverage
         run: ./cc-test-reporter format-coverage --output coverage/codeclimate.${{ matrix.ruby }}.json
 
