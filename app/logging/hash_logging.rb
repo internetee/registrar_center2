@@ -19,10 +19,8 @@ module HashLogging
                          msg
                        end
 
-      self.class.instance_method(:call).bind(self).call(severity,
-                                                        timestamp,
-                                                        progname,
-                                                        tagged_message)
+      self.class.instance_method(:call).bind(self).call(severity, timestamp,
+                                                        progname, tagged_message)
     end
   end
 end

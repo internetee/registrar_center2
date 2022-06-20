@@ -1,7 +1,7 @@
 # Rewritten class SortLink from Ransack original form_helper file:
 # https://github.com/activerecord-hackery/ransack/blob/main/lib/ransack/helpers/form_helper.rb
 
-class SortLink
+class SortLink # rubocop:disable Metrics/ClassLength
   def initialize(url, attribute, args, params)
     @url            = url
     @params         = parameters_hash(params)
@@ -39,11 +39,7 @@ class SortLink
   end
 
   def html_options(args)
-    if args.empty?
-      html_options = @options
-    else
-      html_options = extract_options_and_mutate_args!(args)
-    end
+    html_options = args.empty? ? @options : extract_options_and_mutate_args!(args)
 
     html_options.merge(
       class: [['sort_link'.freeze, @current_dir], html_options[:class]]
@@ -110,7 +106,7 @@ class SortLink
   def recursive_sort_params_build(fields)
     return [] if fields.empty?
 
-    [parse_sort(fields[0])] + recursive_sort_params_build(fields.drop 1)
+    [parse_sort(fields[0])] + recursive_sort_params_build(fields.drop(1))
   end
 
   def parse_sort(field)

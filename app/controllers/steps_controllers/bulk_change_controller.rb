@@ -1,6 +1,6 @@
 require 'csv'
 module StepsControllers
-  class BulkChangeController < BaseController
+  class BulkChangeController < BaseController # rubocop:disable Metrics/ClassLength
     include Wicked::Wizard
 
     before_action :find_bulk_change_attributes
@@ -20,8 +20,9 @@ module StepsControllers
       make_changes: {},
     }.freeze
 
-    steps *FORM_STEP_REQUIRED_PARAMS.keys # :select_type, :input_data, :make_changes
+    steps(*FORM_STEP_REQUIRED_PARAMS.keys) # :select_type, :input_data, :make_changes
 
+    # rubocop:disable Metrics/MethodLength
     def show
       case @attrs[:type]
       when 'registrar-change', 'nameserver-change'
@@ -38,6 +39,7 @@ module StepsControllers
       end
       render_wizard
     end
+    # rubocop:enable Metrics/MethodLength
 
     def update
       reset_bulk_change_cache if first_step_submitted?
@@ -52,10 +54,10 @@ module StepsControllers
     private
 
     def validate_params
-      respond_with_error(:type) and return unless @attrs[:type].present?
+      respond_with_error(:type) and return if @attrs[:type].blank?
 
       required_attrs = FORM_STEP_REQUIRED_PARAMS[step][@attrs[:type].to_sym] || []
-      invalid_attrs = required_attrs.map { |a| a unless @attrs[a].present? }.compact
+      invalid_attrs = required_attrs.map { |a| a if @attrs[a].blank? }.compact
       respond_with_error(invalid_attrs.first) unless invalid_attrs.empty?
     end
 
@@ -63,6 +65,7 @@ module StepsControllers
       @attrs = bulk_change_attrs&.symbolize_keys
     end
 
+    # rubocop:disable Metrics/MethodLength
     def respond_with_error(param = nil)
       msg = t('.missing_param', param: t(".#{param}"))
       respond_to do |format|
@@ -76,6 +79,7 @@ module StepsControllers
         end
       end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def bulk_change_params
       params.require(:bulk_change)
@@ -115,21 +119,19 @@ module StepsControllers
     end
 
     def maybe_add_batch_file_attrs
-      return unless @attrs[:batch_file].present?
+      return if @attrs[:batch_file].blank?
 
       @attrs[:batch_file_name] = @attrs[:batch_file].original_filename
       @attrs[:batch_file_encoded] = Base64.encode64(@attrs[:batch_file].read)
     end
 
     def maybe_find_domains_for_renew
-      return false unless bulk_change_params[:domain_filter].present?
+      return false if bulk_change_params[:domain_filter].blank?
 
       conn = ApiConnector::Domains::All.new(**auth_info)
       result = conn.call_action(q: { valid_to_lteq: @attrs[:expire_date] },
-                                limit: nil,
-                                offset: nil,
-                                details: true,
-                                simple: true)
+                                limit: nil, offset: nil,
+                                details: true, simple: true)
       handle_response(result); return false if performed?
 
       @attrs[:domains] = @response.domains

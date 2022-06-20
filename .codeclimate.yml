@@ -35,8 +35,8 @@ plugins:
     checks:
       Rubocop/Style/ClassAndModuleChildren:
         enabled: false
-    config:
-      file: ".rubocop.yml"
+      Rubocop/Style/Semicolon:
+        enabled: false
 checks:
   method-lines:
     config:

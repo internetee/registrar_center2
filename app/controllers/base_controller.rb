@@ -47,7 +47,7 @@ class BaseController < ApplicationController
   end
 
   def transform_legal_doc_params(params)
-    return unless params.present?
+    return if params.blank?
 
     { body: Base64.encode64(params.read),
       type: params.original_filename.split('.').last.downcase }

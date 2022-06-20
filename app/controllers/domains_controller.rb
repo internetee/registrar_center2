@@ -203,7 +203,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   # rubocop:enable Metrics/MethodLength
 
   def parse_csv(params)
-    return unless params.present?
+    return if params.blank?
 
     csv = CSV.parse(Base64.decode64(params), headers: true, col_sep: ';')
     transfers = []
