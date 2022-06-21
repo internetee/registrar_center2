@@ -1,7 +1,10 @@
 # Rewritten class SortLink from Ransack original form_helper file:
 # https://github.com/activerecord-hackery/ransack/blob/main/lib/ransack/helpers/form_helper.rb
 
-class SortLink
+class SortLink # rubocop:disable Metrics/ClassLength
+  include ActionView::Helpers::OutputSafetyHelper
+  include ActionView::Helpers::TagHelper
+
   def initialize(url, attribute, args, params)
     @url            = url
     @params         = parameters_hash(params)
@@ -14,22 +17,19 @@ class SortLink
   end
 
   def up_arrow
-    I18n.t '.up_arrow_html'
+    tag.i(class: 'fas fa-chevron-up')
   end
 
   def down_arrow
-    I18n.t '.down_arrow_html'
+    tag.i(class: 'fas fa-chevron-down')
   end
 
   def default_arrow
-    I18n.t '.default_arrow_html'
+    ''
   end
 
   def name
-    [ERB::Util.h(@label_text), order_indicator]
-      .compact
-      .join('&nbsp;'.freeze)
-      .html_safe
+    safe_join([ERB::Util.h(@label_text), ' ', order_indicator])
   end
 
   def url_options
@@ -39,11 +39,7 @@ class SortLink
   end
 
   def html_options(args)
-    if args.empty?
-      html_options = @options
-    else
-      html_options = extract_options_and_mutate_args!(args)
-    end
+    html_options = args.empty? ? @options : extract_options_and_mutate_args!(args)
 
     html_options.merge(
       class: [['sort_link'.freeze, @current_dir], html_options[:class]]
@@ -68,7 +64,7 @@ class SortLink
   end
 
   def existing_sort_direction(field = @field)
-    return unless sort = detect_sort(@params[:search], field)
+    return unless (sort = detect_sort(@params[:search], field))
 
     sort.split(' ')[1]
   end
@@ -110,14 +106,13 @@ class SortLink
   def recursive_sort_params_build(fields)
     return [] if fields.empty?
 
-    [parse_sort(fields[0])] + recursive_sort_params_build(fields.drop 1)
+    [parse_sort(fields[0])] + recursive_sort_params_build(fields.drop(1))
   end
 
   def parse_sort(field)
     attr_name, new_dir = field.to_s.split(/\s+/)
-    if no_sort_direction_specified?(new_dir)
-      new_dir = detect_previous_sort_direction_and_invert_it(attr_name)
-    end
+    inverted = detect_previous_sort_direction_and_invert_it(attr_name)
+    new_dir = inverted if no_sort_direction_specified?(new_dir)
     "#{attr_name} #{new_dir}"
   end
 
@@ -126,7 +121,7 @@ class SortLink
   end
 
   def detect_previous_sort_direction_and_invert_it(attr_name)
-    if sort_dir = existing_sort_direction(attr_name)
+    if (sort_dir = existing_sort_direction(attr_name))
       direction_text(sort_dir)
     else
       default_sort_order(attr_name) || 'asc'.freeze

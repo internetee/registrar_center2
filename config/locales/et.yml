@@ -1,7 +1,4 @@
 et:
-  up_arrow_html: '<i class="fas fa-chevron-up"></i>'
-  down_arrow_html: '<i class="fas fa-chevron-down"></i>'
-  default_arrow_html: ''
   sign_in: "Sisene"
   sign_out: "Logi välja"
   back: "Tagasi"

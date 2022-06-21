@@ -73,7 +73,7 @@ class BulkActionsController < BaseController
   end
 
   def parse_csv(params)
-    return unless params.present?
+    return if params.blank?
 
     csv = CSV.parse(Base64.decode64(params), headers: true, col_sep: ';')
     domains = []

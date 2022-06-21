@@ -1,5 +1,7 @@
 module Auth
   class AuthController < ApplicationController
+    before_action :require_no_authentication, only: :create
+
     def create
       auth_info = block_given? ? yield : user_payload
       conn = ApiConnector::Auth::AuthChecker.new(**auth_info)

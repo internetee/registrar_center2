@@ -15,6 +15,7 @@ class ApiConnector
 
       private
 
+      # rubocop:disable Metrics/MethodLength
       def domain_params(payload)
         {
           domain: {
@@ -23,12 +24,21 @@ class ApiConnector
             registrant: payload[:registrant][:code],
             period_unit: payload[:period][-1].to_s,
             period: payload[:period].to_i,
-            nameservers_attributes: payload[:nameservers].map { |n| n.extract!(:hostname, :ipv4, :ipv6) },
-            admin_contacts: payload[:contacts].select { |c| c[:type] == 'admin' }.pluck(:code),
-            tech_contacts: payload[:contacts].select { |c| c[:type] == 'tech' }.pluck(:code),
+            nameservers_attributes: ns_attrs(payload[:nameservers]),
+            admin_contacts: contacts(payload[:contacts], 'admin'),
+            tech_contacts: contacts(payload[:contacts], 'tech'),
             dnskeys_attributes: payload[:dns_keys],
           },
         }
+      end
+      # rubocop:enable Metrics/MethodLength
+
+      def ns_attrs(nameservers)
+        nameservers.map { |n| n.extract!(:hostname, :ipv4, :ipv6) }
+      end
+
+      def contacts(contacts, type)
+        contacts.select { |c| c[:type] == type }.pluck(:code)
       end
     end
   end

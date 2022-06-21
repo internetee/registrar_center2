@@ -21,6 +21,7 @@ class ApiConnector
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def request(url:, method:, params: nil, headers: nil)
     request = faraday_request(url: url, headers: headers)
     response = if %w[get].include? method
@@ -47,6 +48,7 @@ class ApiConnector
     OpenStruct.new(body: { code: 503, message: e.message,
                            data: {} }, success: false)
   end
+  # rubocop:enable Metrics/MethodLength
 
   def generate_token(username:, password:)
     Base64.urlsafe_encode64("#{username}:#{password}")
@@ -90,5 +92,4 @@ class ApiConnector
   def url_with_id(id)
     "#{endpoint_url}/#{id}"
   end
-
 end

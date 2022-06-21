@@ -17,18 +17,20 @@ module ApplicationHelper
 
   def back_link
     link_to :back, class: 'back-link' do
-      html = "<i class='fas fa-arrow-left'></i>"
-      html += "<span>#{t(:back)}</span>"
-      html.html_safe
+      out = []
+      out << tag.i(nil, class: 'fas fa-arrow-left')
+      out << tag.span(t(:back))
+      safe_join(out)
     end
   end
 
   def toggle_filter
     button_tag(data: { toggle: 'filters' }, type: '', class: 'button button--toggle') do
-      html = "<span>#{t(:open_filter)}</span>"
-      html += "<span>#{t(:close_filter)}</span>"
-      html += '<i class="fas fa-filter"></i>'
-      html.html_safe
+      out = []
+      out << tag.span(t(:open_filter))
+      out << tag.span(t(:close_filter))
+      out << tag.i(nil, class: 'fas fa-filter')
+      safe_join(out)
     end
   end
 
@@ -39,7 +41,7 @@ module ApplicationHelper
 
   def icon_link_to(cls, url, html_options = {})
     link_to(url, html_options) do
-      content_tag(:i, nil, class: cls)
+      tag.i(nil, class: cls)
     end
   end
 
@@ -57,14 +59,11 @@ module ApplicationHelper
   end
 
   def tooltip(text)
-    return unless text.present?
+    return if text.blank?
 
-    content_tag :div, class: 'tooltip',
-                      data: { 'tippy-content': text } do
-      html = <<-HTML
-        <i class="fas fa-question"></i>
-      HTML
-      html.html_safe
+    tag :div, class: 'tooltip',
+              data: { 'tippy-content': text } do
+      tag.i(nil, class: 'fas fa-question')
     end
   end
 

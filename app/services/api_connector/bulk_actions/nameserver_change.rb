@@ -18,14 +18,12 @@ class ApiConnector
       def nameserver_params(payload)
         {
           data: {
-            type: 'nameserver',
-            id: payload[:id],
+            type: 'nameserver', id: payload[:id],
             domains: payload[:domains],
             attributes: {
               hostname: payload[:new_hostname],
-              ipv4: payload[:ipv4],
-              ipv6: payload[:ipv6],
-            },
+              ipv4: payload[:ipv4], ipv6: payload[:ipv6]
+            }
           },
         }
       end
