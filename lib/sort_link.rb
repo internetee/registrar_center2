@@ -3,6 +3,8 @@
 
 class SortLink # rubocop:disable Metrics/ClassLength
   include ActionView::Helpers::OutputSafetyHelper
+  include ActionView::Helpers::TagHelper
+
   def initialize(url, attribute, args, params)
     @url            = url
     @params         = parameters_hash(params)
@@ -15,20 +17,19 @@ class SortLink # rubocop:disable Metrics/ClassLength
   end
 
   def up_arrow
-    I18n.t('.up_arrow_html').html_safe
+    tag.i(class: 'fas fa-chevron-up')
   end
 
   def down_arrow
-    I18n.t('.down_arrow_html').html_safe
+    tag.i(class: 'fas fa-chevron-down')
   end
 
   def default_arrow
-    I18n.t('.default_arrow_html').html_safe
+    ''
   end
 
   def name
-    out = [ERB::Util.h(@label_text), order_indicator].compact
-    safe_join(out, ' ')
+    safe_join([ERB::Util.h(@label_text), ' ', order_indicator])
   end
 
   def url_options
