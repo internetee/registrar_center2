@@ -92,7 +92,6 @@ class ApplicationController < ActionController::Base
                               registrar_name: data[:registrar_name],
                               role: data[:roles].first,
                               legaldoc_mandatory: data[:legaldoc_mandatory],
-                              balance: data[:balance],
                               token: token,
                               abilities: data[:abilities] }, expires_in: 2.hours)
     uuid
