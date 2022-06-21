@@ -19,16 +19,18 @@
                         <%= render 'account/partials/linked_users' %>
                     </div>
                 </div>
-                <% if can? :manage, 'balance_auto_reload' %>
+            </div>
+            <% if can? :manage, 'balance_auto_reload' %>
+                <div class="row balance_reload">
                     <div class="col-xs-12 col-md-6">
                         <div class="paper">
                             <%= render 'account/partials/balance_reload' %>
                         </div>
                     </div>
-                <% end %>
-            </div>
+                </div>
+                <%= render 'account/partials/balance_reload_form' %>
+            <% end %>
         </div>
     </div>
 </div>
 <%= render 'account/partials/details_form' %>
-<%= render 'account/partials/balance_reload_form' %>

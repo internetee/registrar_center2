@@ -61,8 +61,7 @@ module ApplicationHelper
   def tooltip(text)
     return if text.blank?
 
-    tag :div, class: 'tooltip',
-              data: { 'tippy-content': text } do
+    tag.div(class: 'tooltip', data: { 'tippy-content': text }) do
       tag.i(nil, class: 'fas fa-question')
     end
   end
