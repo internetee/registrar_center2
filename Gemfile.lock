@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 425581295d59839e1c4c19a0f4482886d1e9f373
+  revision: 9e54d590f9ba5009e345aacd6d04555831ac3c99
   branch: master
   specs:
     faker (2.21.0)
@@ -8,11 +8,11 @@ GIT
 
 GIT
   remote: https://github.com/internetee/omniauth-tara.git
-  revision: cec845ec3794532144c4976104a07e206d759aa6
+  revision: cc4802a40a62a2ce4dcf02ec290bd6787216d656
   specs:
-    omniauth-tara (0.3.0)
+    omniauth-tara (0.3.1)
       addressable (~> 2.5)
-      omniauth (~> 1.3)
+      omniauth (>= 1.3, < 2.1)
       openid_connect (~> 1.1)
 
 GEM
@@ -113,7 +113,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    cssbundling-rails (1.1.0)
+    cssbundling-rails (1.1.1)
       railties (>= 6.0.0)
     debug (1.5.0)
       irb (>= 1.3.6)
@@ -144,7 +144,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.0.2)
+    jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
     json (2.6.2)
     json-jwt (1.13.0)
@@ -162,7 +162,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    minitest (5.15.0)
+    minitest (5.16.1)
     msgpack (1.5.2)
     net-imap (0.2.3)
       digest
@@ -181,12 +181,13 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
-    omniauth (1.9.1)
+    omniauth (2.0.4)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-rails_csrf_protection (0.1.2)
+      rack-protection
+    omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
-      omniauth (>= 1.3.1)
+      omniauth (~> 2.0)
     openid_connect (1.3.0)
       activemodel
       attr_required (>= 1.0.0)
@@ -210,6 +211,8 @@ GEM
       httpclient
       json-jwt (>= 1.11.0)
       rack (>= 2.1.0)
+    rack-protection (2.2.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.3)
@@ -229,7 +232,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (7.0.3)
       actionpack (= 7.0.3)
@@ -331,7 +334,7 @@ GEM
     wkhtmltopdf-binary (0.12.6.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   x86_64-linux
@@ -349,6 +352,7 @@ DEPENDENCIES
   fuubar
   jbuilder
   jsbundling-rails
+  omniauth (>= 2.0.0)
   omniauth-rails_csrf_protection
   omniauth-tara!
   pagy
@@ -373,4 +377,4 @@ RUBY VERSION
    ruby 3.1.1p18
 
 BUNDLED WITH
-   2.3.15
+   2.3.16
