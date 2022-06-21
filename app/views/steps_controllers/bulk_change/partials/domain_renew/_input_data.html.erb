@@ -9,12 +9,6 @@
                         </div>
                     </div>
                     <div class="form--row">
-                        <%= form.label :current_balance, t('steps_controllers.bulk_change.current_balance'), class: 'form--label' %>
-                        <div class="form--field">
-                            <strong><%= "#{currency(current_user.balance[:amount].to_f)} #{current_user.balance[:currency]}" %></strong>
-                        </div>
-                    </div>
-                    <div class="form--row">
                         <%= form.label :expire_date, t('steps_controllers.bulk_change.expire_date_until'), class: 'form--label' %>
                         <div class="form--field">
                             <div class="form--input">
