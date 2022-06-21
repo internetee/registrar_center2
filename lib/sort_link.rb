@@ -15,19 +15,19 @@ class SortLink # rubocop:disable Metrics/ClassLength
   end
 
   def up_arrow
-    I18n.t '.up_arrow_html'
+    I18n.t('.up_arrow_html').html_safe
   end
 
   def down_arrow
-    I18n.t '.down_arrow_html'
+    I18n.t('.down_arrow_html').html_safe
   end
 
   def default_arrow
-    I18n.t '.default_arrow_html'
+    I18n.t('.default_arrow_html').html_safe
   end
 
   def name
-    out = [ERB::Util.h(@label_text), order_indicator.html_safe].compact
+    out = [ERB::Util.h(@label_text), order_indicator].compact
     safe_join(out, ' ')
   end
 
