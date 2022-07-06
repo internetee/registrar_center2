@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'bulk changing registrar' do
+RSpec.feature 'bulk domain transfer' do
   include_context 'Common context with valid login'
 
   after do
@@ -9,7 +9,7 @@ RSpec.feature 'bulk changing registrar' do
 
   scenario 'with valid batch file uploaded' do
     visit new_domain_bulk_change_path
-    find('#bulk_change_type').find(:option, 'Replace registrar').select_option
+    find('#bulk_change_type').find(:option, 'Transfer domains').select_option
     click_button 'Next step'
     expect(page).to have_content('Upload CSV file')
 
@@ -21,7 +21,7 @@ RSpec.feature 'bulk changing registrar' do
     expect(page).to have_content('Please confirm')
 
     click_button 'Confirm'
-    expect(page).to have_content('successfully transferred')
+    expect(page).to have_content('domains transferred')
     expect(page).to have_current_path(domains_path)
   end
 end
