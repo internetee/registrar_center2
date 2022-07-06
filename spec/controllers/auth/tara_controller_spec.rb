@@ -42,4 +42,10 @@ RSpec.describe Auth::TaraController, type: :controller do
     expect(flash[:alert]).to match(/Already authenticated/)
     expect(response).to redirect_to(root_path)
   end
+
+  it 'redirects to login page when cancel' do
+    send(:get, 'cancel')
+
+    expect(response).to redirect_to(login_url)
+  end
 end

@@ -1,4 +1,3 @@
-require 'csv'
 class DomainListCsvPresenter < CsvPresenter
   def to_s
     table = CSV::Table.new([header])

@@ -11,6 +11,13 @@ RSpec.feature 'viewing domains' do
     end
   end
 
+  scenario 'with internal server error response' do
+    VCR.use_cassette 'controllers/domains_controller/index-internal-server-error' do
+      visit domains_path
+      expect(page).to have_content("We're sorry, but something went wrong")
+    end
+  end
+
   scenario 'with validation of legal doc types' do
     VCR.use_cassette 'controllers/domains_controller/index', match_requests_on: %i[path method] do
       visit delete_domain_path(domain_name: 'example.ee')
