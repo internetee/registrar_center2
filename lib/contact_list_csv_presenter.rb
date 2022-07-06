@@ -1,14 +1,9 @@
 require 'csv'
-class ContactListCsvPresenter
-  def initialize(contacts:, view:)
-    @contacts = contacts
-    @view = view
-  end
-
+class ContactListCsvPresenter < CsvPresenter
   def to_s
     table = CSV::Table.new([header])
 
-    contacts.each do |contact|
+    objects.each do |contact|
       table << contact_to_row(contact: OpenStruct.new(contact))
     end
 
@@ -43,6 +38,4 @@ class ContactListCsvPresenter
 
     CSV::Row.new([], row)
   end
-
-  attr_reader :contacts, :view
 end

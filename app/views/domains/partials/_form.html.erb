@@ -15,11 +15,10 @@
                                                              v: { 'type' => ApplicationHelper::CONTACT_TYPE[:tech] },
                                                              removable: true %>
             </template>
-            <% default_count = Rails.configuration.customization[:default_admin_contacts_count] %>
             <% @domain_params[:contacts_attributes].each do |k, v| %>
                 <%= render 'domains/partials/form/contacts', k: k.to_i + 1,
                                                              v: v,
-                                                             removable: k.to_i >= default_count %>
+                                                             removable: true %>
             <% end %>
             <!-- Inserted elements will be injected before that target. -->
             <div data-nested-form-target="contactTarget"></div>
@@ -30,11 +29,10 @@
                                                                 v: '',
                                                                 removable: true %>
             </template>
-            <% default_count = Rails.configuration.customization[:default_nameservers_count] %>
             <% @domain_params[:nameservers_attributes].each do |k, v| %>
                 <%= render 'domains/partials/form/nameservers', k: k.to_i + 1,
                                                                 v: v,
-                                                                removable: k.to_i >= default_count %>
+                                                                removable: true %>
             <% end %>
             <!-- Inserted elements will be injected before that target. -->
             <div data-nested-form-target="nameserverTarget"></div>
@@ -48,7 +46,7 @@
             <% @domain_params[:dnskeys_attributes].each do |k, v| %>
                 <%= render 'domains/partials/form/dns_keys', k: k.to_i + 1,
                                                              v: v,
-                                                             removable: k.to_i >= 1 %>
+                                                             removable: true %>
             <% end %>
             <!-- Inserted elements will be injected before that target. -->
             <div data-nested-form-target="dnskeyTarget"></div>

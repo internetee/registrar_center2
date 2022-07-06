@@ -40,16 +40,30 @@ export default class extends Controller {
       let type = e.target.dataset.value;
       const wrapper = e.target.closest(this[type + 'SelectorWrapperValue']);
       if (wrapper.dataset.newRecord === 'true') {
-          wrapper.remove()
+          wrapper.remove();
       } else {
-          wrapper.style.display = 'none'
-          const input = wrapper.querySelector("input[name*='action']")
-          input.value = 'rem'
+          wrapper.style.display = 'none';
+          const input = wrapper.querySelector("input[name*='action']");
+          input.value = 'rem';
       }
+      this.restartCount(type);
   }
   toggleContactType(e){
       e.preventDefault();
       const label = e.target.closest(this.contactSelectorWrapperValue).querySelector(".form--label");
       label.innerHTML = e.target.dataset.value;
+  }
+  restartCount(type) {
+    let count = 1;
+    document.querySelectorAll(this[type + 'SelectorWrapperValue']).forEach(elem => {
+      if (elem.style.display != 'none') {
+        let header = elem.querySelector("h3").innerHTML.replace(/[0-9]/g, count > 1 ? count : '');
+        elem.querySelector("h3").innerHTML = header;
+        if (count < 2) {
+          elem.querySelector(".nested_form_delete_link").remove();
+        }
+        count += 1;
+      }
+    });
   }
 }

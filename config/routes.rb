@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     resources :domains, except: %i[destroy update show edit]
 
     resources :bulk_change, only: %i[show update], controller: 'steps_controllers/bulk_change'
+    get 'steps_controllers/bulk_change/cancel', to: 'steps_controllers/bulk_change#cancel',
+                                                as: :cancel_wizard
     post 'bulk_actions/contact_replace', to: 'bulk_actions#contact_replace',
                                          as: :contact_bulk_replace
     post 'bulk_actions/admin_contact_replace', to: 'bulk_actions#admin_contact_replace',

@@ -33,7 +33,7 @@ et:
   filter: "Filtreeri"
   clear_filter: "Tühista filter"
   no_translation: "tõlge pole saadaval"
-  session_expired: "Sessioon on aegunud"
+  session_expired: "Sessioon on aegunud. Jätkamiseks logige sisse."
   months:
     one: "1 kuu"
     other: "%{count} kuud"
@@ -237,19 +237,20 @@ et:
       domain_name: "Domeeni nimi"
       legal_doc: "Domeeni üleviimise avaldus"
       transferred: 
+        zero: "Ühtegi domeeni pole üle viidud."
         one: "Domeen on edukalt üle viidud."
         other: "%{count} domeeni on edukalt üle viidud."
       failed: " Ebaõnnestunud domeenid: %{failed}"
 
   steps_controllers:
     bulk_change:
-      title: "Domeeni massmuudatus"
+      title: "Domeenide massmuudatus"
       select_type: "Vali muudatus"
       next_step: "Järgmine samm"
       tech_contact_change: "Tehnilise kontakti vahetus"
       admin_contact_change: "Admin kontakti vahetus"
       nameserver_change: "Nimiserveri vahetus"
-      registrar_change: "Registripidaja vahetus"
+      registrar_change: "Domeenide üleviimine"
       domain_renew: "Domeenide pikendamine"
       select_type_icon_html: '<i class="fas fa-pencil-alt"></i>'
       input_data: "Lisa andmed"
@@ -293,7 +294,7 @@ et:
         - ['Tehnilise kontakti vahetus', 'tech-contact-change']
         - ['Admin kontakti vahetus', 'admin-contact-change']
         - ['Nimiserveri vahetus', 'nameserver-change']
-        - ['Registripidaja vahetus', 'registrar-change']
+        - ['Domeenide üleviimine', 'registrar-change']
         - ['Domeenide pikendamine', 'domain-renew']
   
   contacts:

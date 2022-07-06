@@ -128,7 +128,7 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
   # rubocop:enable Metrics/MethodLength
 
   def format_csv
-    raw_csv = ContactListCsvPresenter.new(contacts: @contacts,
+    raw_csv = ContactListCsvPresenter.new(objects: @contacts,
                                           view: view_context).to_s
     send_data raw_csv, filename: "#{filename}.csv", type: "#{Mime[:csv]}; charset=utf-8"
   end

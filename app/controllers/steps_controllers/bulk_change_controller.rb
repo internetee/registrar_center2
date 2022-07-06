@@ -8,8 +8,6 @@ module StepsControllers
     before_action :check_step_allowance, only: :show
     after_action :save_bulk_change_cache, only: :update
 
-    CSV_COL_SEPARATOR = ';'.freeze
-
     FORM_STEP_REQUIRED_PARAMS = {
       select_type: {},
       input_data: { 'tech-contact-change': %i[current_contact_id new_contact_id],
@@ -28,8 +26,7 @@ module StepsControllers
       when 'registrar-change', 'nameserver-change'
         @file_uploaded = @attrs[:batch_file_name].present?
         if @file_uploaded
-          csv = CSV.parse(Base64.decode64(@attrs[:batch_file_encoded]), headers: true,
-                                                                        col_sep: CSV_COL_SEPARATOR)
+          csv = CSV.parse(Base64.decode64(@attrs[:batch_file_encoded]), headers: true)
           @size = csv.size
         end
       when 'domain-renew'
@@ -50,6 +47,16 @@ module StepsControllers
         redirect_to_next(next_step)
       end
     end
+
+    def cancel
+      reset_bulk_change_cache
+      redirect_to new_domain_bulk_change_path
+    end
+
+    # def finish_wizard_path
+    #   reset_bulk_change_cache
+    #   domains_path
+    # end
 
     private
 
@@ -96,11 +103,6 @@ module StepsControllers
 
       attrs.merge(bulk_change_params)
     end
-
-    # def finish_wizard_path
-    #   reset_bulk_change_cache
-    #   domains_path
-    # end
 
     def check_step_allowance
       redirect_to domains_path and return unless @attrs && step_allowed?

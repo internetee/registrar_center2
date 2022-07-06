@@ -1,14 +1,9 @@
 require 'csv'
-class DomainListCsvPresenter
-  def initialize(domains:, view:)
-    @domains = domains
-    @view = view
-  end
-
+class DomainListCsvPresenter < CsvPresenter
   def to_s
     table = CSV::Table.new([header])
 
-    domains.each do |domain|
+    objects.each do |domain|
       table << domain_to_row(domain: OpenStruct.new(domain))
     end
 
@@ -41,6 +36,4 @@ class DomainListCsvPresenter
 
     CSV::Row.new([], row)
   end
-
-  attr_reader :domains, :view
 end

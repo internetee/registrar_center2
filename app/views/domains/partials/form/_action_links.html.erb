@@ -2,5 +2,6 @@
                               'data-value': type %>
 <% if removable %>
     <%= link_to t(:delete), '#', 'data-action': 'nested-form#remove',
-                                'data-value': type %>
+                                'data-value': type,
+                                class: 'nested_form_delete_link' %>
 <% end %>

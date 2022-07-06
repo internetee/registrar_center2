@@ -205,7 +205,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   def parse_csv(params)
     return if params.blank?
 
-    csv = CSV.parse(Base64.decode64(params), headers: true, col_sep: ';')
+    csv = CSV.parse(Base64.decode64(params), headers: true)
     transfers = []
     csv.each do |row|
       transfers << { domain_name: row['Domain'], transfer_code: row['Transfer code'] }
@@ -214,7 +214,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   end
 
   def format_csv
-    raw_csv = DomainListCsvPresenter.new(domains: @domains,
+    raw_csv = DomainListCsvPresenter.new(objects: @domains,
                                          view: view_context).to_s
     filename = "Domains_#{l(Time.zone.now, format: :filename)}.csv"
     send_data raw_csv, filename: filename, type: "#{Mime[:csv]}; charset=utf-8"
@@ -224,7 +224,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     if response[:failed].size == 1 && response[:success].empty?
       flash.alert = @response[:failed].first[:errors][:msg]
     else
-      failed = response[:failed].pluck(:domain_name).join(', ')
+      failed = response[:failed].pluck(:domain_name).compact.join(', ')
       notice = t('.transferred', count: response[:success].size)
       notice += t('.failed', failed: failed) unless failed.empty?
       flash.notice = notice
