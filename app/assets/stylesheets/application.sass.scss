@@ -81,10 +81,12 @@ $fa-font-path: "font-awesome/webfonts";
   left: 0;
   bottom: 0;
 }
+/* Fix issue with overlapping dropdown */
 div.choices__list--dropdown  {
   z-index: 100;
 }
 
+/* Fix issue with not enough space for choice items */
 @media (min-width: 640px) {
   .choices__list--dropdown .choices__item--selectable, .choices__list[aria-expanded] .choices__item--selectable {
       padding-right: 50px;

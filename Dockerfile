@@ -21,5 +21,4 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5
 COPY package.json yarn.lock ./
 
 # RUN yarn cache clean
-RUN yarn install --check-files
-
+RUN yarn install --check-files && yarn sass-migrator division **/*.scss
