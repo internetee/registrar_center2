@@ -5,25 +5,23 @@
         </td>
     </tr>
 </table>
-<% if @domains.size.positive? %>
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="30%"><%= sort_link(nil, :name, t('contacts.show.domain_name')) %></th>
+            <th><%= sort_link(nil, :registrar_name) %></th>
+            <th><%= sort_link(nil, :valid_to) %></th>
+            <th><%= t('contacts.show.roles') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @domains.each do |domain| %>
             <tr>
-                <th width="30%"><%= sort_link(nil, :name, t('contacts.show.domain_name')) %></th>
-                <th><%= sort_link(nil, :registrar_name) %></th>
-                <th><%= sort_link(nil, :valid_to) %></th>
-                <th><%= t('contacts.show.roles') %></th>
+                <td><%= link_to domain[:name], domain_path(domain_name: domain[:name]) %></td>
+                <td><%= domain[:registrar][:name] %></td>
+                <td><%=  l(domain[:valid_to].to_datetime, format: :short) %></td>
+                <td><%= domain[:roles].join(', ') %></td>
             </tr>
-        </thead>
-        <tbody>
-            <% @domains.each do |domain| %>
-                <tr>
-                    <td><%= link_to domain[:name], domain_path(domain_name: domain[:name]) %></td>
-                    <td><%= domain[:registrar][:name] %></td>
-                    <td><%=  l(domain[:valid_to].to_datetime, format: :short) %></td>
-                    <td><%= domain[:roles].join(', ') %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-<% end %>
+        <% end %>
+    </tbody>
+</table>

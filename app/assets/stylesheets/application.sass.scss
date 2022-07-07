@@ -81,8 +81,9 @@ $fa-font-path: "font-awesome/webfonts";
   left: 0;
   bottom: 0;
 }
+
 /* Fix issue with overlapping dropdown */
-div.choices__list--dropdown  {
+.choices__list--dropdown, .choices__list[aria-expanded] {
   z-index: 100;
 }
 

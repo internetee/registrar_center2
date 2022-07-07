@@ -64,7 +64,7 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         run: |
           cp config/application.yml.sample config/application.yml
-          yarn install --check-files
+          yarn install --check-files && yarn sass-migrator division **/*.scss
           bundle exec rails assets:precompile
           bundle exec rspec
       - name: Save coverage
