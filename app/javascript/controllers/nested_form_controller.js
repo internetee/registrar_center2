@@ -59,9 +59,6 @@ export default class extends Controller {
       if (elem.style.display != 'none') {
         let header = elem.querySelector("h3").innerHTML.replace(/[0-9]/g, count > 1 ? count : '');
         elem.querySelector("h3").innerHTML = header;
-        if (count < 2) {
-          elem.querySelector(".nested_form_delete_link").remove();
-        }
         count += 1;
       }
     });

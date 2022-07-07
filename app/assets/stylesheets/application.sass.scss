@@ -72,7 +72,24 @@ $fa-font-path: "font-awesome/webfonts";
 
 @import "config/animations";
 
+/* To make working required attribute */
+.choices[data-type*="select-one"] select.choices__input, .not_visible {
+  display: block !important;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+div.choices__list--dropdown  {
+  z-index: 100;
+}
 
+@media (min-width: 640px) {
+  .choices__list--dropdown .choices__item--selectable, .choices__list[aria-expanded] .choices__item--selectable {
+      padding-right: 50px;
+  }
+}
 
 
 

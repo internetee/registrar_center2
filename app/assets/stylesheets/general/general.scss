@@ -333,15 +333,3 @@ h4 {
   color: $red;
 }
 
-/* To make working required attribute */
-.choices[data-type*="select-one"] select.choices__input, .not_visible {
-  display: block !important;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-div.choices__list--dropdown  {
-  z-index: 100;
-}
