@@ -20,6 +20,15 @@ shared:
     redirect_uri: 'https://registrar-center.test/auth/tara/callback'
     ory_hydra_private: 'https://test-auth.eeid.ee/hydra-private'
     scope: ['openid', 'idcard', 'mid', 'smartid']
+    discovery: false
+    # use keys only if discovery false
+    keys: 
+      use: sig
+      kty: RSA
+      kid: public:dd53c3e2-be35-453f-9191-6212d7b4b9cb
+      alg: RS256
+      n: syGON9_XSfchHoenhLgLW3cEdwE_7e0QVG5wK6YROEXIOAOktIglBc7gQ1wvADboJyB7py_Oy7-MlQfIju0YfhYbmI0eK9yzPmoqNZJDrMa0jQ21PsjMPyw8HX9kH8wQZpqZgze4EVW3WXTkUWLwyyneI3mN-rBAus0REM8To5MhLbUUusr6lPwKjzexe2Lee06l9xNEQquCWWa7ambBrf5vieouNp_xpJeP03G0DDtJcirgguOKSeIej3F-ugZtco1h5AjYVfXDU2jqjfpsMSQ-rVmaq52n-695-crGg8mLlZvF4hhbWU5CoASufjivOv4ynsFB5kvdDQvVi2fwZ3F3xYVoIqAiu8fTg-PYG3OHIdTayMBYD5jYWlZTJO1sn7ALm5bZbrUhG92DcrFccrW1lWK0S5airSLTzfPVd-5bDFkY9y9SckwKfibf3XMApo8FFny_leXeeIBEUqzVc4FfxT_lTFQvD2XilMZKywuiWJdQfE8cYyi7NjY3f_2nfZ9lwt1G387iftNF2cMbQAbmbu49Y-RrNXwtFcRaamfPNNtdOVIiBQuaLF1HJCdjNFa6H4dxT6LDPT9d0qm_LCNC4rPsQPuXMghghaukUhIYUoavJRedt45zuP6Q86Vrf0JuXxThXd7SEsbcVLNWgOmLP9a7ZWfDuvby0Xj4dsM
+      e: AQAB
 
 test:
   # NB! change this data only for real time Api requests and recording VCR responces,

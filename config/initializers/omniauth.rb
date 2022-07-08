@@ -21,6 +21,7 @@ secret = Rails.configuration.customization.dig(:tara, :secret)
 redirect_uri = Rails.configuration.customization.dig(:tara, :redirect_uri)
 scheme = Rails.configuration.customization.dig(:tara, :scheme)
 scope = Rails.configuration.customization.dig(:tara, :scope)
+discovery = Rails.configuration.customization.dig(:tara, :discovery)
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider 'tara', {
@@ -32,7 +33,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     send_scope_to_token_endpoint: false,
     send_nonce: true,
     issuer: issuer,
-    discovery: true,
+    discovery: discovery,
 
     client_options: {
       scheme: scheme,
