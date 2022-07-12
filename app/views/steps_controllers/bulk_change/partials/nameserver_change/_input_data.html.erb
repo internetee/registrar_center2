@@ -68,7 +68,7 @@
                                 </ul>
                                 <%= form.label :batch_file, class: 'file' do %>
                                     <%= form.file_field :batch_file, class: 'not_visible',
-                                                                      required: !@file_uploaded,
+                                                                      required: false,
                                                                       accept: 'text/csv' %>
                                     <i class="fas fa-folder-open"></i>
                                     <strong><%= t(:choose_file) %></strong>
