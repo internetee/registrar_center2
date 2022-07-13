@@ -9,9 +9,7 @@
             </div>
             <%= form.hidden_field :current_contact_id, value: @attrs[:current_contact_id] %>
             <%= form.hidden_field :new_contact_id, value: @attrs[:new_contact_id] %>
-            <div class="form--actions">
-                  <%= form.submit t('steps_controllers.bulk_change.confirm'), class: 'button button--primary' %>
-            </div>
+            <%= render 'steps_controllers/bulk_change/partials/form_actions', action: 'confirm', form: form %>
         <% end %>
     </div>
 </div>

@@ -12,7 +12,7 @@ en:
   add_more: "Add more"
   delete: "Delete"
   add: "Add"
-  pay: "LinkPay"
+  pay: "Pay"
   download: "Download"
   send: "Send"
   cancel: "Cancel"
@@ -29,11 +29,11 @@ en:
   at: "@"
   download_csv: "Download CSV"
   download_pdf: "Download PDF"
-  bulk_change: "Bulk change"
+  bulk_change: "Bulk operations"
   filter: "Filter"
   clear_filter: "Clear filter"
   no_translation: "translation not available"
-  session_expired: "Your session has expired"
+  session_expired: "Your session has expired. Please sign in to continue."
   months:
     one: "1 month"
     other: "%{count} months"
@@ -236,19 +236,20 @@ en:
       domain_name: "Domain name"
       legal_doc: "Legal document"
       transferred: 
+        zero: "No domains transferred."
         one: "Domain has been successfully transferred."
         other: "%{count} domains have been successfully transferred."
       failed: " Failed domains: %{failed}"
 
   steps_controllers:
     bulk_change:
-      title: "Bulk change"
+      title: "Bulk operations"
       select_type: "Select type"
       next_step: "Next step"
       tech_contact_change: "Replace technical contact"
       admin_contact_change: "Replace admin contact"
       nameserver_change: "Replace nameserver"
-      registrar_change: "Replace registrar"
+      registrar_change: "Transfer domains"
       domain_renew: "Renew domains"
       select_type_icon_html: '<i class="fas fa-pencil-alt"></i>'
       input_data: 'Input data'
@@ -292,7 +293,7 @@ en:
         - ['Replace technical contact', 'tech-contact-change']
         - ['Replace admin contact', 'admin-contact-change']
         - ['Replace nameserver', 'nameserver-change']
-        - ['Replace registrar', 'registrar-change']
+        - ['Transfer domains', 'registrar-change']
         - ['Renew domains', 'domain-renew']
 
 
@@ -411,7 +412,7 @@ en:
       threshold: "Threshold"
       auto_reload_tooltip: "must be greater than or equal to %{min}"
       linked_users: "Linked users"
-      user: "Username"
+      user: "User"
       role: "Role"
       switch: "Switch over"
       switch_warning_html: "Are you sure you want to switch over to user <span class = 'username'></span>?"

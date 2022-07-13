@@ -1,14 +1,8 @@
-require 'csv'
-class ActivityListCsvPresenter
-  def initialize(activities:, view:)
-    @activities = activities
-    @view = view
-  end
-
+class ActivityListCsvPresenter < CsvPresenter
   def to_s
     table = CSV::Table.new([header])
 
-    activities.each do |activity|
+    objects.each do |activity|
       table << activity_to_row(activity: OpenStruct.new(activity))
     end
 
@@ -39,6 +33,4 @@ class ActivityListCsvPresenter
 
     CSV::Row.new([], row)
   end
-
-  attr_reader :activities, :view
 end

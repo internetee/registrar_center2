@@ -35,6 +35,7 @@ export default class Select {
         this.options['itemSelectText'] = this.element.getAttribute('itemSelectText');
         this.options['shouldSort'] = false;
         this.options['silent'] = true;
+        this.options['allowHTML'] = true;
         this.options['noChoicesText'] = this.element.getAttribute('noChoicesText');
     }
 

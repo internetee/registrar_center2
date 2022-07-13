@@ -1,0 +1,10 @@
+<div class="form--actions">
+    <div class="form--actions__left">
+        <%= form.submit t("steps_controllers.bulk_change.#{action}"), class: 'button button--primary' %>
+    </div>
+    <% unless step == :select_type %>
+        <div class="form--actions__right">
+            <%= link_to t(:cancel), cancel_wizard_path %>
+        </div>
+    <% end %>
+</div>

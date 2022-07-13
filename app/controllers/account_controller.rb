@@ -96,7 +96,7 @@ class AccountController < BaseController
   end
 
   def format_csv
-    raw_csv = ActivityListCsvPresenter.new(activities: @activities,
+    raw_csv = ActivityListCsvPresenter.new(objects: @activities,
                                            view: view_context).to_s
     filename = "account_activities_#{Time.zone.now.to_formatted_s(:number)}.csv"
     send_data raw_csv, filename: filename, type: "#{Mime[:csv]}; charset=utf-8"

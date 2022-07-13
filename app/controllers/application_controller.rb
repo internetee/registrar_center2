@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
                               role: data[:roles].first,
                               legaldoc_mandatory: data[:legaldoc_mandatory],
                               token: token,
-                              abilities: data[:abilities] }, expires_in: 2.hours)
+                              abilities: data[:abilities] }, expires_in: 18.hours)
     uuid
   end
 

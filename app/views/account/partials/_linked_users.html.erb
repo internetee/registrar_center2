@@ -6,15 +6,13 @@
         <thead>
             <tr>
                 <th><%= t('account.show.user') %></th>
-                <th><%= t('account.show.roll') %></th>
                 <th class="table--action"><%= t('account.show.switch') %></th>
             </tr>
         </thead>
         <tbody>
             <% @account[:linked_users].each do |user| %>
                 <tr>
-                    <td><%= user[:username] %></td>
-                    <td><%= user[:role] %></td>
+                    <td><%= login_with_role(OpenStruct.new(user)) %></td>
                     <td class="table--action">
                         <%= link_to '<i class="fas fa-sign-in-alt"></i>'.html_safe, '#',
                                     'data-dialog': 'switch_user', 'data-user-id': user[:id],

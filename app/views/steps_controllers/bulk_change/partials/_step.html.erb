@@ -1,7 +1,7 @@
 <div class="col-md-2 col-xs-4">
     <% active = wizard_steps[..wizard_steps.index(step)].include?(wizard_step) || @attrs[:form_steps]&.include?(wizard_step) %>
     <div class="steps--item <%= 'steps--item__active' if active %>">
-        <%= t("steps_controllers.bulk_change.#{wizard_step}_icon_html") %>
+        <%= link_to_if active, t("steps_controllers.bulk_change.#{wizard_step}_icon_html"), wizard_path(wizard_step) %>
         <p><%= link_to_if active, t("steps_controllers.bulk_change.#{wizard_step}"), wizard_path(wizard_step) %></p>
     </div>
 </div>

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.1'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
@@ -85,7 +85,7 @@ group :test do
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'fuubar'
   gem 'selenium-webdriver'
-  gem 'simplecov', '0.17.1', require: false # CC last supported v0.17
+  gem 'simplecov', '0.21.2', require: false
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
