@@ -5,9 +5,10 @@
             <div class="form--row">
                 <div class="form--header">
                     <% if @attrs[:old_hostname].present? %>
-                        <h4><%= t('steps_controllers.bulk_change.ns_replace_confirm1', old_hostname: @attrs[:old_hostname], new_hostname: @attrs[:new_hostname] ) %></h4>
+                    <%= @size %>
+                        <h4><%= t('steps_controllers.bulk_change.ns_replace_confirm1', old_hostname: @attrs[:old_hostname], new_hostname: @attrs[:new_hostname], count: @size || 0) %></h4>
                     <% else %>
-                        <h4><%= t('steps_controllers.bulk_change.ns_replace_confirm2', hostname: @attrs[:new_hostname]) %></h4>
+                        <h4><%= t('steps_controllers.bulk_change.ns_replace_confirm2', hostname: @attrs[:new_hostname], count: @size || 0) %></h4>
                     <% end %>
                 </div>
             </div>
