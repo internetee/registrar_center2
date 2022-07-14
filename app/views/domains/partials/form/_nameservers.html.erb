@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="form--row">
-        <%= label_tag "domain_nameservers_#{k}_ipv4" , 'IPv4', class: 'form--label' %>
+        <%= label_tag "domain_nameservers_attributes_#{k}_ipv4" , 'IPv4', class: 'form--label' %>
         <div class="form--field">
             <div class="form--input">
                 <%= text_field_tag "domain[nameservers_attributes][#{k}][ipv4]", v['ipv4'], class: 'input' %>
