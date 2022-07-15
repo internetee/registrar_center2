@@ -257,7 +257,7 @@ en:
       make_changes: 'Make changes'
       make_changes_icon_html: '<i class="fas fa-check"></i>'
       missing_param: "Missing parameters: %{param}"
-      invalid_csv: "Invalid csv file - missing correct headers"
+      invalid_csv: "Invalid csv file - please make sure correct headers are in place and comma is used as a field delimiter"
       type: "bulk change type"
       tech_contact_replace_info: "Replace technical contact specified in 'Current contact ID' with the one in 'New contact ID' on any domain registered under this registrar"
       current_contact_id: "Current contact ID"

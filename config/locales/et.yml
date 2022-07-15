@@ -258,7 +258,7 @@ et:
       make_changes: "Teosta muudatus"
       make_changes_icon_html: '<i class="fas fa-check"></i>'
       missing_param: "Puuduvad parameetrid: %{param}"
-      invalid_csv: "Kehtetu csv-fail – puuduvad õiged päised"
+      invalid_csv: "Kehtetu csv-fail – palun kontrolli päiseid ning et veergude eraldajaks on koma"
       type: "muudatuse tüüp"
       tech_contact_replace_info: "Asendage jaotises 'Praeguse kontakti ID' määratud tehniline kontakt selle registripidaja all registreeritud domeenis jaotises 'Uue kontakti ID' olevaga"
       current_contact_id: "Praeguse kontakti ID"
