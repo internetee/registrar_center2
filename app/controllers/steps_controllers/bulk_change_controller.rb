@@ -4,7 +4,7 @@ module StepsControllers
     include Wicked::Wizard
 
     before_action :find_bulk_change_attributes
-    before_action :validate_params, only: :update
+    before_action :validate_params, :validate_csv, only: :update
     before_action :check_step_allowance, only: :show
     after_action :save_bulk_change_cache, only: :update
 
@@ -16,6 +16,11 @@ module StepsControllers
                     'registrar-change': [],
                     'domain-renew': %i[expire_date period] },
       make_changes: {},
+    }.freeze
+
+    REQUIRED_CSV_FILE_HEADER = {
+      'nameserver-change': ['Domain'],
+      'registrar-change': ['Domain', 'Transfer code'],
     }.freeze
 
     steps(*FORM_STEP_REQUIRED_PARAMS.keys) # :select_type, :input_data, :make_changes
@@ -61,11 +66,17 @@ module StepsControllers
     private
 
     def validate_params
-      respond_with_error(:type) and return if @attrs[:type].blank?
+      respond_with_error(:missing_param, :type) and return if @attrs[:type].blank?
 
       required_attrs = FORM_STEP_REQUIRED_PARAMS[step][@attrs[:type].to_sym] || []
       invalid_attrs = required_attrs.map { |a| a if @attrs[a].blank? }.compact
-      respond_with_error(invalid_attrs.first) unless invalid_attrs.empty?
+      respond_with_error(:missing_param, invalid_attrs.first) unless invalid_attrs.empty?
+    end
+
+    def validate_csv
+      expected_header = REQUIRED_CSV_FILE_HEADER[@attrs[:type].to_sym]
+      valid_header = check_csv_header(expected_header, @attrs[:batch_file])
+      respond_with_error(:invalid_csv) unless valid_header
     end
 
     def find_bulk_change_attributes
@@ -73,8 +84,8 @@ module StepsControllers
     end
 
     # rubocop:disable Metrics/MethodLength
-    def respond_with_error(param = nil)
-      msg = t('.missing_param', param: t(".#{param}"))
+    def respond_with_error(msg, param = nil)
+      msg = t(".#{msg}", param: t(".#{param}"))
       respond_to do |format|
         format.html do
           flash[:alert] = msg
@@ -140,5 +151,26 @@ module StepsControllers
       @attrs[:selected_domains] = @response.domains.pluck(:name)
       true
     end
+
+    def check_csv_header(expected_header, csv_file)
+      return true if csv_file.blank?
+
+      header = CSV.open(csv_file, 'r', &:first)
+      valid_csv = expected_header == header & expected_header
+      Rails.logger.info "Invalid Header: #{header} Expected Header: #{expected_header}" unless valid_csv
+      valid_csv
+    end
+
+    # def sniff_csv_delimiter(csv_file)
+    #   return true if csv_file.blank?
+
+    #   first_line = File.open(csv_file).first
+    #   return true unless first_line
+
+    #   snif = {}
+    #   snif[VALID_CSV_DELIMITER] = first_line.count(VALID_CSV_DELIMITER)
+    #   snif = snif.sort { |a, b| b[1] <=> a[1] }
+    #   snif.size.positive?
+    # end
   end
 end

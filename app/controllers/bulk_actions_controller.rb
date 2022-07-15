@@ -75,10 +75,10 @@ class BulkActionsController < BaseController
   def parse_csv(params)
     return [] if params.blank?
 
-    csv = CSV.parse(Base64.decode64(params), headers: true, col_sep: ';')
+    csv = CSV.parse(Base64.decode64(params), headers: true)
     domains = []
     csv.each do |row|
-      domains << row['domain_name']
+      domains << row['Domain']
     end
     domains
   end

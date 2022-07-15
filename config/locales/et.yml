@@ -258,6 +258,7 @@ et:
       make_changes: "Teosta muudatus"
       make_changes_icon_html: '<i class="fas fa-check"></i>'
       missing_param: "Puuduvad parameetrid: %{param}"
+      invalid_csv: "Kehtetu csv-fail – palun kontrolli päiseid ning et veergude eraldajaks on koma"
       type: "muudatuse tüüp"
       tech_contact_replace_info: "Asendage jaotises 'Praeguse kontakti ID' määratud tehniline kontakt selle registripidaja all registreeritud domeenis jaotises 'Uue kontakti ID' olevaga"
       current_contact_id: "Praeguse kontakti ID"
@@ -276,9 +277,15 @@ et:
       batch_file: "CSV fail"
       transfer_batch_file_info: "CSV-fail domeeniloendiga teiselt registripidajalt"
       transfer_batch_file_help: "Edastage csv-failis olevad domeenid õige ülekandekoodiga sellele registripidajale"
-      upload_info: "CSV-failis peab olema domain_name päis ja nende domeenide loend, mida nimeserveri muutmine peaks hõlmama."
-      ns_replace_confirm1: "Palun kinnitage, et soovite hostinime %{old_hostname} asendada hostnimega %{new_hostname}"
-      ns_replace_confirm2: "Palun kinnitage, et soovite domeenidele hostinime %{hostname} lisada"
+      upload_info: "CSV-failis peab olema 'Domain' päis ja nende domeenide loend, mida nimeserveri muutmine peaks hõlmama."
+      ns_replace_confirm1:
+        zero: "Palun kinnitage, et soovite hostinime %{old_hostname} asendada hostnimega %{new_hostname}"
+        one: "Palun kinnitage, et soovite %{count} domeeni hostinime %{old_hostname} asendada hostnimega %{new_hostname}"
+        other: "Palun kinnitage, et soovite %{count} domeenide hostinime %{old_hostname} asendada hostnimega %{new_hostname}"
+      ns_replace_confirm2:
+        zero: "Palun kinnitage, et soovite domeenidele hostinime %{hostname} lisada"
+        one: "Palun kinnitage, et soovite %{count} domeenile hostinime %{hostname} lisada"
+        other: "Palun kinnitage, et soovite %{count} domeenidele hostinime %{hostname} lisada"
       registrar_replace_confirm: "Palun kinnitage, et soovite üle kanda %{count} domeeni"
       current_balance: "Praegune saldo"
       expire_date_until: "Aegumiskuupäev kuni"

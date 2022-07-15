@@ -257,6 +257,7 @@ en:
       make_changes: 'Make changes'
       make_changes_icon_html: '<i class="fas fa-check"></i>'
       missing_param: "Missing parameters: %{param}"
+      invalid_csv: "Invalid csv file - please make sure correct headers are in place and comma is used as a field delimiter"
       type: "bulk change type"
       tech_contact_replace_info: "Replace technical contact specified in 'Current contact ID' with the one in 'New contact ID' on any domain registered under this registrar"
       current_contact_id: "Current contact ID"
@@ -275,9 +276,15 @@ en:
       batch_file: "CSV file"
       transfer_batch_file_info: "CSV file with domain list provided by another registrar"
       transfer_batch_file_help: "Transfer domains in the csv file with correct transfer code to this registrar"
-      upload_info: "CSV format, must have domain_name header. List of domains that nameserver change should be scoped to."
-      ns_replace_confirm1: "Please confirm you want to replace hostname %{old_hostname} with hostname %{new_hostname}"
-      ns_replace_confirm2: "Please confirm you want to add hostname %{hostname} to domains"
+      upload_info: "CSV format, must have 'Domain' header. List of domains that nameserver change should be scoped to."
+      ns_replace_confirm1:
+        zero: "Please confirm you want to replace hostname %{old_hostname} with hostname %{new_hostname}"
+        one: "Please confirm you want to replace hostname %{old_hostname} with hostname %{new_hostname} for %{count} domain"
+        other: "Please confirm you want to replace hostname %{old_hostname} with hostname %{new_hostname} for %{count} domains"
+      ns_replace_confirm2:
+        zero: "Please confirm you want to add hostname %{hostname} to domains"
+        one: "Please confirm you want to add hostname %{hostname} to %{count} domain"
+        other: "Please confirm you want to add hostname %{hostname} to %{count} domains"
       registrar_replace_confirm: "Please confirm you want to transfer %{count} domains"
       current_balance: "Current balance"
       expire_date_until: "Expire date until"
