@@ -23,7 +23,7 @@ export default class extends Controller {
   add(e) {
       e.preventDefault();
       let type = e.target.dataset.value;
-      let num_elements = this[type + "Targets"].length;
+      let num_elements = this.numberOfVisibleElements(this[type + 'SelectorWrapperValue']);
       if (num_elements < 10) {
           const content = this[type + "TemplateTarget"].innerHTML.replace(/NEW_RECORD/g, num_elements + 1);
           this[type + "TargetTarget"].insertAdjacentHTML("beforebegin", content);
@@ -39,28 +39,41 @@ export default class extends Controller {
       e.preventDefault();
       let type = e.target.dataset.value;
       const wrapper = e.target.closest(this[type + 'SelectorWrapperValue']);
-      if (wrapper.dataset.newRecord === 'true') {
-          wrapper.remove();
-      } else {
-          wrapper.style.display = 'none';
-          const input = wrapper.querySelector("input[name*='action']");
-          input.value = 'rem';
+      let num_elements = this.numberOfVisibleElements(this[type + 'SelectorWrapperValue']);
+      if (num_elements > 1) {
+          if (wrapper.dataset.newRecord === 'true') {
+              wrapper.remove();
+          } else {
+              wrapper.style.display = 'none';
+              const input = wrapper.querySelector("input[name*='action']");
+              input.value = 'rem';
+          }
+          this.restartCount(type);
       }
-      this.restartCount(type);
   }
   toggleContactType(e){
       e.preventDefault();
       const label = e.target.closest(this.contactSelectorWrapperValue).querySelector(".form--label");
       label.innerHTML = e.target.dataset.value;
   }
+  numberOfVisibleElements(elem) {
+      let count = 0;
+      document.querySelectorAll(elem).forEach(elem => {
+          if (elem.style.display != 'none') {
+              count += 1;
+          }
+      });
+      return count;
+  }
   restartCount(type) {
     let count = 1;
-    document.querySelectorAll(this[type + 'SelectorWrapperValue']).forEach(elem => {
-      if (elem.style.display != 'none') {
-        let header = elem.querySelector("h3").innerHTML.replace(/[0-9]/g, count > 1 ? count : '');
-        elem.querySelector("h3").innerHTML = header;
-        count += 1;
-      }
+    let elements = document.querySelectorAll(this[type + 'SelectorWrapperValue']);
+    elements.forEach((elem) => {
+        if (elem.style.display != 'none') {
+            let header = elem.querySelector("h3").innerHTML.replace(/[0-9]/g, count > 1 ? count : '');
+            elem.querySelector("h3").innerHTML = header;
+            count += 1;
+        }
     });
   }
 }
