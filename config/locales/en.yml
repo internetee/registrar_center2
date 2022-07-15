@@ -83,7 +83,7 @@ en:
     index:
       hi: "Hi"
       last_visit: "Welcome back! Your last sign in was:"
-      saldo: "Saldo"
+      saldo: "Credit balance"
       confirm: "Confirm"
       activities: "Account activity"
       activities_info: "Here's an overview of the changes to your domains, contacts, and credit"
