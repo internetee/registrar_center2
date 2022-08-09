@@ -10,7 +10,7 @@ class ApiConnector
       }.freeze
 
       def delete_domain(payload: nil)
-        request(url: url_with_id(payload[:name]),
+        request(url: url_with_id(CGI.escape(payload[:name])),
                 method: method,
                 params: domain_params(payload),
                 headers: add_headers(payload))
