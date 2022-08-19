@@ -14,12 +14,22 @@
             <%= render 'contacts/partials/form/general', form: form %>
         </div>
     </div>
-    <span class="form--break"></span>
-    <div class="row">
-        <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <%= render 'contacts/partials/form/address', form: form %>
+    <% if current_user.address_processing %>
+        <span class="form--break"></span>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'contacts/partials/form/address', form: form %>
+            </div>
         </div>
-    </div>
+    <% end %>
+    <% if @contact.nil? %>
+        <span class="form--break"></span>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'contacts/partials/form/code', form: form %>
+            </div>
+        </div>
+    <% end %>
     <span class="form--break"></span>
     <div class="row">
         <div class="col-md-8 col-md-offset-2 col-xs-12">
