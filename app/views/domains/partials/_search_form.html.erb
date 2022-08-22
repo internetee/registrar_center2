@@ -16,10 +16,10 @@
     <div id="filters" class="form--filters">
         <div class="row bottom-xs">
             <div class="col-md-4 col-xs-12">
-                <%= form.label :registrant_id_eq, t('domains.index.registrant_name'), class: 'form--label' %>
+                <%= form.label :registrant_code_eq, t('domains.index.registrant_name'), class: 'form--label' %>
                 <div class="form--field">
                     <div class="form--input small">
-                        <%= dynamic_select_tag 'search[registrant_id_eq]', [], class: 'contact_dynamic_select' %>
+                        <%= dynamic_select_tag 'search[registrant_code_eq]', [], class: 'contact_dynamic_select' %>
                     </div>
                 </div>
             </div>
