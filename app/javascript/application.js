@@ -53,6 +53,15 @@ class App {
         document.querySelectorAll('.file').forEach(elem => {
             new FileUpload(elem);
         });
+
+        document.getElementById('per_page').onchange = function(evt){
+          var value = evt.target.value;
+          // if(value){window.location='?per_page='+value;}
+
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('per_page', value);
+          window.location.search = urlParams;
+        };
     }
 }
 

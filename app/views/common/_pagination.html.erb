@@ -21,8 +21,7 @@
         <div class="form--field">
             <label for="per_page" class="form--label"><%= t('pagy.per_page') %></label>
             <div class="form--input small">
-                <%= simple_select_tag :per_page, options_for_select([10, 20, 50, 100], session[:page_size]),
-                                                 onchange: "if(this.value){window.location='?per_page='+this.value;}" %>
+                <%= simple_select_tag :per_page, options_for_select([10, 20, 50, 100], session[:page_size]) %>
             </div>
         </div>
     </form>
