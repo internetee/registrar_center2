@@ -22,7 +22,7 @@
                         <%= link_to t(:pay), @invoice[:payment_link], target: :_blank, class: 'button button--secondary' %>
                     </div>
                 <% end %>
-                <% if @invoice[:cancellable] %>
+                <% if @invoice[:cancellable] && !@invoice[:monthly_invoice] %>
                     <div class="col-xs-auto">
                         <%= link_to t(:cancel), 'javascript: void(0);', class: 'button button--danger',
                                                                         'data-dialog': 'invoice_cancel',
@@ -43,7 +43,11 @@
     <div class="page--block">
         <div class="wrapper">
             <div class="col-xs-12 col-md-8 col-md-offset-2">
-                <%= render 'invoices/partials/items' %>
+                <% if @invoice[:monthly_invoice] %>
+                  <%= render 'invoices/partials/monthly_invoice_items' %>
+                <% else %>
+                  <%= render 'invoices/partials/items' %>
+                <% end %>
             </div>
         </div>
     </div>

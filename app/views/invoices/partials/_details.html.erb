@@ -35,10 +35,12 @@
                 <td class="text-danger"><%= t('invoices.index.unpaid') %></td>
             <% end %>
         </tr>
-        <tr>
-            <th><%= t('invoices.show.payment_term') %></th>
-            <td><%= t('invoices.show.prepayment') %></td>
-        </tr>
+        <% unless @invoice[:monthly_invoice] %>
+            <tr>
+                <th><%= t('invoices.show.payment_term') %></th>
+                <td><%= t('invoices.show.prepayment') %></td>
+            </tr>
+        <% end %>
         <tr>
             <th><%= t('invoices.show.ref_no') %></th>
             <td><%= @invoice[:reference_no] %></td>
