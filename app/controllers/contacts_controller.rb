@@ -75,7 +75,7 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
     handle_response(result); return if performed?
 
     flash.notice = @message
-    redirect_to contact_path(@response.contact[:code])
+    redirect_to contact_path(contact_code: @response.contact[:code])
   end
 
   def edit
@@ -115,13 +115,15 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
         ident_type: contact_params[:ident_type],
         ident_country_code: contact_params[:ident_country_code],
       },
-      addr: {
-        country_code: contact_params[:country_code],
-        city: contact_params[:city],
-        street: contact_params[:street],
-        zip: contact_params[:zip],
-        state: contact_params[:state],
-      },
+      addr: if current_user.address_processing
+              {
+                country_code: contact_params[:country_code],
+                city: contact_params[:city],
+                street: contact_params[:street],
+                zip: contact_params[:zip],
+                state: contact_params[:state],
+              }
+            end,
       legal_document: transform_legal_doc_params(contact_params[:legal_document]),
     }
   end
