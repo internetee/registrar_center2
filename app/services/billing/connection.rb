@@ -17,7 +17,7 @@ module Billing
           'Authorization' => "Bearer #{generate_token}",
           'Content-Type' => 'application/json',
         },
-        url: BASE_URL
+        url: BASE_URL,
       }
     end
 

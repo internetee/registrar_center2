@@ -10,10 +10,10 @@ module Billing
 
     def self.send_invoice(invoice_number:, customer_url:)
       fetcher = new(invoice_number: invoice_number, customer_url: customer_url)
-      fetcher.post_it
+      fetcher.send_it
     end
 
-    def post_it
+    def send_it
       post invoice_oneoff_url, params
     end
 
@@ -23,7 +23,7 @@ module Billing
     end
 
     def invoice_oneoff_url
-      "/api/v1/invoice_generator/oneoff"
+      '/api/v1/invoice_generator/oneoff'
     end
   end
 end

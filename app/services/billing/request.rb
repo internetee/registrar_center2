@@ -2,13 +2,13 @@ module Billing
   module Request
     include Billing::Connection
 
-    def get(path, params={})
+    def get(path, params = {})
       respond_with(
         connection.get(path, params)
       )
     end
 
-    def post(path, params={})
+    def post(path, params = {})
       respond_with(
         connection.post(path, JSON.dump(params))
       )
@@ -17,7 +17,7 @@ module Billing
     private
 
     def respond_with(response)
-      JSON.load response.body
+      JSON.parse response.body
     end
   end
 end

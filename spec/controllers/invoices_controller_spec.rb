@@ -60,8 +60,6 @@ RSpec.describe InvoicesController, type: :controller do
   it_behaves_like 'Base controller with auth', options
 
   describe 'billing connection' do
-    BASE_URL = Rails.configuration.customization[:eis_billing_system_base_url]
-    
     before(:each) do  
       allow_any_instance_of(BaseController).to receive(:check_auth_info).and_return(true)
     end
@@ -73,7 +71,7 @@ RSpec.describe InvoicesController, type: :controller do
       }
 
       subject do
-        stub_request(:post, "#{BASE_URL}/api/v1/invoice_generator/oneoff")
+        stub_request(:post, "#{Billing::Connection::BASE_URL}/api/v1/invoice_generator/oneoff")
         .to_return(status: 200, body: oneoff_payload.to_json, headers: {})
 
         post :pay, params: { invoice_number: '2332434 '}
@@ -92,7 +90,7 @@ RSpec.describe InvoicesController, type: :controller do
       }
 
       subject do
-        stub_request(:post, "#{BASE_URL}/api/v1/invoice_generator/oneoff")
+        stub_request(:post, "#{Billing::Connection::BASE_URL}/api/v1/invoice_generator/oneoff")
         .to_return(status: 200, body: error_message.to_json, headers: {})
 
         post :pay, params: { invoice_number: '2332434 '}
@@ -110,7 +108,7 @@ RSpec.describe InvoicesController, type: :controller do
       }
 
       subject do
-        stub_request(:get, "#{BASE_URL}/api/v1/callback_handler/callback?payment_reference=#{payment_reference}")
+        stub_request(:get, "#{Billing::Connection::BASE_URL}/api/v1/callback_handler/callback?payment_reference=#{payment_reference}")
         .to_return(status: 200, body: message.to_json, headers: {})
 
         get :callback, params: { payment_reference: payment_reference }

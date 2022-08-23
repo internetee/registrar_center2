@@ -9,10 +9,10 @@ module Billing
 
     def self.send(reference_number:)
       fetcher = new(reference_number: reference_number)
-      fetcher.get_it
+      fetcher.send_it
     end
 
-    def get_it
+    def send_it
       get billing_callback_url
     end
 
