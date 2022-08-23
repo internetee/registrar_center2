@@ -19,6 +19,9 @@ end
 
 require 'vcr'
 require 'uri'
+require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 # This module is used for avoiding VCR cassettes host conflicts
 # during testing on staging environment

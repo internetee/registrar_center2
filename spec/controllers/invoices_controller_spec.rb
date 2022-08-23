@@ -54,8 +54,9 @@ RSpec.describe InvoicesController, type: :controller do
           description: Faker::Lorem.sentence,
         },
       },
-    },
+    }
   ]
 
   it_behaves_like 'Base controller with auth', options
+
 end
