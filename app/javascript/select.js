@@ -48,7 +48,7 @@ export default class Select {
                 .then(res => res.json())
                 .then(data => this.choices.setChoices(this.withPlaceholder(data), 'value', 'label', true));
             });
-            let param = this.findGetParameter('search[registrant_id_eq]');
+            let param = this.findGetParameter('search[registrant_code_eq]');
             if (param != null && param != '') {
                 fetch(host + '/contacts/search/' + param)
                 .then(res => res.json())

@@ -26,7 +26,7 @@
                     </div>
                     <span class="form--sep">-</span>
                     <div class="form--input small">
-                        <%= form.date_field :created_at_lteq, class: 'datepicker', value: params[:search]&.dig(:due_date_lteq) %>
+                        <%= form.date_field :created_at_lteq, class: 'datepicker', value: params[:search]&.dig(:created_at_lteq) %>
                         <div class="form--suffix"><i class="fas fa-calendar"></i></div>
                     </div>
                 </div>
