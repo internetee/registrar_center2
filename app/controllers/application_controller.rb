@@ -43,8 +43,8 @@ class ApplicationController < ActionController::Base
   def handle_response(res)
     msg = res.body[:message]
     if res.success
-      pdf = (res[:type] == 'application/pdf')
-      @response = pdf ? res.body[:data] : OpenStruct.new(res.body[:data])
+      unstructable = (res[:type] == 'application/pdf' || res.body[:data].is_a?(Array))
+      @response = unstructable ? res.body[:data] : OpenStruct.new(res.body[:data])
       @message = msg
     else
       case res.body[:code]
