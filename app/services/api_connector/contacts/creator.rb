@@ -17,7 +17,7 @@ class ApiConnector
 
       def contact_params(payload)
         {
-          contact: payload.except(:id).compact_blank.as_json,
+          contact: payload.compact_blank.as_json,
         }
       end
     end
