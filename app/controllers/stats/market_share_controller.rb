@@ -1,7 +1,6 @@
 module Stats
   class MarketShareController < BaseController
-    def index
-    end
+    def index; end
 
     def domains_by_registrar
       conn = ApiConnector::Stats::MarketShare.new(**auth_info)
