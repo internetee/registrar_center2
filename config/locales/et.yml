@@ -61,8 +61,11 @@ et:
         unit: €
   
   date:
+    month_names:
+      [~, Jaanuar, Veebruar, Märts, April, Mai, Juuni, Juuli, August, September, Oktoober, November, Detsember]
     formats:
       default: "%Y-%m-%d"
+      month_year: "%B, %Y"
   
   auth:
     sessions:
@@ -494,6 +497,22 @@ et:
       vat: "Käibemaks"
       total: "Kokku tasuda"
       code: "Kood"
+
+  stats:
+    market_share:
+      index:
+        title: "Statistika"
+        market_share: "Turuosa ja jaotus"
+        chart_text:
+          viewFullscreen: "Kuva täisekraanil"
+          printChart: "Prindi diagramm"
+          downloadPDF: "Laadi alla PDF-dokument"
+          downloadPNG: "Laadi alla PNG-pilt"
+          downloadJPEG: "Laadi alla JPEG-pilt"
+          downloadSVG: "Laadi alla SVG vektorkujutis"
+          noData: "Kuvatavaid andmeid pole"
+      domains_by_registrar:
+        chart_title: "Turuosa ja jaotus %{date}"
       
   activemodel:
     errors:

@@ -1,5 +1,6 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/l10n/et.js"
+import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect'
 
 flatpickr.l10ns.en.firstDayOfWeek = 1;
 
@@ -12,13 +13,25 @@ export default class Datepicker {
     
     init() {
         const that = this;
-        var f = flatpickr(that.target, {
+        let dateFormat = that.target.getAttribute('dateFormat');
+        if (dateFormat == "m.y") {
+          that.options['plugins'] = [
+              new monthSelectPlugin({
+                  shorthand: true, //defaults to false
+                  dateFormat: dateFormat, //defaults to "F Y"
+                  altFormat: "F Y", //defaults to "F Y"
+              })
+          ];
+          that.options['maxDate'] = new Date();
+        }
+        let options = {
             allowInput: true,
             altInput: true,
-            altFormat: that.options.dateFormat || 'Y-m-d',
-            dateFormat: that.options.dateFormat || 'Y-m-d',
+            altFormat: dateFormat || 'Y-m-d',
+            dateFormat: dateFormat || 'Y-m-d',
             ...that.options
-        });
+        };
+        var f = flatpickr(that.target, options);
         if (f._input !== undefined){
             f._input.onkeypress = () => false;
         }

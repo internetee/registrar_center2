@@ -4,5 +4,6 @@
         <li><%= link_to t('common.header.domains'), domains_url  if can? :info, 'Epp::Domain' %></li>
         <li><%= link_to t('common.header.contacts'), contacts_url if can? :check, 'Epp::Contact' %></li>
         <li><%= link_to t('common.header.invoices'), invoices_url if can? :manage, 'Invoice' %></li>
+        <li><%= link_to t('common.header.stats'), stats_market_share_index_path %></li>
     </ul>
 </nav>

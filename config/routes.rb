@@ -69,5 +69,13 @@ Rails.application.routes.draw do
 
     get 'notifications/:id/mark_as_read', to: 'notifications#mark_as_read',
                                           as: :mark_as_read_notification
+
+    namespace :stats do
+      resources :market_share, only: [:index] do
+        collection do
+          get 'domains_by_registrar'
+        end
+      end
+    end
   end
 end

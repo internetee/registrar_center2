@@ -52,6 +52,7 @@
 @import "views/credit";
 @import "views/domains";
 @import "views/account";
+@import "views/stats";
 
 // Font-awesome
 $fa-font-path: "font-awesome/webfonts";
@@ -66,6 +67,7 @@ $fa-font-path: "font-awesome/webfonts";
 // Flatpickr
 @import "flatpickr/dist/flatpickr.min";
 @import "flatpickr/dist/themes/airbnb";
+@import "flatpickr/dist/plugins/monthSelect/style";
 
 // Tooltip
 @import "tippy.js/dist/tippy";
@@ -93,9 +95,6 @@ $fa-font-path: "font-awesome/webfonts";
       padding-right: 50px;
   }
 }
-
-
-
 
 
 

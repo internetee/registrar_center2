@@ -1,0 +1,24 @@
+<% content_for(:title) { "EIS | #{t('.title')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('.title') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--stats">
+    <div class="page--header">
+        <div class="wrapper">
+            <%= render 'stats/search_form' %>  
+        </div>
+    </div>
+    <div class="page--actions">
+        <div class="wrapper">
+            <div class="page--actions__left">
+                <%= link_to t('.market_share'), stats_market_share_index_path, class: 'button button--secondary' %>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <%= domains_by_registrar_chart(params[:search]&.to_unsafe_h) %>
+    </div>
+</div>

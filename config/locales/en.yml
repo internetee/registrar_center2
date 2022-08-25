@@ -61,8 +61,11 @@ en:
         unit: €
   
   date:
+    month_names:
+      [~, January, February, March, April, May, June, July, August, September, October, November, December]
     formats:
       default: "%Y-%m-%d"
+      month_year: "%B, %Y"
   
   auth:
     sessions:
@@ -494,6 +497,22 @@ en:
       vat: "VAT"
       total: "Total"
       code: "Code"
+  
+  stats:
+    market_share:
+      index:
+        title: "Stats"
+        market_share: "Market share and distribution"
+        chart_text:
+          viewFullscreen: "View in full screen"
+          printChart: "Print chart"
+          downloadPDF: "Download PDF document"
+          downloadPNG: "Download PNG image"
+          downloadJPEG: "Download JPEG image"
+          downloadSVG: "Download SVG vector image"
+          noData: "No data to display"
+      domains_by_registrar:
+        chart_title: "Market share and distribution in %{date}"
       
   activemodel:
     errors:
