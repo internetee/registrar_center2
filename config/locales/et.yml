@@ -310,8 +310,10 @@ et:
       new_contact: "Lisa uus kontakt"
       find_contact: "Otsi kontakti"
       status: "Staatus"
-      created_at: "Loomise ajavahemik"
-      updated_at: "Uuendamise kuupäev"
+      created_at_range: "Loomise ajavahemik"
+      updated_at_range: "Uuendamise kuupäev"
+      created_at: "Loodud"
+      updated_at: "Uuendatud"
       code: "ID"
       ident: "Ident"
       ident_type: "Identi tüüp"
@@ -489,6 +491,7 @@ et:
       item_description: "Nimetus"
       vat: "Käibemaks"
       total: "Kokku tasuda"
+      code: "Kood"
       
   activemodel:
     errors:

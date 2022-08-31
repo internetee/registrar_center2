@@ -29,7 +29,7 @@
                                                                  'data-recipient': invoice[:recipient] %>
     </td>
     <td class="table--action">
-        <% if invoice[:cancellable] %>
+        <% if invoice[:cancellable] && !invoice[:monthly_invoice] %>
             <%= link_to '<i class="fas fa-times rediconcolor"></i>'.html_safe, 'javascript: void(0);',
                                                                                'data-dialog': 'invoice_cancel',
                                                                                'data-invoice-id': invoice[:id],
