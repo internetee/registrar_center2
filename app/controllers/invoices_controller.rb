@@ -65,8 +65,10 @@ class InvoicesController < BaseController
 
   def pay
     invoice_number = params[:invoice_number]
+    reference_no = params[:reference_no]
     response = Billing::Oneoff.send_invoice(invoice_number: invoice_number.to_s,
-                                            customer_url: callback_url)
+                                            customer_url: callback_url,
+                                            reference_number: reference_no)
 
     if response['error'].present?
       flash.alert = response['error']['message']

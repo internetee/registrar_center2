@@ -19,8 +19,7 @@
                 </div>
                 <% if @invoice[:payable] && @invoice[:payment_link].present? %>
                     <div class="col-xs-auto">
-                        <%#= button_to t(:pay), pay_path(invoice_number: @invoice[:number]), method: :post, class: 'button button--secondary' %>
-                        <%= link_to t(:pay), @invoice[:payment_link], target: :_blank, class: 'button button--secondary' %>
+                        <%= button_to t(:pay), pay_path(invoice_number: @invoice[:number], reference_no: @invoice[:reference_no]), method: :post, class: 'button button--secondary' %>
                     </div>
                 <% end %>
                 <% if @invoice[:cancellable] %>
