@@ -454,8 +454,9 @@ et:
       INVOICE_STATUSES:
       - ['Vali', '']
       - ['Makstud', 'account_activity_id_not_null']
-      - ['Maksmata', 'account_activity_id_null|cancelled_at_null']
+      - ['Maksmata', 'account_activity_id_null|cancelled_at_null|monthly_invoice_false']
       - ['Tühistatud', 'cancelled_at_not_null']
+      - ['Kuu arve', 'monthly_invoice_true|cancelled_at_null']
 
     show:
       details: "Detailid"

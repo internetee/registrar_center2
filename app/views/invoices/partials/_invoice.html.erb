@@ -7,6 +7,8 @@
         <td><%= l invoice[:receipt_date].to_date %></td>
     <% elsif invoice[:cancelled] %>
         <td class="text-grey"><%= t('invoices.index.cancelled') %></td>
+    <% elsif invoice[:monthly_invoice] %>
+        <td><%= l invoice[:due_date].to_date %></td>
     <% else %>
         <td class="text-danger">
             <i class="fas fa-exclamation-triangle rediconcolor"></i>
