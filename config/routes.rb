@@ -54,6 +54,8 @@ Rails.application.routes.draw do
     get 'invoices/:id/download', to: 'invoices#download', as: :download_invoice
     post 'invoices/cancel', to: 'invoices#cancel', as: :cancel_invoice
     post 'invoices/add_credit', to: 'invoices#add_credit', as: :add_credit
+    post 'invoices/pay', to: 'invoices#pay', as: :pay
+    get 'invoices/callback', to: 'invoices#callback', as: :callback
     post 'invoices/send_to_recipient', to: 'invoices#send_to_recipient', as: :send_invoice
     resources :invoices, only: %i[index show]
 

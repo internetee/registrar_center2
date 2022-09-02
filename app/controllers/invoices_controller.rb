@@ -63,6 +63,27 @@ class InvoicesController < BaseController
     redirect_to invoice_path(@response.invoice[:id])
   end
 
+  def pay
+    invoice_number = params[:invoice_number]
+    reference_no = params[:reference_no]
+    response = Billing::Oneoff.send_invoice(invoice_number: invoice_number.to_s,
+                                            customer_url: callback_url,
+                                            reference_number: reference_no)
+
+    if response['error'].present?
+      flash.alert = response['error']['message']
+      redirect_to invoices_path and return
+    end
+
+    redirect_to response['oneoff_redirect_link'], allow_other_host: true
+  end
+
+  def callback
+    Billing::SendCallback.send(reference_number: params['payment_reference'])
+
+    redirect_to invoices_path
+  end
+
   private
 
   def invoice_params

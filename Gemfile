@@ -90,3 +90,6 @@ group :test do
   gem 'webdrivers'
   gem 'webmock'
 end
+
+# token
+gem 'jwt'

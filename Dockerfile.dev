@@ -8,14 +8,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN npm install -g yarn@latest
 
-COPY package.json ./
-RUN yarn install --check-files
-
 WORKDIR /opt/webapps/app
 
-ENTRYPOINT ["./entrypoint.sh"]
+COPY Rakefile Gemfile Gemfile.lock ./
+RUN gem install bundler && bundle install --jobs 20 --retry 5
+
+COPY package.json ./
+RUN yarn install --check-files && yarn sass-migrator division **/*.scss
 
 EXPOSE 3000
 
 CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
-
