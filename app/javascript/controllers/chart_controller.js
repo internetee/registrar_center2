@@ -56,6 +56,7 @@ export default class extends Controller {
             series: data
         });
     }
+    // rubocop:disable Metrics/MethodLength
     load_market_share_growth_rate_chart(data){
         var curData = data['current'];
         var prevData = data['previous'];
@@ -136,6 +137,7 @@ export default class extends Controller {
             }
         });
     }
+    // rubocop:enable Metrics/MethodLength
     setLangOptions(){
         Highcharts.setOptions({
             lang: this.translationsValue
