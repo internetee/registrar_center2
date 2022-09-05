@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/stats/market_share?q%5Bstart_date%5D=01.22
+    uri: http://registry:3000/repp/v1/stats/market_share_growth_rate?q%5Bcompare_to_date%5D=07.22&q%5Bend_date%5D=08.22
     body:
       encoding: US-ASCII
       string: ''
@@ -17,8 +17,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -36,18 +36,16 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
-      Etag:
-      - W/"8552ca9e576963004115e4ded43fdfe3"
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Request-Id:
-      - a0fae193-e5ab-4b34-b4eb-d20626dcd661
+      - 52ca6e57-12ea-4e59-acb7-c411e8837370
       X-Runtime:
-      - '0.061182'
+      - '0.055553'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":[{"name":"Macho","y":1},{"name":"Sergei","y":27,"sliced":true,"selected":true}]}'
-  recorded_at: Thu, 25 Aug 2022 08:46:15 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"est","password":"X8qYcD64099y","active":null}}'
+  recorded_at: Mon, 05 Sep 2022 09:33:14 GMT
 recorded_with: VCR 6.1.0

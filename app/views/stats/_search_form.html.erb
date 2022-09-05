@@ -1,8 +1,15 @@
-<%= form_with scope: :search, method: :get do |form| %>
-    <div id="filters">
+<%= form_with scope: :search, url: market_share_path(type: @type), method: :get do |form| %>
+    <div class="row">
+        <div class="col-md-12 col-xs center-xs">
+            <div class="text-center">
+                <%= toggle_filter %>
+            </div>
+        </div>
+    </div>
+    <div id="filters" class="form--filters">
         <div class="row bottom-xs">
             <div class="col-xs-auto">
-                <%= form.label :period, "Period", class: 'form--label' %>
+                <%= form.label :period, t('stats.market_share.index.period'), class: 'form--label' %>
                 <div class="form--field">
                     <div class="form--input small">
                         <%= form.date_field :start_date, class: 'datepicker', value: params[:search]&.dig(:start_date), dateFormat: 'm.y' %>
@@ -15,10 +22,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-auto col-xs-12">
+            <% if @type == 'growth_rate' %>
+                <div class="col-xs-auto">
+                    <%= form.label :compare_to_date, t('stats.market_share.index.compare_to'), class: 'form--label' %>
+                    <div class="form--field">
+                        <div class="form--input small">
+                            <%= form.date_field :compare_to_date, class: 'datepicker', value: params[:search]&.dig(:compare_to_date), dateFormat: 'm.y' %>
+                            <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+            <div class="col-md-auto col-xs-8">
                 <div class="form--actions">
                     <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
-                    <%= button_tag t(:clear_filter), type: 'reset', class: 'button button--link' %>
+                    <%= link_to t(:clear_filter), "#{url_for(request.params.slice(:type))}", class: 'button button--link' %>
                 </div>
             </div>
         </div>

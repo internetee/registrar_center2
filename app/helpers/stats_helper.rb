@@ -1,31 +1,56 @@
 module StatsHelper
-  def domains_by_registrar_chart(search_params)
-    url = domains_by_registrar_stats_market_share_index_path(search: search_params)
-    title = t('stats.market_share.domains_by_registrar.chart_title',
-              date: title_date(search_params))
-    tag.div(nil, data: { 'controller': 'chart',
-                         'chart-url-value': url,
-                         'chart-title-value': title,
-                         'chart-translations-value': t('.chart_text') },
+  def market_share_distribution_chart(search_params)
+    url = market_share_distribution_data_path(search: search_params)
+    title = t('stats.market_share.distribution.chart_title',
+              date: title_period(search_params))
+    tag.div(nil, data: chart_data_params(url: url, title: title, type: __method__.to_s),
                  class: 'pie_chart')
+  end
+
+  def market_share_growth_rate_chart(search_params)
+    url = market_share_growth_rate_data_path(search: search_params)
+    title = t('stats.market_share.growth_rate.chart_title',
+              date: title_period(search_params))
+    subtitle = t('stats.market_share.growth_rate.chart_subtitle',
+                 date: translate_date(to_date(search_params[:compare_to_date])))
+    tag.div(nil, data: chart_data_params(url: url, title: title, type: __method__.to_s,
+                                         subtitle: subtitle,
+                                         translations: date_translations(search_params)),
+                 class: 'bar_chart')
   end
 
   private
 
-  def title_date(params)
-    return I18n.l(Time.zone.today, format: :month_year).to_s unless params
-
-    period = ''
-    if params[:start_date].present?
-      start_date = to_date(params[:start_date])
-      period += "#{I18n.l(start_date, format: :month_year)} - "
-    end
-    end_date = params[:end_date].present? ? to_date(params[:end_date]) : Time.zone.today
-    period += I18n.l(end_date, format: :month_year).to_s
+  def title_period(params, period: '')
+    period += "#{translate_date(to_date(params[:start_date]))} - " if params[:start_date].present?
+    period += translate_date(to_date(params[:end_date])).to_s
     period
   end
 
   def to_date(month_year)
     Date.strptime(month_year, '%m.%y')
+  end
+
+  def translate_date(date)
+    I18n.l(date, format: :month_year)
+  end
+
+  def chart_data_params(url:, title:, type:, subtitle: nil, translations: {})
+    {
+      'controller': 'chart',
+      'chart-url-value': url,
+      'chart-title-value': title,
+      'chart-type-value': type,
+      'chart-subtitle-value': subtitle,
+      'chart-translations-value': t('.chart_text').merge(translations),
+    }
+  end
+
+  def date_translations(params, dates: {})
+    end_date = to_date(params[:end_date])
+    compare_to_date = to_date(params[:compare_to_date])
+    dates[params[:end_date]] = translate_date(end_date)
+    dates[params[:compare_to_date]] = translate_date(compare_to_date)
+    dates
   end
 end

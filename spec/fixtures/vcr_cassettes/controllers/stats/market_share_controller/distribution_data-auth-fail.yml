@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/stats/market_share?q%5Bstart_date%5D=01.22
+    uri: http://registry:3000/repp/v1/stats/market_share_distribution?q%5Bstart_date%5D=01.22
     body:
       encoding: US-ASCII
       string: ''
@@ -39,13 +39,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - cf9cbfd5-71fa-44a2-a3f0-08062da81b8a
+      - 8c8a1f08-4d55-49d1-90f7-b185029f165a
       X-Runtime:
-      - '0.043311'
+      - '0.055696'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"qui","password":"E6mSkLmRiYd6Ya04","active":null}}'
-  recorded_at: Thu, 25 Aug 2022 08:46:15 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"id","password":"G06yXkD0jHuI6gMi","active":null}}'
+  recorded_at: Mon, 05 Sep 2022 09:26:39 GMT
 recorded_with: VCR 6.1.0

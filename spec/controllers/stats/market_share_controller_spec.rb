@@ -3,11 +3,21 @@ require 'rails_helper'
 RSpec.describe Stats::MarketShareController, type: :controller do
   options = [
     {
-      method: :domains_by_registrar,
+      method: :distribution_data,
       http_method: :get,
       params: {
         search: {
           start_date: '01.22',
+        },
+      },
+    },
+    {
+      method: :growth_rate_data,
+      http_method: :get,
+      params: {
+        search: {
+          end_date: '08.22',
+          compare_to_date: '07.22',
         },
       },
     },

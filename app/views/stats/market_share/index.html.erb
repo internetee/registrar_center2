@@ -14,11 +14,18 @@
     <div class="page--actions">
         <div class="wrapper">
             <div class="page--actions__left">
-                <%= link_to t('.market_share'), stats_market_share_index_path, class: 'button button--secondary' %>
+                <%= link_to t('.market_share'), market_share_path(type: 'distribution'), class: 'button button--secondary' %>
+                <%= link_to t('.market_share_growth'), market_share_path(type: 'growth_rate'), class: 'button button--secondary' %>
             </div>
         </div>
     </div>
     <div class="wrapper">
-        <%= domains_by_registrar_chart(params[:search]&.to_unsafe_h) %>
+        <% if @type == 'distribution' %>
+            <%= market_share_distribution_chart(@search_params) %>
+        <% elsif @type == 'growth_rate' %>
+            <%= market_share_growth_rate_chart(@search_params) %>
+        <% else %>
+            <%= market_share_distribution_chart(@search_params) %>
+        <% end %>
     </div>
 </div>

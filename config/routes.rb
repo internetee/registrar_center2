@@ -70,12 +70,10 @@ Rails.application.routes.draw do
     get 'notifications/:id/mark_as_read', to: 'notifications#mark_as_read',
                                           as: :mark_as_read_notification
 
-    namespace :stats do
-      resources :market_share, only: [:index] do
-        collection do
-          get 'domains_by_registrar'
-        end
-      end
-    end
+    get 'stats/market_share/distribution_data', to: 'stats/market_share#distribution_data',
+                                                as: 'market_share_distribution_data'
+    get 'stats/market_share/growth_rate_data', to: 'stats/market_share#growth_rate_data',
+                                               as: 'market_share_growth_rate_data'
+    get 'stats/market_share(/:type)', to: 'stats/market_share#index', as: 'market_share'
   end
 end

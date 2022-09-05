@@ -2,10 +2,10 @@
 
 class ApiConnector
   module Stats
-    class MarketShare < ApiConnector
+    class MarketShareGrowthRate < ApiConnector
       ENDPOINT = {
         method: 'get',
-        endpoint: '/stats/market_share',
+        endpoint: '/stats/market_share_growth_rate',
       }.freeze
       ACTION = 'get_market_share_data'
 
