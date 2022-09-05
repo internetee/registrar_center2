@@ -56,7 +56,6 @@ export default class extends Controller {
             series: data
         });
     }
-    // rubocop:disable Metrics/MethodLength
     load_market_share_growth_rate_chart(data){
         var curData = data['current'];
         var prevData = data['previous'];
@@ -64,6 +63,7 @@ export default class extends Controller {
         const getData = data => data.map((registrar, i) => ({
             name: registrar[0],
             y: registrar[1],
+            diff: this.getDiffPercent(registrar[1], prevData['domains'][i][1]),
             color: this.randomRGB()
         }));
 
@@ -90,8 +90,34 @@ export default class extends Controller {
             },
             tooltip: {
                 shared: true,
-                headerFormat: '<span style="font-size: 15px">{point.point.name}</span><br/>',
-                pointFormat: '<span style="color:{point.color}">\u25CF</span> ' + this.translationsValue['yAxisTitle'] + ' - {series.name}: <b>{point.y}</b><br/>'
+                // headerFormat: '<span style="font-size: 15px">{point.point.name}</span><br/>',
+                // pointFormat: '<span style="color:{point.color}">\u25CF</span> ' + this.translationsValue['yAxisTitle'] + ' - {series.name}: <b>{point.y} ({point.diff}%)</b><br/>',
+                formatter: function () {
+                    var points = this.points;
+                    var result = '<span style="font-size: 15px">' + points[0].key + '</span><br/>';
+                    points.forEach(point => {
+                        let diff = point.point.diff;
+                        result += '<span style="color:' + point.color + '">\u25CF</span> ' + point.series.yAxis.axisTitle.textStr + 
+                            ' - ' + point.series.name + ': <b>' + point.y + '</b>';
+                        if (diff != undefined && diff != 100) {
+                            let color, sign;
+                            if (diff > 0) {
+                                color = 'rgb(9,138,13)';
+                                sign = '+';
+                            } else if (diff < 0) {
+                                color = 'rgb(233,23,44)';
+                                sign = '-';
+                            } else {
+                                color = 'rgb(0,0,0)';
+                                sign = '';
+                            }
+                            result += ' <span style="color: ' + color + '"><b>(' + sign + point.point.diff + '%)</b></span><br/>';
+                        } else {
+                            result += '<br/>';
+                        }
+                    });
+                    return result
+                }
             },
             xAxis: {
                 type: 'category',
@@ -137,7 +163,6 @@ export default class extends Controller {
             }
         });
     }
-    // rubocop:enable Metrics/MethodLength
     setLangOptions(){
         Highcharts.setOptions({
             lang: this.translationsValue
@@ -146,5 +171,8 @@ export default class extends Controller {
     randomRGB() {
         var o = Math.round, r = Math.random, s = 255;
         return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
+    }
+    getDiffPercent(original, new_number) {
+      return ((original - new_number) / original * 100).toFixed(1);
     }
 }
