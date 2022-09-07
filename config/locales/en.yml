@@ -66,6 +66,7 @@ en:
     formats:
       default: "%Y-%m-%d"
       month_year: "%B, %Y"
+      month_year_short: "%b, %Y"
   
   auth:
     sessions:
@@ -508,6 +509,12 @@ en:
         compare_to: "Compare to"
         domains: "Domains"
         registrars: "Registrars"
+        csv:
+          registrar: "Registrar"
+          domains: "Domains"
+          market_share: "Market share %"
+          domains_diff: "Domains diff"
+          market_share_diff: "Market share diff"
         chart_text:
           viewFullscreen: "View in full screen"
           exitFullscreen: "Exit from full screen"
@@ -523,8 +530,8 @@ en:
           hideData: "Hide data table"
           xAxisTitle: "Registrars"
           yAxisTitle: 
-            domains: "Domains"
             market_share: "Market share %"
+            domains: "Domains"
           exportData:
             categoryHeader: "Registrars"
         COMPARE_TO_PERIODS:

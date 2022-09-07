@@ -63,9 +63,12 @@ et:
   date:
     month_names:
       [~, Jaanuar, Veebruar, Märts, Aprill, Mai, Juuni, Juuli, August, September, Oktoober, November, Detsember]
+    abbr_month_names:
+      [~, Jaan, Veeb, Märts, Apr, Mai, Juuni, Juuli, Aug, Sep, Okt, Nov, Det]
     formats:
       default: "%Y-%m-%d"
       month_year: "%B, %Y"
+      month_year_short: "%b, %Y"
   
   auth:
     sessions:
@@ -508,6 +511,12 @@ et:
         compare_to: "Võrdlus kuuga"
         domains: "Domeenid"
         registrars: "Registripidajad"
+        csv:
+          registrar: "Registripidaja"
+          domains: "Domeenide arv"
+          market_share: "Turuosa %"
+          domains_diff: "Domeenide arvu muutus"
+          market_share_diff: "Turuosa muutus"
         chart_text:
           viewFullscreen: "Kuva täisekraanil"
           exitFullscreen: "Välju täisekraanilt"
@@ -523,8 +532,8 @@ et:
           noData: "Kuvatavaid andmeid pole"
           xAxisTitle: "Registripidajad"
           yAxisTitle: 
-            domains: "Domeenid"
             market_share: "Turuosa %"
+            domains: "Domeenid"
           exportData:
             categoryHeader: "Registripidajad"
         COMPARE_TO_PERIODS:

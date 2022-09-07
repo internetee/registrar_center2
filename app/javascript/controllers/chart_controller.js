@@ -84,7 +84,7 @@ export default class extends Controller {
             legend: {
                 enabled: false
             },
-            tooltip: this.setTooltip('domains'),
+            tooltip: this.setTooltip('market_share'),
             xAxis: {
                 type: 'category',
                 labels: {
@@ -96,8 +96,8 @@ export default class extends Controller {
                     text: this.translationsValue['xAxisTitle']
               },
             },
-            yAxis: this.setYAxis('domains'),
-            series: this.setSeries(data, 'domains'),
+            yAxis: this.setYAxis('market_share'),
+            series: this.setSeries(data, 'market_share'),
             exporting: {
                 allowHTML: true
             }
@@ -109,7 +109,8 @@ export default class extends Controller {
               text: this.translationsValue['yAxisTitle'][data_type]
             },
             showFirstLabel: false,
-            max: ((data_type == 'market_share') ? 100 : null)
+            floor: 0,
+            ceiling: ((data_type == 'market_share') ? 100 : null)
         }]
     }
     setTooltip(data_type) {
@@ -125,7 +126,7 @@ export default class extends Controller {
                     let diff = point.point.diff;
                     result += '<span style="color:' + point.color + '">\u25CF</span> ' + point.series.yAxis.axisTitle.textStr + 
                         ' - ' + point.series.name + ': <b>' + point.y + apndx + '</b>';
-                    if (typeof diff !== 'undefined' && diff != 100) {
+                    if (typeof diff !== 'undefined' && diff != 100  && diff != 0) {
                         let color, sign;
                         if (diff > 0) {
                             color = 'rgb(9,138,13)';
@@ -137,7 +138,7 @@ export default class extends Controller {
                             color = 'rgb(0,0,0)';
                             sign = '';
                         }
-                        result += ' <span style="color: ' + color + '"><b>(' + sign + point.point.diff + '%)</b></span><br/>';
+                        result += ' <span style="color: ' + color + '"><b>(' + sign + point.point.diff + apndx + ')</b></span><br/>';
                     } else {
                         result += '<br/>';
                     }
@@ -197,11 +198,7 @@ export default class extends Controller {
         return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
     }
     getDiffPercent(data_type, original, new_number) {
-        if (data_type == 'market_share') {
-            return (original - new_number).toFixed(1);
-        } else {
-            return ((original - new_number) / original * 100).toFixed(1);
-        }
+        return (original - new_number).toFixed(+ (data_type === 'market_share'));
     }
     toggleChartDataType(e){
         e.preventDefault();

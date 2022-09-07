@@ -17,6 +17,9 @@
                 <%= link_to t('.market_share'), market_share_path(type: 'distribution'), class: 'button button--secondary' %>
                 <%= link_to t('.market_share_growth'), market_share_path(type: 'growth_rate'), class: 'button button--secondary' %>
             </div>
+            <div class="page--actions__right">
+                <%= link_to "#{t(:download_csv)} <i class='fas fa-download'></i>".html_safe, market_share_path(format: 'csv', search: params[:search]&.to_unsafe_h) %>
+            </div>
         </div>
     </div>
     <div class="wrapper">
