@@ -8,7 +8,8 @@ module Stats
         format.html
         format.csv do
           params[:search] = @search_params
-          send("#{@type}_data")
+          method = @type == 'distribution' ? :distribution_data : :growth_rate_data
+          send(method)
           format_csv
         end
       end
