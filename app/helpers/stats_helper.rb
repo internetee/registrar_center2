@@ -15,11 +15,24 @@ module StatsHelper
                  date: translate_date(to_date(search_params[:compare_to_date])))
     tag.div(nil, data: chart_data_params(url: url, title: title, type: __method__.to_s,
                                          subtitle: subtitle,
-                                         translations: date_translations(search_params)),
-                 class: 'bar_chart')
+                                         translations: date_translations(search_params))) do
+      data_type_radio_buttons + tag.div(nil, class: 'bar_chart')
+    end
   end
 
   private
+
+  def data_type_radio_buttons(tags: '')
+    tag.form do
+      t('stats.market_share.index.chart_text.yAxisTitle').each do |key, value|
+        tags += radio_button_tag('select[data_type]', key, key == :domains,
+                                 'data-action': 'chart#toggleChartDataType',
+                                 class: 'form--radio')
+        tags += label_tag("select_data_type_#{key}", value, value: key, class: 'form--radiolabel')
+      end
+      tags.html_safe
+    end
+  end
 
   def title_period(params, period: '')
     period += "#{translate_date(to_date(params[:start_date]))} - " if params[:start_date].present?

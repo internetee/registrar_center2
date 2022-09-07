@@ -12,20 +12,26 @@ ExportData(Highcharts);
 // Connects to data-controller="chart"
 export default class extends Controller {
     static values = { url: String, title: String, type: String, translations: Object,
-                      subtitle: String }
+                      subtitle: String}
     connect() {
+        this._data = {};
+        this.colors = [];
+        this.chart;
         this.setLangOptions();
         this.load();
     }
     load() {
-        fetch(this.urlValue)
-            .then(response => response.json())
-            .then((data) => {
-              this['load_' + this.typeValue](data);
-            });
+      if (this.urlValue) {
+          fetch(this.urlValue)
+              .then(response => response.json())
+              .then((data) => {
+                  this._data = data;
+                  this['load_' + this.typeValue](data);
+              });
+      } 
     }
     load_market_share_distribution_chart(data){
-        Highcharts.chart(this.element, {
+        this.chart = Highcharts.chart(this.element, {
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -57,17 +63,7 @@ export default class extends Controller {
         });
     }
     load_market_share_growth_rate_chart(data){
-        var curData = data['current'];
-        var prevData = data['previous'];
-
-        const getData = data => data.map((registrar, i) => ({
-            name: registrar[0],
-            y: registrar[1],
-            diff: this.getDiffPercent(registrar[1], prevData['domains'][i][1]),
-            color: this.randomRGB()
-        }));
-
-        Highcharts.chart(this.element, {
+        this.chart = Highcharts.chart(this.element.querySelector('.bar_chart'), {
             chart: {
                 type: 'bar'
             },
@@ -88,37 +84,7 @@ export default class extends Controller {
             legend: {
                 enabled: false
             },
-            tooltip: {
-                shared: true,
-                // headerFormat: '<span style="font-size: 15px">{point.point.name}</span><br/>',
-                // pointFormat: '<span style="color:{point.color}">\u25CF</span> ' + this.translationsValue['yAxisTitle'] + ' - {series.name}: <b>{point.y} ({point.diff}%)</b><br/>',
-                formatter: function () {
-                    var points = this.points;
-                    var result = '<span style="font-size: 15px">' + points[0].key + '</span><br/>';
-                    points.forEach(point => {
-                        let diff = point.point.diff;
-                        result += '<span style="color:' + point.color + '">\u25CF</span> ' + point.series.yAxis.axisTitle.textStr + 
-                            ' - ' + point.series.name + ': <b>' + point.y + '</b>';
-                        if (diff != undefined && diff != 100) {
-                            let color, sign;
-                            if (diff > 0) {
-                                color = 'rgb(9,138,13)';
-                                sign = '+';
-                            } else if (diff < 0) {
-                                color = 'rgb(233,23,44)';
-                                sign = '-';
-                            } else {
-                                color = 'rgb(0,0,0)';
-                                sign = '';
-                            }
-                            result += ' <span style="color: ' + color + '"><b>(' + sign + point.point.diff + '%)</b></span><br/>';
-                        } else {
-                            result += '<br/>';
-                        }
-                    });
-                    return result
-                }
-            },
+            tooltip: this.setTooltip('domains'),
             xAxis: {
                 type: 'category',
                 labels: {
@@ -130,19 +96,73 @@ export default class extends Controller {
                     text: this.translationsValue['xAxisTitle']
               },
             },
-            yAxis: [{
-                title: {
-                    text: this.translationsValue['yAxisTitle']
-                },
-                showFirstLabel: false
-            }],
-            series: [{
-                color: 'rgba(158, 159, 163, 0.5)',
+            yAxis: this.setYAxis('domains'),
+            series: this.setSeries(data, 'domains'),
+            exporting: {
+                allowHTML: true
+            }
+        });
+    }
+    setYAxis(data_type){
+        return [{
+            title: {
+              text: this.translationsValue['yAxisTitle'][data_type]
+            },
+            showFirstLabel: false,
+            max: ((data_type == 'market_share') ? 100 : null)
+        }]
+    }
+    setTooltip(data_type) {
+        return {
+            shared: true,
+            // headerFormat: '<span style="font-size: 15px">{point.point.name}</span><br/>',
+            // pointFormat: '<span style="color:{point.color}">\u25CF</span> ' + this.translationsValue['yAxisTitle'] + ' - {series.name}: <b>{point.y} ({point.diff}%)</b><br/>',
+            formatter: function () { 
+                var points = this.points;
+                var result = '<span style="font-size: 15px">' + points[0].key + '</span><br/>';
+                var apndx = ((data_type == 'market_share') ? '%' : '');
+                points.forEach(point => {
+                    let diff = point.point.diff;
+                    result += '<span style="color:' + point.color + '">\u25CF</span> ' + point.series.yAxis.axisTitle.textStr + 
+                        ' - ' + point.series.name + ': <b>' + point.y + apndx + '</b>';
+                    if (typeof diff !== 'undefined' && diff != 100) {
+                        let color, sign;
+                        if (diff > 0) {
+                            color = 'rgb(9,138,13)';
+                            sign = '+';
+                        } else if (diff < 0) {
+                            color = 'rgb(233,23,44)';
+                            sign = '';
+                        } else {
+                            color = 'rgb(0,0,0)';
+                            sign = '';
+                        }
+                        result += ' <span style="color: ' + color + '"><b>(' + sign + point.point.diff + '%)</b></span><br/>';
+                    } else {
+                        result += '<br/>';
+                    }
+                });
+                return result
+            }
+        }
+    }
+    setSeries(data, data_type){
+      var curData = data['current'];
+      var prevData = data['previous'];
+      var apndx = ((data_type == 'market_share') ? '%' : '');
+      this.setColors(curData[data_type]);
+      const getData = data => data.map((registrar, i) => ({
+          name: registrar[0],
+          y: registrar[1],
+          diff: this.getDiffPercent(data_type, registrar[1], prevData[data_type][i][1]),
+          color: this.colors[i]
+      }));
+      return [{ color: 'rgba(158, 159, 163, 0.5)',
                 pointPlacement: -0.15,
                 linkedTo: 'main',
-                data: prevData['domains'].slice(),
+                data: prevData[data_type].slice(),
                 name: this.translationsValue[prevData['name']]
-            }, {
+              }, {
                 name: this.translationsValue[curData['name']],
                 id: 'main',
                 dataSorting: {
@@ -154,25 +174,42 @@ export default class extends Controller {
                     inside: true,
                     style: {
                         fontSize: '16px'
-                    }
+                    },
+                    format: '{y}' + apndx
                 }],
-                data: getData(curData['domains']).slice()
-            }],
-            exporting: {
-                allowHTML: true
-            }
-        });
+                data: getData(curData[data_type]).slice()
+              }];
+    }
+    setColors(data){
+        if (!this.colors.length) {
+            this.colors = data.map(r => this.randomRGB());
+        }
     }
     setLangOptions(){
-        Highcharts.setOptions({
-            lang: this.translationsValue
-        });
+      if (this.translationsValue) {
+          Highcharts.setOptions({
+              lang: this.translationsValue
+          });
+      }
     }
     randomRGB() {
         var o = Math.round, r = Math.random, s = 255;
         return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
     }
-    getDiffPercent(original, new_number) {
-      return ((original - new_number) / original * 100).toFixed(1);
+    getDiffPercent(data_type, original, new_number) {
+        if (data_type == 'market_share') {
+            return (original - new_number).toFixed(1);
+        } else {
+            return ((original - new_number) / original * 100).toFixed(1);
+        }
+    }
+    toggleChartDataType(e){
+        e.preventDefault();
+        let data_type = e.target.value;
+        this.chart.update({
+          tooltip: this.setTooltip(data_type),
+          yAxis: this.setYAxis(data_type),
+          series: this.setSeries(this._data, data_type),
+        });
     }
 }

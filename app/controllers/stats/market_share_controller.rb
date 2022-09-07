@@ -11,7 +11,9 @@ module Stats
       result = conn.call_action(q: search_params)
       handle_response(result); return if performed?
 
-      render json: [{ name: t('stats.market_share.index.domains'), colorByPoint: true, data: @response }]
+      render json: [{ name: t('stats.market_share.index.domains'),
+                      colorByPoint: true,
+                      data: @response }]
     end
 
     def growth_rate_data

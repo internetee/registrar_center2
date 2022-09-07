@@ -522,7 +522,9 @@ et:
           hideData: "Peida andmetabel"
           noData: "Kuvatavaid andmeid pole"
           xAxisTitle: "Registripidajad"
-          yAxisTitle: "Domeenid"
+          yAxisTitle: 
+            domains: "Domeenid"
+            market_share: "Turuosa %"
           exportData:
             categoryHeader: "Registripidajad"
         COMPARE_TO_PERIODS:

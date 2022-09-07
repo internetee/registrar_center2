@@ -522,7 +522,9 @@ en:
           viewData: "View data table"
           hideData: "Hide data table"
           xAxisTitle: "Registrars"
-          yAxisTitle: "Domains"
+          yAxisTitle: 
+            domains: "Domains"
+            market_share: "Market share %"
           exportData:
             categoryHeader: "Registrars"
         COMPARE_TO_PERIODS:
