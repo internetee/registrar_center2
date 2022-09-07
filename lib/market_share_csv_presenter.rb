@@ -1,3 +1,4 @@
+require 'csv'
 class MarketShareCsvPresenter
   def initialize(data:, type:, params:, view:)
     @data = data
