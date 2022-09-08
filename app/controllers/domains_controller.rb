@@ -187,13 +187,13 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   # rubocop:enable Metrics/MethodLength
 
   def contacts_attributes(domain_params)
-    return [] unless domain_params[:contacts_attributes].present?
+    return [] if domain_params[:contacts_attributes].blank?
 
     domain_params[:contacts_attributes].values.reject { |c| c[:code].blank? }
   end
 
   def nameservers_attributes(domain_params)
-    return [] unless domain_params[:nameservers_attributes].present?
+    return [] if domain_params[:nameservers_attributes].blank?
 
     domain_params[:nameservers_attributes].values.reject { |n| n[:hostname].blank? }
                                           .map do |ns_attr|
@@ -206,7 +206,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   end
 
   def dnskeys_attributes(domain_params)
-    return [] unless domain_params[:dnskeys_attributes].present?
+    return [] if domain_params[:dnskeys_attributes].blank?
 
     domain_params[:dnskeys_attributes].values.reject { |d| d[:public_key].blank? }
   end
