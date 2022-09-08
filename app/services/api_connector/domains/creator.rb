@@ -38,6 +38,8 @@ class ApiConnector
       end
 
       def contacts(contacts, type)
+        return [] unless contacts
+
         contacts.select { |c| c[:type] == type }.pluck(:code)
       end
     end

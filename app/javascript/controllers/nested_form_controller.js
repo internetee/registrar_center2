@@ -28,10 +28,10 @@ export default class extends Controller {
           const content = this[type + "TemplateTarget"].innerHTML.replace(/NEW_RECORD/g, num_elements + 1);
           this[type + "TargetTarget"].insertAdjacentHTML("beforebegin", content);
           const last = Array.from(
-            document.querySelectorAll(this[type + 'SelectorWrapperValue'])
+              document.querySelectorAll(this[type + 'SelectorWrapperValue'])
           ).pop();
           last.querySelectorAll('select:not(.flatpickr-monthDropdown-months)').forEach(elem => {
-            new Select(elem, {});
+              new Select(elem, {});
           });
       }
   }
@@ -40,7 +40,7 @@ export default class extends Controller {
       let type = e.target.dataset.value;
       const wrapper = e.target.closest(this[type + 'SelectorWrapperValue']);
       let num_elements = this.numberOfVisibleElements(this[type + 'SelectorWrapperValue']);
-      if (num_elements > 1) {
+      if (num_elements > 0) {
           if (wrapper.dataset.newRecord === 'true') {
               wrapper.remove();
           } else {
