@@ -26,7 +26,7 @@
         <div class="col-md-4 col-xs-12">
             <template data-nested-form-target="nameserverTemplate">
                 <%= render 'domains/partials/form/nameservers', k: 'NEW_RECORD',
-                                                                v: '',
+                                                                v: {},
                                                                 removable: true %>
             </template>
             <% @domain_params[:nameservers_attributes].each do |k, v| %>
@@ -40,7 +40,7 @@
         <div class="col-md-4 col-xs-12">
             <template data-nested-form-target="dnskeyTemplate">
                 <%= render 'domains/partials/form/dns_keys', k: 'NEW_RECORD',
-                                                             v: '',
+                                                             v: {},
                                                              removable: true %>
             </template>
             <% @domain_params[:dnskeys_attributes].each do |k, v| %>

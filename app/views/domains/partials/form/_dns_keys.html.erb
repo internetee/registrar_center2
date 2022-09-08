@@ -1,6 +1,6 @@
 <div class="form--wrapper dnskey-nested-form-wrapper", data-new-record="<%= k == 'NEW_RECORD' %>">
     <div class="form--header">
-        <h3><%= "#{t('domains.form.dns_key')} #{k if k != 1}" %></h3>
+        <h3><%= "#{t('domains.form.dnskey')} #{k if k != 1}" %></h3>
         <div class="form--header--actions">
             <%= render 'domains/partials/form/action_links', type: 'dnskey',
                                                              removable: removable %>
@@ -44,6 +44,6 @@
             </div>
         </div>
     </div>
-    <%= hidden_field_tag "domain[dnskeys_attributes][#{k}][id]", v['id']  if v['id'] %>
+    <%= hidden_field_tag "domain[dnskeys_attributes][#{k}][id]", v['id'] if v['id'] %>
     <%= hidden_field_tag "domain[dnskeys_attributes][#{k}][action]", 'add' %>
 </div>

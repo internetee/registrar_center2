@@ -176,31 +176,40 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
       transfer_code: domain_params[:transfer_code],
       registrant: domain_params[:registrant],
       period: domain_params[:period],
-      contacts: if domain_params[:contacts_attributes].present?
-                  domain_params[:contacts_attributes].values.reject { |c| c[:code].blank? }
-                end,
-      nameservers: if domain_params[:nameservers_attributes].present?
-                     domain_params[:nameservers_attributes].values
-                                                           .reject { |n| n[:hostname].blank? }
-                                                           .map do |ns_attr|
-                       {
-                         id: ns_attr[:id],
-                         hostname: ns_attr[:hostname],
-                         ipv4: ns_attr[:ipv4].split(','),
-                         ipv6: ns_attr[:ipv6].split(','),
-                         action: ns_attr[:action],
-                       }
-                     end
-                   end,
-      dns_keys: if domain_params[:dnskeys_attributes].present?
-                  domain_params[:dnskeys_attributes].values.reject { |d| d[:public_key].blank? }
-                end,
+      contacts: contacts_attributes(domain_params),
+      nameservers: nameservers_attributes(domain_params),
+      dns_keys: dnskeys_attributes(domain_params),
       legal_document: transform_legal_doc_params(domain_params[:legal_document]),
       batch_file: parse_csv(domain_params[:batch_file]),
       exp_date: domain_params[:exp_date],
     }
   end
   # rubocop:enable Metrics/MethodLength
+
+  def contacts_attributes(domain_params)
+    return [] unless domain_params[:contacts_attributes].present?
+
+    domain_params[:contacts_attributes].values.reject { |c| c[:code].blank? }
+  end
+
+  def nameservers_attributes(domain_params)
+    return [] unless domain_params[:nameservers_attributes].present?
+
+    domain_params[:nameservers_attributes].values.reject { |n| n[:hostname].blank? }
+                                          .map do |ns_attr|
+      {
+        id: ns_attr[:id], hostname: ns_attr[:hostname],
+        ipv4: ns_attr[:ipv4].split(','), ipv6: ns_attr[:ipv6].split(','),
+        action: ns_attr[:action]
+      }
+    end
+  end
+
+  def dnskeys_attributes(domain_params)
+    return [] unless domain_params[:dnskeys_attributes].present?
+
+    domain_params[:dnskeys_attributes].values.reject { |d| d[:public_key].blank? }
+  end
 
   def parse_csv(params)
     return if params.blank?
