@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: put
-    uri: http://registry:3000/repp/v1/domains/example.ee
+    uri: http://registry:3000/repp/v1/domains/example2022.ee
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","registrant":{"code":"ullam"}}}'
+      string: '{"domain":{"name":"example2022.ee","registrant":{"code":"1111111:65B7EB55"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -19,8 +19,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -38,16 +38,70 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
+      Etag:
+      - W/"04dd042e74dcfd99e0a012e4246ee0cd"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 780b2601-5923-4d29-b48e-b4faa86ae22a
+      - 6665e653-388c-414d-95b1-989b57e32ba1
       X-Runtime:
-      - '0.066432'
+      - '0.509765'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2303,"message":"Registrant not found","data":{}}'
-  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example2022.ee"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:35:47 GMT
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/domains/example092022.ee
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"name":"example092022.ee","registrant":{"code":"1111111:65B7EB55"}}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"a6bc4b21623abd28117d27a1e900192e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b42283a7-78c7-4286-8059-fc87074d90f6
+      X-Runtime:
+      - '0.519757'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example092022.ee"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:20 GMT
 recorded_with: VCR 6.1.0

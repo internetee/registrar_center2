@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","reserved_pw":"EcCg7L54w9V8ySi2","registrant":"quo","period_unit":"m","period":6,"nameservers_attributes":[{"hostname":"ns1.hettinger-torp.name","ipv4":["136.107.165.19"],"ipv6":["4125:1ef5:38cf:40c0:522a:1009:14:7d02"]},{"hostname":"ns2.gusikowski.info","ipv4":["212.207.167.235"],"ipv6":["bc9b:1dfb:2f81:4cf5:20e8:6e28:e291:b592"]}],"admin_contacts":["quia"],"tech_contacts":["quam"],"dnskeys_attributes":[{"flags":"256","protocol":"3","alg":"8","public_key":"e17a9a5309c208d655d4246e56bae3fa1bb75f4bb0a37a52f774536b52cb01f3"}]}}'
+      string: '{"domain":{"name":"example092022.ee","reserved_pw":"GfA1jLvPbM8x","registrant":"1111111:65B7EB55","period_unit":"m","period":6,"nameservers_attributes":[{"hostname":"ns1.altenwerth.io","ipv4":["193.149.227.82"],"ipv6":["dff3:a399:7dd9:b0f:c2e6:bf41:cdb7:9aa0"]},{"hostname":"ns2.reynolds.co","ipv4":["141.234.129.138"],"ipv6":["69bf:bc6f:35b9:5d0d:f5d2:1b6:bbbe:282c"]}],"admin_contacts":["1111111:65B7EB55"],"tech_contacts":["1111111:65B7EB55"],"dnskeys_attributes":[{"flags":"257","protocol":"3","alg":"8","public_key":"883c0a3aada2ce79ea04b4655637bc38c7f7b7aa3626f8c22b560a9529b7d8f2"}]}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 92017571-c2fb-4863-9ceb-c6fa57a297a2
+      - 7da134f4-f58c-4bb1-a373-8a1c063f5233
       X-Runtime:
-      - '0.046872'
+      - '0.048632'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"laborum","password":"DfGt0M6aLxFiQrR2","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"delectus","password":"HiCs2Fs3Ry6TtV","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:19 GMT
 recorded_with: VCR 6.1.0

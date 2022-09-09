@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains/example.ee
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","registrant":{"code":"ullam"}}}'
+      string: '{"domain":{"name":"example.ee","registrant":{"code":"qui"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,113 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 07d3bfb9-7c80-41f1-ac58-2ff51c1e7f5a
+      - 67a1a4e2-dad5-42ee-8b07-56def9e8f69d
       X-Runtime:
-      - '0.046592'
+      - '0.042403'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"eum","password":"V8xIt7VmA87o","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"officiis","password":"5LxUpV1o","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:33:43 GMT
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/domains/example2022.ee
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"name":"example2022.ee","registrant":{"code":"1111111:65B7EB55"}}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - f3604a28-bc82-424f-9b63-2bfaa3801ea1
+      X-Runtime:
+      - '0.049365'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"ducimus","password":"A0bEh5PwOcA","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:35:47 GMT
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/domains/example092022.ee
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"name":"example092022.ee","registrant":{"code":"1111111:65B7EB55"}}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - dbf499bc-a8e4-4232-ae28-49486eeafda8
+      X-Runtime:
+      - '0.054388'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"sed","password":"EvYsLo2Yi","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:20 GMT
 recorded_with: VCR 6.1.0

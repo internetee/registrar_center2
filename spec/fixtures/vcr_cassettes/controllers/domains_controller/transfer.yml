@@ -1,60 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://registry:3000/repp/v1/domains/transfer
-    body:
-      encoding: UTF-8
-      string: '{"data":{"domain_transfers":[{"domain_name":"wwww.ee","transfer_code":"a39f33a5c6a5aa3ac44e625c9eaa7476"},{"domain_name":"qqq.ee","transfer_code":"047b396bf3b0cc56fa452a0be9e21ea9"}]}}'
-    headers:
-      Authorization:
-      - "<TOKEN>"
-      User-Agent:
-      - Faraday v2.3.0
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      Content-Type:
-      - application/json; charset=utf-8
-      Vary:
-      - Accept
-      Etag:
-      - W/"1c15ff7d3cbea2b302c751149af855bf"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - dd14a81a-dc1a-41a4-bb15-0bcfc20bb9e9
-      X-Runtime:
-      - '0.074586'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"success":[],"failed":[{"type":"domain_transfer","domain_name":"wwww.ee","errors":{"code":"2002","msg":"Domain
-        already belongs to the querying registrar"}},{"type":"domain_transfer","domain_name":"qqq.ee","errors":{"code":"2002","msg":"Domain
-        already belongs to the querying registrar"}}]}}'
-  recorded_at: Fri, 09 Sep 2022 10:20:19 GMT
-- request:
     method: get
     uri: http://registry:3000/repp/v1/domains?details=true&limit=10&offset=0&q&simple=true
     body:
@@ -115,4 +61,58 @@ http_interactions:
         Tsõganov","code":"1111111:0E828F10"},"statuses":{"pendingDelete":"","pendingUpdate":"","inactive":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"transfer_code":"6de9c8dff6d24744d1db23a45153723c"},{"name":"example111.ee","expire_time":"2022-10-18T00:00:00.000+03:00","registrant":{"name":"Sergei
         Tsõganov","code":"1111111:11112"},"statuses":{"inactive":"","pendingDeleteConfirmation":""},"transfer_code":"3a4500279b0d7488da1b9f66d2d82d1e"}],"count":34,"statuses":["clientDeleteProhibited","serverDeleteProhibited","clientHold","serverHold","clientRenewProhibited","serverRenewProhibited","clientTransferProhibited","serverTransferProhibited","clientUpdateProhibited","serverUpdateProhibited","inactive","ok","pendingCreate","pendingDelete","pendingDeleteConfirmation","pendingRenew","pendingTransfer","pendingUpdate","serverManualInzone","serverRegistrantChangeProhibited","serverAdminChangeProhibited","serverTechChangeProhibited","serverForceDelete","deleteCandidate","expired","disputed","serverReleaseProhibited","serverExtensionUpdateProhibited","serverObjUpdateProhibited"]}}'
   recorded_at: Fri, 09 Sep 2022 10:20:19 GMT
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/domains/transfer
+    body:
+      encoding: UTF-8
+      string: '{"data":{"domain_transfers":[{"domain_name":"wwww.ee","transfer_code":"a39f33a5c6a5aa3ac44e625c9eaa7476"},{"domain_name":"qqq.ee","transfer_code":"047b396bf3b0cc56fa452a0be9e21ea9"}]}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"1c15ff7d3cbea2b302c751149af855bf"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1a584ba3-97e9-4133-9932-c26d974c5010
+      X-Runtime:
+      - '0.071603'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"success":[],"failed":[{"type":"domain_transfer","domain_name":"wwww.ee","errors":{"code":"2002","msg":"Domain
+        already belongs to the querying registrar"}},{"type":"domain_transfer","domain_name":"qqq.ee","errors":{"code":"2002","msg":"Domain
+        already belongs to the querying registrar"}}]}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:20 GMT
 recorded_with: VCR 6.1.0

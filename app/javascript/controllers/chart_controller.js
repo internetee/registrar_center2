@@ -56,7 +56,8 @@ export default class extends Controller {
                     dataLabels: {
                         enabled: true,
                         format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
+                    },
+                    showInLegend: true
                 }
             },
             series: data

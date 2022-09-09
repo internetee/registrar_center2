@@ -41,9 +41,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 616ee86c-295e-4f4a-b1f4-5945571f97d7
+      - 50566eab-b6ff-43e6-abcf-d99048b521d9
       X-Runtime:
-      - '0.090325'
+      - '0.085549'
       Transfer-Encoding:
       - chunked
     body:
@@ -53,5 +53,59 @@ http_interactions:
         Tsõganov"},{"code":"1111111:8E3736F2","type":"AdminDomainContact","name":"Mary
         Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":39,"hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"]},{"id":43,"hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
         ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"0421786ef0b961393d52e5f58f48d1dd"}}}'
-  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
+  recorded_at: Fri, 09 Sep 2022 10:35:46 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/domains/example092022.ee
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"d9ac438452e1fdc3db31e2b9b1b6c449"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 9d7b1572-fd81-41a9-a6d4-87219e8ea23b
+      X-Runtime:
+      - '0.092626'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example092022.ee","registrant":{"name":"Sergei
+        Tsõganov","code":"1111111:65B7EB55"},"created_at":"2022-09-09T13:40:19.122+03:00","updated_at":"2022-09-09T13:40:19.122+03:00","expire_time":"2023-03-10T00:00:00.000+02:00","outzone_at":null,"delete_date":null,"force_delete_date":null,"contacts":[{"code":"1111111:65B7EB55","type":"AdminDomainContact","name":"Sergei
+        Tsõganov"},{"code":"1111111:65B7EB55","type":"TechDomainContact","name":"Sergei
+        Tsõganov"}],"nameservers":[{"id":130,"hostname":"ns1.altenwerth.io","ipv4":["193.149.227.82"],"ipv6":["DFF3:A399:7DD9:B0F:C2E6:BF41:CDB7:9AA0"]},{"id":131,"hostname":"ns2.reynolds.co","ipv4":["141.234.129.138"],"ipv6":["69BF:BC6F:35B9:5D0D:F5D2:1B6:BBBE:282C"]}],"dnssec_keys":[{"id":30,"flags":257,"protocol":3,"alg":8,"public_key":"883c0a3aada2ce79ea04b4655637bc38c7f7b7aa3626f8c22b560a9529b7d8f2"}],"statuses":{"ok":""},"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"9a3a88068731b5db4018dff05ecf8e21"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:19 GMT
 recorded_with: VCR 6.1.0
