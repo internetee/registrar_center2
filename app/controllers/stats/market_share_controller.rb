@@ -30,7 +30,16 @@ module Stats
       result = conn.call_action(q: search_params)
       handle_response(result); return if performed? || request.format.csv?
 
-      render json: { current: @response.data, previous: @response.prev_data }
+      add_data = []
+      40.times do
+        add_data << [(0...8).map { (65 + rand(26)).chr }.join, rand(1..100)]
+      end
+      @response.prev_data['domains'] = @response.prev_data['domains'] + add_data
+      @response.prev_data['market_share'] = @response.prev_data['market_share'] + add_data
+      @response.data['domains'] = @response.data['domains'] + add_data
+      @response.data['market_share'] = @response.data['market_share'] + add_data
+      render json: { current: @response.data, previous: @response.prev_data,
+                     current_registrar: current_user.registrar_name }
     end
 
     private

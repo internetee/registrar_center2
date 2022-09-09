@@ -65,7 +65,17 @@ export default class extends Controller {
     load_market_share_growth_rate_chart(data){
         this.chart = Highcharts.chart(this.element.querySelector('.bar_chart'), {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                events: {
+                    load: function() {
+                        let categoryHeight = 35;
+                        this.update({
+                            chart: {
+                              height: categoryHeight * this.pointCount + (this.chartHeight - this.plotHeight)
+                            }
+                        });
+                    }
+                }
             },
             title: {
                 text: this.titleValue,
@@ -82,7 +92,7 @@ export default class extends Controller {
                 }
             },
             legend: {
-                enabled: false
+                enabled: true
             },
             tooltip: this.setTooltip('market_share'),
             xAxis: {
@@ -90,6 +100,12 @@ export default class extends Controller {
                 labels: {
                     style: {
                         textAlign: 'center'
+                    },
+                    formatter: function() {
+                        if (this.value === data['current_registrar']) {
+                            return '<span style="font-weight: bold; text-decoration: underline; font-size: 15px;">' + this.value.toString() + '</span>';
+                        }
+                        return this.value;
                     }
                 },
                 title: {
@@ -106,7 +122,7 @@ export default class extends Controller {
     setYAxis(data_type){
         return [{
             title: {
-              text: this.translationsValue['yAxisTitle'][data_type]
+                text: this.translationsValue['yAxisTitle'][data_type]
             },
             showFirstLabel: false,
             floor: 0,
