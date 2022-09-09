@@ -92,7 +92,7 @@ export default class extends Controller {
                 }
             },
             legend: {
-                enabled: true
+                enabled: false
             },
             tooltip: this.setTooltip('market_share'),
             xAxis: {
