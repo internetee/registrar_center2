@@ -41,14 +41,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - a84ad1ae-3974-4acb-bfab-eb6235c59371
+      - dd215e4c-2b28-4439-bbd9-f78971f4ef7f
       X-Runtime:
-      - '0.226773'
+      - '0.232260'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":2002,"message":"Domain renew error for wwww.ee, Domain renew
         error for wwwww.ee","data":{}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:13 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:04 GMT
 recorded_with: VCR 6.1.0

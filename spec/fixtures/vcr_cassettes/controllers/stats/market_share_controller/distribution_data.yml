@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b4b25476-04c4-4893-895b-261401405b22
+      - fb297216-8132-4d4a-89d2-8bc03f6e2751
       X-Runtime:
-      - '0.053897'
+      - '0.077436'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":[{"name":"Macho","y":1},{"name":"Sergei","y":34,"sliced":true,"selected":true}]}'
-  recorded_at: Fri, 09 Sep 2022 10:03:32 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:24 GMT
 recorded_with: VCR 6.1.0

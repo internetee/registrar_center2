@@ -41,9 +41,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - c9539859-8e87-4165-8246-bf5d01aff241
+      - 4dd61170-6f4c-4e90-9a1d-0cf4880a7538
       X-Runtime:
-      - '0.071674'
+      - '0.072241'
       Transfer-Encoding:
       - chunked
     body:
@@ -61,5 +61,5 @@ http_interactions:
         new","type":"credit","sum":"77.0","balance":"1003.66","currency":"EUR","updator":null},{"created_at":"2022-07-10T11:05:12.420+03:00","description":"description
         new","type":"credit","sum":"55.0","balance":"926.66","currency":"EUR","updator":null}],"count":11,"types_for_select":[["Create","create"],["Renew","renew"],["Add
         credit","add_credit"],["Update credit","update_credit"]]}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:11 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
 recorded_with: VCR 6.1.0

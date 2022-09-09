@@ -91,13 +91,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 2abcfdd6-8e68-4b68-a6fc-0e6743042c24
+      - 190d7d64-e114-4178-bc52-9ea3d7b45763
       X-Runtime:
-      - '0.058674'
+      - '0.066837'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"message":"Invoice status prohibits operation","data":{}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:24 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:15 GMT
 recorded_with: VCR 6.1.0

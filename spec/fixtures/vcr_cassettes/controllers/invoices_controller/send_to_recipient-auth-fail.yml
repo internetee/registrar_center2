@@ -55,7 +55,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/invoices/75/send_to_recipient
     body:
       encoding: UTF-8
-      string: '{"invoice":{"id":"75","recipient":"tyrone@runte.biz"}}'
+      string: '{"invoice":{"id":"75","recipient":"mikel@cassin.net"}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -91,13 +91,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - dfbbb187-0622-486b-96ce-fdebd12098c5
+      - 87bea08b-6853-4adb-af7b-aaea8ac111f1
       X-Runtime:
-      - '0.039732'
+      - '0.057052'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"quo","password":"UuBhOmOrJfTtHr0","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:24 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"eius","password":"YpGc9QuKxKj","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:15 GMT
 recorded_with: VCR 6.1.0

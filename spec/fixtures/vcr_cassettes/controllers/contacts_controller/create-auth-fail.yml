@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/contacts
     body:
       encoding: UTF-8
-      string: '{"contact":{"name":"Laurette Kessler","email":"fake@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"}}}'
+      string: '{"contact":{"name":"Zackary Hyatt","email":"fake@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 489c5768-356e-4f20-b0d0-2ec46c365915
+      - ef96c624-a054-4e5f-8c46-f32d85b423f9
       X-Runtime:
-      - '0.047025'
+      - '0.045352'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"laborum","password":"BfVyIs5W7p1J","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:15 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"ut","password":"ZzNyAr542","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:07 GMT
 recorded_with: VCR 6.1.0

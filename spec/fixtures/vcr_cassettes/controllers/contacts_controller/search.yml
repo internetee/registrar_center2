@@ -41,14 +41,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8dfd35a1-57de-4f5e-8a08-0a7b7c058e74
+      - dbd64c3b-673a-4786-b883-7db1bccbde98
       X-Runtime:
-      - '0.043816'
+      - '0.051717'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":[{"value":"1111111:0FEEDC3C","label":"1111111:0FEEDC3C
         täisühing VAVILOV","selected":true}]}'
-  recorded_at: Fri, 09 Sep 2022 10:03:14 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:06 GMT
 recorded_with: VCR 6.1.0

@@ -43,13 +43,13 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 622f9fbe-835a-411d-b1f1-ba347ef0267c
+      - 1b876ff3-9fc3-4ceb-9302-110c60d554ac
       X-Runtime:
-      - '0.099140'
+      - '0.085763'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":{"affected_domains":[],"skipped_domains":["dsasds.ee"]}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:13 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:03 GMT
 recorded_with: VCR 6.1.0

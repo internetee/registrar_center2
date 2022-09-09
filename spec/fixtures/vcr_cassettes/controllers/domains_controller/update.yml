@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains/example.ee
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","registrant":{"code":"est"}}}'
+      string: '{"domain":{"name":"example.ee","registrant":{"code":"ullam"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 416a6b84-945d-413f-be9e-47b454951615
+      - 780b2601-5923-4d29-b48e-b4faa86ae22a
       X-Runtime:
-      - '0.077797'
+      - '0.066432'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":2303,"message":"Registrant not found","data":{}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:17 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
 recorded_with: VCR 6.1.0

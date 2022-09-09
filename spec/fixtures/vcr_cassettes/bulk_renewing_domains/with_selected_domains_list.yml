@@ -41,9 +41,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - cf35fe61-342b-44b9-a092-d92ef5561337
+      - 5df8bef8-b6e6-469b-b848-8f6ee16b4648
       X-Runtime:
-      - '0.096822'
+      - '0.103946'
       Transfer-Encoding:
       - chunked
     body:
@@ -73,5 +73,5 @@ http_interactions:
         Tsõganov","code":"1111111:0E828F10"},"statuses":{"serverManualInzone":"notessds
         dadasd asddfsdfasd faewfwefasfsdf","serverReleaseProhibited":"","serverTransferProhibited":"dsfasdfasdfasdfafwf3wfawefwe","pendingDeleteConfirmation":""},"transfer_code":"65adbb24da2b92f5601a5bce8933d4ae"},{"name":"saasdadasd.ee","expire_time":"2022-11-26T00:00:00.000+02:00","registrant":{"name":"Sergei
         Tsõganov","code":"1111111:8E561326"},"statuses":{"inactive":"","pendingDeleteConfirmation":""},"transfer_code":"9cbf97e513d3670a314bcfd15f3b820d"}],"count":22,"statuses":["clientDeleteProhibited","serverDeleteProhibited","clientHold","serverHold","clientRenewProhibited","serverRenewProhibited","clientTransferProhibited","serverTransferProhibited","clientUpdateProhibited","serverUpdateProhibited","inactive","ok","pendingCreate","pendingDelete","pendingDeleteConfirmation","pendingRenew","pendingTransfer","pendingUpdate","serverManualInzone","serverRegistrantChangeProhibited","serverAdminChangeProhibited","serverTechChangeProhibited","serverForceDelete","deleteCandidate","expired","disputed","serverReleaseProhibited","serverExtensionUpdateProhibited","serverObjUpdateProhibited"]}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:30 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:22 GMT
 recorded_with: VCR 6.1.0

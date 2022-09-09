@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","reserved_pw":"EtNe3SmU4","registrant":"id","period_unit":"m","period":6,"nameservers_attributes":[{"hostname":"ns1.oberbrunner.name","ipv4":["74.134.84.155"],"ipv6":["5bde:e584:e2d0:458d:55b9:5c4c:76d3:2834"]},{"hostname":"ns2.mcclure.name","ipv4":["211.54.66.20"],"ipv6":["6187:e25a:a2bc:1789:7901:66db:569a:3867"]}],"admin_contacts":["aut"],"tech_contacts":["quia"],"dnskeys_attributes":[{"flags":"257","protocol":"3","alg":"13","public_key":"c7031745820ee93d5eb101197108b686dd0f945cbe06bfc43df67bf466c91af6"}]}}'
+      string: '{"domain":{"name":"example.ee","reserved_pw":"EcCg7L54w9V8ySi2","registrant":"quo","period_unit":"m","period":6,"nameservers_attributes":[{"hostname":"ns1.hettinger-torp.name","ipv4":["136.107.165.19"],"ipv6":["4125:1ef5:38cf:40c0:522a:1009:14:7d02"]},{"hostname":"ns2.gusikowski.info","ipv4":["212.207.167.235"],"ipv6":["bc9b:1dfb:2f81:4cf5:20e8:6e28:e291:b592"]}],"admin_contacts":["quia"],"tech_contacts":["quam"],"dnskeys_attributes":[{"flags":"256","protocol":"3","alg":"8","public_key":"e17a9a5309c208d655d4246e56bae3fa1bb75f4bb0a37a52f774536b52cb01f3"}]}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 56b413de-d5f5-433c-b18f-2e6ea0861f73
+      - 92017571-c2fb-4863-9ceb-c6fa57a297a2
       X-Runtime:
-      - '0.045141'
+      - '0.046872'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"quae","password":"D5lKj9WbIxWrMrKs","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:18 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"laborum","password":"DfGt0M6aLxFiQrR2","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
 recorded_with: VCR 6.1.0

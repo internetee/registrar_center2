@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: http://registry:3000/repp/v1/registrar/notifications/43
+    uri: http://registry:3000/repp/v1/registrar/notifications/50
     body:
       encoding: UTF-8
       string: '{"notification":{"read":true}}'
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - a32ee9bf-4cf0-4773-94e3-85c3ed4e38be
+      - 626ef7b2-92a9-4b9a-a939-c177dab170e7
       X-Runtime:
-      - '0.044501'
+      - '0.191860'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"quidem","password":"PdK35vLwHp6J","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:25 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"voluptatum","password":"O8fOi4Vm9JeCgO9","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:17 GMT
 recorded_with: VCR 6.1.0

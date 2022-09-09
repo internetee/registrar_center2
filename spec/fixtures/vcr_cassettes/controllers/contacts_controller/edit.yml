@@ -41,9 +41,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8c3090b7-e5cc-40c3-94b9-c7c41964ad35
+      - a206cde3-f221-43d4-9489-c0735c8e4312
       X-Runtime:
-      - '0.082937'
+      - '0.091716'
       Transfer-Encoding:
       - chunked
     body:
@@ -53,5 +53,5 @@ http_interactions:
         ","website":"https://bankwiser.eu"},"domains":[{"id":"120bb8b4-a9ae-4a09-956c-6816bf367c24","name":"wwww.ee","registrar":{"name":"Sergei
         "},"valid_to":"2022-12-16T00:00:00.000+02:00","roles":["TechDomainContact"]},{"id":"3188b80b-a376-4e3f-9a9c-3a797d6a2d25","name":"example.ee","registrar":{"name":"Sergei
         "},"valid_to":"2022-09-14T00:00:00.000+03:00","roles":["Registrant","AdminDomainContact"]}],"domains_count":2}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:15 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:07 GMT
 recorded_with: VCR 6.1.0

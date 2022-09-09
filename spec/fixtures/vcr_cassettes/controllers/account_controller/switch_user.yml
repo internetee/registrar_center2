@@ -43,14 +43,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 4c76822e-088a-4b7e-ad37-c3996fe5c700
+      - cd99dbd5-dfb6-420e-94e5-e4f50c9e1316
       X-Runtime:
-      - '0.074719'
+      - '0.068230'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"You are now signed in as a user \"billinguser\"","data":{"token":"YmlsbGluZ3VzZXI6RGFuaWVsMTMxMQ==","registrar":{"id":8,"username":"billinguser","roles":["billing"],"registrar_name":"Sergei
         ","legaldoc_mandatory":true,"address_processing":false,"abilities":{"can":{"manage":{"Invoice":[],"Account":[],"deposit":[],"balance_auto_reload":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]},"create":{"registrant_domain_update_confirm":[]},"new":{"registrant_domain_update_confirm":[]}},"cannot":{}}}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:12 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:03 GMT
 recorded_with: VCR 6.1.0

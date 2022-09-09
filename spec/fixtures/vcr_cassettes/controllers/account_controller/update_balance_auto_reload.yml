@@ -43,13 +43,13 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ad500a09-fb19-445a-85d8-c8a80a56ce2e
+      - 877efe89-0903-4369-8d2d-66852d956192
       X-Runtime:
-      - '0.110590'
+      - '0.094816'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Balance Auto-Reload setting has been updated","data":{"settings":{"balance_auto_reload":{"type":{"name":"threshold","amount":100.0,"threshold":10.0}}}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:12 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
 recorded_with: VCR 6.1.0

@@ -41,9 +41,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 4cb2fe5a-9b75-4cca-b9ef-58f2166c9e14
+      - 616ee86c-295e-4f4a-b1f4-5945571f97d7
       X-Runtime:
-      - '0.086194'
+      - '0.090325'
       Transfer-Encoding:
       - chunked
     body:
@@ -53,5 +53,5 @@ http_interactions:
         Tsõganov"},{"code":"1111111:8E3736F2","type":"AdminDomainContact","name":"Mary
         Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":39,"hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"]},{"id":43,"hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
         ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"0421786ef0b961393d52e5f58f48d1dd"}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:17 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
 recorded_with: VCR 6.1.0

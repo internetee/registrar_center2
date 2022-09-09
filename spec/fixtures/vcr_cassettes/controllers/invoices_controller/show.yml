@@ -85,13 +85,13 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"0fe7e2394144e3526086f4e006f0dcd3"
+      - W/"65b09a19659b45630f85c5d5bb78ba68"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d5c94298-369e-4600-8b7d-2afa7cfe1f2d
+      - bea8c6c5-b0d7-4ce7-93bf-cbab104c78d2
       X-Runtime:
-      - '0.065373'
+      - '0.072093'
       Transfer-Encoding:
       - chunked
     body:
@@ -101,6 +101,6 @@ http_interactions:
         Pank","swift":"LHVBEE22","vat_no":"EE101286464","address":"Paldiski mnt 80,
         Tallinn, Harjumaa, 10617","country":"Estonia","phone":"+372 727 1000","url":"www.internet.ee","email":"info@internet.ee","contact_name":"Martti
         Õigus"},"buyer":{"name":"Sergei ","reg_no":"14836742","address":"Rõugu 2/2,
-        Tallinn, Harju, 13522","country":"Estonia","phone":"55631806","url":"https://bankwiser.eu","email":"sergei.tsoganov@internet.ee"},"items":[{"description":"prepayment","unit":"piece","quantity":1,"price":"66.0","sum_without_vat":"66.0","vat_amount":"13.2","total":"79.2"}],"recipient":"annis_torp@glover-labadie.biz","monthly_invoice":false}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:18 GMT
+        Tallinn, Harju, 13522","country":"Estonia","phone":"55631806","url":"https://bankwiser.eu","email":"sergei.tsoganov@internet.ee"},"items":[{"description":"prepayment","unit":"piece","quantity":1,"price":"66.0","sum_without_vat":"66.0","vat_amount":"13.2","total":"79.2"}],"recipient":"eleanore_funk@konopelski-bahringer.com","monthly_invoice":false}}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:10 GMT
 recorded_with: VCR 6.1.0

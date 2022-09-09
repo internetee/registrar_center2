@@ -43,16 +43,16 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 95813dfe-ad68-4757-b416-3fe3e28bb753
+      - f6838053-d068-4849-8fb6-25b28fd1773a
       X-Runtime:
-      - '0.070553'
+      - '0.062528'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":{"success":[],"failed":[{"type":"domain_transfer","domain_name":"wwww.ee","errors":{"code":"2202","msg":"Invalid
         authorization information"}}]}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:28 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:20 GMT
 - request:
     method: get
     uri: http://registry:3000/repp/v1/domains?details=true&limit=10&offset=0&q&simple=true
@@ -94,9 +94,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 91522de7-0eee-4990-bd45-55342ddff7f1
+      - 5ca81594-5a76-41b0-acae-b1d92c2ed425
       X-Runtime:
-      - '0.086869'
+      - '0.085230'
       Transfer-Encoding:
       - chunked
     body:
@@ -113,5 +113,5 @@ http_interactions:
         Tsõganov","code":"1111111:0E828F10"},"statuses":{"inactive":"","pendingDeleteConfirmation":""},"transfer_code":"a5946d667f66a7cf8fdcdc6efeffd7b1"},{"name":"example333.ee","expire_time":"2022-10-18T00:00:00.000+03:00","registrant":{"name":"Sergei
         Tsõganov","code":"1111111:0E828F10"},"statuses":{"pendingDelete":"","pendingUpdate":"","inactive":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"transfer_code":"6de9c8dff6d24744d1db23a45153723c"},{"name":"example111.ee","expire_time":"2022-10-18T00:00:00.000+03:00","registrant":{"name":"Sergei
         Tsõganov","code":"1111111:11112"},"statuses":{"inactive":"","pendingDeleteConfirmation":""},"transfer_code":"3a4500279b0d7488da1b9f66d2d82d1e"}],"count":34,"statuses":["clientDeleteProhibited","serverDeleteProhibited","clientHold","serverHold","clientRenewProhibited","serverRenewProhibited","clientTransferProhibited","serverTransferProhibited","clientUpdateProhibited","serverUpdateProhibited","inactive","ok","pendingCreate","pendingDelete","pendingDeleteConfirmation","pendingRenew","pendingTransfer","pendingUpdate","serverManualInzone","serverRegistrantChangeProhibited","serverAdminChangeProhibited","serverTechChangeProhibited","serverForceDelete","deleteCandidate","expired","disputed","serverReleaseProhibited","serverExtensionUpdateProhibited","serverObjUpdateProhibited"]}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:28 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:20 GMT
 recorded_with: VCR 6.1.0

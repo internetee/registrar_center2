@@ -41,9 +41,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 9b2f08d9-f1f7-4781-99d9-8925fe9d7bef
+      - b40a7784-e5f2-4f2a-9d73-6488173651ca
       X-Runtime:
-      - '0.085197'
+      - '0.105608'
       Transfer-Encoding:
       - chunked
     body:
@@ -53,7 +53,7 @@ http_interactions:
         Tsõganov"},{"code":"1111111:8E3736F2","type":"AdminDomainContact","name":"Mary
         Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":39,"hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"]},{"id":43,"hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
         ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"0421786ef0b961393d52e5f58f48d1dd"}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:34 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:27 GMT
 - request:
     method: put
     uri: http://registry:3000/repp/v1/domains/example.ee
@@ -95,15 +95,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 6d598133-c406-4db0-bac7-0a80278bee5c
+      - 7dc4aed6-0e06-444b-a9e8-ccf333bf359d
       X-Runtime:
-      - '0.204355'
+      - '0.340404'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":2304,"message":"Object status prohibits operation","data":{}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:34 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:28 GMT
 - request:
     method: get
     uri: http://registry:3000/repp/v1/domains/example.ee
@@ -145,9 +145,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 0311b31d-31d0-4986-a420-45c1ae3f3c9c
+      - 9ced8e08-9b4c-40b5-834f-97fcf2d767f2
       X-Runtime:
-      - '0.091121'
+      - '0.079012'
       Transfer-Encoding:
       - chunked
     body:
@@ -157,5 +157,5 @@ http_interactions:
         Tsõganov"},{"code":"1111111:8E3736F2","type":"AdminDomainContact","name":"Mary
         Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":39,"hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"]},{"id":43,"hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
         ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"0421786ef0b961393d52e5f58f48d1dd"}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:34 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:28 GMT
 recorded_with: VCR 6.1.0

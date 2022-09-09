@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - b813a2e2-6c20-4373-92f9-d323f5b90292
+      - 7235050b-b8ca-4c6b-b444-b4fc7f9252bc
       X-Runtime:
-      - '0.047682'
+      - '0.056618'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":2303,"message":"Object does not exist"}'
-  recorded_at: Fri, 09 Sep 2022 10:03:14 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:06 GMT
 recorded_with: VCR 6.1.0

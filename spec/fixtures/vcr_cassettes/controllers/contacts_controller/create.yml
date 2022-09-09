@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/contacts
     body:
       encoding: UTF-8
-      string: '{"contact":{"name":"Laurette Kessler","email":"fake@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"}}}'
+      string: '{"contact":{"name":"Zackary Hyatt","email":"fake@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"b3097d440a1c4525126f7111ca925372"
+      - W/"d149f8cf7ddd3f11a17ea5411ae3e564"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 98af1fa9-acf9-420b-82a3-136bb135f2dc
+      - 8e6ef800-579e-43d3-ab6c-8071ba0f6af6
       X-Runtime:
-      - '0.523897'
+      - '0.476508'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"contact":{"code":"1111111:F3C01A45"}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:15 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"contact":{"code":"1111111:464580E8"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:07 GMT
 recorded_with: VCR 6.1.0

@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains/example.ee
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","registrant":{"code":"est"}}}'
+      string: '{"domain":{"name":"example.ee","registrant":{"code":"ullam"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 81671ef9-efe0-47f0-953d-400ac208b5fc
+      - 07d3bfb9-7c80-41f1-ac58-2ff51c1e7f5a
       X-Runtime:
-      - '0.088771'
+      - '0.046592'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"explicabo","password":"3H0yFrWfL","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:17 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"eum","password":"V8xIt7VmA87o","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:09 GMT
 recorded_with: VCR 6.1.0

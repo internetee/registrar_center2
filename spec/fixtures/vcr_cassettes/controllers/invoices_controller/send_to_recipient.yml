@@ -55,7 +55,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/invoices/75/send_to_recipient
     body:
       encoding: UTF-8
-      string: '{"invoice":{"id":"75","recipient":"tyrone@runte.biz"}}'
+      string: '{"invoice":{"id":"75","recipient":"mikel@cassin.net"}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -89,17 +89,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"1ff3214795ebdd111d349e7dbf12218a"
+      - W/"64004a3c19d283774750b457885b062b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a7340d2c-d322-462f-b01b-be0de47cab97
+      - 5082c06d-d4b4-4bfb-b1d1-1db37da67190
       X-Runtime:
-      - '3.303498'
+      - '3.107025'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":75,"number":150005,"paid":false,"payable":false,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150005\u0026linkpay_token=k5t5xq\u0026order_reference=150005\u0026transaction_amount=79.2\u0026hmac=29a6abb6c80a223b4d8a7fbd3aa4ab0d52213b025b2ad8c7075b0edc6ff5e7be","receipt_date":null,"cancelled":true,"cancellable":false,"due_date":"2022-09-10","total":"79.2","recipient":"tyrone@runte.biz","monthly_invoice":false}}}'
-  recorded_at: Fri, 09 Sep 2022 10:03:24 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":75,"number":150005,"paid":false,"payable":false,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150005\u0026linkpay_token=k5t5xq\u0026order_reference=150005\u0026transaction_amount=79.2\u0026hmac=29a6abb6c80a223b4d8a7fbd3aa4ab0d52213b025b2ad8c7075b0edc6ff5e7be","receipt_date":null,"cancelled":true,"cancellable":false,"due_date":"2022-09-10","total":"79.2","recipient":"mikel@cassin.net","monthly_invoice":false}}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:15 GMT
 recorded_with: VCR 6.1.0
