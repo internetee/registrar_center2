@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains/example.ee
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","registrant":{"code":"1111111:0E828F10"}}}'
+      string: '{"domain":{"name":"example.ee","registrant":{"code":"est"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -19,8 +19,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -38,18 +38,16 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
-      Etag:
-      - W/"80d436dfda48bb2b66e7c8689bab3eb3"
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Request-Id:
-      - d8d38a36-00fe-4b0c-ae91-0be02071d876
+      - 416a6b84-945d-413f-be9e-47b454951615
       X-Runtime:
-      - '0.618775'
+      - '0.077797'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example.ee","id":"aaf75c0b-45f4-434c-b9e0-e824f4302ea0"}}}'
-  recorded_at: Wed, 15 Jun 2022 12:50:13 GMT
+      string: '{"code":2303,"message":"Registrant not found","data":{}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:17 GMT
 recorded_with: VCR 6.1.0

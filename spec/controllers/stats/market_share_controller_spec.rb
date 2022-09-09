@@ -8,6 +8,7 @@ RSpec.describe Stats::MarketShareController, type: :controller do
       params: {
         search: {
           start_date: '01.22',
+          end_date: '09.22',
         },
       },
     },
@@ -16,7 +17,7 @@ RSpec.describe Stats::MarketShareController, type: :controller do
       http_method: :get,
       params: {
         search: {
-          end_date: '08.22',
+          end_date: '09.22',
           compare_to_date: '07.22',
         },
       },

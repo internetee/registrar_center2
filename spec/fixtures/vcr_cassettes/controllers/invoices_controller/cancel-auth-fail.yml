@@ -41,13 +41,63 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 3ba6d645-c84d-471b-bc31-fefeb96cf78a
+      - 9e252802-e6d1-4693-a87b-92f7075ee1fd
       X-Runtime:
-      - '0.115382'
+      - '0.076244'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"tempora","password":"SnYhXnF3wYeUjPsR","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:30:11 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"sit","password":"Vt43Pn2DwRpQk0O","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 07:10:17 GMT
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/invoices/75/cancel
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 4dbaa9d9-145e-427c-a705-0d6589515507
+      X-Runtime:
+      - '0.049767'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"est","password":"M46v06QyRk","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:24 GMT
 recorded_with: VCR 6.1.0

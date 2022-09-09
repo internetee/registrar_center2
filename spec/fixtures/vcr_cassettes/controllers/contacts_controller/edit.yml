@@ -37,22 +37,21 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"c0a4f607e6af823cdc4c033115b87950"
+      - W/"f10a1cfe36193b9ca0c5bf338af9f9e1"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 6b78ff5a-3b31-45d9-9c6b-b0a0ae76e551
+      - 8c3090b7-e5cc-40c3-94b9-c7c41964ad35
       X-Runtime:
-      - '0.143791'
+      - '0.082937'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"contact":{"id":"c5d8faa1-7ddd-4daf-ab6a-3707c84d6349","code":"1111111:8E3736F2","name":"Mary
+      string: '{"code":1000,"message":"Command completed successfully","data":{"contact":{"code":"1111111:8E3736F2","name":"Mary
         Änn O’Connež-Šuslik Testnumber","ident":{"code":"60001019906","type":"priv","country_code":"EE"},"phone":"+123.7035555555","created_at":"2022-03-29T09:19:53.389+03:00","auth_info":"2fooBAR","email":"jdoe@example.com","statuses":{"ok":"","linked":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"Rõugu","zip":"13522","city":"Tallinn","state":"harju","country_code":"EE"},"domains":[{"id":"120bb8b4-a9ae-4a09-956c-6816bf367c24","name":"wwww.ee","registrar":{"name":"Sergei
-        "},"valid_to":"2022-12-16T00:00:00.000+02:00","roles":["TechDomainContact"]},{"id":"e4e0e1e1-f405-41d8-ba5c-f41307df1406","name":"qqq.ee","registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"},"domains":[{"id":"120bb8b4-a9ae-4a09-956c-6816bf367c24","name":"wwww.ee","registrar":{"name":"Sergei
         "},"valid_to":"2022-12-16T00:00:00.000+02:00","roles":["TechDomainContact"]},{"id":"3188b80b-a376-4e3f-9a9c-3a797d6a2d25","name":"example.ee","registrar":{"name":"Sergei
-        "},"valid_to":"2022-09-14T00:00:00.000+03:00","roles":["Registrant","AdminDomainContact"]}],"domains_count":3}}}'
-  recorded_at: Thu, 16 Jun 2022 10:03:53 GMT
+        "},"valid_to":"2022-09-14T00:00:00.000+03:00","roles":["Registrant","AdminDomainContact"]}],"domains_count":2}}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:15 GMT
 recorded_with: VCR 6.1.0

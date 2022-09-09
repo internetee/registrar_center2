@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/domains/example.ee
     body:
       encoding: UTF-8
-      string: '{"domain":{"name":"example.ee","registrant":{"code":"1111111:0E828F10"}}}'
+      string: '{"domain":{"name":"example.ee","registrant":{"code":"est"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 39b95eaf-9999-45db-a9b1-f4339a1716d3
+      - 81671ef9-efe0-47f0-953d-400ac208b5fc
       X-Runtime:
-      - '0.061788'
+      - '0.088771'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"inventore","password":"ZvQwUlSzY4zOeH9","active":null}}'
-  recorded_at: Wed, 15 Jun 2022 12:50:14 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"explicabo","password":"3H0yFrWfL","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:17 GMT
 recorded_with: VCR 6.1.0

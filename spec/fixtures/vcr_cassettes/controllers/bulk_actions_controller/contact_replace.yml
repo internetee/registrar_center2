@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"f28ea7f71eaa0de8087c282414a61514"
+      - W/"2216e14c1191989e09c89cecac084e87"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f22acee1-64ba-4d58-9cf0-bc745e2fb76f
+      - 622f9fbe-835a-411d-b1f1-ba347ef0267c
       X-Runtime:
-      - '0.607088'
+      - '0.099140'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"affected_domains":["wwwww.ee"],"skipped_domains":["dsasds.ee"]}}'
-  recorded_at: Thu, 16 Jun 2022 13:44:29 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"affected_domains":[],"skipped_domains":["dsasds.ee"]}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:13 GMT
 recorded_with: VCR 6.1.0

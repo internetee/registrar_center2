@@ -43,15 +43,15 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d1396936-e260-496b-b562-a3ba88f88834
+      - e55dfe44-9796-4e51-9d98-a5d608a6e6c5
       X-Runtime:
-      - '0.073708'
+      - '0.044679'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"token":"<TOKEN>","username":"billinguser"}}'
-  recorded_at: Fri, 17 Jun 2022 08:15:21 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"token":"YmlsbGluZ3VzZXI6RGFuaWVsMTMxMQ==","username":"billinguser"}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:12 GMT
 - request:
     method: get
     uri: http://registry:3000/repp/v1/registrar/auth
@@ -89,18 +89,18 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"228c3d65e777ffe8cf0615233e384ccb"
+      - W/"b14297f01ccada319c67599ea1d26557"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 24986ba4-e195-4956-9c0d-df495dacdcb8
+      - 30d06a54-402b-4323-afe0-6aa76af33d80
       X-Runtime:
-      - '0.076139'
+      - '0.052326'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":{"id":8,"username":"billinguser","roles":["billing"],"registrar_name":"Sergei
-        ","legaldoc_mandatory":true,"balance":{"amount":"120.0","currency":"EUR"},"abilities":{"can":{"manage":{"Invoice":[],"Account":[],"deposit":[],"balance_auto_reload":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]},"create":{"registrant_domain_update_confirm":[]},"new":{"registrant_domain_update_confirm":[]}},"cannot":{}}}}'
-  recorded_at: Fri, 17 Jun 2022 08:15:21 GMT
+        ","legaldoc_mandatory":true,"address_processing":false,"abilities":{"can":{"manage":{"Invoice":[],"Account":[],"deposit":[],"balance_auto_reload":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]},"create":{"registrant_domain_update_confirm":[]},"new":{"registrant_domain_update_confirm":[]}},"cannot":{}}}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:12 GMT
 recorded_with: VCR 6.1.0

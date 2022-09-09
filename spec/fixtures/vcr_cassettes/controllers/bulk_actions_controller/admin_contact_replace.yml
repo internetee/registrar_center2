@@ -43,13 +43,13 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8d01cb11-fb0b-4fd9-90ab-3f9ea3afcaa5
+      - 58000b38-71c7-4be4-a3b0-a6fd0ea86daa
       X-Runtime:
-      - '0.136068'
+      - '0.074634'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":{"affected_domains":[],"skipped_domains":[]}}'
-  recorded_at: Fri, 17 Jun 2022 07:28:43 GMT
+  recorded_at: Fri, 09 Sep 2022 10:03:13 GMT
 recorded_with: VCR 6.1.0

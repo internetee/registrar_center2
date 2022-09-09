@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/stats/market_share_growth_rate?q%5Bcompare_to_date%5D=07.22&q%5Bend_date%5D=08.22
+    uri: http://registry:3000/repp/v1/stats/market_share_growth_rate?q%5Bcompare_to_date%5D=07.22&q%5Bend_date%5D=09.22
     body:
       encoding: US-ASCII
       string: ''
@@ -37,18 +37,19 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"9e5df831d625043d584bc56b3b65fff2"
+      - W/"8be61f3a9edb233a5433ec02c4da5afb"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 92f334ac-d69b-4195-a03d-f3195d3420a6
+      - 047ff868-f41e-4d13-abbd-eabc5344a714
       X-Runtime:
-      - '0.075272'
+      - '0.060524'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":{"prev_data":{"name":"07.22","domains":[["Macho",0],["Sergei
-        ",24]]},"data":{"name":"08.22","domains":[["Macho",1],["Sergei ",27]]}}}'
-  recorded_at: Mon, 05 Sep 2022 09:33:14 GMT
+        ",24]],"market_share":[["Macho",0.0],["Sergei ",100.0]]},"data":{"name":"09.22","domains":[["Macho",1],["Sergei
+        ",34]],"market_share":[["Macho",2.9],["Sergei ",97.1]]}}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:25 GMT
 recorded_with: VCR 6.1.0

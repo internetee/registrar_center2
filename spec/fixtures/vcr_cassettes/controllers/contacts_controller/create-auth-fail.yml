@@ -5,8 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/contacts
     body:
       encoding: UTF-8
-      string: '{"contact":{"name":"Broderick McGlynn","email":"info@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"},"addr":{"country_code":"AF","city":"Harveyfurt","street":"Dakota
-        Track","zip":"37405-5868","state":null}}}'
+      string: '{"contact":{"name":"Laurette Kessler","email":"fake@internet.ee","phone":"+372.555555","ident":{"ident":"12345678","ident_type":"org","ident_country_code":"EE"}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -42,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - e5b0c94b-92f7-4f7b-8dfc-c4991994b187
+      - 489c5768-356e-4f20-b0d0-2ec46c365915
       X-Runtime:
-      - '0.076975'
+      - '0.047025'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"impedit","password":"HmDmZnLb4G","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 10:02:11 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"laborum","password":"BfVyIs5W7p1J","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:15 GMT
 recorded_with: VCR 6.1.0

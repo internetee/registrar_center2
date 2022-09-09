@@ -19,8 +19,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -38,18 +38,16 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
-      Etag:
-      - W/"5f120386088380a737f9ab51b3e1fc74"
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Request-Id:
-      - eca062fa-ada5-4b02-908a-401896a8b7e7
+      - bd225aba-1528-4245-81d5-aa94615d93e0
       X-Runtime:
-      - '0.128117'
+      - '0.057491'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"notification_id":43,"read":true}}'
-  recorded_at: Fri, 17 Jun 2022 06:51:14 GMT
+      string: '{"code":2303,"message":"Object does not exist"}'
+  recorded_at: Fri, 09 Sep 2022 10:03:25 GMT
 recorded_with: VCR 6.1.0

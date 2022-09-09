@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/registrar/nameservers
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"nameserver","id":"ns1.oberbrunner.net","domains":["example.ee","example1.ee"],"attributes":{"hostname":"ns1.block.com","ipv4":["249.31.117.110"],"ipv6":["eef7:74e1:b76d:186:4a52:11a5:9be3:ffe2"]}}}'
+      string: '{"data":{"type":"nameserver","id":"","domains":["wwww.ee","qqq.ee"],"attributes":{"hostname":"ns1.corwin.com","ipv4":["7.210.62.156"],"ipv6":["836b:8a60:349f:16be:6ea8:875:37bf:928b"]}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"7d67ccac8c7405699544544e8f33fd44"
+      - W/"795253d2a162b2691baa6f0bfcbd6c1a"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - acdd67cf-bc0e-4264-85bb-f3595f406886
+      - 7b4f0d53-ec3f-4fcb-9329-9be89f1fdcb9
       X-Runtime:
-      - '0.197618'
+      - '0.104142'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"type":"nameserver","id":"ns1.block.com","attributes":{"hostname":"ns1.block.com","ipv4":["249.31.117.110"],"ipv6":["eef7:74e1:b76d:186:4a52:11a5:9be3:ffe2"]},"affected_domains":[],"skipped_domains":["example.ee","example1.ee"]}}'
-  recorded_at: Thu, 16 Jun 2022 14:01:32 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"type":"nameserver","id":"ns1.corwin.com","attributes":{"hostname":"ns1.corwin.com","ipv4":["7.210.62.156"],"ipv6":["836b:8a60:349f:16be:6ea8:875:37bf:928b"]},"affected_domains":["qqq.ee","wwww.ee"],"skipped_domains":[]}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:13 GMT
 recorded_with: VCR 6.1.0

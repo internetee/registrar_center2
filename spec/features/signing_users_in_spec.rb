@@ -32,8 +32,8 @@ RSpec.feature 'signing in user' do
   scenario 'with invalid credentials', :vcr do
     visit root_path
 
-    fill_in 'Username', with: Rails.configuration.customization[:username]
-    fill_in 'Password', with: Rails.configuration.customization[:password]
+    fill_in 'Username', with: Faker::Lorem.word
+    fill_in 'Password', with: Faker::Internet.password
     click_button 'Sign in'
 
     expect(page).to have_current_path(login_path)

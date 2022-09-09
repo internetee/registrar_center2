@@ -80,7 +80,7 @@ class MarketShareCsvPresenter
       hash[e[0]] = hash[e[0]].presence || []
       hash[e[0]] << e[1]
     end
-    hash.to_a.map { |aa| { name: aa[0], y: with_difference(aa[1]) } }.sort_by { |hsh| hsh[:name] }
+    hash.to_a.map { |aa| { name: aa[0], y: with_difference(aa[1]) } }.sort_by { |hsh| -hsh[:y][3] }
   end
 
   def with_difference(values)

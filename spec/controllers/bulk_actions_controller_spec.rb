@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe BulkActionsController, type: :controller do
+  bulk_change_file = File.join(Rails.root, '/spec/fixtures/files/bulk_domain_transfer.csv')
+  bulk_change_file_encoded = Base64.encode64(File.read(bulk_change_file))
   options = [
     {
       method: :contact_replace,
@@ -28,10 +30,10 @@ RSpec.describe BulkActionsController, type: :controller do
       params: {
         bulk_change: {
           new_hostname: "ns1.#{Faker::Internet.domain_name}",
-          old_hostname: "ns1.#{Faker::Internet.domain_name}",
+          old_hostname: '',
           ipv4: Faker::Internet.ip_v4_address,
           ipv6: Faker::Internet.ip_v6_address,
-          batch_file: "ZG9tYWluX25hbWU7VHJhbnNmZXIgY29kZQ0KZXhhbXBsZS5lZTs1ZmIzNTRh\nNWNlOGQ2NTY5YzU5NDI3NzQwYTQzMDE0NA0KZXhhbXBsZTEuZWU7\n",
+          batch_file: bulk_change_file_encoded,
         },
       },
     },

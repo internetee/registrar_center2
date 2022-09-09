@@ -37,21 +37,21 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"7540b6713349d4bf439f5f8ef34b7743"
+      - W/"de88fd954aebeb57a3e86da6902066d7"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a4e2040c-4abd-49ff-951b-741b97f51611
+      - 4cb2fe5a-9b75-4cca-b9ef-58f2166c9e14
       X-Runtime:
-      - '0.137849'
+      - '0.086194'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"id":"3188b80b-a376-4e3f-9a9c-3a797d6a2d25","name":"example.ee","registrant":{"id":"c5d8faa1-7ddd-4daf-ab6a-3707c84d6349","name":"Mary
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example.ee","registrant":{"name":"Mary
         Änn O’Connež-Šuslik Testnumber","code":"1111111:8E3736F2"},"created_at":"2022-03-13T19:41:21.913+02:00","updated_at":"2022-06-06T16:18:52.269+03:00","expire_time":"2022-09-14T00:00:00.000+03:00","outzone_at":"2022-04-18T16:18:52.130+03:00","delete_date":"2022-05-19","force_delete_date":null,"contacts":[{"code":"1111111:0E828F10","type":"TechDomainContact","name":"Sergei
         Tsõganov"},{"code":"1111111:8E3736F2","type":"AdminDomainContact","name":"Mary
-        Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":33,"hostname":"ssssssss.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
+        Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":39,"hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"]},{"id":43,"hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
         ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"0421786ef0b961393d52e5f58f48d1dd"}}}'
-  recorded_at: Wed, 15 Jun 2022 13:11:30 GMT
+  recorded_at: Fri, 09 Sep 2022 10:03:17 GMT
 recorded_with: VCR 6.1.0

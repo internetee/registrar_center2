@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/stats/market_share_distribution?q%5Bstart_date%5D=01.22
+    uri: http://registry:3000/repp/v1/stats/market_share_distribution?q%5Bcompare_to_date%5D=08.22&q%5Bend_date%5D=09.22
     body:
       encoding: US-ASCII
       string: ''
@@ -37,17 +37,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"878282357f303c37131d13e7e9527e0d"
+      - W/"3d58d17157ccb4d9a60e536815402ad4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 20d2a25e-e6fb-4f3d-8fe3-ec83f65395c6
+      - b4b25476-04c4-4893-895b-261401405b22
       X-Runtime:
-      - '3.738690'
+      - '0.053897'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":[{"name":"Macho","y":1},{"name":"Sergei","y":29,"sliced":true,"selected":true}]}'
-  recorded_at: Mon, 05 Sep 2022 09:26:39 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":[{"name":"Macho","y":1},{"name":"Sergei","y":34,"sliced":true,"selected":true}]}'
+  recorded_at: Fri, 09 Sep 2022 10:03:32 GMT
 recorded_with: VCR 6.1.0

@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe DomainsController, type: :controller do
-  file = File.join(Rails.root, '/spec/fixtures/files/legal_doc.pdf')
-  uploaded_file = Rack::Test::UploadedFile.new(File.open(file))
-  batch_file_encoded = 'RG9tYWluO1RyYW5zZmVyIGNvZGUNCnd3d3cuZWU7YWQ0YmEyNWMzNjZiNDky\nNzgxZGU3NGMzNDg2ZjJlYzMNCnFxcS5lZTs1MzVkNTdhNTI1OGJhNTYxZDQ2\nOTMzOTc0MmQxMGM4OA==\n'
+  legal_file = File.join(Rails.root, '/spec/fixtures/files/legal_doc.pdf')
+  transfer_file = File.join(Rails.root, '/spec/fixtures/files/bulk_domain_transfer.csv')
+  uploaded_file = Rack::Test::UploadedFile.new(File.open(legal_file))
+  transfer_file_encoded = Base64.encode64(File.read(transfer_file))
 
   options = [
     {
@@ -115,7 +116,7 @@ RSpec.describe DomainsController, type: :controller do
       http_method: :post,
       params: {
         domain: {
-          batch_file: batch_file_encoded,
+          batch_file: transfer_file_encoded,
           # name: 'example.ee',
           # transfer_code: Faker::Internet.device_token,
         },

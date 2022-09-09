@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/invoices/add_credit
     body:
       encoding: UTF-8
-      string: '{"invoice":{"amount":"100","description":"Fugiat est officiis odit."}}'
+      string: '{"invoice":{"amount":"100","description":"Amet ad error ut."}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"1b9823b5f21147e21b51ce5ddf456f19"
+      - W/"1bc40ecd72d0c0542d3a81d6a9450d82"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 2965c45b-a878-4c04-96a0-70e0fb9e4e62
+      - 3cf33a12-7c4d-4f68-a038-c7f462648a2a
       X-Runtime:
-      - '2.328544'
+      - '0.827379'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":42,"number":150018,"paid":false,"payable":true,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=Fugiat%20est%20officiis%20odit.\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150018\u0026linkpay_token=k5t5xq\u0026order_reference=150018\u0026transaction_amount=120.0\u0026hmac=cbf5bda908354ebcae08cf7a909a7018d0c5d3d3fb1f73641395a250e8589660","receipt_date":null,"cancelled":false,"cancellable":true,"due_date":"2022-07-16","total":"120.0","recipient":"walter.raynor@bashirian-grady.com"}}}'
-  recorded_at: Thu, 16 Jun 2022 12:33:17 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":156,"number":150037,"paid":false,"payable":true,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=Amet%20ad%20error%20ut.\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150037\u0026linkpay_token=k5t5xq\u0026order_reference=150037\u0026transaction_amount=120.0\u0026hmac=f376f04867cd254acd6fa4d8db0150d73af9f770613af4657c5a30fc57f11187","receipt_date":null,"cancelled":false,"cancellable":true,"due_date":"2022-10-09","total":"120.0","recipient":"annis_torp@glover-labadie.biz","monthly_invoice":false}}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:25 GMT
 recorded_with: VCR 6.1.0

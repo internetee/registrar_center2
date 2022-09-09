@@ -39,18 +39,18 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"36bc19bebc837bea50bf01b9a8e4d781"
+      - W/"e662c3ff96f2b2beafc00c081a161fbf"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a666136f-f865-4ad5-9699-c70b6e7aa663
+      - 4c76822e-088a-4b7e-ad37-c3996fe5c700
       X-Runtime:
-      - '0.097211'
+      - '0.074719'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"You are now signed in as a user \"billinguser\"","data":{"token":"<TOKEN>","registrar":{"id":8,"username":"billinguser","roles":["billing"],"registrar_name":"Sergei
-        ","legaldoc_mandatory":true,"balance":{"amount":"122.0","currency":"EUR"},"abilities":{"can":{"manage":{"Invoice":[],"Account":[],"deposit":[],"balance_auto_reload":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]},"create":{"registrant_domain_update_confirm":[]},"new":{"registrant_domain_update_confirm":[]}},"cannot":{}}}}}'
-  recorded_at: Wed, 15 Jun 2022 11:28:22 GMT
+      string: '{"code":1000,"message":"You are now signed in as a user \"billinguser\"","data":{"token":"YmlsbGluZ3VzZXI6RGFuaWVsMTMxMQ==","registrar":{"id":8,"username":"billinguser","roles":["billing"],"registrar_name":"Sergei
+        ","legaldoc_mandatory":true,"address_processing":false,"abilities":{"can":{"manage":{"Invoice":[],"Account":[],"deposit":[],"balance_auto_reload":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]},"create":{"registrant_domain_update_confirm":[]},"new":{"registrant_domain_update_confirm":[]}},"cannot":{}}}}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:12 GMT
 recorded_with: VCR 6.1.0

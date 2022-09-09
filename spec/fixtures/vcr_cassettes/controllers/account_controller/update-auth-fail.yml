@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/accounts
     body:
       encoding: UTF-8
-      string: '{"account":{"billing_email":"ben_miller@jaskolski-torp.com","iban":"GB70LXGT54814069904024"}}'
+      string: '{"account":{"billing_email":"annis_torp@glover-labadie.biz","iban":"GB37JYKT92753052626476"}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - f83fc9fd-7762-426b-b1a1-8e38ebdc3231
+      - 755f0325-0f64-4d30-87bd-54e7318bb44b
       X-Runtime:
-      - '0.065082'
+      - '0.048693'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"nulla","password":"N7oXxEcO","active":null}}'
-  recorded_at: Wed, 15 Jun 2022 11:44:28 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"cum","password":"3S9jR2r746DnOa","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:12 GMT
 recorded_with: VCR 6.1.0

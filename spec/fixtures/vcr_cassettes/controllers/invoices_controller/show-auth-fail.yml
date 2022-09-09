@@ -39,13 +39,61 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - dd8c6ef1-857d-42de-b2f0-bb92a61baada
+      - 37dd6836-4165-4491-aec2-7e793615a1ef
       X-Runtime:
-      - '0.085205'
+      - '0.056071'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"reiciendis","password":"JoGrInYf2Lc7","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 11:50:36 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"dolorem","password":"QjSa4LcLc6","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 07:10:16 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/invoices/75
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - b8024a5c-189a-46f2-91f6-ce09c612dfc3
+      X-Runtime:
+      - '0.052915'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"fugiat","password":"DdIzY4v7WuVsXxO8","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:19 GMT
 recorded_with: VCR 6.1.0

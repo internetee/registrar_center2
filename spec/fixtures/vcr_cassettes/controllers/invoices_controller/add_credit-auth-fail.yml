@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/invoices/add_credit
     body:
       encoding: UTF-8
-      string: '{"invoice":{"amount":"100","description":"Fugiat est officiis odit."}}'
+      string: '{"invoice":{"amount":"100","description":"Amet ad error ut."}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - cdacbaf0-85a0-4c58-908a-e0f9fb426b10
+      - 2b323b3d-885b-4818-aa22-7b23804e5d49
       X-Runtime:
-      - '0.115405'
+      - '0.049743'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"incidunt","password":"7YpEq9IcWc4ZyHhM","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:33:17 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"accusantium","password":"SlLgTtIvSmUhGy","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:25 GMT
 recorded_with: VCR 6.1.0

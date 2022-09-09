@@ -37,33 +37,99 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"f93fbdb93e631b3dab4f11fab951c9ad"
+      - W/"be0788084f4578320b8afbf264c46723"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - c364308e-1377-4c3b-8a61-48c7e420fc75
+      - 21ebe105-2d19-4073-9c3a-fc20b6f1445b
       X-Runtime:
-      - '0.153693'
+      - '0.087863'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"contacts":[{"id":"c9bb9bc8-c5b7-4ede-8779-51b4f0ae173b","code":"1111111:65B7EB55","name":"Sergei
+      string: '{"code":1000,"message":"Command completed successfully","data":{"contacts":[{"code":"1111111:F3C01A45","name":"Laurette
+        Kessler","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T13:03:15.617+03:00","auth_info":"ad8bd0a03b48af7d208227","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:0A824642","name":"Suzan
+        Brekke","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T13:02:03.403+03:00","auth_info":"400138b25086e2460558a7","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:261E04C8","name":"Breana
+        DuBuque Sr.","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:59:36.372+03:00","auth_info":"cce900db8b52eeb6dd91e9","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:EF5F57AF","name":"Stanton
+        Wehner","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:50:21.637+03:00","auth_info":"30b1aed30fb1443dd6d631","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:58A09C66","name":"Willie
+        Brekke","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:40:44.480+03:00","auth_info":"22331bb6164dc2e16e61b4","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:B411506B","name":"Judith
+        Gorczany","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:38:12.740+03:00","auth_info":"6bf40e555cd14cc74580c6","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:1E0CB4A6","name":"Trenton
+        Gusikowski","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:21:59.084+03:00","auth_info":"807f0d3058e5a501c86fd2","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:446592EE","name":"Cristina
+        Vandervort DVM","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:20:46.379+03:00","auth_info":"5f187efbfbd39478d9b433","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:5D2F5FE1","name":"Adelina
+        Von DC","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:19:22.904+03:00","auth_info":"10794e087431293103eb2b","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:9E0D0362","name":"Marceline
+        Stanton","ident":{"code":"12345678","type":"org","country_code":"EE"},"phone":"+372.555555","created_at":"2022-09-09T12:17:02.556+03:00","auth_info":"a42be11363c8a2ade824c5","email":"fake@internet.ee","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}}],"count":47,"statuses":["clientDeleteProhibited","serverDeleteProhibited","clientTransferProhibited","serverTransferProhibited","clientUpdateProhibited","serverUpdateProhibited","ok","pendingCreate","pendingDelete","pendingTransfer","pendingUpdate","linked"],"ident_types":["org","priv","birthday"]}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:35 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/contacts?details=true&limit=10&offset=0&q%5Bcountry_code_eq%5D=EE
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"05990ac60598862fcbadc0936b61037a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 17fb9200-5f45-4679-9ed2-f720c480405c
+      X-Runtime:
+      - '0.086152'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"contacts":[{"code":"1111111:C77BE926","name":"Custom","ident":{"code":"<ID_CODE>","type":"priv","country_code":"EE"},"phone":"+372.55631806","created_at":"2022-07-08T16:11:39.553+03:00","auth_info":"699aa406325088560670e9","email":"sergeit6@gmail.com","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:65B7EB55","name":"Sergei
         Tsõganov","ident":{"code":"<ID_CODE>","type":"priv","country_code":"EE"},"phone":"+123.7035555","created_at":"2022-06-04T11:41:31.812+03:00","auth_info":"29cfd0efe786a24e7628cb","email":"jdoe1@example.com","statuses":{"ok":"","linked":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"123 Example Dr.Suite
-        100","zip":"20166-6503","city":"Dulles","state":"VA","country_code":"EE"}},{"id":"c5d8faa1-7ddd-4daf-ab6a-3707c84d6349","code":"1111111:8E3736F2","name":"Mary
-        Änn O’Connež-Šuslik Testnumber","ident":{"code":"60001019906","type":"priv","country_code":"EE"},"phone":"+123.7035555555","created_at":"2022-03-29T09:19:53.389+03:00","auth_info":"2fooBAR","email":"jdoe@example.com","statuses":{"ok":"","linked":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"Rõugu","zip":"13522","city":"Tallinn","state":"harju","country_code":"EE"}},{"id":"5a803bdb-e1e0-48ab-b2eb-a3acd5dd0dbc","code":"1111111:11112","name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:11112","name":"Sergei
         Tsõganov","ident":{"code":"<ID_CODE>","type":"priv","country_code":"EE"},"phone":"+372.55631806","created_at":"2022-03-18T14:39:29.243+02:00","auth_info":"35889c0929fc4d9a003352","email":"sergeit6@gmail.com","statuses":{"ok":"","linked":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"ewrwr","zip":"13231","city":"wewer","state":"","country_code":"EE"}},{"id":"4d319952-60f2-4e0d-833d-b0e33f1cde96","code":"1111111:0FEEDC3C","name":"täisühing
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:0FEEDC3C","name":"täisühing
         VAVILOV","ident":{"code":"10910878","type":"org","country_code":"EE"},"phone":"+372.556111","created_at":"2022-03-15T11:31:25.234+02:00","auth_info":"a891f137c6b9a4bd716414","email":"sergeit6@ssa.ee","statuses":{"ok":"","linked":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"Rõugu","zip":"13522","city":"Tallinn","state":"harju","country_code":"EE"}},{"id":"828fa2e9-e48f-48fa-9f4c-41f7ca36c7c8","code":"1111111:A975E97E","name":"John","ident":{"code":"48201190230","type":"priv","country_code":"EE"},"phone":"+372.556111","created_at":"2022-03-14T15:12:20.081+02:00","auth_info":"45b27781a7e241ab5ad112","email":"john1@gmail.com","statuses":{"ok":"","linked":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"Rõugu","zip":"13522","city":"Tallinn","state":"harju","country_code":"EE"}},{"id":"fe98f0c7-818a-4a89-ae95-068434697484","code":"1111111:8E561326","name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:A975E97E","name":"John","ident":{"code":"48201190230","type":"priv","country_code":"EE"},"phone":"+372.556111","created_at":"2022-03-14T15:12:20.081+02:00","auth_info":"45b27781a7e241ab5ad112","email":"john1@gmail.com","statuses":{"ok":""},"disclosed_attributes":[],"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:8E561326","name":"Sergei
         Tsõganov","ident":{"code":"<ID_CODE>","type":"priv","country_code":"EE"},"phone":"+123.7035555555","created_at":"2022-03-14T12:28:03.728+02:00","auth_info":"2fooBAR","email":"jdoe@example.com","statuses":{"ok":"asdasddas","linked":null},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"123 Example Dr.Suite
-        100","zip":"20166-6503","city":"Dulles","state":"VA","country_code":"EE"}},{"id":"a3511be9-dc39-42f6-8fdb-1d7d738c1b16","code":"1111111:0E828F10","name":"Sergei
+        ","website":"https://bankwiser.eu"}},{"code":"1111111:0E828F10","name":"Sergei
         Tsõganov","ident":{"code":"<ID_CODE>","type":"priv","country_code":"EE"},"phone":"+123.7035555","created_at":"2022-03-13T19:38:48.585+02:00","auth_info":"2fooBAR","email":"jdoe1@example.com","statuses":{"linked":"","serverDeleteProhibited":"sadasdas"},"disclosed_attributes":[],"registrar":{"name":"Sergei
-        ","website":"https://bankwiser.eu"},"address":{"street":"123 Example Dr.Suite
-        100","zip":"20166-6503","city":"Dulles","state":"VA","country_code":"EE"}}],"count":7,"statuses":["clientDeleteProhibited","serverDeleteProhibited","clientTransferProhibited","serverTransferProhibited","clientUpdateProhibited","serverUpdateProhibited","ok","pendingCreate","pendingDelete","pendingTransfer","pendingUpdate","linked"],"ident_types":["org","priv","birthday"]}}'
-  recorded_at: Thu, 16 Jun 2022 07:56:09 GMT
+        ","website":"https://bankwiser.eu"}}],"count":7,"statuses":["clientDeleteProhibited","serverDeleteProhibited","clientTransferProhibited","serverTransferProhibited","clientUpdateProhibited","serverUpdateProhibited","ok","pendingCreate","pendingDelete","pendingTransfer","pendingUpdate","linked"],"ident_types":["org","priv","birthday"]}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:35 GMT
 recorded_with: VCR 6.1.0

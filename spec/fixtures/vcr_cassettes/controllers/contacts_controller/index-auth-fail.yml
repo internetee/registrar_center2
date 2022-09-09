@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/contacts?details=true&limit=10&offset=0&q
+    uri: http://registry:3000/repp/v1/contacts?details=true&limit=10&offset=0&q%5Bname_matches%5D=commodi
     body:
       encoding: US-ASCII
       string: ''
@@ -39,13 +39,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 4e67aab5-b55e-43f7-8ea6-7dbb9c151928
+      - 319242b7-4ce8-4f6f-8657-fd10172ee830
       X-Runtime:
-      - '0.075656'
+      - '0.044258'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"placeat","password":"EfIqQsJrSq","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 07:51:05 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"eum","password":"SzKhZmN1v96Me7","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:14 GMT
 recorded_with: VCR 6.1.0

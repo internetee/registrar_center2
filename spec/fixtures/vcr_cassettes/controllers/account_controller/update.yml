@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/accounts
     body:
       encoding: UTF-8
-      string: '{"account":{"billing_email":"walter.raynor@bashirian-grady.com","iban":"GB39VVTG23958496415096"}}'
+      string: '{"account":{"billing_email":"annis_torp@glover-labadie.biz","iban":"GB37JYKT92753052626476"}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"c612837b3f2b03fe0154e46dcc09414c"
+      - W/"9b0ddaac274062d653326c037a1e06bd"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 17f0a6e7-472a-4828-93e0-a5140e1bd2a4
+      - 84fa48e0-039a-44e7-b2b3-43a451b3312e
       X-Runtime:
-      - '1.096960'
+      - '0.087248'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Your account has been updated","data":{"account":{"billing_email":"walter.raynor@bashirian-grady.com","iban":"GB39VVTG23958496415096"}}}'
-  recorded_at: Thu, 16 Jun 2022 06:31:23 GMT
+      string: '{"code":1000,"message":"Your account has been updated","data":{"account":{"billing_email":"annis_torp@glover-labadie.biz","iban":"GB37JYKT92753052626476"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:03:11 GMT
 recorded_with: VCR 6.1.0

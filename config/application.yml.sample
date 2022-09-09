@@ -35,8 +35,9 @@ shared:
       e: AQAB
 
 test:
-  # NB! change this data only for real time Api requests and recording VCR responces,
-  # this data will be filtered in responses
+  # NB! change this data to your real only for real time Api requests and re-recording VCR cassettes,
+  # this data will be filtered in responses; Make sure you have valid data in fixture file bulk_domain_transfer.csv
+  # Use command VCR=all ./bin/rspec for re-recording all cassettes!
   username: 'user'
   password: 'password'
   token: 1234dsdasds

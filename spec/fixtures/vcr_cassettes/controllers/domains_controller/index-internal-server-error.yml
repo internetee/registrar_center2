@@ -37,17 +37,71 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"1ba455e1020c6aacbc58200e2a58ac10"
+      - W/"0917ee9a6d728a0cd0ed6044e05270c8"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 696f7451-b883-42a9-bc0b-8f9ada824695
+      - 4af5c9eb-7c28-4173-827b-0bfef3bce77f
       X-Runtime:
-      - '0.129532'
+      - '0.085214'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":3000,"message":""}'
-  recorded_at: Wed, 15 Jun 2022 11:17:12 GMT
+  recorded_at: Fri, 09 Sep 2022 08:05:44 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/registrar/summary
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"396550afd4aebf736a09e8f3426f6c24"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 719b164c-0b41-4ea5-80ac-ec14c144acb7
+      X-Runtime:
+      - '0.089991'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"id":2,"username":"maricavor","registrar_name":"Sergei
+        ","registrar_reg_no":"14836742","balance":{"amount":"1050.66","currency":"EUR"},"last_login_date":"2022-09-09T11:05:38.538+03:00","domains":34,"contacts":28,"phone":"55631806","email":"sergei.tsoganov@internet.ee","billing_email":"kristel@johnston-fahey.com","billing_address":"Rõugu
+        2/2, Tallinn, Harju, 13522","notification":{"id":51,"text":"Transfer of domain
+        qqq.ee has been approved. It was associated with registrant 1111111:0FEEDC3C
+        and contacts 1111111:65B7EB55, 1111111:90DAE9D2.","attached_obj_type":"DomainTransfer","attached_obj_id":17,"created_at":"2022-07-06T11:56:16.000+03:00","attached_obj_data":{"name":"qqq.ee","trStatus":"serverApproved","reID":"AS21E213213123","reDate":"2022-07-06T11:56:16+03:00","acID":"1111111","acDate":"2022-07-06T11:56:16+03:00","exDate":"2022-12-16T00:00:00+02:00"}},"notifications_count":8}}'
+  recorded_at: Fri, 09 Sep 2022 08:05:39 GMT
 recorded_with: VCR 6.1.0
