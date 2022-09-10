@@ -72,7 +72,7 @@ export default class extends Controller {
                         let categoryHeight = 35;
                         this.update({
                             chart: {
-                              height: categoryHeight * this.pointCount + (this.chartHeight - this.plotHeight)
+                                height: categoryHeight * this.pointCount + (this.chartHeight - this.plotHeight)
                             }
                         });
                     }
@@ -224,6 +224,6 @@ export default class extends Controller {
           tooltip: this.setTooltip(data_type),
           yAxis: this.setYAxis(data_type),
           series: this.setSeries(this._data, data_type),
-        });
+        }, true, false, {duration: 500});
     }
 }

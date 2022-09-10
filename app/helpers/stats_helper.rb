@@ -30,7 +30,7 @@ module StatsHelper
                                  class: 'form--radio')
         tags << label_tag("select_data_type_#{key}", value, value: key, class: 'form--radiolabel')
       end
-      safe_join(tags)
+      safe_join(tags, "\n")
     end
   end
 
