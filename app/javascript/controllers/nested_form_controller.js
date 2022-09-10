@@ -46,17 +46,20 @@ export default class extends Controller {
       const wrapper = e.target.closest(this[type + 'SelectorWrapperValue']);
       let numVisibleElements = this.numberOfElements(this[type + 'SelectorWrapperValue'], true);
       if (numVisibleElements >= this.minNumElementsValue) {
-          if (wrapper.dataset.newRecord === 'true') {
-              wrapper.remove();
-          } else {
-              wrapper.style.display = 'none';
-              const input = wrapper.querySelector("input[name*='action']");
-              input.value = 'rem';
-          }
-          if (numVisibleElements < 2) {
+          this.hideOrRemove(wrapper);
+          if (numVisibleElements === this.minNumElementsValue) {
               this.add(e);
           }
           this.restartCount(type);
+      }
+  }
+  hideOrRemove(wrapper) {
+      if (wrapper.dataset.newRecord === 'true') {
+          wrapper.remove();
+      } else {
+          wrapper.style.display = 'none';
+          const input = wrapper.querySelector("input[name*='action']");
+          input.value = 'rem';
       }
   }
   toggleContactType(e){
