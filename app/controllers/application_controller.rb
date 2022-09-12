@@ -117,7 +117,7 @@ class ApplicationController < ActionController::Base
     locale = params[:locale]
     return locale.to_sym if I18n.available_locales.map(&:to_s).include?(locale)
 
-    # notice = "#{locale} #{t(:no_translation)}"
+    notice = "#{locale} #{t(:no_translation)}"
     # flash.now[:notice] = notice
     logger.error notice
     nil
