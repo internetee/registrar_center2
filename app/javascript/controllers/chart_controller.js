@@ -15,7 +15,8 @@ export default class extends Controller {
                       subtitle: String}
     connect() {
         this._data = {};
-        this.colors = [];
+        this.legends = [];
+        this.hiddenRegistrars = [];
         this.chart;
         this.setLangOptions();
         this.load();
@@ -30,7 +31,7 @@ export default class extends Controller {
               });
       } 
     }
-    load_market_share_distribution_chart(data){
+    load_market_share_distribution_chart(data) {
         this.chart = Highcharts.chart(this.element, {
             chart: {
                 plotBackgroundColor: null,
@@ -49,6 +50,13 @@ export default class extends Controller {
                     valueSuffix: '%'
                 }
             },
+            exporting: {
+                chartOptions: {
+                    legend: {
+                        enabled: false
+                    }
+                }
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -63,9 +71,11 @@ export default class extends Controller {
             series: data
         });
     }
-    load_market_share_growth_rate_chart(data){
+    load_market_share_growth_rate_chart(data) {
+        var that = this;
         this.chart = Highcharts.chart(this.element.querySelector('.bar_chart'), {
             chart: {
+                object: this,
                 type: 'bar',
                 events: {
                     load: function() {
@@ -89,24 +99,27 @@ export default class extends Controller {
             plotOptions: {
                 series: {
                     grouping: false,
-                    borderWidth: 0
+                    borderWidth: 0,
+                    animation: false,
+                    events: {
+                        legendItemClick: function() {
+                            that.handleLegendItemClick(this, 'market_share');
+                        }
+                    }
                 }
-            },
-            legend: {
-                enabled: false
             },
             tooltip: this.setTooltip('market_share'),
             xAxis: {
+                accessibility: {
+                    description: 'Registrars'
+                },
                 type: 'category',
                 labels: {
                     style: {
                         textAlign: 'center'
                     },
                     formatter: function() {
-                        if (this.value === data['current_registrar']) {
-                            return '<span style="font-weight: bold; text-decoration: underline; font-size: 15px;">' + this.value.toString() + '</span>';
-                        }
-                        return this.value;
+                        return that.xAxisFormatter(this.value, data);
                     }
                 },
                 title: {
@@ -116,11 +129,16 @@ export default class extends Controller {
             yAxis: this.setYAxis('market_share'),
             series: this.setSeries(data, 'market_share'),
             exporting: {
-                allowHTML: true
+                allowHTML: true,
+                chartOptions: {
+                    legend: {
+                        enabled: false
+                    }
+              }
             }
         });
     }
-    setYAxis(data_type){
+    setYAxis(data_type) {
         return [{
             title: {
                 text: this.translationsValue['yAxisTitle'][data_type]
@@ -164,46 +182,49 @@ export default class extends Controller {
             }
         }
     }
-    setSeries(data, data_type){
-      var curData = data['current'];
-      var prevData = data['previous'];
-      var apndx = ((data_type == 'market_share') ? '%' : '');
-      this.setColors(curData[data_type]);
-      const getData = data => data.map((registrar, i) => ({
-          name: registrar[0],
-          y: registrar[1],
-          diff: this.getDiffPercent(data_type, registrar[1], prevData[data_type][i][1]),
-          color: this.colors[i]
-      }));
-      return [{ color: 'rgba(158, 159, 163, 0.5)',
-                pointPlacement: -0.15,
-                linkedTo: 'main',
-                data: prevData[data_type].slice(),
-                name: this.translationsValue[prevData['name']]
-              }, {
-                name: this.translationsValue[curData['name']],
-                id: 'main',
-                dataSorting: {
-                    enabled: true,
-                    matchByName: true
+    setSeries(data, data_type) {
+        var curData = data['current'], prevData = data['previous'];
+        this.setLegends(curData[data_type]);
+        var apndx = ((data_type == 'market_share') ? '%' : '');
+        const newPrevData = this.filterData(prevData[data_type]),
+        newCurData = this.filterData(curData[data_type]);
+        return [{ color: 'rgba(158, 159, 163, 0.5)',
+                  pointPlacement: -0.15,
+                  linkedTo: 'main',
+                  data: newPrevData.slice(),
+                  name: this.translationsValue[prevData['name']]
+                }, {
+                  name: this.translationsValue[curData['name']],
+                  id: 'main',
+                  showInLegend: false,
+                  dataSorting: {
+                      enabled: true,
+                      matchByName: true
+                  },
+                  dataLabels: [{
+                      enabled: true,
+                      inside: true,
+                      style: {
+                          fontSize: '16px'
+                      },
+                      format: '{y}' + apndx
+                  }],
+                  data: this.getData(newCurData, newPrevData, data_type).slice()
                 },
-                dataLabels: [{
-                    enabled: true,
-                    inside: true,
-                    style: {
-                        fontSize: '16px'
-                    },
-                    format: '{y}' + apndx
-                }],
-                data: getData(curData[data_type]).slice()
-              }];
+                ...this.legends];
     }
-    setColors(data){
-        if (!this.colors.length) {
-            this.colors = data.map(r => this.randomRGB());
+    filterData(data) {
+        return data.filter(point => !(this.hiddenRegistrars.indexOf(point[0]) > -1));
+    }
+    setLegends(data) {
+        if (!this.legends.length) {
+            this.legends = data.map(r => ({ 
+                name: r[0],
+                color: this.randomRGB()
+            }));
         }
     }
-    setLangOptions(){
+    setLangOptions() {
       if (this.translationsValue) {
           Highcharts.setOptions({
               lang: this.translationsValue
@@ -217,13 +238,49 @@ export default class extends Controller {
     getDiffPercent(data_type, original, new_number) {
         return (original - new_number).toFixed(+ (data_type === 'market_share'));
     }
-    toggleChartDataType(e){
+    toggleChartDataType(e) {
         e.preventDefault();
         let data_type = e.target.value;
+        var that = this;
         this.chart.update({
           tooltip: this.setTooltip(data_type),
           yAxis: this.setYAxis(data_type),
-          series: this.setSeries(this._data, data_type),
+          plotOptions: {
+              series: {
+                  events: {
+                      legendItemClick: function() {
+                          that.handleLegendItemClick(this, data_type);
+                      }
+                  }
+              }
+          },
+          series: this.setSeries(this._data, data_type)
         }, true, false, {duration: 500});
+    }
+    xAxisFormatter(value, data) {
+        if (value === data['current_registrar']) {
+            return '<span style="font-weight: bold; text-decoration: underline; font-size: 15px;">' + value.toString() + '</span>';
+        }
+        return value;
+    }
+    handleLegendItemClick(item, data_type) {
+        const name = item.name,
+        visible = item.visible;
+        if (visible) {
+            this.hiddenRegistrars.push(name);
+        } else {
+            this.hiddenRegistrars = this.hiddenRegistrars.filter(function(e) { return e !== name });
+        }
+        this.chart.update({
+            series: this.setSeries(this._data, data_type)
+        }, true, false, {duration: 200});
+    }
+    getData(curData, prevData, data_type) {
+        return curData.map((registrar, i) => ({
+                  name: registrar[0],
+                  y: registrar[1],
+                  diff: this.getDiffPercent(data_type, registrar[1], prevData[i][1]),
+                  color: this.legends.find(r => r.name === registrar[0]).color
+              }));
     }
 }
