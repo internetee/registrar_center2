@@ -1,13 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 import Highcharts, { setOptions } from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
-import ExportData from 'highcharts/modules/export-data';
+// import ExportData from 'highcharts/modules/export-data';
 import Accessibility from 'highcharts/modules/accessibility';
 import NoDataToDisplay from 'highcharts/modules/no-data-to-display';
 Exporting(Highcharts);
 Accessibility(Highcharts);
 NoDataToDisplay(Highcharts);
-ExportData(Highcharts);
+// ExportData(Highcharts);
 
 // Connects to data-controller="chart"
 export default class extends Controller {
@@ -67,6 +67,11 @@ export default class extends Controller {
                     },
                     showInLegend: true
                 }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
             },
             series: data
         });
@@ -128,6 +133,11 @@ export default class extends Controller {
             },
             yAxis: this.setYAxis('market_share'),
             series: this.setSeries(data, 'market_share'),
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
             exporting: {
                 allowHTML: true,
                 chartOptions: {
@@ -186,8 +196,12 @@ export default class extends Controller {
         var curData = data['current'], prevData = data['previous'];
         this.setLegends(curData[data_type]);
         var apndx = ((data_type == 'market_share') ? '%' : '');
+        // console.log(curData[data_type]);
+        // console.log(this.getData(curData[data_type], prevData[data_type], data_type).slice());
         const newPrevData = this.filterData(prevData[data_type]),
         newCurData = this.filterData(curData[data_type]);
+        // console.log(newPrevData);
+        // console.log(this.getData(newCurData, newPrevData, data_type).slice());
         return [{ color: 'rgba(158, 159, 163, 0.5)',
                   pointPlacement: -0.15,
                   linkedTo: 'main',
@@ -242,20 +256,7 @@ export default class extends Controller {
         e.preventDefault();
         let data_type = e.target.value;
         var that = this;
-        this.chart.update({
-          tooltip: this.setTooltip(data_type),
-          yAxis: this.setYAxis(data_type),
-          plotOptions: {
-              series: {
-                  events: {
-                      legendItemClick: function() {
-                          that.handleLegendItemClick(this, data_type);
-                      }
-                  }
-              }
-          },
-          series: this.setSeries(this._data, data_type)
-        }, true, false, {duration: 500});
+        this.updateChart(data_type);
     }
     xAxisFormatter(value, data) {
         if (value === data['current_registrar']) {
@@ -271,9 +272,8 @@ export default class extends Controller {
         } else {
             this.hiddenRegistrars = this.hiddenRegistrars.filter(function(e) { return e !== name });
         }
-        this.chart.update({
-            series: this.setSeries(this._data, data_type)
-        }, true, false, {duration: 200});
+        // console.log(this.hiddenRegistrars);
+        this.updateChart(data_type);
     }
     getData(curData, prevData, data_type) {
         return curData.map((registrar, i) => ({
@@ -282,5 +282,22 @@ export default class extends Controller {
                   diff: this.getDiffPercent(data_type, registrar[1], prevData[i][1]),
                   color: this.legends.find(r => r.name === registrar[0]).color
               }));
+    }
+    updateChart(data_type) {
+        let that = this;
+        this.chart.update({
+          tooltip: this.setTooltip(data_type),
+          yAxis: this.setYAxis(data_type),
+          plotOptions: {
+              series: {
+                  events: {
+                      legendItemClick: function(e) {
+                          that.handleLegendItemClick(this, data_type);
+                      }
+                  }
+              }
+          },
+          series: this.setSeries(this._data, data_type)
+        }, true, false, {duration: 200});
     }
 }
