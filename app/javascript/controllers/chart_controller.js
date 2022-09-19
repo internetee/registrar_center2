@@ -32,7 +32,7 @@ export default class extends Controller {
       } 
     }
     load_market_share_distribution_chart(data) {
-        this.chart = Highcharts.chart(this.element, {
+        this.chart = Highcharts.chart(this.element.querySelector('.pie_chart'), {
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -73,9 +73,11 @@ export default class extends Controller {
                 align: 'right',
                 verticalAlign: 'top',
                 layout: 'vertical',
+                itemMarginTop: 1,
+                itemMarginBottom: 1,
                 x: 0,
                 y: 100
-            },
+          },
             series: data
         });
     }
@@ -140,6 +142,8 @@ export default class extends Controller {
                 align: 'right',
                 verticalAlign: 'top',
                 layout: 'vertical',
+                itemMarginTop: 1,
+                itemMarginBottom: 1,
                 x: 0,
                 y: 100
             },

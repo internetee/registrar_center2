@@ -3,8 +3,9 @@ module StatsHelper
     url = market_share_distribution_data_path(search: search_params)
     title = t('stats.market_share.distribution.chart_title',
               date: title_period(search_params))
-    tag.div(nil, data: chart_data_params(url: url, title: title, type: __method__.to_s),
-                 class: 'pie_chart')
+    tag.div(nil, data: chart_data_params(url: url, title: title, type: __method__.to_s)) do
+      tag.div(nil, class: 'pie_chart')
+    end
   end
 
   def market_share_growth_rate_chart(search_params)
