@@ -37,6 +37,7 @@ export default class extends Controller {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
+                height: 800,
                 type: 'pie'
             },
             title: {
@@ -63,15 +64,17 @@ export default class extends Controller {
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        format: '{point.name}: {point.percentage:.1f} %'
                     },
                     showInLegend: true
                 }
             },
             legend: {
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle'
+                verticalAlign: 'top',
+                layout: 'vertical',
+                x: 0,
+                y: 100
             },
             series: data
         });
@@ -134,9 +137,11 @@ export default class extends Controller {
             yAxis: this.setYAxis('market_share'),
             series: this.setSeries(data, 'market_share'),
             legend: {
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle'
+                verticalAlign: 'top',
+                layout: 'vertical',
+                x: 0,
+                y: 100
             },
             exporting: {
                 allowHTML: true,
