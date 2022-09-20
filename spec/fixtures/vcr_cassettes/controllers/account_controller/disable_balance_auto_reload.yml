@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 9cfb9fc0-cf7d-49b9-bbb1-0295e57cb0f0
+      - efd074b1-5336-47bb-9d19-19e98f3b4579
       X-Runtime:
-      - '0.145955'
+      - '0.086021'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Balance Auto-Reload setting has been disabled","data":{"settings":{}}}'
-  recorded_at: Wed, 15 Jun 2022 11:09:19 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
 recorded_with: VCR 6.1.0

@@ -41,13 +41,63 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d0aaa1e3-860b-4f0d-bf0d-099a7bcd285e
+      - 84e1265d-58f0-4ad1-9515-c67aaa136b2b
       X-Runtime:
-      - '0.106051'
+      - '0.046800'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestiae","password":"BtN73xI3nYw1D","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:46:43 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"maiores","password":"AkAfBxEb4Oa0IbMf","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:38:13 GMT
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/domains/example092022.ee/renew
+    body:
+      encoding: UTF-8
+      string: '{"renews":{"period_unit":"m","period":6,"exp_date":"2022-12-16"}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 294334b9-e32c-4d99-8e04-95add5d03ca2
+      X-Runtime:
+      - '0.046546'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"voluptate","password":"QoQvYp1Yf","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:20 GMT
 recorded_with: VCR 6.1.0

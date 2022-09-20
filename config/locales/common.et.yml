@@ -10,6 +10,7 @@ et:
       contacts: "Kontaktid"
       invoices: "Arved"
       messages: "Sõnumid"
+      stats: "Statistika"
 
     footer:
       copyright: "© 2022 Eesti Interneti Sihtasutus"

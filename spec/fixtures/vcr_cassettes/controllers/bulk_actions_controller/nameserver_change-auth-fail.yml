@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/registrar/nameservers
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"nameserver","id":"ns1.oberbrunner.net","domains":["example.ee","example1.ee"],"attributes":{"hostname":"ns1.block.com","ipv4":["249.31.117.110"],"ipv6":["eef7:74e1:b76d:186:4a52:11a5:9be3:ffe2"]}}}'
+      string: '{"data":{"type":"nameserver","id":"","domains":["wwww.ee","qqq.ee"],"attributes":{"hostname":"ns1.ernser-ledner.name","ipv4":["236.83.217.106"],"ipv6":["8eaf:a680:d2d5:4a19:ff65:f7a8:403d:1b64"]}}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 517a83f3-930d-408e-94f5-871466e6ba1f
+      - 857d2b93-7bf2-4b43-b058-63fc9509691a
       X-Runtime:
-      - '0.097854'
+      - '0.065906'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"molestias","password":"HsT5eWzL0","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 14:01:32 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"sunt","password":"OwJ911hR","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:04 GMT
 recorded_with: VCR 6.1.0

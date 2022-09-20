@@ -41,14 +41,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 06b0c0ce-2e8f-4790-a581-81d308eb2bac
+      - 17b58366-875c-4e1e-98c1-95897985ad11
       X-Runtime:
-      - '0.084349'
+      - '0.062328'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"code":1000,"message":"Command completed successfully","data":{"contact":{"id":"c5d8faa1-7ddd-4daf-ab6a-3707c84d6349","code":"1111111:8E3736F2","name":"Mary
         Änn O’Connež-Šuslik Testnumber"}}}'
-  recorded_at: Thu, 16 Jun 2022 08:59:17 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:06 GMT
 recorded_with: VCR 6.1.0

@@ -39,13 +39,61 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 51dced34-a75a-48e8-b573-b7f890ad4cd5
+      - 8d4fae96-a053-4a17-9125-3f60f39282c8
       X-Runtime:
-      - '0.068243'
+      - '0.036070'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"quo","password":"72IjWbPi8Tr0T2eU","active":null}}'
-  recorded_at: Wed, 15 Jun 2022 12:08:42 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"neque","password":"MiQbP1wJ66t8","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:35:46 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/domains/example092022.ee
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 80d0c9fe-14b8-4368-8f65-4f241b185ecf
+      X-Runtime:
+      - '0.043268'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"architecto","password":"FjB6rUbX","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:19 GMT
 recorded_with: VCR 6.1.0

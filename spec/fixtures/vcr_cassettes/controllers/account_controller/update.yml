@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/accounts
     body:
       encoding: UTF-8
-      string: '{"account":{"billing_email":"walter.raynor@bashirian-grady.com","iban":"GB39VVTG23958496415096"}}'
+      string: '{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434"}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"c612837b3f2b03fe0154e46dcc09414c"
+      - W/"4561b47dd6d3ffbf79ff441f60b702be"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 17f0a6e7-472a-4828-93e0-a5140e1bd2a4
+      - 90161de2-c602-4c4c-b62c-6ef16aa64cef
       X-Runtime:
-      - '1.096960'
+      - '0.106583'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Your account has been updated","data":{"account":{"billing_email":"walter.raynor@bashirian-grady.com","iban":"GB39VVTG23958496415096"}}}'
-  recorded_at: Thu, 16 Jun 2022 06:31:23 GMT
+      string: '{"code":1000,"message":"Your account has been updated","data":{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
 recorded_with: VCR 6.1.0

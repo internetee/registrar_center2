@@ -41,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 7b5a9a64-b3d8-4be3-98f7-315b2670ece1
+      - b2d1acc8-3e95-494a-bf5e-482e1ed105ea
       X-Runtime:
-      - '0.058792'
+      - '0.039555'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"minima","password":"PqLaNqLaUzW6","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 09:11:04 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"esse","password":"H4t1RrShAgDtC","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:06 GMT
 recorded_with: VCR 6.1.0

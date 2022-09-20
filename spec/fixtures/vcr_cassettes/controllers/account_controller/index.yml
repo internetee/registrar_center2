@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/accounts?limit=10&offset=0&q
+    uri: http://registry:3000/repp/v1/accounts?limit&offset&q
     body:
       encoding: US-ASCII
       string: ''
@@ -37,28 +37,29 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"661b3505d45b460a3c79b294ab1bfd25"
+      - W/"42c960d512d7df654747a5ffbc941794"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - c7faca8d-16ce-4d8e-9a1a-a15f05440720
+      - 4dd61170-6f4c-4e90-9a1d-0cf4880a7538
       X-Runtime:
-      - '0.393750'
+      - '0.072241'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"activities":[{"created_at":"2022-06-03T09:58:26.009+03:00","description":"Order
-        nr. 150006","type":"credit","sum":"44.0","balance":"122.0","currency":"EUR","updator":null},{"created_at":"2022-05-25T16:41:17.721+03:00","description":"Create
-        asdasd.ee","type":"debit","sum":"-1.0","balance":"78.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-05-25T16:37:11.827+03:00","description":"Create
-        wrwr.ee","type":"debit","sum":"-1.0","balance":"79.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-05-25T16:04:04.822+03:00","description":"Create
-        saasdadasd.ee","type":"debit","sum":"-1.0","balance":"80.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-04-25T21:06:03.908+03:00","description":"Create
-        sadassd.ee","type":"debit","sum":"-1.0","balance":"81.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-04-20T10:02:11.899+03:00","description":"Create
-        ssss.ee","type":"debit","sum":"-1.0","balance":"82.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-04-20T09:49:44.641+03:00","description":"Create
-        wwwww.ee","type":"debit","sum":"-1.0","balance":"83.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-04-18T13:16:34.363+03:00","description":"Create
-        asda.ee","type":"debit","sum":"-1.0","balance":"84.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-04-18T12:15:00.601+03:00","description":"Create
-        sasdas.ee","type":"debit","sum":"-1.0","balance":"85.0","currency":"EUR","updator":"maricavor"},{"created_at":"2022-04-18T10:36:41.973+03:00","description":"Create
-        dsasds.ee","type":"debit","sum":"-1.0","balance":"86.0","currency":"EUR","updator":"maricavor"}],"count":24,"types_for_select":[["Create","create"],["Renew","renew"],["Add
+      string: '{"code":1000,"message":"Command completed successfully","data":{"activities":[{"created_at":"2022-09-08T09:42:22.827+03:00","description":"Create
+        qweqeqwe.ee","type":"debit","sum":"-1.0","balance":"1050.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-09-08T09:34:23.612+03:00","description":"Create
+        aaaa1.ee","type":"debit","sum":"-1.0","balance":"1051.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-09-08T09:22:03.720+03:00","description":"Create
+        ssss2.ee","type":"debit","sum":"-1.0","balance":"1052.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-09-07T21:08:06.132+03:00","description":"Create
+        aaaaa.ee","type":"debit","sum":"-1.0","balance":"1053.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-09-07T21:04:13.378+03:00","description":"Create
+        ssss1.ee","type":"debit","sum":"-1.0","balance":"1054.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-07-30T12:27:41.707+03:00","description":"Create
+        july5a2.ee","type":"debit","sum":"-1.0","balance":"1055.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-07-29T11:18:34.099+03:00","description":"Create
+        juuli5a.ee","type":"debit","sum":"-1.0","balance":"1056.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-07-11T15:52:01.991+03:00","description":"Create
+        exampleääääääää.ee","type":"debit","sum":"-1.0","balance":"1057.66","currency":"EUR","updator":"maricavor"},{"created_at":"2022-07-11T11:08:37.861+03:00","description":"description
+        new","type":"credit","sum":"55.0","balance":"1058.66","currency":"EUR","updator":null},{"created_at":"2022-07-11T11:08:03.078+03:00","description":"description
+        new","type":"credit","sum":"77.0","balance":"1003.66","currency":"EUR","updator":null},{"created_at":"2022-07-10T11:05:12.420+03:00","description":"description
+        new","type":"credit","sum":"55.0","balance":"926.66","currency":"EUR","updator":null}],"count":11,"types_for_select":[["Create","create"],["Renew","renew"],["Add
         credit","add_credit"],["Update credit","update_credit"]]}}'
-  recorded_at: Wed, 15 Jun 2022 10:40:55 GMT
+  recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
 recorded_with: VCR 6.1.0

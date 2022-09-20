@@ -10,6 +10,7 @@ en:
       contacts: "Contacts"
       invoices: "Invoices"
       messages: "Messages"
+      stats: "Stats"
 
     footer:
       copyright: "© 2022 Estonian Internet Foundation"

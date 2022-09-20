@@ -6,7 +6,7 @@ RSpec.describe NotificationsController, type: :controller do
       method: :mark_as_read,
       http_method: :get,
       params: {
-        id: 43,
+        id: 50,
       },
     },
   ]

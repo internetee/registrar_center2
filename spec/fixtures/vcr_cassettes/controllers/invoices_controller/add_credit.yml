@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/invoices/add_credit
     body:
       encoding: UTF-8
-      string: '{"invoice":{"amount":"100","description":"Fugiat est officiis odit."}}'
+      string: '{"invoice":{"amount":"100","description":"Dolores similique rerum temporibus."}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"1b9823b5f21147e21b51ce5ddf456f19"
+      - W/"677c36290dbcc65f2d1e7c5397cbe01f"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 2965c45b-a878-4c04-96a0-70e0fb9e4e62
+      - c01cc248-8495-48ba-a117-c6c9ede50327
       X-Runtime:
-      - '2.328544'
+      - '0.891181'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":42,"number":150018,"paid":false,"payable":true,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=Fugiat%20est%20officiis%20odit.\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150018\u0026linkpay_token=k5t5xq\u0026order_reference=150018\u0026transaction_amount=120.0\u0026hmac=cbf5bda908354ebcae08cf7a909a7018d0c5d3d3fb1f73641395a250e8589660","receipt_date":null,"cancelled":false,"cancellable":true,"due_date":"2022-07-16","total":"120.0","recipient":"walter.raynor@bashirian-grady.com"}}}'
-  recorded_at: Thu, 16 Jun 2022 12:33:17 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"invoice":{"id":159,"number":150040,"paid":false,"payable":true,"payment_link":"https://igw-demo.every-pay.com/lp?custom_field_1=Dolores%20similique%20rerum%20temporibus.\u0026custom_field_2=registry\u0026customer_email=sergei.tsoganov%40internet.ee\u0026customer_name=Sergei%20\u0026invoice_number=150040\u0026linkpay_token=k5t5xq\u0026order_reference=150040\u0026transaction_amount=120.0\u0026hmac=d06454a32ace685f0c0d09c14287aa3ee0a3c3b04c6db73340cd7a834ec44fba","receipt_date":null,"cancelled":false,"cancellable":true,"due_date":"2022-10-09","total":"120.0","recipient":"eleanore_funk@konopelski-bahringer.com","monthly_invoice":false}}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:16 GMT
 recorded_with: VCR 6.1.0

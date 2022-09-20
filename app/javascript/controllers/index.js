@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
-import NestedForm from "./nested_form_controller.js"
-application.register("nested-form", NestedForm)
+import ChartController from "./chart_controller.js"
+application.register("chart", ChartController)
+
+import CheckboxListController from "./checkbox_list_controller.js"
+application.register("checkbox-list", CheckboxListController)
 
 import FlashController from "./flash_controller.js"
 application.register("flash", FlashController)
 
-import CheckboxListController from "./checkbox_list_controller.js"
-application.register("checkbox-list", CheckboxListController)
+import NestedFormController from "./nested_form_controller.js"
+application.register("nested-form", NestedFormController)

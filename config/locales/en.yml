@@ -61,8 +61,12 @@ en:
         unit: €
   
   date:
+    month_names:
+      [~, January, February, March, April, May, June, July, August, September, October, November, December]
     formats:
       default: "%Y-%m-%d"
+      month_year: "%B, %Y"
+      month_year_short: "%b, %Y"
   
   auth:
     sessions:
@@ -494,7 +498,51 @@ en:
       vat: "VAT"
       total: "Total"
       code: "Code"
-      
+  
+  stats:
+    market_share:
+      index:
+        title: "Stats"
+        market_share: "Market share and distribution"
+        market_share_growth: "Market share and growth rate"
+        period: "Period"
+        compare_to: "Compare to"
+        domains: "Domains"
+        registrars: "Registrars"
+        csv:
+          registrar: "Registrar"
+          domains: "Domains"
+          market_share: "Market share %"
+          domains_diff: "Domains diff"
+          market_share_diff: "Market share diff"
+        chart_text:
+          viewFullscreen: "View in full screen"
+          exitFullscreen: "Exit from full screen"
+          printChart: "Print chart"
+          downloadPDF: "Download PDF document"
+          downloadPNG: "Download PNG image"
+          downloadJPEG: "Download JPEG image"
+          downloadSVG: "Download SVG vector image"
+          downloadCSV: "Download CSV"
+          downloadXLS: "Download XLS"
+          noData: "No data to display"
+          viewData: "View data table"
+          hideData: "Hide data table"
+          xAxisTitle: "Registrars"
+          yAxisTitle: 
+            market_share: "Market share %"
+            domains: "Domains"
+          exportData:
+            categoryHeader: "Registrars"
+        COMPARE_TO_PERIODS:
+        - ['Choose', '']
+        - ['Previous month', 'previous_month']
+      distribution:
+        chart_title: "Market share and distribution in %{date}"
+      growth_rate:
+        chart_title: "Market share and growth rate in %{date}"
+        chart_subtitle: "Comparing to results from %{date}"
+
   activemodel:
     errors:
       models:

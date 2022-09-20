@@ -17,6 +17,17 @@ RSpec.describe ContactsController, type: :controller do
       format: :csv,
     },
     {
+      method: :index,
+      http_method: :get,
+      params: {
+        per_page: 10,
+        search: {
+          name_matches: Faker::Lorem.word,
+        },
+      },
+      format: :pdf,
+    },
+    {
       method: :search,
       http_method: :get,
       params: {

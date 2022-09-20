@@ -61,8 +61,14 @@ et:
         unit: €
   
   date:
+    month_names:
+      [~, Jaanuar, Veebruar, Märts, Aprill, Mai, Juuni, Juuli, August, September, Oktoober, November, Detsember]
+    abbr_month_names:
+      [~, Jaan, Veeb, Märts, Apr, Mai, Juuni, Juuli, Aug, Sep, Okt, Nov, Det]
     formats:
       default: "%Y-%m-%d"
+      month_year: "%B, %Y"
+      month_year_short: "%b, %Y"
   
   auth:
     sessions:
@@ -494,6 +500,50 @@ et:
       vat: "Käibemaks"
       total: "Kokku tasuda"
       code: "Kood"
+
+  stats:
+    market_share:
+      index:
+        title: "Statistika"
+        market_share: "Turuosa ja jaotus"
+        market_share_growth: "Turuosa ja kasvumäär"
+        period: "Periood"
+        compare_to: "Võrdlus kuuga"
+        domains: "Domeenid"
+        registrars: "Registripidajad"
+        csv:
+          registrar: "Registripidaja"
+          domains: "Domeenide arv"
+          market_share: "Turuosa %"
+          domains_diff: "Domeenide arvu muutus"
+          market_share_diff: "Turuosa muutus"
+        chart_text:
+          viewFullscreen: "Kuva täisekraanil"
+          exitFullscreen: "Välju täisekraanilt"
+          printChart: "Prindi diagramm"
+          downloadPDF: "Laadi alla PDF-dokument"
+          downloadPNG: "Laadi alla PNG-pilt"
+          downloadJPEG: "Laadi alla JPEG-pilt"
+          downloadSVG: "Laadi alla SVG vektorkujutis"
+          downloadCSV: "Laadi alla CSV"
+          downloadXLS: "Laadi alla XLS"
+          viewData: "Vaata andmetabelit"
+          hideData: "Peida andmetabel"
+          noData: "Kuvatavaid andmeid pole"
+          xAxisTitle: "Registripidajad"
+          yAxisTitle: 
+            market_share: "Turuosa %"
+            domains: "Domeenid"
+          exportData:
+            categoryHeader: "Registripidajad"
+        COMPARE_TO_PERIODS:
+        - ['Choose', '']
+        - ['Previous month', 'previous_month']
+      distribution:
+        chart_title: "Turuosa ja jaotus %{date}"
+      growth_rate:
+        chart_title: "Turuosa ja kasvumäär %{date}"
+        chart_subtitle: "Võrreldes %{date} tulemustega"
       
   activemodel:
     errors:

@@ -1,6 +1,56 @@
 ---
 http_interactions:
 - request:
+    method: put
+    uri: http://registry:3000/repp/v1/domains/example.ee
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"name":"example.ee","registrant":{"code":"1111111:8E3736F2"},"contacts":[{"code":"1111111:0E828F10","type":"tech"},{"code":"1111111:8E3736F2","type":"admin"}],"nameservers":[{"id":"39","hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"],"action":"add"},{"id":"43","hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[],"action":"add"}]}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 7dc4aed6-0e06-444b-a9e8-ccf333bf359d
+      X-Runtime:
+      - '0.340404'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2304,"message":"Object status prohibits operation","data":{}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:28 GMT
+- request:
     method: get
     uri: http://registry:3000/repp/v1/domains/example.ee
     body:
@@ -37,21 +87,129 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"7540b6713349d4bf439f5f8ef34b7743"
+      - W/"de88fd954aebeb57a3e86da6902066d7"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 2ce0fed7-ed4d-4a9c-9045-ada67469e6c0
+      - 20f53764-8e39-400f-b582-7e62456da07f
       X-Runtime:
-      - '1.239465'
+      - '0.085521'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"id":"3188b80b-a376-4e3f-9a9c-3a797d6a2d25","name":"example.ee","registrant":{"id":"c5d8faa1-7ddd-4daf-ab6a-3707c84d6349","name":"Mary
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example.ee","registrant":{"name":"Mary
         Änn O’Connež-Šuslik Testnumber","code":"1111111:8E3736F2"},"created_at":"2022-03-13T19:41:21.913+02:00","updated_at":"2022-06-06T16:18:52.269+03:00","expire_time":"2022-09-14T00:00:00.000+03:00","outzone_at":"2022-04-18T16:18:52.130+03:00","delete_date":"2022-05-19","force_delete_date":null,"contacts":[{"code":"1111111:0E828F10","type":"TechDomainContact","name":"Sergei
         Tsõganov"},{"code":"1111111:8E3736F2","type":"AdminDomainContact","name":"Mary
-        Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":33,"hostname":"ssssssss.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
+        Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":39,"hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"]},{"id":43,"hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
         ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"0421786ef0b961393d52e5f58f48d1dd"}}}'
-  recorded_at: Wed, 15 Jun 2022 12:08:42 GMT
+  recorded_at: Fri, 09 Sep 2022 10:34:33 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/domains/example.ee
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"de88fd954aebeb57a3e86da6902066d7"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - '05481f7f-56ed-4b73-97ab-bb82967c9719'
+      X-Runtime:
+      - '0.098848'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example.ee","registrant":{"name":"Mary
+        Änn O’Connež-Šuslik Testnumber","code":"1111111:8E3736F2"},"created_at":"2022-03-13T19:41:21.913+02:00","updated_at":"2022-06-06T16:18:52.269+03:00","expire_time":"2022-09-14T00:00:00.000+03:00","outzone_at":"2022-04-18T16:18:52.130+03:00","delete_date":"2022-05-19","force_delete_date":null,"contacts":[{"code":"1111111:0E828F10","type":"TechDomainContact","name":"Sergei
+        Tsõganov"},{"code":"1111111:8E3736F2","type":"AdminDomainContact","name":"Mary
+        Änn O’Connež-Šuslik Testnumber"}],"nameservers":[{"id":39,"hostname":"ns1.ams1.domainer.ee","ipv4":["192.168.1.1"],"ipv6":["2620:119:35::36"]},{"id":43,"hostname":"ttttttttttttttt.ee","ipv4":[],"ipv6":[]}],"dnssec_keys":[{"id":5,"flags":null,"protocol":null,"alg":null,"public_key":""}],"statuses":{"inactive":"","pendingDelete":"","serverHold":"","serverForceDelete":"","serverRenewProhibited":"","serverTransferProhibited":""},"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"0421786ef0b961393d52e5f58f48d1dd"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:35:46 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/domains/example092022.ee
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"d9ac438452e1fdc3db31e2b9b1b6c449"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 4d861752-7c92-4da4-84c7-407c4cfc8e14
+      X-Runtime:
+      - '0.082344'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"domain":{"name":"example092022.ee","registrant":{"name":"Sergei
+        Tsõganov","code":"1111111:65B7EB55"},"created_at":"2022-09-09T13:40:19.122+03:00","updated_at":"2022-09-09T13:40:19.122+03:00","expire_time":"2023-03-10T00:00:00.000+02:00","outzone_at":null,"delete_date":null,"force_delete_date":null,"contacts":[{"code":"1111111:65B7EB55","type":"AdminDomainContact","name":"Sergei
+        Tsõganov"},{"code":"1111111:65B7EB55","type":"TechDomainContact","name":"Sergei
+        Tsõganov"}],"nameservers":[{"id":130,"hostname":"ns1.altenwerth.io","ipv4":["193.149.227.82"],"ipv6":["DFF3:A399:7DD9:B0F:C2E6:BF41:CDB7:9AA0"]},{"id":131,"hostname":"ns2.reynolds.co","ipv4":["141.234.129.138"],"ipv6":["69BF:BC6F:35B9:5D0D:F5D2:1B6:BBBE:282C"]}],"dnssec_keys":[{"id":30,"flags":257,"protocol":3,"alg":8,"public_key":"883c0a3aada2ce79ea04b4655637bc38c7f7b7aa3626f8c22b560a9529b7d8f2"}],"statuses":{"ok":""},"registrar":{"name":"Sergei
+        ","website":"https://bankwiser.eu"},"dispute":false,"transfer_code":"9a3a88068731b5db4018dff05ecf8e21"}}}'
+  recorded_at: Fri, 09 Sep 2022 10:40:19 GMT
 recorded_with: VCR 6.1.0

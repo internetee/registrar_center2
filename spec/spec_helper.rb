@@ -53,6 +53,8 @@ VCR.configure do |config|
     http_message.body.encoding.name == 'ASCII-8BIT' ||
       !http_message.body.valid_encoding?
   end
+  record_mode = ENV['VCR'] ? ENV['VCR'].to_sym : :once
+  config.default_cassette_options = { record: record_mode }
 end
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

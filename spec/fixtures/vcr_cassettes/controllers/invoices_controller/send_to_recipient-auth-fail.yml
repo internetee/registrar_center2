@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/invoices/41/send_to_recipient
     body:
       encoding: UTF-8
-      string: '{"invoice":{"id":"41","recipient":"valeria_prohaska@reilly.info"}}'
+      string: '{"invoice":{"id":"41","recipient":"annis_cremin@murphy.info"}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -41,13 +41,63 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - fcd9e1f4-b1e8-4265-8d8e-79b7965dd98e
+      - 56c265a6-9a2d-4f44-9c7f-ae022b877e41
       X-Runtime:
-      - '0.147020'
+      - '0.065993'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"vitae","password":"YkO0sVgYy7Bu3K","active":null}}'
-  recorded_at: Thu, 16 Jun 2022 12:19:32 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"ut","password":"LuIfAf55C039zRmA","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 07:10:17 GMT
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/invoices/75/send_to_recipient
+    body:
+      encoding: UTF-8
+      string: '{"invoice":{"id":"75","recipient":"mikel@cassin.net"}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 87bea08b-6853-4adb-af7b-aaea8ac111f1
+      X-Runtime:
+      - '0.057052'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"eius","password":"YpGc9QuKxKj","active":null}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:15 GMT
 recorded_with: VCR 6.1.0

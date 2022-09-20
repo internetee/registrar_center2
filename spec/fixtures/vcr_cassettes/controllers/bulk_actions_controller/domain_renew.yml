@@ -19,8 +19,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -38,18 +38,17 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
-      Etag:
-      - W/"204aa5c9f904306732bd17f00a989e7e"
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Request-Id:
-      - b03ec551-0a91-403d-910c-96ea853aa259
+      - dd215e4c-2b28-4439-bbd9-f78971f4ef7f
       X-Runtime:
-      - '1.407696'
+      - '0.232260'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"updated_domains":["wwww.ee","wwwww.ee"]}}'
-  recorded_at: Fri, 17 Jun 2022 06:38:13 GMT
+      string: '{"code":2002,"message":"Domain renew error for wwww.ee, Domain renew
+        error for wwwww.ee","data":{}}'
+  recorded_at: Fri, 09 Sep 2022 10:20:04 GMT
 recorded_with: VCR 6.1.0

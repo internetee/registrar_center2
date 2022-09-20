@@ -11,8 +11,7 @@ import FileUpload from "./fileUpload";
 import Select from "./select";
 import Tabs from "./tabs";
 import Tooltip from "./tooltip";
-import Header from './header';
-
+import Header from "./header";
 
 class App {
     constructor() {
@@ -32,7 +31,11 @@ class App {
         
         new Header(document.querySelector('.layout--header-bottom'));
         
-        new Datepicker('.datepicker', { locale: locale });
+        // new Datepicker('.datepicker', { locale: locale });
+
+        document.querySelectorAll('.datepicker').forEach(elem => {
+          new Datepicker(elem, { locale: locale });
+        });
         
         document.querySelectorAll('[data-toggle]').forEach(elem => {
             new Toggle(elem);
@@ -100,4 +103,3 @@ document.addEventListener("turbo:render", function() {
 })
 
 new App();
-

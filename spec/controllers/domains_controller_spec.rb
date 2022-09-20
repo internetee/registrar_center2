@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe DomainsController, type: :controller do
-  file = File.join(Rails.root, '/spec/fixtures/files/legal_doc.pdf')
-  uploaded_file = Rack::Test::UploadedFile.new(File.open(file))
-  batch_file_encoded = 'RG9tYWluO1RyYW5zZmVyIGNvZGUNCnd3d3cuZWU7YWQ0YmEyNWMzNjZiNDky\nNzgxZGU3NGMzNDg2ZjJlYzMNCnFxcS5lZTs1MzVkNTdhNTI1OGJhNTYxZDQ2\nOTMzOTc0MmQxMGM4OA==\n'
+  legal_file = File.join(Rails.root, '/spec/fixtures/files/legal_doc.pdf')
+  transfer_file = File.join(Rails.root, '/spec/fixtures/files/bulk_domain_transfer.csv')
+  uploaded_file = Rack::Test::UploadedFile.new(File.open(legal_file))
+  transfer_file_encoded = Base64.encode64(File.read(transfer_file))
+  domain = 'example092022.ee'
 
   options = [
     {
@@ -17,62 +19,23 @@ RSpec.describe DomainsController, type: :controller do
       },
     },
     {
-      method: :show,
-      http_method: :get,
-      params: {
-        domain_name: 'example.ee',
-      },
-    },
-    {
-      method: :destroy,
-      http_method: :delete,
-      params: {
-        domain: {
-          name: 'example.ee',
-          registrant: {
-            verified: true,
-          },
-          legal_document: uploaded_file,
-        },
-      },
-    },
-    {
-      method: :edit,
-      http_method: :get,
-      params: {
-        domain_name: 'example.ee',
-      },
-    },
-    {
-      method: :update,
-      http_method: :put,
-      params: {
-        domain: {
-          name: 'example.ee',
-          registrant: {
-            code: Faker::Lorem.word,
-          },
-        },
-      },
-    },
-    {
       method: :create,
       http_method: :post,
       params: {
         domain: {
-          name: 'example.ee',
+          name: domain,
           reserved_pw: Faker::Internet.password,
           registrant: {
-            code: Faker::Lorem.word,
+            code: '1111111:65B7EB55',
           },
           period: '6m',
           contacts_attributes: {
             '1': {
-              code: Faker::Lorem.word,
+              code: '1111111:65B7EB55',
               type: 'admin',
             },
             '2': {
-              code: Faker::Lorem.word,
+              code: '1111111:65B7EB55',
               type: 'tech',
             },
           },
@@ -100,11 +63,37 @@ RSpec.describe DomainsController, type: :controller do
       },
     },
     {
+      method: :show,
+      http_method: :get,
+      params: {
+        domain_name: domain,
+      },
+    },
+    {
+      method: :edit,
+      http_method: :get,
+      params: {
+        domain_name: domain,
+      },
+    },
+    {
+      method: :update,
+      http_method: :put,
+      params: {
+        domain: {
+          name: domain,
+          registrant: {
+            code: '1111111:65B7EB55',
+          },
+        },
+      },
+    },
+    {
       method: :renew,
       http_method: :post,
       params: {
         domain: {
-          name: 'wwww.ee',
+          name: domain,
           exp_date: '2022-12-16',
           period: '6m',
         },
@@ -115,9 +104,22 @@ RSpec.describe DomainsController, type: :controller do
       http_method: :post,
       params: {
         domain: {
-          batch_file: batch_file_encoded,
+          batch_file: transfer_file_encoded,
           # name: 'example.ee',
           # transfer_code: Faker::Internet.device_token,
+        },
+      },
+    },
+    {
+      method: :destroy,
+      http_method: :delete,
+      params: {
+        domain: {
+          name: domain,
+          registrant: {
+            verified: true,
+          },
+          legal_document: uploaded_file,
         },
       },
     },
