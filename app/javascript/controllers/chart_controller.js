@@ -37,7 +37,6 @@ export default class extends Controller {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                height: 800,
                 type: 'pie'
             },
             title: {
