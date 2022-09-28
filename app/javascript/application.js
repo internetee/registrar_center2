@@ -57,7 +57,7 @@ class App {
             new FileUpload(elem);
         });
 
-        var per_page_select = document.getElementById('per_page');
+        const per_page_select = document.getElementById('per_page');
         if (per_page_select) {
             per_page_select.onchange = function(evt){
                 var value = evt.target.value;
