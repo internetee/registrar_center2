@@ -114,7 +114,9 @@ class ApplicationController < ActionController::Base
   end
 
   def extract_locale
-    locale = params[:locale]
+    cookies.permanent[:locale] = params[:locale] if params[:locale].present?
+    locale = cookies[:locale]
+
     return locale.to_sym if I18n.available_locales.map(&:to_s).include?(locale)
 
     notice = "#{locale} #{t(:no_translation)}"

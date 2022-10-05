@@ -33,6 +33,8 @@ RSpec.feature 'managing statistics' do
   scenario 'by downloading csv file of market share distribution' do
     cassette = 'controllers/stats/market_share_controller/distribution_data'
     VCR.use_cassette cassette, match_requests_on: %i[path method] do
+      travel_to Time.zone.parse('2022-09-05')
+
       visit market_share_path(type: 'distribution')
       expect(page).to have_content('Stats')
 
