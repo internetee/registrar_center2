@@ -87,7 +87,7 @@
             <div class="col-md-auto col-xs-12">
                 <div class="form--actions">
                     <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
-                    <%= button_tag t(:clear_filter), type: 'reset', class: 'button button--link' %>
+                    <%= link_to t(:clear_filter), "#{url_for(request.params.except(:search, :search_terms))}", class: 'button button--link' %>
                 </div>
             </div>
         </div>
