@@ -4,10 +4,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th><%= t('invoices.show.code') %></th>
-            <th><%= t('invoices.show.quantity') %></th>
-            <th><%= t('invoices.show.unit') %></th>
             <th><%= t('invoices.show.item_description') %></th>
+            <th><%= t('invoices.show.unit') %></th>
+            <th><%= t('invoices.show.quantity') %></th>
             <th><%= t('invoices.show.price') %></th>
             <th><%= t('invoices.index.total') %></th>
         </tr>
@@ -15,10 +14,9 @@
     <tbody>
         <% @invoice[:items].each do |item| %>
             <tr>
-                <td><%= item[:product_id] %></td>
-                <td><%= item[:quantity] %></td>
-                <td><%= item[:unit] %></td>
                 <td><%= item[:description] %></td>
+                <td><%= item[:unit] %></td>
+                <td><%= item[:quantity] %></td>
                 <% if item[:price] && item[:quantity] %>
                     <td><%= currency(item[:price].to_f) %></td>
                     <td><%= currency(item[:price].to_f * item[:quantity]) %></td>
@@ -34,7 +32,6 @@
             <th class="no-border"></th>
             <th class="no-border"></th>
             <th class="no-border"></th>
-            <th class="no-border"></th>
             <th><strong><%= t('invoices.show.subtotal') %></strong></th>
             <td><strong><%= number_to_currency(0) %></strong></td>
         </tr>
@@ -42,12 +39,10 @@
             <th class="no-border"></th>
             <th class="no-border"></th>
             <th class="no-border"></th>
-            <th class="no-border"></th>
             <th><strong><%= "#{t('invoices.show.vat')} #{number_to_percentage(@invoice[:vat_rate], precision: 1)}" %></strong></th>
             <td><strong><%= number_to_currency(0) %></strong></td>
         </tr>
         <tr>
-            <th class="no-border"></th>
             <th class="no-border"></th>
             <th class="no-border"></th>
             <th class="no-border"></th>
