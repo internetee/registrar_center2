@@ -544,7 +544,24 @@ et:
       growth_rate:
         chart_title: "Turuosa ja kasvumäär %{date}"
         chart_subtitle: "Võrreldes %{date} tulemustega"
-      
+  xml_console:
+    show:
+      title: "XML EPP Konsool"
+      create: "Create"
+      update: "Update"
+      info: "Info"
+      renew: "Renew"
+      check: "Check"
+      transfer: "Transfer"
+      delete: "Delete"
+      client_hold: "Remove Client Hold"
+      poll: "Poll"
+      check_multiple: "Check (multiple)"
+      update_chg: "Update (chg)"
+      send_request: "Saada EPP Päring"
+      domain: "Domeen"
+      contact: "Kontakt"
+
   activemodel:
     errors:
       models:

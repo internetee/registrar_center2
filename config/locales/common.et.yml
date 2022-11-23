@@ -11,6 +11,7 @@ et:
       invoices: "Arved"
       messages: "Sõnumid"
       stats: "Statistika"
+      xml_console: "XML Konsool"
 
     footer:
       copyright: "© 2022 Eesti Interneti Sihtasutus"
