@@ -543,6 +543,25 @@ en:
         chart_title: "Market share and growth rate in %{date}"
         chart_subtitle: "Comparing to results from %{date}"
 
+  xml_console:
+    show:
+      title: "XML EPP Console"
+      create: "Create"
+      update: "Update"
+      info: "Info"
+      renew: "Renew"
+      check: "Check"
+      transfer: "Transfer"
+      delete: "Delete"
+      client_hold: "Remove Client Hold"
+      poll: "Poll"
+      check_multiple: "Check (multiple)"
+      update_chg: "Update (chg)"
+      send_request: "Send EPP Request"
+      domain: "Domain"
+      contact: "Contact"
+      
+
   activemodel:
     errors:
       models:

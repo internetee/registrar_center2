@@ -15,3 +15,6 @@ application.register("flash", FlashController)
 
 import NestedFormController from "./nested_form_controller.js"
 application.register("nested-form", NestedFormController)
+
+import XmlConsoleController from "./xml_console_controller.js"
+application.register("xml-console", XmlConsoleController)

@@ -75,5 +75,11 @@ Rails.application.routes.draw do
     get 'stats/market_share/growth_rate_data', to: 'stats/market_share#growth_rate_data',
                                                as: 'market_share_growth_rate_data'
     get 'stats/market_share(/:type)', to: 'stats/market_share#index', as: 'market_share'
+
+    resource :xml_console, only: %i[show create], controller: 'xml_console' do
+      collection do
+        get 'load'
+      end
+    end
   end
 end

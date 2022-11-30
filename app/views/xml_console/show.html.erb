@@ -1,0 +1,65 @@
+<% content_for(:title) { "EIS | #{t('.title')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('.title') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page page--console">
+    <div class="page--content">
+        <div class="wrapper" data-controller="xml-console">
+            <%= form_with url: xml_console_path,
+                               class: 'form form__styled',
+                               data: { turbo: true } do |form| %>
+                <div class="row">
+                    <div class="col-md-8 col-xs-12">
+                        <div class="form--row">
+                            <div class="form--field">
+                                <div class="form--input">
+                                    <%= form.text_area :payload, rows: 15,
+                                                                 class: 'textarea',
+                                                                 style: 'font-family:monospace; font-size: 12px;',
+                                                                 'data-xml-console-target': 'payload',
+                                                                 value: params[:payload] %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="line-height: 1.5;">
+                        <h4><%= t('.domain') %></h4>
+                        <%= load_xml_link(t('.create'), 'domain', 'create') %>,
+                        <%= load_xml_link(t('.update'), 'domain', 'update') %>,
+                        <%= load_xml_link(t('.info'), 'domain', 'info') %>,
+                        <%= load_xml_link(t('.renew'), 'domain', 'renew') %>,
+                        <%= load_xml_link(t('.check'), 'domain', 'check') %>,
+                        <%= load_xml_link(t('.transfer'), 'domain', 'transfer') %>,
+                        <%= load_xml_link(t('.delete'), 'domain', 'delete') %>,
+                        <%= load_xml_link(t('.client_hold'), 'domain', 'client_hold') %>
+                        <h4><%= t('.poll') %></h4>
+                        <%= load_xml_link(t('.poll'), 'poll', 'poll') %>
+                        <h4><%= t('.contact') %></h4>
+                        <%= load_xml_link(t('.create'), 'contact', 'create') %>,
+                        <%= load_xml_link(t('.check'), 'contact', 'check') %>,
+                        <%= load_xml_link(t('.check_multiple'), 'contact', 'check_multiple') %>,
+                        <%= load_xml_link(t('.delete'), 'contact', 'delete') %>,
+                        <%= load_xml_link(t('.info'), 'contact', 'info') %>,
+                        <%= load_xml_link(t('.update_chg'), 'contact', 'update_chg') %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-xs-12">
+                        <div class="form--actions">
+                            <%= form.submit t('.send_request'), class: 'button button--primary' %>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12" id="coderay"> 
+                        <%= render partial: "coderay", locals: { response: @response } if @response %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
