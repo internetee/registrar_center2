@@ -29,12 +29,9 @@ module StatsHelper
   private
 
   def preloader
-    out = []
-    out << '<div class="fulfilling-bouncing-circle-spinner">
-             <div class="circle"></div>
-             <div class="orbit"></div>
-           </div>'.html_safe
-    safe_join(out)
+    tag.div(nil, class: 'fulfilling-bouncing-circle-spinner') do
+      tag.div(nil, class: 'circle') + tag.div(nil, class: 'orbit')
+    end
   end
 
   def data_type_radio_buttons(tags: [])
