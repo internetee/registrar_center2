@@ -9,6 +9,7 @@ module StatsHelper
     end
   end
 
+  # rubocop:disable Metrics/MethodLength
   def market_share_growth_rate_chart(search_params)
     url = market_share_growth_rate_data_path(search: search_params)
     title = t('stats.market_share.growth_rate.chart_title',
@@ -23,14 +24,17 @@ module StatsHelper
       data_type_radio_buttons + tag.div(preloader, class: 'bar_chart')
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   private
 
   def preloader
-    '<div class="fulfilling-bouncing-circle-spinner">
-        <div class="circle"></div>
-        <div class="orbit"></div>
-    </div>'.html_safe
+    out = []
+    out << '<div class="fulfilling-bouncing-circle-spinner">
+             <div class="circle"></div>
+             <div class="orbit"></div>
+           </div>'.html_safe
+    safe_join(out)
   end
 
   def data_type_radio_buttons(tags: [])

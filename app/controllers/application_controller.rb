@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
 
   helper_method :current_user, :logged_in?, :can?
-
   before_action :set_locale
 
   def current_user
@@ -11,7 +10,6 @@ class ApplicationController < ActionController::Base
 
   def can?(action, subject)
     return false if current_user.abilities[:can].blank?
-
     return false if current_user.abilities[:can][action].blank?
 
     current_user.abilities[:can][action].keys.include? subject
@@ -63,8 +61,7 @@ class ApplicationController < ActionController::Base
   # rubocop:enable Metrics/MethodLength
 
   def internal_server_error
-    render file: 'public/500.html',
-           layout: false,
+    render file: 'public/500.html', layout: false,
            status: :internal_server_error
   end
 
