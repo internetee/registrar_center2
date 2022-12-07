@@ -8,7 +8,7 @@
     </div>
     <div id="filters" class="form--filters">
         <div class="row bottom-xs">
-            <div class="col-xs-auto">
+            <div class="col-md-5 col-xs-12">
                 <%= form.label :period, t('stats.market_share.index.period'), class: 'form--label' %>
                 <div class="form--field">
                     <div class="form--input small">
@@ -23,11 +23,16 @@
                 </div>
             </div>
             <% if @type == 'growth_rate' %>
-                <div class="col-xs-auto">
-                    <%= form.label :compare_to_date, t('stats.market_share.index.compare_to'), class: 'form--label' %>
+                <div class="col-md-5 col-xs-12">
+                    <%= form.label :compare_period, t('stats.market_share.index.compare_to'), class: 'form--label' %>
                     <div class="form--field">
                         <div class="form--input small">
-                            <%= form.date_field :compare_to_date, class: 'datepicker', value: params[:search]&.dig(:compare_to_date), dateFormat: 'm.y' %>
+                            <%= form.date_field :compare_to_start_date, class: 'datepicker', value: params[:search]&.dig(:compare_to_start_date), dateFormat: 'm.y' %>
+                            <div class="form--suffix"><i class="fas fa-calendar"></i></div>
+                        </div>
+                        <span class="form--sep">-</span>
+                        <div class="form--input small">
+                            <%= form.date_field :compare_to_end_date, class: 'datepicker', value: params[:search]&.dig(:compare_to_end_date), dateFormat: 'm.y' %>
                             <div class="form--suffix"><i class="fas fa-calendar"></i></div>
                         </div>
                     </div>

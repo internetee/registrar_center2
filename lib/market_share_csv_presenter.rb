@@ -23,16 +23,18 @@ class MarketShareCsvPresenter
 
   # rubocop:disable Metrics/MethodLength
   def header
+    period = column_period(params[:start_date], params[:end_date])
+    compare_period = column_period(params[:compare_to_start_date], params[:compare_to_end_date])
     case type
     when 'distribution'
       columns = [translate_column('registrar'),
-                 "#{translate_column('domains')} [#{translate_date(params[:end_date])}]"]
+                 "#{translate_column('domains')} [#{period}]"]
     when 'growth_rate'
       columns = [translate_column('registrar'),
-                 "#{translate_column('domains')} [#{translate_date(params[:compare_to_date])}]",
-                 "#{translate_column('market_share')} [#{translate_date(params[:compare_to_date])}]",
-                 "#{translate_column('domains')} [#{translate_date(params[:end_date])}]",
-                 "#{translate_column('market_share')} [#{translate_date(params[:end_date])}]",
+                 "#{translate_column('domains')} [#{compare_period}]",
+                 "#{translate_column('market_share')} [#{compare_period}]",
+                 "#{translate_column('domains')} [#{period}]",
+                 "#{translate_column('market_share')} [#{period}]",
                  translate_column('market_share_diff').to_s,
                  translate_column('domains_diff').to_s]
     end
@@ -48,6 +50,12 @@ class MarketShareCsvPresenter
     when 'growth_rate'
       transform_growth_rate_data(data)
     end
+  end
+
+  def column_period(start_date, end_date, period: '')
+    period += "#{translate_date(start_date)} - " if start_date.present?
+    period += translate_date(end_date).to_s
+    period
   end
 
   def rar_data_to_row(rar:)

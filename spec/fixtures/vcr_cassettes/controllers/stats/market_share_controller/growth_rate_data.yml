@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/stats/market_share_growth_rate?q%5Bcompare_to_date%5D=08.22&q%5Bend_date%5D=09.22
+    uri: http://registry:3000/repp/v1/stats/market_share_growth_rate?q%5Bcompare_to_end_date%5D=08.22&q%5Bend_date%5D=09.22
     body:
       encoding: US-ASCII
       string: ''

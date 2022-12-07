@@ -1,8 +1,9 @@
 .page--stats {
-    .pie_chart {
+    .pie_chart, .bar_chart {
         min-width: 200px;
-        height: 800px;
+        min-height: 150px;
         margin: 0 auto;
+        background-color: #fff;
     }
     .highcharts-a11y-proxy-group-legend {
         display: none;

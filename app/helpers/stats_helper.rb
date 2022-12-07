@@ -2,26 +2,36 @@ module StatsHelper
   def market_share_distribution_chart(search_params)
     url = market_share_distribution_data_path(search: search_params)
     title = t('stats.market_share.distribution.chart_title',
-              date: title_period(search_params))
+              date: title_period(search_params[:start_date],
+                                 search_params[:end_date]))
     tag.div(nil, data: chart_data_params(url: url, title: title, type: __method__.to_s)) do
-      tag.div(nil, class: 'pie_chart')
+      tag.div(preloader, class: 'pie_chart')
     end
   end
 
   def market_share_growth_rate_chart(search_params)
     url = market_share_growth_rate_data_path(search: search_params)
     title = t('stats.market_share.growth_rate.chart_title',
-              date: title_period(search_params))
+              date: title_period(search_params[:start_date],
+                                 search_params[:end_date]))
     subtitle = t('stats.market_share.growth_rate.chart_subtitle',
-                 date: translate_date(to_date(search_params[:compare_to_date])))
+                 date: title_period(search_params[:compare_to_start_date],
+                                    search_params[:compare_to_end_date]))
     tag.div(nil, data: chart_data_params(url: url, title: title, type: __method__.to_s,
                                          subtitle: subtitle,
                                          translations: date_translations(search_params))) do
-      data_type_radio_buttons + tag.div(nil, class: 'bar_chart')
+      data_type_radio_buttons + tag.div(preloader, class: 'bar_chart')
     end
   end
 
   private
+
+  def preloader
+    '<div class="fulfilling-bouncing-circle-spinner">
+        <div class="circle"></div>
+        <div class="orbit"></div>
+    </div>'.html_safe
+  end
 
   def data_type_radio_buttons(tags: [])
     tag.form do
@@ -35,9 +45,9 @@ module StatsHelper
     end
   end
 
-  def title_period(params, period: '')
-    period += "#{translate_date(to_date(params[:start_date]))} - " if params[:start_date].present?
-    period += translate_date(to_date(params[:end_date])).to_s
+  def title_period(start_date, end_date, period: '')
+    period += "#{translate_date(to_date(start_date))} - " if start_date.present?
+    period += translate_date(to_date(end_date)).to_s
     period
   end
 
@@ -62,9 +72,9 @@ module StatsHelper
 
   def date_translations(params, dates: {})
     end_date = to_date(params[:end_date])
-    compare_to_date = to_date(params[:compare_to_date])
+    compare_to_end_date = to_date(params[:compare_to_end_date])
     dates[params[:end_date]] = translate_date(end_date)
-    dates[params[:compare_to_date]] = translate_date(compare_to_date)
+    dates[params[:compare_to_end_date]] = translate_date(compare_to_end_date)
     dates
   end
 end
