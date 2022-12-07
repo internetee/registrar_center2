@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     session[:uuid] = nil
-    Rails.cache.instance_variable_get(:@data).each_key do |key|
+    Rails.cache.instance_variable_get(:@data)&.each_key do |key|
       Rails.cache.delete(key) unless key.match?(/distribution_data|growth_rate_data/)
     end
   end
