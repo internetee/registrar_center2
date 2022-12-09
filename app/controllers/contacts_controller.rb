@@ -67,7 +67,9 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
     redirect_to contacts_path
   end
 
-  def new; end
+  def new
+    authorize! :create, 'Epp::Contact'
+  end
 
   def create
     conn = ApiConnector::Contacts::Creator.new(**auth_info)
