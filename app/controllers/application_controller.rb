@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
     current_user.abilities[:can][action].keys.include? subject
   end
 
+  def authorize!(action, subject)
+    return if can? action, subject
+
+    respond_to do |format|
+      format.html { redirect_to dashboard_url, alert: 'Authorization error' }
+    end
+  end
+
   def logged_in?
     current_user != nil
   end

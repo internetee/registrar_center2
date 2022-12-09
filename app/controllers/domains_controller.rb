@@ -31,6 +31,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   end
 
   def new
+    authorize! :create, 'Epp::Domain'
     @domain_params = default_params
   end
 
@@ -70,9 +71,13 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     redirect_to domain_path(domain_name: @response.domain[:name])
   end
 
-  def new_transfer; end
+  def new_transfer
+    authorize! :transfer, 'Epp::Domain'
+  end
 
-  def new_renewal; end
+  def new_renewal
+    authorize! :renew, 'Epp::Domain'
+  end
 
   def new_bulk_change
     bulk_change_attrs = Rails.cache.fetch(session.id) { {} }
@@ -90,7 +95,9 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     redirect_to domains_path
   end
 
-  def delete; end
+  def delete
+    authorize! :delete, 'Epp::Domain'
+  end
 
   def destroy
     conn = ApiConnector::Domains::Deleter.new(**auth_info)
