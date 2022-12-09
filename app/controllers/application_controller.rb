@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base # rubocop:disable Metrics/ClassLength
   include Pagy::Backend
 
   helper_method :current_user, :logged_in?, :can?

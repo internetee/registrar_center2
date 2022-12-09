@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/registrar/xml_console
+    body:
+      encoding: UTF-8
+      string: '{"payload":"\u003c?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" standalone=\\\"no\\\"?\u003e\\n\u003cepp
+        xmlns=\\\"https://epp.tld.ee/schema/epp-ee-1.0.xsd\\\"\u003e\\n\u003ccommand\u003e\\n\u003cpoll
+        op=\\\"req\\\"/\u003e\\n\u003cclTRID\u003emaricavor-1670582159\u003c/clTRID\u003e\\n
+        \u003c/command\u003e\\n\u003c/epp\u003e\\n\", \"xml_console\"=\u003e{\"payload\"=\u003e\"\u003c?xml
+        version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" standalone=\\\"no\\\"?\u003e\\n\u003cepp
+        xmlns=\\\"https://epp.tld.ee/schema/epp-ee-1.0.xsd\\\"\u003e\\n\u003ccommand\u003e\\n    \u003cpoll
+        op=\\\"req\\\"/\u003e\\n    \u003cclTRID\u003emaricavor-1670582159\u003c/clTRID\u003e\\n\u003c/command\u003e\\n\u003c/epp\u003e\\n"}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 51001304-c990-49aa-8795-86e9c5fbb42c
+      X-Runtime:
+      - '0.123194'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"ducimus","password":"Yl72LhQxP35q","active":null}}'
+  recorded_at: Fri, 09 Dec 2022 10:50:06 GMT
+recorded_with: VCR 6.1.0
