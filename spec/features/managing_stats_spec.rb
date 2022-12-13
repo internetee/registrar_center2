@@ -23,10 +23,10 @@ RSpec.feature 'managing statistics' do
       visit market_share_path(type: 'growth_rate')
       expect(page).to have_content('Stats')
 
-      page.fill_in 'search_compare_to_date', with: '07.22'
+      page.fill_in 'search_compare_to_end_date', with: '07.22'
 
       click_button('Filter')
-      expect(page).to have_current_path(/search\[compare_to_date\]=07.22/)
+      expect(page).to have_current_path(/search\[compare_to_end_date\]=07.22/)
     end
   end
 
@@ -54,7 +54,7 @@ RSpec.feature 'managing statistics' do
       visit market_share_path(type: 'growth_rate')
       expect(page).to have_content('Stats')
 
-      page.fill_in 'search_compare_to_date', with: '07.22'
+      page.fill_in 'search_compare_to_end_date', with: '07.22'
 
       click_link('Download CSV')
       expect(response_headers['Content-Disposition']).to have_content('attachment')
