@@ -22,7 +22,7 @@
     "@hotwired/turbo-rails": "^7.1.0",
     "choices.js": "^10.1.0",
     "epic-spinners": "^2.0.0",
-    "esbuild": "^0.15.5",
+    "esbuild": "^0.16.0",
     "esbuild-rails": "^1.0.3",
     "flatpickr": "^4.6.3",
     "highcharts": "^10.2.0",
