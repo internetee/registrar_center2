@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/registrar/xml_console/load_xml?epp_action=poll&obj=poll
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"d3a884682e6dac5403a18245613d3154"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 0220b09b-4877-4a6a-8116-6a708fec79ff
+      X-Runtime:
+      - '0.219680'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"xml":"\u003c?xml
+        version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003cepp xmlns=\"https://epp.tld.ee/schema/epp-ee-1.0.xsd\"\u003e\n  \u003ccommand\u003e\n    \u003cpoll
+        op=\"req\"/\u003e\n    \u003cclTRID\u003emaricavor-1670582270\u003c/clTRID\u003e\n  \u003c/command\u003e\n\u003c/epp\u003e\n"}}'
+  recorded_at: Fri, 09 Dec 2022 10:37:50 GMT
+recorded_with: VCR 6.1.0

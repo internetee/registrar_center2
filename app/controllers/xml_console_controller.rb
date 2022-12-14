@@ -1,5 +1,7 @@
 class XmlConsoleController < BaseController
-  def show; end
+  def show
+    authorize! :create, 'Epp::Server'
+  end
 
   def create
     conn = ApiConnector::XmlConsole::Creator.new(**auth_info)

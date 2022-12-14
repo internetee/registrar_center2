@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base # rubocop:disable Metrics/ClassLength
   include Pagy::Backend
 
   helper_method :current_user, :logged_in?, :can?
@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
     return false if current_user.abilities[:can][action].blank?
 
     current_user.abilities[:can][action].keys.include? subject
+  end
+
+  def authorize!(action, subject)
+    return if can? action, subject
+
+    respond_to do |format|
+      format.html { redirect_to dashboard_url, alert: 'Authorization error' }
+    end
   end
 
   def logged_in?
