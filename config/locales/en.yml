@@ -555,6 +555,8 @@ en:
       delete: "Delete"
       client_hold: "Remove Client Hold"
       poll: "Poll"
+      poll_req: "Poll req"
+      poll_ack: "Poll ack"
       check_multiple: "Check (multiple)"
       update_chg: "Update (chg)"
       send_request: "Send EPP Request"
