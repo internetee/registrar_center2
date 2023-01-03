@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     post 'domains/update', to: 'domains#update', as: :update_domain
     get 'domains/delete', to: 'domains#delete', as: :delete_domain
     get 'domain', to: 'domains#show', as: :domain
+    put 'domain/regenerate_transfer_code', to: 'domains#regenerate_transfer_code', as: :domain_regenerate_transfer_code
     get 'domain/edit', to: 'domains#edit', as: :edit_domain
     get 'domain_transfers/new', to: 'domains#new_transfer', as: :new_domain_transfer
     get 'domains/new_renewal', to: 'domains#new_renewal', as: :new_domain_renewal

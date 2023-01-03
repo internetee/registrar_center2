@@ -225,6 +225,7 @@ en:
       dns_keys: "DNS key"
       flag: "Flag"
       public_key: "Public key"
+      regenerate: "Regenerate transfer code"
     
     edit:
       title: "Edit domain"

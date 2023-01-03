@@ -95,6 +95,15 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     redirect_to domains_path
   end
 
+  def regenerate_transfer_code
+    conn = ApiConnector::Domains::TransferCodeGenerator.new(**auth_info)
+    result = conn.call_action(payload: { name: params[:domain_name], transfer_code: SecureRandom.hex })
+    handle_response(result); return if performed?
+
+    flash.notice = @message
+    redirect_to domain_path(domain_name: @response.domain[:name])
+  end
+
   def delete
     authorize! :delete, 'Epp::Domain'
   end
