@@ -15,9 +15,6 @@
                 <div class="col-xs-auto">
                     <%= link_to t(:renew), new_domain_renewal_path(domain_name: @domain[:name]), class: 'button button--primary' %>
                 </div>
-                <div class="col-xs-auto">
-                    <%= button_to t('.regenerate'), domain_regenerate_transfer_code_path(domain_name: @domain[:name]), method: :put, class: 'button button--primary', id: 'regenerate-transfer-code-btn' %>
-                </div>
                 <% unless (@domain[:statuses].keys & %w[pendingDelete pendingDeleteConfirmation]).any? %>
                     <div class="col-xs-auto">
                         <%= link_to t(:delete), delete_domain_path(domain_name: @domain[:name]), class: 'button button--danger' %>
