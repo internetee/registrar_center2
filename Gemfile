@@ -87,7 +87,7 @@ group :test do
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'fuubar'
   gem 'selenium-webdriver'
-  gem 'simplecov', '0.21.2', require: false
+  gem 'simplecov', '0.22.0', require: false
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
