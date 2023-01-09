@@ -123,6 +123,13 @@ RSpec.describe DomainsController, type: :controller do
         },
       },
     },
+    {
+      method: :regenerate_transfer_code,
+      http_method: :put,
+      params: {
+          domain_name: domain,
+      },
+    }
   ]
 
   it_behaves_like 'Base controller with auth', options

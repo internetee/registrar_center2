@@ -5,7 +5,12 @@
     <tbody>
         <tr>
             <th><%= t 'domains.show.transfer_code' %></th>
-            <td><%= @domain[:transfer_code] %></td>
+            <td id='transfer-code'>
+                <%= @domain[:transfer_code] %>
+                <%= link_to domain_regenerate_transfer_code_path(domain_name: @domain[:name]), data: { 'turbo-method': 'put'} do %>
+                    <i class="fas fa-sync-alt"></i>
+                <% end %>
+            </td>
         </tr>
         <tr>
             <th><%= t 'domains.show.registrant' %></th>

@@ -228,6 +228,7 @@ et:
       dns_keys: "DNSKEY kirjed"
       flag: "Lipp"
       public_key: "Avalik võti"
+      regenerate: "Regenerate transfer code"
     
     edit:
       title: "Muuda domeeni"
