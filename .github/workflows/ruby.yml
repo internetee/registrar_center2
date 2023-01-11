@@ -77,6 +77,7 @@ jobs:
 
   upload_coverage:
     strategy:
+      fail-fast: false
       matrix:
         os: [ ubuntu-18.04 ]
         ruby: ['3.1.3' ]
