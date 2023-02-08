@@ -129,6 +129,9 @@ GEM
     httpclient (2.8.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    io-console (0.6.0)
+    irb (1.6.2)
+      reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -231,6 +234,8 @@ GEM
       zeitwerk (~> 2.5)
     rake (13.0.6)
     regexp_parser (2.6.2)
+    reline (0.3.2)
+      io-console (~> 0.5)
     rexml (3.2.5)
     rspec-core (3.12.1)
       rspec-support (~> 3.12.0)
@@ -335,6 +340,7 @@ DEPENDENCIES
   faker
   faraday
   fuubar
+  irb
   jbuilder
   jsbundling-rails
   jwt
@@ -344,6 +350,7 @@ DEPENDENCIES
   pagy
   puma (~> 6.0)
   rails (~> 7.0.2, >= 7.0.2.2)
+  reline
   rspec-rails
   selenium-webdriver
   simplecov (= 0.22.0)
