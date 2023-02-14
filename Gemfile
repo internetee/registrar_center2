@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
@@ -84,7 +84,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'capybara-screenshot'
-  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'faker'
   gem 'fuubar'
   gem 'selenium-webdriver'
   gem 'simplecov', '0.22.0', require: false
