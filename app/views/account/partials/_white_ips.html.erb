@@ -20,16 +20,18 @@
                         <%= ip[:interfaces].join(', ').upcase if ip[:interfaces] %>
                     </td>
                     <td class="table--action">
-                        <%= icon_link_to 'fas fa-pencil-alt', 'javascript: void(0);', class: 'simple_tooltip',
-                                                                                      'data-tippy-content': t(:edit),
-                                                                                      'data-dialog': 'edit_white_ip',
-                                                                                      'data-white-ip': "#{ip.to_json}",
-                                                                                      'data-action': white_ip_path(ip[:id]) %>
-                        <%= icon_link_to 'fas fa-trash-alt', 'javascript: void(0);', class: 'simple_tooltip',
-                                                                                     'data-tippy-content': t(:delete),
-                                                                                     'data-dialog': 'white_ip_delete',
-                                                                                     'data-ip': "#{ip[:ipv4] || ip[:ipv6]}",
-                                                                                     'data-action': white_ip_path(ip[:id]) %>
+                        <% if can? :manage, 'WhiteIp' %>
+                            <%= icon_link_to 'fas fa-pencil-alt', 'javascript: void(0);', class: 'simple_tooltip',
+                                                                                        'data-tippy-content': t(:edit),
+                                                                                        'data-dialog': 'edit_white_ip',
+                                                                                        'data-white-ip': "#{ip.to_json}",
+                                                                                        'data-action': white_ip_path(ip[:id]) %>
+                            <%= icon_link_to 'fas fa-trash-alt', 'javascript: void(0);', class: 'simple_tooltip',
+                                                                                        'data-tippy-content': t(:delete),
+                                                                                        'data-dialog': 'white_ip_delete',
+                                                                                        'data-ip': "#{ip[:ipv4] || ip[:ipv6]}",
+                                                                                        'data-action': white_ip_path(ip[:id]) %>
+                        <% end %>
                     </td>
                 </tr>
             <% end %>
