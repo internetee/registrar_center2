@@ -36,10 +36,10 @@
                                 </div>
                             </div>
                             <div class="form--row">
-                                <%= form.label :role, "#{t('api_users.show.role')} *", class: 'form--label' %>
+                                <%= form.label :roles, "#{t('api_users.show.role')} *", class: 'form--label' %>
                                 <div class="form--field">
                                     <div class="form--input">
-                                        <%= simple_select_tag "api_user[role]",
+                                        <%= simple_select_tag "api_user[roles]",
                                           options_for_select(@roles, @api_user&.dig(:roles)),
                                           { required: true, id: 'role_select' } %>
                                     </div>

@@ -50,7 +50,7 @@ class ApiUsersController < BaseController
 
   def api_user_params
     params.require(:api_user).permit(:username, :password,
-                                     :identity_code, :role, :active, :id)
+                                     :identity_code, :roles, :active, :id)
   end
 
   def format_csv
@@ -69,7 +69,7 @@ class ApiUsersController < BaseController
       username: api_user_params[:username],
       plain_text_password: api_user_params[:password],
       identity_code: api_user_params[:identity_code],
-      roles: [api_user_params[:role]],
+      roles: [api_user_params[:roles]],
       active: api_user_params[:active] == 'true',
     }
   end
