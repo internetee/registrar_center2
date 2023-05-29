@@ -433,6 +433,11 @@ et:
       role: "Roll"
       switch: "Lülita ümber"
       switch_warning_html: "Kas olete kindel, et soovite kasutajale <span class = 'username'></span> lülituda?"
+      api_users: "Api kasutajad"
+      active: "Aktiveeritud"
+      white_ips: "Lubatud IP-aadressid"
+      ip: "IP-aadress"
+      interfaces: "Liidesed"
 
   invoices:
     index:
@@ -501,6 +506,64 @@ et:
       vat: "Käibemaks"
       total: "Kokku tasuda"
       code: "Kood"
+
+  api_users:
+    index:
+      title: "Api kasutajad"
+      username: "Kasutajanimi"
+      active: "Aktiveeritud"
+      search_name: "Otsi kasutajanimi"
+      csv:
+        username: "Kasutajanimi"
+        password: "Parool"
+        identity_code: "Isikukood"
+        role: "Roll"
+        active: "Aktiveeritud"
+        accredited: "Akrediteeritud"
+        accreditation_expire_date: "Akrediteeringu aegumiskuupäev"
+        created_at: "Lisatud"
+        updated_at: "Uuendatud"
+      items: 
+        zero: "kasutajaid"
+        one: "kasutaja"
+        other: "kasutajat"
+    show:
+      details: "Detailid"
+      username: "Kasutajanimi"
+      password: "Parool"
+      identity_code: "Isikukood"
+      role: "Roll"
+      active: "Aktiveeritud"
+      delete_warning_html: "Kas olete kindel, et soovite kustutada kasutaja <span class = 'number'>%{name}</span>?"
+      certificates: "Sertifikaadid"
+      subject: "Subjekt"
+      status: "Staatus"
+    edit:
+      title: "Api kasutaja"
+
+  certificates:
+    show:
+      status:
+        signed: "Allkirjastatud"
+        unsigned: "Allkirjastamata"
+        expired: "Aegunud"
+        revoked: "Tühistatud"
+        valid: "Kehtiv"
+
+  white_ips:
+    index:
+      csv:
+        ipv4: "Ipv4"
+        ipv6: "Ipv6"
+        interfaces: "Liidesed"
+        created_at: "Lisatud"
+        updated_at: "Uuendatud"
+    show:
+      ipv4: "Ipv4"
+      ipv6: "Ipv6"
+      delete_warning_html: "Kas olete kindel, et soovite eemaldada lubatud IP-aadress <span class = 'ip'></span>?"
+    edit: 
+      title: "Lubatud IP"
 
   stats:
     market_share:

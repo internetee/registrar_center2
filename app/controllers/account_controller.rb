@@ -26,6 +26,8 @@ class AccountController < BaseController
     @account = @response.account
     @balance_auto_reload = @response.account[:balance_auto_reload]
     @min_deposit = @response.account[:min_deposit]
+    @roles = @response.roles
+    @interfaces = @response.interfaces
   end
 
   def update

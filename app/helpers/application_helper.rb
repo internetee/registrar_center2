@@ -11,8 +11,10 @@ module ApplicationHelper
     format('%01.2f', amount.round(2)).sub(/\./, ',')
   end
 
-  def login_with_role(user)
-    "#{user.username} (#{user.role}) - #{user.registrar_name}"
+  def login_with_role(user, registrar: true)
+    value = "#{user.username} (#{user.role})"
+    value += " - #{user.registrar_name}" if registrar
+    value
   end
 
   def back_link

@@ -8,7 +8,7 @@ export default class Dialog {
         document.querySelector('#' + id).classList.add('open');
         switch (id) {
             case "switch_user":
-                this.target.querySelector('.username').innerHTML = elem.dataset.userName;
+                this.target.querySelector('.username').innerHTML = elem.dataset.username;
                 this.target.querySelector('#account_user_id').value = elem.dataset.userId;
                 break;
             case "invoice_send":
@@ -16,9 +16,39 @@ export default class Dialog {
                 this.target.querySelector('#invoice_id').value = elem.dataset.invoiceId;
                 break;
             case "invoice_cancel":
-              this.target.querySelector('.number').innerHTML = elem.dataset.invoiceNumber;
-              this.target.querySelector('#invoice_id').value = elem.dataset.invoiceId;
-              break;
+                this.target.querySelector('.number').innerHTML = elem.dataset.invoiceNumber;
+                this.target.querySelector('#invoice_id').value = elem.dataset.invoiceId;
+                break;
+            case "edit_api_user":
+                let userData = JSON.parse(elem.dataset.apiUser);
+                this.target.querySelector('#api_user_username').value = userData["name"];
+                this.target.querySelector('#api_user_password').value = userData["password"];
+                this.target.querySelector('#api_user_identity_code').value = userData["identity_code"];
+                this.target.querySelector('#api_user_active').checked = userData["active"];
+                this.target.querySelector('#api_user_id').value = userData["id"];
+                break;
+            case "edit_white_ip":
+                let ipData = JSON.parse(elem.dataset.whiteIp);
+                let interfaces = ipData["interfaces"];
+                if (ipData["id"]) {
+                    this.target.querySelector("form").action = elem.dataset.action;
+                    this.target.querySelector("#_method").value = "patch";
+                }
+                this.target.querySelector('#white_ip_ipv4').value = ipData["ipv4"] || "";
+                this.target.querySelector('#white_ip_ipv6').value = ipData["ipv6"] || "";
+                this.target.querySelector('#white_ip_id').value = ipData["id"];
+                if (interfaces) {
+                    this.target.querySelector('#white_ip_interfaces_api').checked = interfaces.includes("api");
+                    this.target.querySelector('#white_ip_interfaces_registrar').checked = interfaces.includes("registrar");
+                } else {
+                    this.target.querySelector('#white_ip_interfaces_api').checked = false;
+                    this.target.querySelector('#white_ip_interfaces_registrar').checked = false;
+                }
+            case "white_ip_delete":
+                this.target.querySelector(".ip").innerHTML = elem.dataset.ip;
+                this.target.querySelector("form").action = elem.dataset.action;
+                break;
+                
         }
     }
     

@@ -13,24 +13,31 @@
                     <div class="paper">
                         <%= render 'account/partials/details' %>
                     </div>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="paper">
-                        <%= render 'account/partials/linked_users' %>
-                    </div>
-                </div>
-            </div>
-            <% if can? :manage, 'balance_auto_reload' %>
-                <div class="row balance_reload">
-                    <div class="col-xs-12 col-md-6">
+                    <% if can? :manage, 'balance_auto_reload' %>
                         <div class="paper">
                             <%= render 'account/partials/balance_reload' %>
                         </div>
+                    <% end %>
+                    <% if !Rails.env.production? && @account[:linked_users].any? %>
+                        <div class="paper">
+                            <%= render 'account/partials/linked_users' %>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="paper">
+                        <%= render 'account/partials/api_users' %>
+                    </div>
+                    <div class="paper">
+                        <%= render 'account/partials/white_ips' %>
                     </div>
                 </div>
-                <%= render 'account/partials/balance_reload_form' %>
-            <% end %>
+            </div>
         </div>
     </div>
 </div>
 <%= render 'account/partials/details_form' %>
+<%= render 'account/partials/balance_reload_form' if can? :manage, 'balance_auto_reload' %>
+<%= render 'api_users/partials/api_user_form', url: api_users_path, method: :post if can? :manage, 'ApiUser' %>
+<%= render 'white_ips/partials/white_ip_form', url: white_ips_path, method: :post if can? :manage, 'WhiteIp' %>
+<%= render 'white_ips/partials/delete_form' if can? :manage, 'WhiteIp' %>

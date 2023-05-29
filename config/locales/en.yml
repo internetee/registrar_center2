@@ -426,11 +426,16 @@ en:
       amount: "Amount"
       threshold: "Threshold"
       auto_reload_tooltip: "must be greater than or equal to %{min}"
-      linked_users: "Linked users"
+      linked_users: "Linked Users"
       user: "User"
       role: "Role"
       switch: "Switch over"
       switch_warning_html: "Are you sure you want to switch over to user <span class = 'username'></span>?"
+      api_users: "Api Users"
+      active: "Active"
+      white_ips: "Whitelisted IPs"
+      ip: "IP address"
+      interfaces: "Interfaces"
 
   invoices:
     index:
@@ -499,7 +504,65 @@ en:
       vat: "VAT"
       total: "Total"
       code: "Code"
-  
+
+  api_users:
+    index:
+      title: "Api Users"
+      username: "Username"
+      active: "Active"
+      search_name: "Search username"
+      csv:
+        username: "Username"
+        password: "Password"
+        identity_code: "Identity Code"
+        role: "Role"
+        active: "Active"
+        accredited: "Accredited"
+        accreditation_expire_date: "Accreditation Expire Date"
+        created_at: "Created"
+        updated_at: "Updated"
+      items: 
+        zero: "users"
+        one: "user"
+        other: "users"
+    show:
+      details: "Details"
+      username: "Username"
+      password: "Password"
+      identity_code: "Identity Code"
+      role: "Role"
+      active: "Active"
+      delete_warning_html: "Are you sure you want to delete api user <span class = 'number'>%{name}</span>?"
+      certificates: "Certificates"
+      subject: "Subject"
+      status: "Status"
+    edit:
+      title: "Api User"
+
+  certificates:
+    show:
+      status:
+        signed: "Signed"
+        unsigned: "Unsigned"
+        expired: "Expired"
+        revoked: "Revoked"
+        valid: "Valid"
+
+  white_ips:
+    index:
+      csv:
+        ipv4: "Ipv4"
+        ipv6: "Ipv6"
+        interfaces: "Interfaces"
+        created_at: "Created"
+        updated_at: "Updated"
+    show:
+      ipv4: "Ipv4"
+      ipv6: "Ipv6"
+      delete_warning_html: "Are you sure you want to delete whitelisted IP address <span class = 'ip'></span>?"
+    edit: 
+      title: "Whitelisted IP"
+
   stats:
     market_share:
       index:

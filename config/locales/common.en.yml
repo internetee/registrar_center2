@@ -9,6 +9,7 @@ en:
       domains: "Domains"
       contacts: "Contacts"
       invoices: "Invoices"
+      api_users: "Api Users"
       messages: "Messages"
       stats: "Stats"
       xml_console: "XML Console"

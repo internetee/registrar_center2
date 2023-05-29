@@ -1,0 +1,20 @@
+<div class="dialog" id="white_ip_delete">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2 id="title"><%= t('white_ips.show.delete_warning_html') %></h2>
+            </div>
+            <div class="paper--content">
+                <%= form_with scope: :white_ip, url: white_ips_path, method: :delete,
+                                              data: { turbo: true }  do |form| %>
+                    <div class="form--actions">
+                        <%= form.submit t(:delete), class: 'button button--danger' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

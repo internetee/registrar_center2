@@ -1,0 +1,53 @@
+<div class="dialog" id="edit_white_ip">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2><%= t('white_ips.edit.title') %></h2>
+            </div>
+            <div class="paper--content">
+                <%= form_with scope: :white_ip, url: url, method: method, class: 'form' do |form| %>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form--row">
+                                <%= form.label :ipv4, "#{t('white_ips.show.ipv4')}", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= form.text_field :ipv4, autofocus: true, class: 'input' %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form--row">
+                                <%= form.label :ipv6, "#{t('white_ips.show.ipv6')}", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= form.text_field :ipv6, class: 'input' %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% @interfaces.each do |int| %>
+                                <div class="form--row">
+                                    <div class="form--field">
+                                        <div class="checkbox">
+                                            <%= form.check_box :interfaces, { multiple: true }, int, nil %>
+                                            <%= label_tag "white_ip_interfaces_#{int}" do %>
+                                                <span><%= int.capitalize %></span>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <%= form.hidden_field :id %>
+                    <%= hidden_field_tag '_method' %>
+                    <div class="form--actions">
+                        <%= form.submit t(:save), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
