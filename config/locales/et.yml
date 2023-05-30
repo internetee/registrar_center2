@@ -562,9 +562,16 @@ et:
         created_at: "Lisatud"
         updated_at: "Uuendatud"
     show:
+      title: "Lubatud IP"
+      details: "Detailid"
+      ip: "IP-aadress"
+      interfaces: "Liidesed"
+      created: "Lisatud"
+      updated: "Muudetud"
+      by: "[%{user}]"
       ipv4: "Ipv4"
       ipv6: "Ipv6"
-      delete_warning_html: "Kas olete kindel, et soovite eemaldada lubatud IP-aadress <span class = 'ip'></span>?"
+      delete_warning_html: "Kas olete kindel, et soovite eemaldada lubatud IP-aadress <span class = 'ip'>%{ip}</span>?"
     edit: 
       title: "Lubatud IP"
 

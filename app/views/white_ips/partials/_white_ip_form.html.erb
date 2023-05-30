@@ -44,8 +44,7 @@
                             <% end %>
                         </div>
                     </div>
-                    <%= form.hidden_field :id %>
-                    <%= hidden_field_tag '_method' %>
+                    <%= form.hidden_field :id, value: @white_ip&.dig(:id) %>
                     <div class="form--actions">
                         <%= form.submit t(:save), class: 'button button--primary' %>
                     </div>

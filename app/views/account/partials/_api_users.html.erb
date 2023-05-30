@@ -12,7 +12,7 @@
         <tbody>
             <% @account[:api_users].each do |user| %>
                 <tr>
-                    <td><%= link_to login_with_role(OpenStruct.new(user), registrar: false), api_user_path(user[:id]), 'data-turbo': true %></td>
+                    <td><%= link_to login_with_role(OpenStruct.new(user), registrar: false), api_user_path(user[:id]), 'data-turbo': false %></td>
                     <td class="table--action">
                         <% if user[:active] %><i class="fas fa-check"></i><% end %>
                     </td>

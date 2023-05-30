@@ -34,28 +34,21 @@ export default class Dialog {
                 }
                 break;
             case "edit_white_ip":
-                let ipData = JSON.parse(elem.dataset.whiteIp);
-                let interfaces = ipData['interfaces'];
-                if (ipData["id"]) {
-                    this.target.querySelector('form').action = elem.dataset.action;
-                    this.target.querySelector('#_method').value = "patch";
-                }
-                this.target.querySelector('#white_ip_ipv4').value = ipData["ipv4"] || "";
-                this.target.querySelector('#white_ip_ipv6').value = ipData["ipv6"] || "";
-                this.target.querySelector('#white_ip_id').value = ipData["id"];
-                if (interfaces) {
-                    this.target.querySelector('#white_ip_interfaces_api').checked = interfaces.includes("api");
-                    this.target.querySelector('#white_ip_interfaces_registrar').checked = interfaces.includes("registrar");
-                } else {
-                    this.target.querySelector('#white_ip_interfaces_api').checked = false;
-                    this.target.querySelector('#white_ip_interfaces_registrar').checked = false;
+                if (elem.dataset.whiteIp) {
+                    let ipData = JSON.parse(elem.dataset.whiteIp);
+                    let interfaces = ipData['interfaces'];
+                    this.target.querySelector('#white_ip_ipv4').value = ipData["ipv4"] || "";
+                    this.target.querySelector('#white_ip_ipv6').value = ipData["ipv6"] || "";
+                    this.target.querySelector('#white_ip_id').value = ipData["id"];
+                    if (interfaces) {
+                        this.target.querySelector('#white_ip_interfaces_api').checked = interfaces.includes("api");
+                        this.target.querySelector('#white_ip_interfaces_registrar').checked = interfaces.includes("registrar");
+                    } else {
+                        this.target.querySelector('#white_ip_interfaces_api').checked = false;
+                        this.target.querySelector('#white_ip_interfaces_registrar').checked = false;
+                    }
                 }
                 break;
-            case "white_ip_delete":
-                this.target.querySelector('.ip').innerHTML = elem.dataset.ip;
-                this.target.querySelector('form').action = elem.dataset.action;
-                break;
-                
         }
     }
     

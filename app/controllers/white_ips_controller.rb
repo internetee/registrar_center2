@@ -10,13 +10,22 @@ class WhiteIpsController < BaseController
     end
   end
 
+  def show
+    conn = ApiConnector::WhiteIps::Reader.new(**auth_info)
+    result = conn.call_action(id: params[:id])
+    handle_response(result); return if performed?
+
+    @white_ip = @response.ip
+    @interfaces = @response.interfaces
+  end
+
   def create
     conn = ApiConnector::WhiteIps::Creator.new(**auth_info)
     result = conn.call_action(payload: white_ip_params)
     handle_response(result, dialog: true); return if performed?
 
     flash.notice = @message
-    redirect_to account_path
+    redirect_to white_ip_path(@response.ip[:id])
   end
 
   def update
@@ -25,7 +34,7 @@ class WhiteIpsController < BaseController
     handle_response(result, dialog: true); return if performed?
 
     flash.notice = @message
-    redirect_to account_path
+    redirect_to white_ip_path(@response.ip[:id])
   end
 
   def destroy

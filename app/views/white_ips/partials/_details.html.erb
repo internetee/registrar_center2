@@ -1,0 +1,23 @@
+<div class="page--block--header">
+    <h2><%= t('white_ips.show.details') %></h2>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('white_ips.show.ip') %></th>
+            <td><%= @white_ip[:ipv4] || @white_ip[:ipv6] %></td>
+        </tr>
+        <tr>
+            <th><%= t('white_ips.show.interfaces') %></th>
+            <td><%= @white_ip[:interfaces].join(', ').upcase %></td>
+        </tr>
+        <tr>
+            <th><%= t('white_ips.show.created') %></th>
+            <td><%= "#{l @white_ip[:created_at].to_datetime} #{t('white_ips.show.by', user: creator(@white_ip[:creator_str]))}" %></td>
+        </tr>
+        <tr>
+            <th><%= t('white_ips.show.updated') %></th>
+            <td><%= "#{l @white_ip[:updated_at].to_datetime} #{t('white_ips.show.by', user: @white_ip[:updator_str])}" %></td>
+        </tr>
+    </tbody>
+</table>

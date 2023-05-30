@@ -31,7 +31,7 @@ class ApiUsersController < BaseController
   def update
     conn = ApiConnector::ApiUsers::Updater.new(**auth_info)
     result = conn.call_action(payload: api_user_payload)
-    handle_response(result); return if performed?
+    handle_response(result, dialog: true); return if performed?
 
     flash.notice = @message
     redirect_to api_user_path(@response.api_user[:id])

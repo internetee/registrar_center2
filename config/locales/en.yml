@@ -560,9 +560,16 @@ en:
         created_at: "Created"
         updated_at: "Updated"
     show:
+      title: "Whitelisted IP"
+      details: "Details"
+      ip: "IP address"
+      interfaces: "Interfaces"
+      created: "Created"
+      updated: "Updated"
+      by: "by %{user}"
       ipv4: "Ipv4"
       ipv6: "Ipv6"
-      delete_warning_html: "Are you sure you want to delete whitelisted IP address <span class = 'ip'></span>?"
+      delete_warning_html: "Are you sure you want to delete whitelisted IP address <span class = 'ip'>%{ip}</span>?"
     edit: 
       title: "Whitelisted IP"
 
