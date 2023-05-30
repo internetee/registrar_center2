@@ -538,6 +538,9 @@ et:
       certificates: "Sertifikaadid"
       subject: "Subjekt"
       status: "Staatus"
+      created: "Lisatud"
+      updated: "Muudetud"
+      by: "[%{user}]"
     edit:
       title: "Api kasutaja"
 

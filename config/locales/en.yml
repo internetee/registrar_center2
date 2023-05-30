@@ -536,6 +536,9 @@ en:
       certificates: "Certificates"
       subject: "Subject"
       status: "Status"
+      created: "Created"
+      updated: "Updated"
+      by: "by %{user}"
     edit:
       title: "Api User"
 

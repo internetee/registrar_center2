@@ -25,5 +25,13 @@
             <th><%= t('api_users.show.active') %></th>
             <td><% if @api_user[:active] %><i class="fas fa-check"></i><% end %></td>
         </tr>
+        <tr>
+            <th><%= t('api_users.show.created') %></th>
+            <td><%= "#{l @api_user[:created_at].to_datetime} #{t('api_users.show.by', user: creator(@api_user[:creator]))}" %></td>
+        </tr>
+        <tr>
+            <th><%= t('api_users.show.updated') %></th>
+            <td><%= "#{l @api_user[:updated_at].to_datetime} #{t('api_users.show.by', user: @api_user[:updator])}" %></td>
+        </tr>
     </tbody>
 </table>
