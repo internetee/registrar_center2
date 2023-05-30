@@ -22,7 +22,7 @@ class WhiteIpsController < BaseController
   def update
     conn = ApiConnector::WhiteIps::Updater.new(**auth_info)
     result = conn.call_action(payload: white_ip_payload)
-    handle_response(result); return if performed?
+    handle_response(result, dialog: true); return if performed?
 
     flash.notice = @message
     redirect_to account_path

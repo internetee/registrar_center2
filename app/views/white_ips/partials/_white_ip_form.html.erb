@@ -8,6 +8,9 @@
                 <h2><%= t('white_ips.edit.title') %></h2>
             </div>
             <div class="paper--content">
+                <div id="dialog_flash" class="flash">
+                    <%= render 'common/dialog_flash' %>
+                </div>
                 <%= form_with scope: :white_ip, url: url, method: method, class: 'form' do |form| %>
                     <div class="row">
                         <div class="col-xs-12">

@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
   end
 
   # rubocop:disable Metrics/MethodLength
-  def handle_response(res)
+  def handle_response(res, dialog: false)
     msg = res.body[:message]
     if res.success
       unstructable = (res[:type] == 'application/pdf' || res.body[:data].is_a?(Array))
@@ -59,14 +59,13 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
       when 2202, 503, 401
         respond_with_log_out(msg)
       when 2000..2500
-        respond(msg)
+        respond(msg, dialog: dialog)
       else
-        msg.present? ? respond(msg) : internal_server_error
+        msg.present? ? respond(msg, dialog: dialog) : internal_server_error
       end
       logger.info msg
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def internal_server_error
     render file: 'public/500.html', layout: false,
@@ -80,7 +79,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
     end
   end
 
-  def respond(msg)
+  def respond(msg, dialog: false)
     respond_to do |format|
       format.html do
         flash[:alert] = msg
@@ -88,10 +87,12 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
       end
       format.turbo_stream do
         flash.now[:alert] = msg
-        render turbo_stream: turbo_stream.update('flash', partial: 'common/flash')
+        flash_id = dialog ? 'dialog_flash' : 'flash'
+        render turbo_stream: turbo_stream.update(flash_id, partial: "common/#{flash_id}")
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def store_auth_info(token:, data:)
     uuid = SecureRandom.uuid
