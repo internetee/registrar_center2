@@ -13,7 +13,7 @@ class WhiteIpsController < BaseController
   def create
     conn = ApiConnector::WhiteIps::Creator.new(**auth_info)
     result = conn.call_action(payload: white_ip_params)
-    handle_response(result); return if performed?
+    handle_response(result, dialog: true); return if performed?
 
     flash.notice = @message
     redirect_to account_path
