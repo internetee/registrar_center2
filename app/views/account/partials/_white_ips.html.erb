@@ -26,7 +26,8 @@
 <% if can? :manage, 'WhiteIp' %>
     <div class="paper--footer">
         <div class="paper--footer__left">
-            <%= link_to t(:add), 'javascript: void(0);', class: 'button button--primary', 'data-dialog': 'edit_white_ip' %>
+            <%= link_to t(:add), 'javascript: void(0);', class: 'button button--primary', 'data-dialog': 'edit_white_ip',
+                                                                                          'data-white-ip': "#{{}}" %>
         </div>
         <div class="paper--footer__right">
             <%= link_to "#{t(:download_csv)} <i class='fas fa-download'></i>".html_safe, white_ips_path(format: 'csv') %>

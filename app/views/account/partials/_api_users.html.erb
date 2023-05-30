@@ -24,7 +24,8 @@
 <% if can? :manage, 'ApiUser' %>
     <div class="paper--footer">
         <div class="paper--footer__left">
-            <%= link_to t(:add), 'javascript: void(0);', class: 'button button--primary', 'data-dialog': 'edit_api_user' %>
+            <%= link_to t(:add), 'javascript: void(0);', class: 'button button--primary', 'data-dialog': 'edit_api_user',
+                                                                                          'data-api-user': "#{{}}" %>
         </div>
         <div class="paper--footer__right">
             <%= link_to "#{t(:download_csv)} <i class='fas fa-download'></i>".html_safe, api_users_path(format: 'csv') %>

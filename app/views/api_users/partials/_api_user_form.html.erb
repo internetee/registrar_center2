@@ -8,7 +8,7 @@
                 <h2><%= t('api_users.edit.title') %></h2>
             </div>
             <div class="paper--content">
-                <div id="dialog_flash" class="flash">
+                <div id="dialog_flash" class="dialog_flash">
                     <%= render 'common/dialog_flash' %>
                 </div>
                 <%= form_with scope: :api_user, url: url, method: method, class: 'form' do |form| %>

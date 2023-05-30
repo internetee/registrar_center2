@@ -24,29 +24,25 @@ export default class Dialog {
                 this.target.querySelector('#invoice_id').value = elem.dataset.invoiceId;
                 break;
             case "edit_api_user":
-                if (elem.dataset.apiUser) {
-                    let userData = JSON.parse(elem.dataset.apiUser);
-                    this.target.querySelector('#api_user_username').value = userData["name"];
-                    this.target.querySelector('#api_user_password').value = userData["password"];
-                    this.target.querySelector('#api_user_identity_code').value = userData["identity_code"];
-                    this.target.querySelector('#api_user_active').checked = userData["active"];
-                    this.target.querySelector('#api_user_id').value = userData["id"];
-                }
+                let userData = JSON.parse(elem.dataset.apiUser);
+                this.target.querySelector('#api_user_username').value = userData["name"] || "";
+                this.target.querySelector('#api_user_password').value = userData["password"] || "";
+                this.target.querySelector('#api_user_identity_code').value = userData["identity_code"] || "";
+                this.target.querySelector('#api_user_active').checked = userData["active"] || false;
+                this.target.querySelector('#api_user_id').value = userData["id"];
                 break;
             case "edit_white_ip":
-                if (elem.dataset.whiteIp) {
-                    let ipData = JSON.parse(elem.dataset.whiteIp);
-                    let interfaces = ipData['interfaces'];
-                    this.target.querySelector('#white_ip_ipv4').value = ipData["ipv4"] || "";
-                    this.target.querySelector('#white_ip_ipv6').value = ipData["ipv6"] || "";
-                    this.target.querySelector('#white_ip_id').value = ipData["id"];
-                    if (interfaces) {
-                        this.target.querySelector('#white_ip_interfaces_api').checked = interfaces.includes("api");
-                        this.target.querySelector('#white_ip_interfaces_registrar').checked = interfaces.includes("registrar");
-                    } else {
-                        this.target.querySelector('#white_ip_interfaces_api').checked = false;
-                        this.target.querySelector('#white_ip_interfaces_registrar').checked = false;
-                    }
+                let ipData = JSON.parse(elem.dataset.whiteIp);
+                let interfaces = ipData['interfaces'] || null;
+                this.target.querySelector('#white_ip_ipv4').value = ipData["ipv4"] || "";
+                this.target.querySelector('#white_ip_ipv6').value = ipData["ipv6"] || "";
+                this.target.querySelector('#white_ip_id').value = ipData["id"];
+                if (interfaces) {
+                    this.target.querySelector('#white_ip_interfaces_api').checked = interfaces.includes("api");
+                    this.target.querySelector('#white_ip_interfaces_registrar').checked = interfaces.includes("registrar");
+                } else {
+                    this.target.querySelector('#white_ip_interfaces_api').checked = false;
+                    this.target.querySelector('#white_ip_interfaces_registrar').checked = false;
                 }
                 break;
         }

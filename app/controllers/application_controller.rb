@@ -87,8 +87,11 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
       end
       format.turbo_stream do
         flash.now[:alert] = msg
-        flash_id = dialog ? 'dialog_flash' : 'flash'
-        render turbo_stream: turbo_stream.update(flash_id, partial: "common/#{flash_id}")
+        if dialog
+          render turbo_stream: turbo_stream.update_all('.dialog_flash', partial: 'common/dialog_flash')
+        else
+          render turbo_stream: turbo_stream.update('flash', partial: 'common/flash')
+        end
       end
     end
   end
