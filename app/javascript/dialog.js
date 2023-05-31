@@ -29,14 +29,14 @@ export default class Dialog {
                 this.target.querySelector('#api_user_password').value = userData["password"] || "";
                 this.target.querySelector('#api_user_identity_code').value = userData["identity_code"] || "";
                 this.target.querySelector('#api_user_active').checked = userData["active"] || false;
-                this.target.querySelector('#api_user_id').value = userData["id"];
+                this.target.querySelector('#api_user_id').value = userData["id"] || null;
                 break;
             case "edit_white_ip":
                 let ipData = JSON.parse(elem.dataset.whiteIp);
                 let interfaces = ipData['interfaces'] || null;
                 this.target.querySelector('#white_ip_ipv4').value = ipData["ipv4"] || "";
                 this.target.querySelector('#white_ip_ipv6').value = ipData["ipv6"] || "";
-                this.target.querySelector('#white_ip_id').value = ipData["id"];
+                this.target.querySelector('#white_ip_id').value = ipData["id"] || null;
                 if (interfaces) {
                     this.target.querySelector('#white_ip_interfaces_api').checked = interfaces.includes("api");
                     this.target.querySelector('#white_ip_interfaces_registrar').checked = interfaces.includes("registrar");
