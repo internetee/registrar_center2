@@ -18,7 +18,7 @@ class ApiConnector
 
       def white_ip_params(payload)
         {
-          white_ip: payload.as_json,
+          white_ip: payload.except(:id).as_json,
         }
       end
     end

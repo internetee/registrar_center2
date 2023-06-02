@@ -18,7 +18,7 @@ class ApiConnector
 
       def api_user_params(payload)
         {
-          api_user: payload.as_json,
+          api_user: payload.except(:id).as_json,
         }
       end
     end
