@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/api_users/2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"d44a697884f191e2ba50a2ebd2ba68f2"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a29f4b40-7f33-4143-9edd-b0037b6340fd
+      X-Runtime:
+      - '0.362996'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"user":{"id":2,"name":"maricavor","password":"<PASSWORD>","identity_code":"<ID_CODE>","roles":"super","active":true,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2022-11-10T17:52:29.783+02:00","updated_at":"2023-05-24T16:07:54.261+03:00","creator":"1-AdminUser:
+        admin","updator":"maricavor","certificates":[{"subject":"/C=EE/ST=Harjumaa/L=Tallinn/O=Eesti
+        Interneti Sihtasutus/CN=maricavor/emailAddress=hello@internet.ee","status":"unsigned"}]},"roles":["super","epp","billing"]}}'
+  recorded_at: Fri, 02 Jun 2023 09:28:30 GMT
+recorded_with: VCR 6.1.0

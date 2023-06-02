@@ -1,24 +1,26 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://registry:3000/repp/v1/accounts/details
+    method: delete
+    uri: http://registry:3000/repp/v1/api_users/18
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: 'null'
     headers:
       Authorization:
       - "<TOKEN>"
       User-Agent:
       - Faraday v2.7.4
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -36,16 +38,18 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
+      Etag:
+      - W/"e7c3e9561139e3f4db319f80dbc3d5a6"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a8930d77-43b8-4cf3-9c92-c6004b0aa0c4
+      - a9f08491-478d-419f-8a58-a3fe58c2de4f
       X-Runtime:
-      - '0.083054'
+      - '0.423451'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"qui","password":"IaWsADjhL","active":null}}'
-  recorded_at: Fri, 02 Jun 2023 10:50:01 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{}}'
+  recorded_at: Fri, 02 Jun 2023 09:41:36 GMT
 recorded_with: VCR 6.1.0

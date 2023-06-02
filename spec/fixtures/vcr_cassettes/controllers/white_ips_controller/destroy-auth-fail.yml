@@ -1,16 +1,18 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://registry:3000/repp/v1/accounts/details
+    method: delete
+    uri: http://registry:3000/repp/v1/white_ips/18
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: 'null'
     headers:
       Authorization:
       - "<TOKEN>"
       User-Agent:
       - Faraday v2.7.4
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -39,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - a8930d77-43b8-4cf3-9c92-c6004b0aa0c4
+      - e1fa0184-92fc-4e45-a3c1-e56ed7b52a38
       X-Runtime:
-      - '0.083054'
+      - '0.090780'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"qui","password":"IaWsADjhL","active":null}}'
-  recorded_at: Fri, 02 Jun 2023 10:50:01 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"praesentium","password":"qPBoqgDb","active":null}}'
+  recorded_at: Fri, 02 Jun 2023 10:11:19 GMT
 recorded_with: VCR 6.1.0

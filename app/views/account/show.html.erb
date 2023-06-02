@@ -19,16 +19,16 @@
                         </div>
                     <% end %>
                     <% if !Rails.env.production? && @account[:linked_users].any? %>
-                        <div class="paper">
+                        <div id="linked_users" class="paper">
                             <%= render 'account/partials/linked_users' %>
                         </div>
                     <% end %>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <div class="paper">
+                    <div id="api_users" class="paper">
                         <%= render 'account/partials/api_users' %>
                     </div>
-                    <div class="paper">
+                    <div id="white_ips" class="paper">
                         <%= render 'account/partials/white_ips' %>
                     </div>
                 </div>

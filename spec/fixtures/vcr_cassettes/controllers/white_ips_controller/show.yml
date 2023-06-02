@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/accounts/details
+    uri: http://registry:3000/repp/v1/white_ips/4
     body:
       encoding: US-ASCII
       string: ''
@@ -17,8 +17,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -36,16 +36,18 @@ http_interactions:
       - application/json; charset=utf-8
       Vary:
       - Accept
+      Etag:
+      - W/"9e6b8117ee940738e6fa46871f49eb98"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a8930d77-43b8-4cf3-9c92-c6004b0aa0c4
+      - 2cce3bf6-005c-4df7-8c1e-92ddf7a4422f
       X-Runtime:
-      - '0.083054'
+      - '0.173234'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"qui","password":"IaWsADjhL","active":null}}'
-  recorded_at: Fri, 02 Jun 2023 10:50:01 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"ip":{"id":4,"registrar_id":2,"ipv4":null,"ipv6":"2001:0db8:85a3:0000:0000:8a2e:0370:7335","interfaces":["api","registrar"],"created_at":"2023-05-26T16:07:11.078+03:00","updated_at":"2023-05-30T15:42:56.376+03:00","creator_str":"maricavor","updator_str":"maricavor"},"interfaces":["api","registrar"]}}'
+  recorded_at: Fri, 02 Jun 2023 10:11:17 GMT
 recorded_with: VCR 6.1.0

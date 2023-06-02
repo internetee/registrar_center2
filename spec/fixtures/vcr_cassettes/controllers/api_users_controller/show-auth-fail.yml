@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/accounts/details
+    uri: http://registry:3000/repp/v1/api_users/2
     body:
       encoding: US-ASCII
       string: ''
@@ -39,13 +39,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - a8930d77-43b8-4cf3-9c92-c6004b0aa0c4
+      - 465818cf-e9d7-425c-a902-f3a8b30d3930
       X-Runtime:
-      - '0.083054'
+      - '0.212236'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"qui","password":"IaWsADjhL","active":null}}'
-  recorded_at: Fri, 02 Jun 2023 10:50:01 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"temporibus","password":"zrYqMCJWtMlwUYf","active":null}}'
+  recorded_at: Fri, 02 Jun 2023 09:28:31 GMT
 recorded_with: VCR 6.1.0

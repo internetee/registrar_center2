@@ -1,16 +1,18 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://registry:3000/repp/v1/accounts/details
+    method: post
+    uri: http://registry:3000/repp/v1/api_users
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"api_user":{"username":"stanton","plain_text_password":"sBFHliypxwiKO","identity_code":"75540","roles":["super"],"active":true}}'
     headers:
       Authorization:
       - "<TOKEN>"
       User-Agent:
       - Faraday v2.7.4
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -39,13 +41,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - a8930d77-43b8-4cf3-9c92-c6004b0aa0c4
+      - 88b8f4eb-c514-4dcf-ac61-ad48f4392ba2
       X-Runtime:
-      - '0.083054'
+      - '0.083739'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"qui","password":"IaWsADjhL","active":null}}'
-  recorded_at: Fri, 02 Jun 2023 10:50:01 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"amet","password":"TgsDRWfSre","active":null}}'
+  recorded_at: Fri, 02 Jun 2023 09:34:24 GMT
 recorded_with: VCR 6.1.0
