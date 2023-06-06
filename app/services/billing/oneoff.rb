@@ -3,13 +3,13 @@ module Billing
     include Billing::Request
     attr_reader :invoice_number, :customer_url, :reference_number
 
-    def initialize(invoice_number:, customer_url:, reference_number:)
+    def initialize(invoice_number:, customer_url:, reference_number: nil)
       @invoice_number = invoice_number
       @customer_url = customer_url
       @reference_number = reference_number
     end
 
-    def self.send_invoice(invoice_number:, customer_url:, reference_number:)
+    def self.send_invoice(invoice_number:, customer_url:, reference_number: nil)
       fetcher = new(invoice_number: invoice_number, customer_url: customer_url, reference_number: reference_number)
       fetcher.send_it
     end

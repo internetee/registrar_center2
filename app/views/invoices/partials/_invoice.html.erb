@@ -18,7 +18,7 @@
     <td><%= currency(invoice[:total].to_f) %></td>
     <td class="table--action">
         <% if invoice[:payable] && invoice[:payment_link].present? %>
-            <%= link_to '<i class="fas fa-credit-card"></i>'.html_safe, pay_path(invoice_number: invoice[:number], reference_no: invoice[:reference_no]), data: { 'turbo-method': :post } %>
+            <%= link_to '<i class="fas fa-credit-card"></i>'.html_safe, pay_path(invoice_number: invoice[:number]), data: { 'turbo-method': :post } %>
         <% end %>
     </td>
     <td class="table--action">
