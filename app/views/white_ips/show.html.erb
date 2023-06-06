@@ -1,0 +1,33 @@
+<% content_for(:title) { "EIS | #{t('white_ips.show.title')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= "#{t('white_ips.show.title')}" %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page">
+    <div class="page--header">
+        <div class="wrapper">
+            <div class="row center-xs">
+                <div class="col-xs-auto">
+                    <%= button_tag t(:edit), class: 'button button--primary',
+                                             'data-dialog': 'edit_white_ip',
+                                             'data-white-ip': "#{@white_ip.to_json}" %>
+                </div>
+                <div class="col-xs-auto">
+                     <%= link_to t(:delete), 'javascript: void(0);', class: 'button button--danger',
+                                                                     'data-dialog': 'white_ip_delete' %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'white_ips/partials/details' %>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render 'white_ips/partials/white_ip_form', url: white_ip_path(@white_ip[:id]), method: :patch %>
+<%= render 'white_ips/partials/delete_form' %>

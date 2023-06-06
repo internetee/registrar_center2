@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/white_ips/4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"9e6b8117ee940738e6fa46871f49eb98"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 2cce3bf6-005c-4df7-8c1e-92ddf7a4422f
+      X-Runtime:
+      - '0.173234'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"ip":{"id":4,"registrar_id":2,"ipv4":null,"ipv6":"2001:0db8:85a3:0000:0000:8a2e:0370:7335","interfaces":["api","registrar"],"created_at":"2023-05-26T16:07:11.078+03:00","updated_at":"2023-05-30T15:42:56.376+03:00","creator_str":"maricavor","updator_str":"maricavor"},"interfaces":["api","registrar"]}}'
+  recorded_at: Fri, 02 Jun 2023 10:11:17 GMT
+recorded_with: VCR 6.1.0

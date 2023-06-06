@@ -82,5 +82,8 @@ Rails.application.routes.draw do
         get 'load'
       end
     end
+
+    resources :api_users, except: %i[new edit]
+    resources :white_ips, except: %i[new edit]
   end
 end

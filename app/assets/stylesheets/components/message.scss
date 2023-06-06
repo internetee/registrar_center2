@@ -39,4 +39,20 @@
             content: '\f00c';
         }
     }
+    &--dialog {
+        &__alert {
+            background: none;
+            color: $orange;
+            &:before {
+                content: "\f071";
+            }
+        }
+        &__notice {
+            background: none;
+            color: $green;
+            &:before {
+                content: '\f00c';
+            }
+        }
+    }
 }

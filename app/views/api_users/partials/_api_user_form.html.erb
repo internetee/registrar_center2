@@ -1,0 +1,71 @@
+<div class="dialog" id="edit_api_user">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2><%= t('api_users.edit.title') %></h2>
+            </div>
+            <div class="paper--content">
+                <div id="dialog_flash" class="dialog_flash">
+                    <%= render 'common/dialog_flash' %>
+                </div>
+                <%= form_with scope: :api_user, url: url, method: method, class: 'form' do |form| %>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form--row">
+                                <%= form.label :username, "#{t('api_users.show.username')} *", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= form.text_field :username, required: true, autofocus: true, class: 'input', value: @api_user&.dig(:name) %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form--row">
+                                <%= form.label :password, "#{t('api_users.show.password')} *", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= form.text_field :password, required: true, class: 'input', value: @api_user&.dig(:password) %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form--row">
+                                <%= form.label :identity_code, "#{t('api_users.show.identity_code')}", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= form.text_field :identity_code, required: false, class: 'input', value: @api_user&.dig(:identity_code) %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form--row">
+                                <%= form.label :roles, "#{t('api_users.show.role')} *", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= simple_select_tag "api_user[roles]",
+                                          options_for_select(@roles, @api_user&.dig(:roles)),
+                                          { required: true, id: 'role_select' } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form--row">
+                                <div class="form--field">
+                                    <div class="checkbox">
+                                        <%= check_box_tag 'api_user[active]', true, @api_user&.dig(:active) %>
+                                        <%= label_tag 'api_user_active' do %>
+                                            <span><%= t('api_users.show.active') %></span>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%= form.hidden_field :id, value: @api_user&.dig(:id) %>
+                    <div class="form--actions">
+                        <%= form.submit t(:save), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

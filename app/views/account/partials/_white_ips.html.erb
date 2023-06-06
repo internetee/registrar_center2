@@ -1,0 +1,36 @@
+<div class="paper--header">
+    <h3><%= t('account.show.white_ips') %></h3>
+</div>
+<div class="paper--content">
+    <table class="table table__basic">
+        <thead>
+            <tr>
+                <th><%= t('account.show.ip') %></th>
+                <th class="table--action"><%= t('account.show.interfaces') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @account[:white_ips].each do |ip| %>
+                <tr>
+                    <td style="word-break:break-all;">
+                        <%= link_to ip[:ipv4] || ip[:ipv6], white_ip_path(ip[:id]), 'data-turbo': false %>
+                    </td>
+                    <td class="table--action">
+                        <%= ip[:interfaces].join(', ').upcase if ip[:interfaces] %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+<% if can? :manage, 'WhiteIp' %>
+    <div class="paper--footer">
+        <div class="paper--footer__left">
+            <%= link_to t(:add), 'javascript: void(0);', class: 'button button--primary', 'data-dialog': 'edit_white_ip',
+                                                                                          'data-white-ip': "#{{}}" %>
+        </div>
+        <div class="paper--footer__right">
+            <%= link_to "#{t(:download_csv)} <i class='fas fa-download'></i>".html_safe, white_ips_path(format: 'csv') %>
+        </div>
+    </div>
+<% end %>
