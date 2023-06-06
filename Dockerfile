@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ruby:3.2.0
+FROM --platform=linux/amd64 ruby:3.2.2
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     npm \
