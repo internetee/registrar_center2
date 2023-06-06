@@ -10,7 +10,7 @@ http_interactions:
       Authorization:
       - "<TOKEN>"
       User-Agent:
-      - Faraday v2.3.0
+      - Faraday v2.7.4
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -37,19 +37,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"5a02e0f19323148c50fa52138046b5d2"
+      - W/"bc801543904c5f2a74eff1220e3a0fde"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a7cff1c2-2c2c-4986-ae46-818048a5af5f
+      - 89e128ff-003c-4bb0-9554-b796b525df06
       X-Runtime:
-      - '0.065449'
+      - '0.326102'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"account":{"billing_email":"drew_kuhlman@cremin-boehm.net","iban":"GB24CPPQ94717845490602","iban_max_length":34,"linked_users":[{"id":8,"username":"billinguser","role":"billing","registrar_name":"Sergei
-        "},{"id":6,"username":"bankwiser","role":"super","registrar_name":"Macho"},{"id":7,"username":"eppuser","role":"epp","registrar_name":"Sergei
-        "}],"balance_auto_reload":null,"min_deposit":1.0}}}'
-  recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"account":{"billing_email":"tarah_swaniawski@bradtke.org","iban":"GB08WWNL60355721990679","iban_max_length":34,"linked_users":[{"id":3,"username":"imposter","role":"super","registrar_name":"Imposter","active":true}],"api_users":[{"id":5,"username":"maricavor_billing","role":"billing","registrar_name":"Bankwiser","active":true},{"id":4,"username":"maricavor_epp","role":"epp","registrar_name":"Bankwiser","active":true},{"id":19,"username":"sadsd","role":"super","registrar_name":"Bankwiser","active":false},{"id":20,"username":"sdfdsf","role":"super","registrar_name":"Bankwiser","active":false},{"id":21,"username":"stanton","role":"super","registrar_name":"Bankwiser","active":true},{"id":2,"username":"dane","role":"super","registrar_name":"Bankwiser","active":false},{"id":22,"username":"maricavor","role":"super","registrar_name":"Bankwiser","active":true}],"white_ips":[{"id":23,"ipv4":"127.0.0.1","ipv6":null,"interfaces":[]},{"id":24,"ipv4":"127.0.0.10","ipv6":null,"interfaces":[]},{"id":27,"ipv4":"143.212.103.129","ipv6":null,"interfaces":["api"]},{"id":4,"ipv4":"176.15.13.74","ipv6":null,"interfaces":[]},{"id":10,"ipv4":"128.0.0.9","ipv6":null,"interfaces":["registrar"]},{"id":21,"ipv4":"127.0.0.1","ipv6":null,"interfaces":[]},{"id":22,"ipv4":null,"ipv6":"2001:db8::1","interfaces":[]}],"balance_auto_reload":null,"min_deposit":0.0},"roles":["super","epp","billing"],"interfaces":["api","registrar"]}}'
+  recorded_at: Fri, 02 Jun 2023 10:50:01 GMT
 recorded_with: VCR 6.1.0

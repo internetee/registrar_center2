@@ -1,0 +1,40 @@
+<% content_for(:title) { "EIS | #{@api_user[:name]}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= "#{@api_user[:name]}" %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page">
+    <div class="page--header">
+        <div class="wrapper">
+            <div class="row center-xs">
+                <div class="col-xs-auto">
+                    <%= button_tag t(:edit), class: 'button button--primary',
+                                             'data-dialog': 'edit_api_user',
+                                             'data-api-user': "#{@api_user.to_json}" %>
+                </div>
+                <div class="col-xs-auto">
+                     <%= link_to t(:delete), 'javascript: void(0);', class: 'button button--danger',
+                                                                     'data-dialog': 'api_user_delete' %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'api_users/partials/details' %>
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'api_users/partials/certificates' %>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render 'api_users/partials/api_user_form', url: api_user_path(@api_user[:id]), method: :patch %>
+<%= render 'api_users/partials/delete_form' %>

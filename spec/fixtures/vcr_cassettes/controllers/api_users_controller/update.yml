@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://registry:3000/repp/v1/api_users/2
+    body:
+      encoding: UTF-8
+      string: '{"api_user":{"username":"dane","plain_text_password":"YGijjyhPklja","identity_code":"91210","roles":["super"],"active":false}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.4
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"ccea1f0861705f74679ff1f2b54b9815"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 9cda4579-3085-4499-9ac3-8b270213cf3e
+      X-Runtime:
+      - '0.307328'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"api_user":{"id":2}}}'
+  recorded_at: Fri, 02 Jun 2023 10:01:23 GMT
+recorded_with: VCR 6.1.0

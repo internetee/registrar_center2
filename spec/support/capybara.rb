@@ -1,5 +1,5 @@
 require 'capybara'
-# require 'capybara-screenshot/rspec'
+require 'capybara-screenshot/rspec'
 
 ## Headless!
 Capybara.register_driver :headless_chrome do |app|

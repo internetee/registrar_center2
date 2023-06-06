@@ -1,0 +1,37 @@
+<div class="page--block--header">
+    <h2><%= t('api_users.show.details') %></h2>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('api_users.show.username') %></th>
+            <td><%= @api_user[:name] %></td>
+        </tr>
+        <tr>
+            <th><%= t('api_users.show.password') %></th>
+            <td><%= @api_user[:password] %></td>
+        </tr>
+        <% if @api_user[:identity_code].present? %>
+            <tr>
+                <th><%= t('api_users.show.identity_code') %></th>
+                <td><%= @api_user[:identity_code] %></td>
+            </tr>
+        <% end %>
+        <tr>
+            <th><%= t('api_users.show.role') %></th>
+            <td><%= @api_user[:roles] %></td>
+        </tr>
+        <tr>
+            <th><%= t('api_users.show.active') %></th>
+            <td><% if @api_user[:active] %><i class="fas fa-check"></i><% end %></td>
+        </tr>
+        <tr>
+            <th><%= t('api_users.show.created') %></th>
+            <td><%= "#{l @api_user[:created_at].to_datetime} #{t('api_users.show.by', user: creator(@api_user[:creator]))}" %></td>
+        </tr>
+        <tr>
+            <th><%= t('api_users.show.updated') %></th>
+            <td><%= "#{l @api_user[:updated_at].to_datetime} #{t('api_users.show.by', user: creator(@api_user[:updator]))}" %></td>
+        </tr>
+    </tbody>
+</table>

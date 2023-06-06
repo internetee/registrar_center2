@@ -36,6 +36,18 @@
     }
     &--footer {
         margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        &__left,
+        &__right {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        &__right {
+            margin-left: auto;
+        }
     }
     @include min-screen(767px) {
         padding: 40px;

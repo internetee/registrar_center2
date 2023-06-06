@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/white_ips
+    body:
+      encoding: UTF-8
+      string: '{"white_ip":{"ipv4":"143.212.103.129","interfaces":["api"]}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.4
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"f402c28d2cb7769bf484a65443780a8c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 7392f3a2-4adc-4e1a-a698-e160cb97e186
+      X-Runtime:
+      - '0.200329'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"ip":{"id":27}}}'
+  recorded_at: Fri, 02 Jun 2023 10:11:18 GMT
+recorded_with: VCR 6.1.0

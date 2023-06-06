@@ -9,6 +9,7 @@ et:
       domains: "Domeenid"
       contacts: "Kontaktid"
       invoices: "Arved"
+      api_users: "Api kasutajad"
       messages: "Sõnumid"
       stats: "Statistika"
       xml_console: "XML Konsool"

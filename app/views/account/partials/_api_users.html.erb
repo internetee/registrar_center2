@@ -1,0 +1,34 @@
+<div class="paper--header">
+    <h3><%= t('account.show.api_users') %></h3>
+</div>
+<div class="paper--content">
+    <table class="table table__basic">
+        <thead>
+            <tr>
+                <th><%= t('account.show.user') %></th>
+                <th class="table--action"><%= t('account.show.active') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @account[:api_users].each do |user| %>
+                <tr>
+                    <td><%= link_to login_with_role(OpenStruct.new(user), registrar: false), api_user_path(user[:id]), 'data-turbo': false %></td>
+                    <td class="table--action">
+                        <% if user[:active] %><i class="fas fa-check"></i><% end %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+<% if can? :manage, 'ApiUser' %>
+    <div class="paper--footer">
+        <div class="paper--footer__left">
+            <%= link_to t(:add), 'javascript: void(0);', class: 'button button--primary', 'data-dialog': 'edit_api_user',
+                                                                                          'data-api-user': "#{{}}" %>
+        </div>
+        <div class="paper--footer__right">
+            <%= link_to "#{t(:download_csv)} <i class='fas fa-download'></i>".html_safe, api_users_path(format: 'csv') %>
+        </div>
+    </div>
+<% end %>

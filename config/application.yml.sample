@@ -36,9 +36,12 @@ shared:
 
 test:
   # NB! change this data to your real only for real time Api requests and re-recording VCR cassettes,
-  # this data will be filtered in responses; Make sure you have valid data in fixture file bulk_domain_transfer.csv
+  # this data will be filtered in responses;
+  # TIPS: Make sure you have valid data in fixture file bulk_domain_transfer.csv;
   # Use command VCR=all ./bin/rspec for re-recording all cassettes!
   username: 'user'
   password: 'password'
   token: 1234dsdasds
   id_code: 38200011111
+  nonsuper_username: 'epp_user'
+  nonsuper_password: 'password'

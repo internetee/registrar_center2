@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/api_users?limit&offset
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"f016f2c4628c6fc301d13e883c60762c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d70bda38-bf2a-4791-a883-87751bdbd7aa
+      X-Runtime:
+      - '0.281865'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"users":[{"id":5,"name":"maricavor_billing","password":"<PASSWORD>","identity_code":"","roles":"billing","active":true,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2022-12-08T13:37:12.493+02:00","updated_at":"2023-05-26T15:56:57.944+03:00","creator":"1-AdminUser:
+        admin","updator":"maricavor","certificates":[]},{"id":2,"name":"maricavor","password":"<PASSWORD>","identity_code":"<ID_CODE>","roles":"super","active":true,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2022-11-10T17:52:29.783+02:00","updated_at":"2023-05-24T16:07:54.261+03:00","creator":"1-AdminUser:
+        admin","updator":"maricavor","certificates":[{"subject":"/C=EE/ST=Harjumaa/L=Tallinn/O=Eesti
+        Interneti Sihtasutus/CN=maricavor/emailAddress=hello@internet.ee","status":"unsigned"}]},{"id":18,"name":"test1","password":"12312312312","identity_code":"","roles":"super","active":false,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2023-05-31T13:50:25.145+03:00","updated_at":"2023-05-31T13:50:25.145+03:00","creator":"maricavor","updator":"maricavor","certificates":[]},{"id":4,"name":"maricavor_epp","password":"<PASSWORD>","identity_code":"","roles":"epp","active":true,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2022-12-08T13:36:16.634+02:00","updated_at":"2023-06-01T14:02:41.892+03:00","creator":"1-AdminUser:
+        admin","updator":"maricavor","certificates":[]},{"id":19,"name":"sadsd","password":"asdsaasdasdasd","identity_code":"","roles":"super","active":false,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2023-06-01T14:03:02.509+03:00","updated_at":"2023-06-01T14:03:02.509+03:00","creator":"maricavor","updator":"maricavor","certificates":[]},{"id":20,"name":"sdfdsf","password":"sdfsdfsdsdfdfds","identity_code":"","roles":"super","active":false,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2023-06-01T14:04:24.790+03:00","updated_at":"2023-06-01T14:04:24.790+03:00","creator":"maricavor","updator":"maricavor","certificates":[]}],"count":6}}'
+  recorded_at: Fri, 02 Jun 2023 09:23:43 GMT
+recorded_with: VCR 6.1.0

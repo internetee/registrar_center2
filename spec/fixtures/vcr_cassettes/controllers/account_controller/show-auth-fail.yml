@@ -10,7 +10,7 @@ http_interactions:
       Authorization:
       - "<TOKEN>"
       User-Agent:
-      - Faraday v2.3.0
+      - Faraday v2.7.4
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -39,13 +39,13 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - ebdad78d-d294-4a45-b592-ac5506ce16fb
+      - a8930d77-43b8-4cf3-9c92-c6004b0aa0c4
       X-Runtime:
-      - '0.044219'
+      - '0.083054'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"ratione","password":"DcLnRsIuB763","active":null}}'
-  recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
+      string: '{"code":2202,"message":"Invalid authorization information","data":{"username":"qui","password":"IaWsADjhL","active":null}}'
+  recorded_at: Fri, 02 Jun 2023 10:50:01 GMT
 recorded_with: VCR 6.1.0

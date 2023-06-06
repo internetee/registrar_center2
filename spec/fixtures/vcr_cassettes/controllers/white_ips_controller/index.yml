@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/white_ips?limit&offset
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"e9b5de5d490a2520c329e7f1dcf84d33"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 4bc56cdb-b070-41b6-97bb-91194b6fa5ba
+      X-Runtime:
+      - '0.147720'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"ips":[{"id":23,"registrar_id":2,"ipv4":"127.0.0.1","ipv6":null,"interfaces":[],"created_at":"2023-06-01T16:25:04.943+03:00","updated_at":"2023-06-01T16:25:04.943+03:00","creator_str":"maricavor","updator_str":"maricavor"},{"id":24,"registrar_id":2,"ipv4":"127.0.0.10","ipv6":null,"interfaces":[],"created_at":"2023-06-01T16:25:25.508+03:00","updated_at":"2023-06-01T16:25:25.508+03:00","creator_str":"maricavor","updator_str":"maricavor"},{"id":10,"registrar_id":2,"ipv4":"128.0.0.9","ipv6":null,"interfaces":["registrar"],"created_at":"2023-05-29T14:13:35.630+03:00","updated_at":"2023-05-29T14:13:35.630+03:00","creator_str":"maricavor","updator_str":"maricavor"},{"id":4,"registrar_id":2,"ipv4":null,"ipv6":"2001:0db8:85a3:0000:0000:8a2e:0370:7335","interfaces":["api","registrar"],"created_at":"2023-05-26T16:07:11.078+03:00","updated_at":"2023-05-30T15:42:56.376+03:00","creator_str":"maricavor","updator_str":"maricavor"},{"id":18,"registrar_id":2,"ipv4":"128.0.0.9","ipv6":null,"interfaces":[],"created_at":"2023-05-31T13:59:39.755+03:00","updated_at":"2023-05-31T13:59:39.755+03:00","creator_str":"maricavor","updator_str":"maricavor"},{"id":21,"registrar_id":2,"ipv4":"127.0.0.1","ipv6":null,"interfaces":[],"created_at":"2023-05-31T15:43:48.350+03:00","updated_at":"2023-05-31T15:43:48.350+03:00","creator_str":"maricavor","updator_str":"maricavor"},{"id":22,"registrar_id":2,"ipv4":null,"ipv6":"2001:db8::1","interfaces":[],"created_at":"2023-05-31T16:06:47.117+03:00","updated_at":"2023-05-31T16:06:47.117+03:00","creator_str":"maricavor","updator_str":"maricavor"}],"count":7}}'
+  recorded_at: Fri, 02 Jun 2023 10:11:17 GMT
+recorded_with: VCR 6.1.0

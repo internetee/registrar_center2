@@ -1,0 +1,19 @@
+<div class="page--block--header">
+    <h2><%= t('api_users.show.certificates') %></h2>
+</div>
+<table class="table__basic">
+    <thead>
+        <tr>
+            <th><%= t('api_users.show.subject') %></th>
+            <th><%= t('api_users.show.status') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @api_user[:certificates].each do |cert| %>
+            <tr>
+                <td><%= cert[:subject] %></td>
+                <td><%= t("certificates.show.status.#{cert[:status]}") %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
