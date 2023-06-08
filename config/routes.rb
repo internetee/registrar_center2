@@ -85,5 +85,6 @@ Rails.application.routes.draw do
 
     resources :api_users, except: %i[new edit]
     resources :white_ips, except: %i[new edit]
+    resources :certificates, only: %i[create]
   end
 end

@@ -195,7 +195,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
       contacts: contacts_attributes(domain_params),
       nameservers: nameservers_attributes(domain_params),
       dns_keys: dnskeys_attributes(domain_params),
-      legal_document: transform_legal_doc_params(domain_params[:legal_document]),
+      legal_document: transform_file_params(domain_params[:legal_document]),
       batch_file: parse_csv(domain_params[:batch_file]),
       exp_date: domain_params[:exp_date],
     }

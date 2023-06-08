@@ -8,6 +8,7 @@ et:
   edit: "Muuda"
   renew: "Pikenda"
   save: "Salvesta"
+  submit: "Esita"
   choose: "Vali"
   add_more: "Lisa veel"
   add_new: "Lisa uus"
@@ -541,10 +542,13 @@ et:
       created: "Lisatud"
       updated: "Muudetud"
       by: "[%{user}]"
+      submit_csr: "Esita CSR"
     edit:
       title: "Api kasutaja"
 
   certificates:
+    new:
+      title: "Sertifikaadi allkirjastamise taotlus"
     show:
       status:
         signed: "Allkirjastatud"

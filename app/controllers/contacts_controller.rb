@@ -126,7 +126,7 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
                 state: contact_params[:state],
               }
             end,
-      legal_document: transform_legal_doc_params(contact_params[:legal_document]),
+      legal_document: transform_file_params(contact_params[:legal_document]),
     }
   end
   # rubocop:enable Metrics/MethodLength

@@ -46,7 +46,7 @@ class BaseController < ApplicationController
     end.compact_blank
   end
 
-  def transform_legal_doc_params(params)
+  def transform_file_params(params)
     return if params.blank?
 
     { body: Base64.encode64(params.read),

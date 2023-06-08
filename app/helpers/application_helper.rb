@@ -74,6 +74,11 @@ module ApplicationHelper
     ".#{legal_doc_types.join(',.')}"
   end
 
+  def csr_types
+    types = Rails.configuration.customization[:csr_types].split(',').map(&:strip)
+    ".#{types.join(',.')}"
+  end
+
   def ident_for(contact)
     ident = contact[:ident]
     description = "[#{ident[:country_code]} #{ident[:type]}]"

@@ -6,7 +6,8 @@ shared:
   default_tech_contacts_count: 1
   # Custom legal document types. Changing this requires updating EPP extension schema for allowed legalDocEnumType values.
   # System default for legal document types is: pdf,asice,sce,asics,scs,adoc,edoc,bdoc,ddoc,zip,rar,gz,tar,7z,odt,doc,docx
-  legal_document_types: "pdf,asice,sce,asics,scs,adoc,edoc,bdoc,ddoc,zip,rar,gz,tar,7z,odt,doc,docx"
+  legal_document_types: 'pdf,asice,sce,asics,scs,adoc,edoc,bdoc,ddoc,zip,rar,gz,tar,7z,odt,doc,docx'
+  csr_types: 'csr,pem'
 
   eis_billing_system_base_url: 'http://eis_billing_system:3000'
   billing_secret: ''

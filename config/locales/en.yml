@@ -8,6 +8,7 @@ en:
   edit: "Edit"
   renew: "Renew"
   save: "Save"
+  submit: "Submit"
   choose: "Choose"
   add_more: "Add more"
   add_new: "Add new"
@@ -539,10 +540,13 @@ en:
       created: "Created"
       updated: "Updated"
       by: "by %{user}"
+      submit_csr: "Submit CSR"
     edit:
       title: "Api User"
 
   certificates:
+    new:
+      title: "Certificate signing request"
     show:
       status:
         signed: "Signed"
