@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://registry:3000/repp/v1/api_users/2
+    uri: http://registry:3000/repp/v1/api_users/22/certificates/32
     body:
       encoding: US-ASCII
       string: ''
@@ -37,19 +37,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"fda9677aa940326700229ab261ffb9d9"
+      - W/"3ce6773db04e529bb0293ba04d844272"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f796fb89-a75f-4b2a-9a75-55f7c0715e75
+      - cad7419e-9219-4e82-8053-cf982af35419
       X-Runtime:
-      - '0.202931'
+      - '0.229093'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"user":{"id":2,"name":"dane","password":"YGijjyhPklja","identity_code":"91210","roles":"super","active":false,"accredited":false,"accreditation_expired":false,"accreditation_expire_date":null,"created_at":"2022-11-10T17:52:29.783+02:00","updated_at":"2023-06-02T13:01:23.027+03:00","creator":"1-AdminUser:
-        admin","updator":"maricavor","certificates":[{"id":1,"subject":"/C=EE/ST=Harjumaa/L=Tallinn/O=Eesti
-        Interneti Sihtasutus/CN=maricavor/emailAddress=hello@internet.ee","status":"unsigned"}]},"roles":["super","epp","billing"]}}'
-  recorded_at: Wed, 28 Jun 2023 11:11:46 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"cert":{"id":32,"api_user_id":22,"creator_str":"maricavor","updator_str":"maricavor","created_at":"2023-06-28T14:57:30.185+03:00","updated_at":"2023-06-28T14:57:30.185+03:00","common_name":"host.ee","md5":null,"interface":"registrar","revoked":false,"csr":{"version":0,"subject":"/C=ET/ST=Harjumaa/L=Tallinn/O=Internet.ee/CN=host.ee/emailAddress=sergeit6@gmail.com","alg":"sha256WithRSAEncryption"}}}}'
+  recorded_at: Wed, 28 Jun 2023 11:58:22 GMT
 recorded_with: VCR 6.1.0

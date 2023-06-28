@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Content-Type:
-      - application/octet-stream
+      - application/forbidden
       Vary:
       - Accept
       Etag:

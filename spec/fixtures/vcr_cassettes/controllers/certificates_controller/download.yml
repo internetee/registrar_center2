@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/api_users/22/certificates/32/download?type=csr
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/octet-stream
+      Content-Disposition:
+      - attachment; filename="maricavor_230628_portal.csr.pem"; filename*=UTF-8''maricavor_230628_portal.csr.pem
+      Content-Transfer-Encoding:
+      - binary
+      Vary:
+      - Accept
+      Cache-Control:
+      - private
+      Etag:
+      - W/"bd7a1ae3309eafc1d3eaa89a32910c0e"
+      X-Request-Id:
+      - e752b2e8-d62b-4365-86aa-d31597de636e
+      X-Runtime:
+      - '0.145787'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        -----BEGIN CERTIFICATE REQUEST-----
+        MIICwjCCAaoCAQAwfTELMAkGA1UEBhMCRVQxETAPBgNVBAgMCEhhcmp1bWFhMRAw
+        DgYDVQQHDAdUYWxsaW5uMRQwEgYDVQQKDAtJbnRlcm5ldC5lZTEQMA4GA1UEAwwH
+        aG9zdC5lZTEhMB8GCSqGSIb3DQEJARYSc2VyZ2VpdDZAZ21haWwuY29tMIIBIjAN
+        BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvO4Qim6QqS1QYUQ61Tli4PoCM9af
+        xuB9dS8zwLohl9hR9gHtbfpzpJNa/9Fym3qGTgutyWwTkVWqs/J7R5irLZcZJir8
+        vLdJ8IiJ/vSD7My/h74QtqFfSMJ/9o02RBQuQRYE8gxTe4b2595BUBvHQ1rs41hj
+        /2zK+nD0lluoPWk6pBgSFfCucKVpN8NnoeGFR4gXrPOKvnC0opq6/RZbqboam91g
+        VabtcKxwzfwi1RV3QEqEtTcD/KCpO2Q15WGqm7fEaS0VVBrFpo6VjvBIu1EroqbY
+        pQhOLe+vEHvmqSKbafaFL/Y4vriOOiNrKMKNtwresyB9MXxbSe0oKHMHVwIDAQAB
+        oAAwDQYJKoZIhvcNAQELBQADggEBAJtEbZyWusZz+8jeKyRs/QdusMlEnWDPMGak
+        wrYAm5GlLPHA2mOSR90A69LPmcQTUKSMTZ40DJ9gKb0qS7s56QQsnUPgHO2QiX9E
+        6QruRO3I7i0HvN+x5CojPppA3GiWAoGNlnniaye0uPHpUqKmG0uafUJWKkKV/o7w
+        ApHAiPSIK4qYgQmd0NM1f3AA/miF/qkyYTc2kNllnC6oovWfWhoJ7TuinhOJkpZh
+        zbK1LuhCAmZCBTz0BdmGk3ReJ/gFLjGX/jwpPEDODbGvJXK1ng0pmqe8VsJk6IV3
+        L4Oz0cRsM75PkPlihCtI8BFBM8aXBf2zAvbWCiczbY4azpssuLo=
+        -----END CERTIFICATE REQUEST-----
+  recorded_at: Wed, 28 Jun 2023 11:58:23 GMT
+recorded_with: VCR 6.1.0
