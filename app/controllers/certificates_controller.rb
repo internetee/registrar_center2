@@ -1,4 +1,12 @@
 class CertificatesController < BaseController
+  def show
+    conn = ApiConnector::Certificates::Reader.new(**auth_info)
+    result = conn.call_action(api_user_id: params[:api_user_id], id: params[:id])
+    handle_response(result); return if performed?
+
+    @certificate = @response.cert
+  end
+
   def create
     conn = ApiConnector::Certificates::Creator.new(**auth_info)
     result = conn.call_action(payload: cert_payload)
@@ -6,6 +14,14 @@ class CertificatesController < BaseController
 
     flash.notice = @message
     redirect_to api_user_path(@response.api_user[:id])
+  end
+
+  def download
+    conn = ApiConnector::Certificates::Downloader.new(**auth_info)
+    result = conn.call_action(api_user_id: params[:api_user_id], id: params[:id], type: params[:type])
+    handle_response(result); return if performed?
+
+    send_data @response, filename: @message.match(/filename=(\"?)(.+)\1/)[2]
   end
 
   private

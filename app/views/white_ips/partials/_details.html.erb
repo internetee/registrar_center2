@@ -17,7 +17,7 @@
         </tr>
         <tr>
             <th><%= t('white_ips.show.updated') %></th>
-            <td><%= "#{l @white_ip[:updated_at].to_datetime} #{t('white_ips.show.by', user: @white_ip[:updator_str])}" %></td>
+            <td><%= "#{l @white_ip[:updated_at].to_datetime} #{t('white_ips.show.by', user: creator(@white_ip[:updator_str]))}" %></td>
         </tr>
     </tbody>
 </table>

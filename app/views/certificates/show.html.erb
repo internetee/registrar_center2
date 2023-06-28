@@ -1,0 +1,41 @@
+<% content_for(:title) { "EIS | #{t('certificates.show.title')}" } %>
+<% content_for :hero do %>
+    <div class="layout--hero">
+        <h1><%= t('certificates.show.title') %></h1>
+        <%= back_link %>
+    </div>
+<% end %>
+<div class="page">
+    <div class="page--header">
+        <div class="wrapper">
+            <div class="row center-xs">
+
+            </div>
+        </div>
+    </div>
+    <div class="page--block">
+        <div class="wrapper">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <%= render 'certificates/partials/details' %>
+            </div>
+        </div>
+    </div>
+    <% unless @certificate[:csr].blank? %>
+        <div class="page--block">
+            <div class="wrapper">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <%= render 'certificates/partials/csr' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    <% unless @certificate[:crt].blank? %>
+        <div class="page--block">
+            <div class="wrapper">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <%= render 'certificates/partials/crt' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

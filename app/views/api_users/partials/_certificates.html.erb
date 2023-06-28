@@ -19,7 +19,7 @@
         <tbody>
             <% @api_user[:certificates].each do |cert| %>
                 <tr>
-                    <td style="word-break:break-all;"><%= cert[:subject] %></td>
+                    <td style="word-break:break-all;"><%= link_to cert[:subject], api_user_certificate_path(@api_user[:id], cert[:id]) %></td>
                     <td class="table--action"><%= t("certificates.show.status.#{cert[:status]}") %></td>
                 </tr>
             <% end %>

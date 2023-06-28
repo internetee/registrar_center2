@@ -1,0 +1,46 @@
+<div class="page--block--header">
+    <div class="row between-xs">
+        <div class="col-xs-auto">
+            <h2><%= t('certificates.show.crt') %></h2>
+        </div>
+        <div class="col-xs-auto">
+            <%= 
+                link_to "#{t(:download)} <i class='fas fa-download'></i>".html_safe,
+                  download_api_user_certificate_path(@certificate[:api_user_id], @certificate[:id], 'crt'),
+                  data: { turbo: false } 
+            %>
+        </div>
+    </div>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('certificates.show.version') %></th>
+            <td><%= @certificate[:crt].dig('version') %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.serial') %></th>
+            <td><%= @certificate[:crt].dig('serial') %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.issuer') %></th>
+            <td><%= @certificate[:crt].dig('issuer') %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.valid_from') %></th>
+            <td><%= "#{l @certificate[:crt].dig('not_before').to_datetime}" %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.valid_to') %></th>
+            <td><%= "#{l @certificate[:crt].dig('not_after').to_datetime}" %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.subject') %></th>
+            <td style="word-break:break-all;"><%= @certificate[:crt].dig('subject') %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.extensions') %></th>
+            <td><%= @certificate[:crt].dig('extensions').join('<br>').html_safe %></td>
+        </tr>
+    </tbody>
+</table>
