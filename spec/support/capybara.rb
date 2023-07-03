@@ -1,5 +1,6 @@
 require 'capybara'
-require 'capybara-screenshot/rspec'
+# Uncomment to allow screenshots:
+# require 'capybara-screenshot/rspec'
 
 ## Headless!
 Capybara.register_driver :headless_chrome do |app|

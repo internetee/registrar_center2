@@ -1,0 +1,41 @@
+<div class="dialog" id="upload_csr">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2><%= t('certificates.new.title') %></h2>
+            </div>
+            <div class="paper--content">
+                <div id="dialog_flash" class="dialog_flash">
+                    <%= render 'common/dialog_flash' %>
+                </div>
+                <%= form_with scope: :certificate, url: certificates_path, class: 'form' do |form| %>
+                    <%= form.hidden_field :api_user_id, value:  @api_user[:id] %>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form--row">
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <ul class="file--list"></ul>
+                                        <%= form.label :csr, class: 'file' do %>
+                                            <%= form.file_field :csr, class: 'not_visible',
+                                                                      accept: csr_types %>
+                                            <i class="fas fa-folder-open"></i>
+                                            <strong><%=t(:choose_file) %></strong>
+                                            <span>(max. 8MB)</span>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--actions">
+                        <%= form.submit t(:submit), class: 'button button--primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,7 @@ et:
   edit: "Muuda"
   renew: "Pikenda"
   save: "Salvesta"
+  submit: "Esita"
   choose: "Vali"
   add_more: "Lisa veel"
   add_new: "Lisa uus"
@@ -541,11 +542,33 @@ et:
       created: "Lisatud"
       updated: "Muudetud"
       by: "[%{user}]"
+      submit_csr: "Esita CSR"
     edit:
       title: "Api kasutaja"
 
   certificates:
+    new:
+      title: "Sertifikaadi allkirjastamise taotlus"
     show:
+      title: "Sertifikaadid"
+      details: "Detailid"
+      api_user: "API kasutaja"
+      common_name: "Üldnimi"
+      md5: "Md5"
+      interface: "Liides"
+      created: "Loodud"
+      updated: "Muudetud"
+      by: "[%{user}]"
+      csr: "CSR"
+      version: "Versioon"
+      subject: "Subjekt"
+      alg: "Allkirjastamise algoritm"
+      crt: "CRT"
+      serial: "Seerianumber"
+      issuer: "Väljastaja"
+      valid_from: "Kehtiv alates"
+      valid_to: "Kehtiv kuni"
+      extensions: "Laiendused"
       status:
         signed: "Allkirjastatud"
         unsigned: "Allkirjastamata"

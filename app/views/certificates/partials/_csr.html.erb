@@ -1,0 +1,30 @@
+<div class="page--block--header">
+    <div class="row between-xs">
+        <div class="col-xs-auto">
+            <h2><%= t('certificates.show.csr') %></h2>
+        </div>
+        <div class="col-xs-auto">
+            <%= 
+                link_to "#{t(:download)} <i class='fas fa-download'></i>".html_safe,
+                  download_api_user_certificate_path(@certificate[:api_user_id], @certificate[:id], 'csr') ,
+                  data: { turbo: false }
+            %>
+        </div>
+    </div>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('certificates.show.version') %></th>
+            <td><%= @certificate[:csr].dig('version') %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.subject') %></th>
+            <td style="word-break:break-all;"><%= @certificate[:csr].dig('subject') %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.alg') %></th>
+            <td><%= @certificate[:csr].dig('alg') %></td>
+        </tr>
+    </tbody>
+</table>

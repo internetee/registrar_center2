@@ -8,6 +8,7 @@ en:
   edit: "Edit"
   renew: "Renew"
   save: "Save"
+  submit: "Submit"
   choose: "Choose"
   add_more: "Add more"
   add_new: "Add new"
@@ -539,11 +540,33 @@ en:
       created: "Created"
       updated: "Updated"
       by: "by %{user}"
+      submit_csr: "Submit CSR"
     edit:
       title: "Api User"
 
   certificates:
+    new:
+      title: "Certificate signing request"
     show:
+      title: "Certificates"
+      details: "Details"
+      api_user: "API User"
+      common_name: "Common Name"
+      md5: "Md5"
+      interface: "Interface"
+      created: "Created"
+      updated: "Updated"
+      by: "by %{user}"
+      csr: "CSR"
+      version: "Version"
+      subject: "Subject"
+      alg: "Signature Algorithm"
+      crt: "CRT"
+      serial: "Serial"
+      issuer: "Issuer"
+      valid_from: "Valid From"
+      valid_to: "Valid To"
+      extensions: "Extensions"
       status:
         signed: "Signed"
         unsigned: "Unsigned"

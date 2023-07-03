@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/certificates
+    body:
+      encoding: UTF-8
+      string: '{"certificate":{"csr":{"body":"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ3dqQ0NB\nYW9DQVFBd2ZURUxNQWtHQTFVRUJoTUNSVlF4RVRBUEJnTlZCQWdNQ0VoaGNt\ncDFiV0ZoTVJBdwpEZ1lEVlFRSERBZFVZV3hzYVc1dU1SUXdFZ1lEVlFRS0RB\ndEpiblJsY201bGRDNWxaVEVRTUE0R0ExVUVBd3dICmFHOXpkQzVsWlRFaE1C\nOEdDU3FHU0liM0RRRUpBUllTYzJWeVoyVnBkRFpBWjIxaGFXd3VZMjl0TUlJ\nQklqQU4KQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBdk80\nUWltNlFxUzFRWVVRNjFUbGk0UG9DTTlhZgp4dUI5ZFM4endMb2hsOWhSOWdI\ndGJmcHpwSk5hLzlGeW0zcUdUZ3V0eVd3VGtWV3FzL0o3UjVpckxaY1pKaXI4\nCnZMZEo4SWlKL3ZTRDdNeS9oNzRRdHFGZlNNSi85bzAyUkJRdVFSWUU4Z3hU\nZTRiMjU5NUJVQnZIUTFyczQxaGoKLzJ6SytuRDBsbHVvUFdrNnBCZ1NGZkN1\nY0tWcE44Tm5vZUdGUjRnWHJQT0t2bkMwb3BxNi9SWmJxYm9hbTkxZwpWYWJ0\nY0t4d3pmd2kxUlYzUUVxRXRUY0QvS0NwTzJRMTVXR3FtN2ZFYVMwVlZCckZw\nbzZWanZCSXUxRXJvcWJZCnBRaE9MZSt2RUh2bXFTS2JhZmFGTC9ZNHZyaU9P\naU5yS01LTnR3cmVzeUI5TVh4YlNlMG9LSE1IVndJREFRQUIKb0FBd0RRWUpL\nb1pJaHZjTkFRRUxCUUFEZ2dFQkFKdEViWnlXdXNaeis4amVLeVJzL1FkdXNN\nbEVuV0RQTUdhawp3cllBbTVHbExQSEEybU9TUjkwQTY5TFBtY1FUVUtTTVRa\nNDBESjlnS2IwcVM3czU2UVFzblVQZ0hPMlFpWDlFCjZRcnVSTzNJN2kwSHZO\nK3g1Q29qUHBwQTNHaVdBb0dObG5uaWF5ZTB1UEhwVXFLbUcwdWFmVUpXS2tL\nVi9vN3cKQXBIQWlQU0lLNHFZZ1FtZDBOTTFmM0FBL21pRi9xa3lZVGMya05s\nbG5DNm9vdldmV2hvSjdUdWluaE9Ka3BaaAp6YksxTHVoQ0FtWkNCVHowQmRt\nR2szUmVKL2dGTGpHWC9qd3BQRURPRGJHdkpYSzFuZzBwbXFlOFZzSms2SVYz\nCkw0T3owY1JzTTc1UGtQbGloQ3RJOEJGQk04YVhCZjJ6QXZiV0NpY3piWTRh\nenBzc3VMbz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUgUkVRVUVTVC0tLS0tCg==\n","type":"csr"},"api_user_id":"22"}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.5
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"8c4895c485332036f9dbb5d7bb215b4f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 84009533-f853-4388-9114-fd64f08b1af7
+      X-Runtime:
+      - '0.334644'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"api_user":{"id":22}}}'
+  recorded_at: Wed, 28 Jun 2023 12:21:13 GMT
+recorded_with: VCR 6.1.0

@@ -1,0 +1,31 @@
+<div class="page--block--header">
+    <h2><%= t('certificates.show.details') %></h2>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('certificates.show.api_user') %></th>
+            <td><%= login_with_role(current_user, registrar: false) %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.common_name') %></th>
+            <td><%= @certificate[:common_name] %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.md5') %></th>
+            <td><%= @certificate[:md5] %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.interface') %></th>
+            <td><%= @certificate[:interface].try(:upcase) %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.created') %></th>
+            <td><%= "#{l @certificate[:created_at].to_datetime} #{t('certificates.show.by', user: creator(@certificate[:creator_str]))}" %></td>
+        </tr>
+        <tr>
+            <th><%= t('certificates.show.updated') %></th>
+            <td><%= "#{l @certificate[:updated_at].to_datetime} #{t('certificates.show.by', user: creator(@certificate[:updator_str]))}" %></td>
+        </tr>
+    </tbody>
+</table>

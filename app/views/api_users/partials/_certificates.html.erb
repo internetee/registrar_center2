@@ -1,19 +1,28 @@
 <div class="page--block--header">
-    <h2><%= t('api_users.show.certificates') %></h2>
+    <div class="row between-xs">
+        <div class="col-xs-auto">
+            <h2><%= t('api_users.show.certificates') %></h2>
+        </div>
+        <div class="col-xs-auto">
+            <%= link_to "#{t('api_users.show.submit_csr')} <i class='fas fa-upload'></i>".html_safe, 'javascript: void(0);', 'data-dialog': 'upload_csr' %>
+        </div>
+    </div>
 </div>
-<table class="table__basic">
-    <thead>
-        <tr>
-            <th><%= t('api_users.show.subject') %></th>
-            <th><%= t('api_users.show.status') %></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @api_user[:certificates].each do |cert| %>
+<% if @api_user[:certificates].any? %>
+    <table class="table">
+        <thead>
             <tr>
-                <td><%= cert[:subject] %></td>
-                <td><%= t("certificates.show.status.#{cert[:status]}") %></td>
+                <th><%= t('api_users.show.subject') %></th>
+                <th class="table--action"><%= t('api_users.show.status') %></th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% @api_user[:certificates].each do |cert| %>
+                <tr>
+                    <td style="word-break:break-all;"><%= link_to cert[:subject], api_user_certificate_path(@api_user[:id], cert[:id]) %></td>
+                    <td class="table--action"><%= t("certificates.show.status.#{cert[:status]}") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

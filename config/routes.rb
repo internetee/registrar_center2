@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   post 'auth/sessions/create', to: 'auth/sessions#create'
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
@@ -83,7 +84,15 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :api_users, except: %i[new edit]
+    resources :api_users, except: %i[new edit] do
+      resources :certificates, only: %i[show] do
+        member do
+          get 'download/:type', to: 'certificates#download', as: :download
+        end
+      end
+    end
     resources :white_ips, except: %i[new edit]
+    resources :certificates, only: %i[create]
   end
 end
+# rubocop:enable Metrics/BlockLength

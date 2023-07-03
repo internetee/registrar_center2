@@ -21,34 +21,42 @@ class ApiConnector
 
   private
 
-  # rubocop:disable Metrics/MethodLength
   def request(url:, method:, params: nil, headers: nil)
     request = faraday_request(url: url, headers: headers)
-    response = if %w[get].include? method
-                 request.send(method, url, params)
-               else
-                 request.send(method) do |req|
-                   req.headers['Content-Type'] = 'application/json'
-                   req.body = params.to_json
-                 end
-               end
+    response = send_request(request, method, url, params)
     success = response.status == 200
+    body = process_response_body(response)
+
+    OpenStruct.new(body: body, success: success, type: response['content-type'])
+  rescue Faraday::Error => e
+    OpenStruct.new(body: { code: 503, message: e.message, data: {} }, success: false)
+  end
+
+  def send_request(request, method, url, params)
+    if %w[get].include?(method)
+      request.send(method, url, params)
+    else
+      send_non_get_request(request, method, params)
+    end
+  end
+
+  def send_non_get_request(request, method, params)
+    request.send(method) do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.body = params.to_json
+    end
+  end
+
+  def process_response_body(response)
     case response['content-type']
-    when 'application/pdf'
-      body = { data: response.body, message: response.headers['content-disposition'] }
+    when 'application/pdf', 'application/octet-stream'
+      { data: response.body, message: response.headers['content-disposition'] }
     when %r{application/json}
-      body = JSON.parse(response.body).with_indifferent_access
+      JSON.parse(response.body).with_indifferent_access
     else
       raise Faraday::Error, 'Unsupported content type'
     end
-    OpenStruct.new(body: body,
-                   success: success,
-                   type: response['content-type'])
-  rescue Faraday::Error => e
-    OpenStruct.new(body: { code: 503, message: e.message,
-                           data: {} }, success: false)
   end
-  # rubocop:enable Metrics/MethodLength
 
   def generate_token(username:, password:)
     Base64.urlsafe_encode64("#{username}:#{password}")

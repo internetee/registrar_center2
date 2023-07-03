@@ -47,23 +47,11 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
     Rails.cache.write session.id, @attrs.except(:batch_file), expires_in: 2.hours
   end
 
-  # rubocop:disable Metrics/MethodLength
   def handle_response(res, dialog: false)
-    msg = res.body[:message]
     if res.success
-      unstructable = (res[:type] == 'application/pdf' || res.body[:data].is_a?(Array))
-      @response = unstructable ? res.body[:data] : OpenStruct.new(res.body[:data])
-      @message = msg
+      handle_successful_response(res)
     else
-      case res.body[:code]
-      when 2202, 503, 401
-        respond_with_log_out(msg)
-      when 2000..2500
-        respond(msg, dialog: dialog)
-      else
-        msg.present? ? respond(msg, dialog: dialog) : internal_server_error
-      end
-      logger.info msg
+      handle_error_response(res, dialog: dialog)
     end
   end
 
@@ -80,22 +68,9 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
   end
 
   def respond(msg, dialog: false)
-    respond_to do |format|
-      format.html do
-        flash[:alert] = msg
-        redirect_back_or_to "/#{I18n.locale}"
-      end
-      format.turbo_stream do
-        flash.now[:alert] = msg
-        if dialog
-          render turbo_stream: turbo_stream.update_all('.dialog_flash', partial: 'common/dialog_flash')
-        else
-          render turbo_stream: turbo_stream.update('flash', partial: 'common/flash')
-        end
-      end
-    end
+    respond_html(msg) if request.format.html?
+    respond_turbo_stream(msg, dialog) if request.format.turbo_stream?
   end
-  # rubocop:enable Metrics/MethodLength
 
   def store_auth_info(token:, data:)
     uuid = SecureRandom.uuid
@@ -111,6 +86,53 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
 
   private
 
+  def handle_successful_response(res)
+    msg = res.body[:message]
+    unstructable = res[:type].match?(/pdf|octet-stream/) || res.body[:data].is_a?(Array)
+    @response = unstructable ? res.body[:data] : OpenStruct.new(res.body[:data])
+    @message = msg
+  end
+
+  def handle_error_response(res, dialog: false)
+    msg = res.body[:message]
+
+    case res.body[:code]
+    when 2202, 503, 401
+      respond_with_log_out(msg)
+    when 2000..2500
+      respond(msg, dialog: dialog)
+    else
+      handle_unexpected_error(msg, dialog: dialog)
+    end
+
+    logger.info msg
+  end
+
+  def handle_unexpected_error(msg, dialog: false)
+    if msg.present?
+      respond(msg, dialog: dialog)
+    else
+      internal_server_error
+    end
+  end
+
+  def respond_html(msg)
+    flash[:alert] = msg
+    redirect_back_or_to "/#{I18n.locale}"
+  end
+
+  def respond_turbo_stream(msg, dialog)
+    flash.now[:alert] = msg
+
+    turbo_stream_render = if dialog
+      turbo_stream.update_all('.dialog_flash', partial: 'common/dialog_flash')
+    else
+      turbo_stream.update('flash', partial: 'common/flash')
+    end
+
+    render turbo_stream: turbo_stream_render
+  end
+
   def auth_info
     Rails.cache.fetch(session[:uuid])&.symbolize_keys
   end
@@ -125,14 +147,26 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
   end
 
   def extract_locale
-    cookies.permanent[:locale] = params[:locale] if params[:locale].present?
+    set_locale_cookie_if_present
     locale = cookies[:locale]
 
-    return locale.to_sym if I18n.available_locales.map(&:to_s).include?(locale)
+    return locale.to_sym if valid_locale?(locale)
 
+    log_invalid_locale(locale)
+    nil
+  end
+
+  def set_locale_cookie_if_present
+    cookies.permanent[:locale] = params[:locale] if params[:locale].present?
+  end
+
+  def valid_locale?(locale)
+    I18n.available_locales.map(&:to_s).include?(locale)
+  end
+
+  def log_invalid_locale(locale)
     notice = "#{locale} #{t(:no_translation)}"
     # flash.now[:notice] = notice
     logger.error notice
-    nil
   end
 end
