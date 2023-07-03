@@ -34,8 +34,7 @@ export default class Dialog {
             case "edit_white_ip":
                 let ipData = JSON.parse(elem.dataset.whiteIp);
                 let interfaces = ipData['interfaces'] || null;
-                this.target.querySelector('#white_ip_ipv4').value = ipData["ipv4"] || "";
-                this.target.querySelector('#white_ip_ipv6').value = ipData["ipv6"] || "";
+                this.target.querySelector('#white_ip_address').value = ipData["ipv4"] || ipData["ipv6"] || "";
                 this.target.querySelector('#white_ip_id').value = ipData["id"] || null;
                 if (interfaces) {
                     this.target.querySelector('#white_ip_interfaces_api').checked = interfaces.includes("api");

@@ -68,8 +68,10 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
   end
 
   def respond(msg, dialog: false)
-    respond_html(msg) if request.format.html?
-    respond_turbo_stream(msg, dialog) if request.format.turbo_stream?
+    respond_to do |format|
+      format.html { respond_html(msg) }
+      format.turbo_stream { respond_turbo_stream(msg, dialog) }
+    end
   end
 
   def store_auth_info(token:, data:)

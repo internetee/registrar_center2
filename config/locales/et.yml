@@ -595,6 +595,7 @@ et:
       ipv4: "Ipv4"
       ipv6: "Ipv6"
       delete_warning_html: "Kas olete kindel, et soovite eemaldada lubatud IP-aadress <span class = 'ip'>%{ip}</span>?"
+      address_tooltip: "Sisestada saab nii üksikut IP kui võrgu aadressi ning IPv4 või IPv6 aadressi. Pea meeles, et lubatud IP aadresside arve on piiratud vastavalt registrilepingus sätestatule"
     edit: 
       title: "Lubatud IP"
 

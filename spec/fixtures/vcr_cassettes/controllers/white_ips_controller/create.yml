@@ -5,12 +5,12 @@ http_interactions:
     uri: http://registry:3000/repp/v1/white_ips
     body:
       encoding: UTF-8
-      string: '{"white_ip":{"ipv4":"143.212.103.129","interfaces":["api"]}}'
+      string: '{"white_ip":{"address":"172.252.98.0","interfaces":["api"]}}'
     headers:
       Authorization:
       - "<TOKEN>"
       User-Agent:
-      - Faraday v2.7.4
+      - Faraday v2.7.5
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -39,17 +39,17 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - W/"f402c28d2cb7769bf484a65443780a8c"
+      - W/"8b64c335d903e0828b206e8117c75224"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7392f3a2-4adc-4e1a-a698-e160cb97e186
+      - 83586027-c989-4290-a6dd-ff9123583093
       X-Runtime:
-      - '0.200329'
+      - '0.215751'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Command completed successfully","data":{"ip":{"id":27}}}'
-  recorded_at: Fri, 02 Jun 2023 10:11:18 GMT
+      string: '{"code":1000,"message":"Command completed successfully","data":{"ip":{"id":42}}}'
+  recorded_at: Mon, 03 Jul 2023 12:57:05 GMT
 recorded_with: VCR 6.1.0

@@ -49,7 +49,7 @@ class WhiteIpsController < BaseController
   private
 
   def white_ip_params
-    params.require(:white_ip).permit(:id, :ipv4, :ipv6, interfaces: [])
+    params.require(:white_ip).permit(:id, :address, interfaces: [])
   end
 
   def format_csv
