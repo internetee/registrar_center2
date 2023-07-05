@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form--row">
-                                <%= form.label :address, "#{t('white_ips.show.ip')}", class: 'form--label' %>
+                                <%= form.label :address, "#{t('white_ips.show.ip')} *", class: 'form--label' %>
                                 <div class="form--field">
                                     <div class="form--input">
                                         <%= form.text_field :address, autofocus: true, class: 'input' %>
@@ -23,18 +23,16 @@
                                     <%= tooltip t('white_ips.show.address_tooltip') %>
                                 </div>
                             </div>
-                            <% @interfaces.each do |int| %>
-                                <div class="form--row">
-                                    <div class="form--field">
-                                        <div class="checkbox">
-                                            <%= form.check_box :interfaces, { multiple: true }, int, nil %>
-                                            <%= label_tag "white_ip_interfaces_#{int}" do %>
-                                                <span><%= int.capitalize %></span>
-                                            <% end %>
-                                        </div>
+                            <div class="form--row">
+                                <%= form.label :interface, "#{t('white_ips.show.interfaces')} *", class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= simple_select_tag "white_ip[interface]",
+                                          options_for_select(@interfaces.map { |i| [i.upcase, i] }),
+                                          { id: 'interface_select' } %>
                                     </div>
                                 </div>
-                            <% end %>
+                            </div>
                         </div>
                     </div>
                     <%= form.hidden_field :id, value: @white_ip&.dig(:id) %>

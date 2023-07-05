@@ -86,7 +86,9 @@ class ApiConnector
   end
 
   def base_headers
-    { 'Authorization' => "Basic #{@auth_token}" }
+    {
+      'Authorization' => "Basic #{@auth_token}",
+    }
   end
 
   def endpoint_url

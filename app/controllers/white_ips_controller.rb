@@ -49,7 +49,7 @@ class WhiteIpsController < BaseController
   private
 
   def white_ip_params
-    params.require(:white_ip).permit(:id, :address, interfaces: [])
+    params.require(:white_ip).permit(:id, :address, :interface)
   end
 
   def format_csv
@@ -63,8 +63,8 @@ class WhiteIpsController < BaseController
   end
 
   def white_ip_payload
-    payload = white_ip_params
-    payload[:interfaces] = white_ip_params[:interfaces] || []
+    payload = white_ip_params.except('interface')
+    payload[:interfaces] = [white_ip_params[:interface]]
     payload
   end
 end
