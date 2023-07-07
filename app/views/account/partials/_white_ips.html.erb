@@ -7,7 +7,8 @@
             <thead>
                 <tr>
                     <th><%= t('account.show.ip') %></th>
-                    <th class="table--action"><%= t('account.show.interfaces') %></th>
+                    <th><%= t('account.show.interfaces') %></th>
+                    <th class="table--action"><%= t('account.show.committed') %></th>
                 </tr>
             </thead>
             <tbody>
@@ -16,8 +17,11 @@
                         <td style="word-break:break-all;">
                             <%= link_to ip[:ipv4] || ip[:ipv6], white_ip_path(ip[:id]), 'data-turbo': false %>
                         </td>
-                        <td class="table--action">
+                        <td>
                             <%= ip[:interfaces].join(', ').upcase if ip[:interfaces] %>
+                        </td>
+                        <td class="table--action">
+                            <% if ip[:committed] %><i class="fas fa-check"></i><% end %>
                         </td>
                     </tr>
                 <% end %>

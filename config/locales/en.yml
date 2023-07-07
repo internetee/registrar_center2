@@ -437,6 +437,7 @@ en:
       white_ips: "Whitelisted IPs"
       ip: "IP address"
       interfaces: "Interfaces"
+      committed: "Committed"
 
   invoices:
     index:
@@ -592,6 +593,7 @@ en:
       by: "by %{user}"
       ipv4: "Ipv4"
       ipv6: "Ipv6"
+      committed: "Committed"
       delete_warning_html: "Are you sure you want to delete whitelisted IP address <span class = 'ip'>%{ip}</span>?"
       address_tooltip: "You can enter single ip or a network and IPv4 or IPv6 address. Keep in mind that the number of allowed IP aadresses is limited as set in the registrar agreement"
     edit: 

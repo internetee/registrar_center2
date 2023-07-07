@@ -20,6 +20,7 @@ module Auth
       {
         username: auth_params[:username],
         password: auth_params[:password],
+        request_ip: request.ip,
       }
     end
   end
