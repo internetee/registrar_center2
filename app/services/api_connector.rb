@@ -87,9 +87,11 @@ class ApiConnector
   end
 
   def base_headers
-    {
+    headers = {
       'Authorization' => "Basic #{@auth_token}",
     }
+    headers.merge!({ 'X-Client-IP' => @request_ip }) if @request_ip
+    headers
   end
 
   def endpoint_url
