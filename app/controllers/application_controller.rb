@@ -36,6 +36,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
 
   def sign_in(uuid)
     session[:uuid] = uuid
+    cookies.delete(:ip_address)
   end
 
   def reset_bulk_change_cache

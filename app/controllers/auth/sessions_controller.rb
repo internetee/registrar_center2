@@ -1,6 +1,7 @@
 module Auth
   class SessionsController < AuthController
     before_action :require_no_authentication, only: :new
+    before_action :save_ip_address, only: :new
     before_action :verify_signed_out_user, only: :destroy
 
     def new; end
@@ -20,7 +21,16 @@ module Auth
       {
         username: auth_params[:username],
         password: auth_params[:password],
-        request_ip: request.ip,
+        request_ip: cookies[:ip_address] || request.ip,
+      }
+    end
+
+    def save_ip_address
+      cookies[:ip_address] = {
+        value: request.ip,
+        expires: 1.day.from_now, # Adjust the expiration as needed
+        secure: Rails.env.production?, # Set to true for secure cookies in production
+        httponly: true
       }
     end
   end
