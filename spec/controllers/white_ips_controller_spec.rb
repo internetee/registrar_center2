@@ -19,7 +19,7 @@ RSpec.describe WhiteIpsController, type: :controller do
       http_method: :post,
       params: {
         white_ip: {
-          ipv4: Faker::Internet.ip_v4_address,
+          address: Faker::Internet.ip_v4_address,
           interfaces: ['api'],
         },
       },
@@ -31,8 +31,7 @@ RSpec.describe WhiteIpsController, type: :controller do
         id: '4',
         white_ip: {
           id: '4',
-          ipv4: Faker::Internet.ip_v4_address,
-          ipv6: '',
+          address: Faker::Internet.ip_v4_address,
         },
       },
     },
@@ -40,7 +39,7 @@ RSpec.describe WhiteIpsController, type: :controller do
       method: :destroy,
       http_method: :delete,
       params: {
-        id: 18,
+        id: 39,
       },
     },
   ]

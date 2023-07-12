@@ -19,5 +19,9 @@
             <th><%= t('white_ips.show.updated') %></th>
             <td><%= "#{l @white_ip[:updated_at].to_datetime} #{t('white_ips.show.by', user: creator(@white_ip[:updator_str]))}" %></td>
         </tr>
+        <tr>
+            <th><%= t('white_ips.show.committed') %></th>
+            <td><% if @white_ip[:committed] %><i class="fas fa-check"></i><% end %></td>
+        </tr>
     </tbody>
 </table>

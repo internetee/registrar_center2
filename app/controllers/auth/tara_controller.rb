@@ -7,9 +7,9 @@ module Auth
       result = conn.call_action(payload: tara_payload)
       handle_response(result); return if performed?
 
-      user_payload = { username: @response.username,
-                       token: @response.token }
-      create { user_payload }
+      create do
+        { username: @response.username, token: @response.token, request_ip: cookies[:ip_address] }
+      end
     end
 
     def cancel

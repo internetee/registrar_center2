@@ -5,10 +5,11 @@ class ApiConnector
   require 'faraday/net_http'
   Faraday.default_adapter = :net_http
 
-  attr_reader :auth_token
+  attr_reader :auth_token, :request_ip
 
-  def initialize(username:, password: nil, token: nil, **_other_options)
+  def initialize(username:, password: nil, token: nil, **other_options)
     @auth_token = token || generate_token(username: username, password: password)
+    @request_ip = other_options[:request_ip]
   end
 
   def self.call(**args)
@@ -86,7 +87,11 @@ class ApiConnector
   end
 
   def base_headers
-    { 'Authorization' => "Basic #{@auth_token}" }
+    headers = {
+      'Authorization' => "Basic #{@auth_token}",
+    }
+    headers.merge!({ 'X-Client-IP' => @request_ip }) if @request_ip
+    headers
   end
 
   def endpoint_url

@@ -36,6 +36,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
 
   def sign_in(uuid)
     session[:uuid] = uuid
+    cookies.delete(:ip_address)
   end
 
   def reset_bulk_change_cache
@@ -68,8 +69,10 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
   end
 
   def respond(msg, dialog: false)
-    respond_html(msg) if request.format.html?
-    respond_turbo_stream(msg, dialog) if request.format.turbo_stream?
+    respond_to do |format|
+      format.html { respond_html(msg) }
+      format.turbo_stream { respond_turbo_stream(msg, dialog) }
+    end
   end
 
   def store_auth_info(token:, data:)
