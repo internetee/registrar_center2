@@ -9,9 +9,8 @@ class ApiConnector
         endpoint: '/registrar/auth/tara_callback',
       }.freeze
 
-      def check_omniauth_user_info(payload: nil)
-        request(url: endpoint_url,
-                method: method, params: payload)
+      def check_omniauth_user_info(params: nil)
+        request(url: endpoint_url, method: method, params: params)
       end
     end
   end

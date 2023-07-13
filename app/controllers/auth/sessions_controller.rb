@@ -21,12 +21,15 @@ module Auth
       {
         username: auth_params[:username],
         password: auth_params[:password],
-        request_ip: cookies[:ip_address] || request.ip,
+        request_ip: cookies[:request_ip] || request.ip,
+        requester: 'client',
+        user_cert: request.env['HTTP_SSL_CLIENT_CERT'],
+        user_cert_cn: request.env['HTTP_SSL_CLIENT_S_DN_CN'],
       }
     end
 
     def save_ip_address
-      cookies[:ip_address] = {
+      cookies[:request_ip] = {
         value: request.ip,
         expires: 1.day.from_now, # Adjust the expiration as needed
         secure: Rails.env.production?, # Set to true for secure cookies in production

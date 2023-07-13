@@ -8,9 +8,10 @@ module Auth
       result = conn.call_action
       handle_response(result); return if performed?
 
-      uuid = store_auth_info(token: conn.auth_token,
-                             data: @response)
+      uuid = store_auth_info(token: conn.auth_token, data: @response)
+
       sign_in uuid
+
       redirect_to dashboard_url, notice: I18n.t('auth.sessions.logged_in')
     end
 

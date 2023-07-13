@@ -10,6 +10,9 @@ class ApiConnector
   def initialize(username:, password: nil, token: nil, **other_options)
     @auth_token = token || generate_token(username: username, password: password)
     @request_ip = other_options[:request_ip]
+    @requester = other_options[:requester]
+    @user_cert = other_options[:user_cert]
+    @user_cert_cn = other_options[:user_cert_cn]
   end
 
   def self.call(**args)
@@ -90,7 +93,10 @@ class ApiConnector
     headers = {
       'Authorization' => "Basic #{@auth_token}",
     }
-    headers.merge!({ 'X-Client-IP' => @request_ip }) if @request_ip
+    headers.merge!({ 'Request-IP' => @request_ip }) if @request_ip
+    headers.merge!({ 'Requester' => @requester }) if @requester
+    headers.merge!({ 'User-Certificate' => @user_cert }) if @user_cert
+    headers.merge!({ 'User-Certificate-CN' => @user_cert_cn }) if @user_cert_cn
     headers
   end
 
