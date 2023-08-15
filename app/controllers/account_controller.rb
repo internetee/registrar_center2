@@ -1,5 +1,6 @@
 class AccountController < BaseController
   before_action :set_pagy_params, only: :index
+  before_action :find_request_ip, only: :switch_user
 
   # rubocop:disable Metrics/MethodLength
   def index
@@ -63,7 +64,8 @@ class AccountController < BaseController
 
     sign_out
     uuid = store_auth_info(token: @response.token,
-                           data: @response.registrar)
+                           data: @response.registrar,
+                           request_ip: @request_ip)
     sign_in uuid
     flash.notice = @message
     redirect_to account_path
@@ -102,5 +104,9 @@ class AccountController < BaseController
                                            view: view_context).to_s
     filename = "account_activities_#{Time.zone.now.to_formatted_s(:number)}.csv"
     send_data raw_csv, filename: filename, type: "#{Mime[:csv]}; charset=utf-8"
+  end
+
+  def find_request_ip
+    @request_ip = auth_info[:request_ip]
   end
 end

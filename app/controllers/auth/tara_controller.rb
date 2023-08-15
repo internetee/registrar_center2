@@ -1,15 +1,13 @@
 module Auth
   class TaraController < AuthController
-    before_action :require_no_authentication, only: %i[callback]
+    before_action :require_no_authentication, only: :callback
 
     def callback
       conn = ApiConnector::Auth::OmniauthTaraChecker.new(username: nil)
-      result = conn.call_action(payload: tara_payload)
+      result = conn.call_action(params: tara_callback_params)
       handle_response(result); return if performed?
 
-      create do
-        { username: @response.username, token: @response.token, request_ip: cookies[:ip_address] }
-      end
+      create { user_payload }
     end
 
     def cancel
@@ -18,11 +16,20 @@ module Auth
 
     private
 
-    def tara_payload
+    def tara_callback_params
       {
         auth: {
           uid: omniauth_user_hash.try(:uid),
         },
+      }
+    end
+
+    def user_payload
+      {
+        username: @response.username,
+        token: @response.token,
+        request_ip: cookies[:request_ip] || request.ip,
+        requester: 'tara'
       }
     end
 

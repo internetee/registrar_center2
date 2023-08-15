@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
 
   def sign_in(uuid)
     session[:uuid] = uuid
-    cookies.delete(:ip_address)
+    cookies.delete(:request_ip)
   end
 
   def reset_bulk_change_cache
@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
     end
   end
 
-  def store_auth_info(token:, data:)
+  def store_auth_info(token:, request_ip:, data:)
     uuid = SecureRandom.uuid
     Rails.cache.write(uuid, { username: data[:username],
                               registrar_name: data[:registrar_name],
@@ -83,6 +83,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
                               legaldoc_mandatory: data[:legaldoc_mandatory],
                               address_processing: data[:address_processing],
                               token: token,
+                              request_ip: request_ip,
                               abilities: data[:abilities] }, expires_in: 18.hours)
     uuid
   end
