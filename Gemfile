@@ -53,7 +53,7 @@ gem 'wicked'
 gem 'countries', require: 'countries/global'
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary', '~> 0.12.6.6'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
 gem 'omniauth', '>=2.0.0'
 gem 'omniauth-rails_csrf_protection'

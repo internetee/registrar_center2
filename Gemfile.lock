@@ -378,7 +378,7 @@ DEPENDENCIES
   webmock
   wicked
   wicked_pdf
-  wkhtmltopdf-binary (~> 0.12.6.6)
+  wkhtmltopdf-binary (~> 0.12.6.5)
 
 RUBY VERSION
    ruby 3.2.2p53
