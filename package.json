@@ -14,15 +14,15 @@
   },
   "devDependencies": {
     "core-js": "^3.6.0",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.14.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.4",
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.0",
-    "choices.js": "^10.1.0",
+    "choices.js": "^10.2.0",
     "epic-spinners": "^2.0.0",
-    "esbuild": "^0.17.0",
+    "esbuild": "^0.19.0",
     "esbuild-rails": "^1.0.3",
     "flatpickr": "^4.6.3",
     "highcharts": "^10.2.0",
