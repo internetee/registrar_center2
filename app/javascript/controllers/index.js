@@ -18,3 +18,6 @@ application.register("nested-form", NestedFormController)
 
 import XmlConsoleController from "./xml_console_controller.js"
 application.register("xml-console", XmlConsoleController)
+
+import CookieConsentController from "./cookie_consent_controller.js"
+application.register("cookie-consent", CookieConsentController)

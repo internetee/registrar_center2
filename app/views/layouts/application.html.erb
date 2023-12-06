@@ -18,7 +18,7 @@
         <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     </head>
 
-    <body data-locale="<%= I18n.locale %>">
+    <body data-locale="<%= I18n.locale %>" data-controller="cookie-consent">
         <%= render 'common/menu_mobile' %>
         <div class="layout">
             <%= render 'common/header' %>
