@@ -58,7 +58,7 @@ export default class extends Controller {
                     consent_modal: {
                         title: 'We use cookies!',
                         description:
-                            'Our website uses cookies to personalize content and ads, and to provide social media features. We ask for your permission to use cookies that are not necessarily essential for the basic functions of our website. Please read our detailed descriptions and rules of cookies <a class="cc__link" href="https://www.internet.ee/eif/cookies-on-internet-ee-webpage">here</a>.',
+                            'Our website uses cookies to personalize content and ads, and to provide social media features. We ask for your permission to use cookies that are not necessarily essential for the basic functions of our website. Please read our detailed descriptions and rules of cookies <a class="cc__link" href="https://www.internet.ee/eif/cookies-on-internet-ee-webpage" target="_blank">here</a>.',
                         primary_btn: {
                             text: 'ACCEPT ALL',
                             role: 'accept_all', // 'accept_selected' or 'accept_all'
@@ -125,7 +125,7 @@ export default class extends Controller {
                     consent_modal: {
                         title: 'Kasutame küpsiseid!',
                         description:
-                            'Kasutame küpsiseid sisu ja reklaamide isikupärastamiseks, sotsiaalse meedia funktsioonide pakkumiseks. Küsime sinult luba, et kasutada küpsiseid, mis ei ole tingimata vajalikud meie veebilehe põhifunktsioonide toimimiseks. Palun loe meie küpsiste üksikasjalikke kirjeldusi ja reegleid <a class="cc__link" href="https://www.internet.ee/eis/kupsised-internet-ee-lehel">siit</a>.',
+                            'Kasutame küpsiseid sisu ja reklaamide isikupärastamiseks ning sotsiaalmeedia funktsioonide võimaldamiseks. Palume luba küpsiste kasutamiseks, mis ei ole tingimata vajalikud veebilehe põhifunktsioonide toimimiseks. Küpsiste üksikasjalikud kirjeldused ja reegleid leiad  <a class="cc__link" href="https://www.internet.ee/eis/kupsised-internet-ee-lehel" target="_blank">siit</a>.',
                         primary_btn: {
                             text: 'LUBA KÕIK',
                             role: 'accept_all', // 'accept_selected' or 'accept_all'
@@ -139,7 +139,7 @@ export default class extends Controller {
                         title: 'Küpsiste seaded',
                         save_settings_btn: 'SALVESTA',
                         accept_all_btn: 'LUBA KÕIK',
-                        reject_all_btn: 'KEELDU KÕIK',
+                        reject_all_btn: 'KEELA KÕIK',
                         close_btn_label: 'Sulge',
                         cookie_table_headers: [
                             { col1: 'Nimi' },
@@ -151,12 +151,12 @@ export default class extends Controller {
                             {
                                 title: 'Küpsiste kasutamine',
                                 description:
-                                    'Kasutame küpsiseid, et aidata Teil tõhusalt navigeerida ja teatud funktsioone täita. Üksikasjalikku teavet kõigi küpsiste kohta leiate allpool iga nõusolekukategooria alt. Küpsised, mis on liigitatud kui "Vajalikud", salvestatakse Teie brauserisse, kuna need on olulised saidi põhifunktsioonide võimaldamiseks.',
+                                    'Kasutame küpsiseid, et aidata Teil tõhusalt navigeerida ja teatud funktsioone täita. Üksikasjalikku teavet kõigi küpsiste kohta leiate allpool iga nõusolekukategooria alt. Küpsistest, mis on liigitatud kui "Vajalikud" ei saa loobuda, sest need on olulised saidi põhifunktsioonide toimimiseks.',
                             },
                             {
                                 title: 'Vajalikud küpsised',
                                 description:
-                                    'Veebileht ei saa ilma nende küpsisteta korralikult toimida. Kuna neid küpsiseid on vaja teenuste turvaliseks pakkumiseks, ei ole külastajal võimalik neist keelduda.',
+                                    'Veebileht ei saa ilma nende küpsisteta korralikult toimida. Seetõttu ei ole külastajal võimalik neist keelduda.',
                                 toggle: {
                                     value: 'necessary',
                                     enabled: true,
