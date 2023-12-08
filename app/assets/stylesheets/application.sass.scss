@@ -76,6 +76,8 @@ $fa-font-path: "font-awesome/webfonts";
 
 @import "config/animations";
 
+@import "vanilla-cookieconsent/dist/cookieconsent";
+
 /* To make working required attribute */
 .choices[data-type*="select-one"] select.choices__input, .not_visible {
   display: block !important;
@@ -96,6 +98,24 @@ $fa-font-path: "font-awesome/webfonts";
   .choices__list--dropdown .choices__item--selectable, .choices__list[aria-expanded] .choices__item--selectable {
       padding-right: 50px;
   }
+}
+
+ /* Cookie Consent */
+ #cc--main {
+  /** Change font **/
+  --cc-font-family: $font-primary;
+
+  /** Change button primary color to black **/
+  --cc-btn-primary-bg: #0085CA;
+  --cc-btn-primary-border-color: #0085CA;
+  --cc-btn-primary-hover-bg: #037ebc;
+  --cc-btn-primary-hover-border-color: #037ebc;
+
+  /** Also make toggles the same color as the button **/
+  --cc-toggle-bg-on: var(--cc-btn-primary-bg);
+
+  /** Make the buttons a bit rounder **/
+  --cc-btn-border-radius: 5px;
 }
 
 
