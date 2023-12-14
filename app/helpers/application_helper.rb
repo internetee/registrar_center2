@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def back_link
-    link_to :back, class: 'back-link' do
+    link_to :back, class: 'back-link', data: { turbo: false } do
       out = []
       out << tag.i(nil, class: 'fas fa-arrow-left')
       out << tag.span(t(:back))

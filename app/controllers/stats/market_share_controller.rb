@@ -18,9 +18,9 @@ module Stats
     def distribution_data
       cache_key = ['distribution_data', search_params]
       conn = ApiConnector::Stats::MarketShareDistribution.new(**auth_info)
-      result = Rails.cache.fetch(cache_key, expires_in: 24.hours) do
-        conn.call_action(q: search_params)
-      end
+      # result = Rails.cache.fetch(cache_key, expires_in: 24.hours) do
+        result = conn.call_action(q: search_params)
+      # end
       handle_response(result); return if performed? || request.format.csv?
 
       render json: [{ name: t('stats.market_share.index.domains'),
@@ -31,9 +31,9 @@ module Stats
     def growth_rate_data
       cache_key = ['growth_rate_data', search_params]
       conn = ApiConnector::Stats::MarketShareGrowthRate.new(**auth_info)
-      result = Rails.cache.fetch(cache_key, expires_in: 24.hours) do
-        conn.call_action(q: search_params)
-      end
+      # result = Rails.cache.fetch(cache_key, expires_in: 24.hours) do
+        result = conn.call_action(q: search_params)
+      # end
       handle_response(result); return if performed? || request.format.csv?
 
       render json: { current: @response.data, previous: @response.prev_data,
