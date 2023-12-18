@@ -41,7 +41,7 @@
             <div class="col-md-auto col-xs-8">
                 <div class="form--actions">
                     <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
-                    <%= link_to t(:clear_filter), "#{url_for(request.params.slice(:type))}", class: 'button button--link' %>
+                    <%= link_to t(:clear_filter), "#{url_for(request.params.slice(:type))}", class: 'button button--link', data: { turbo: false } %>
                 </div>
             </div>
         </div>

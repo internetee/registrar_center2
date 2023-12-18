@@ -48,12 +48,22 @@ module StatsHelper
 
   def title_period(start_date, end_date, period: '')
     period += "#{translate_date(to_date(start_date))} - " if start_date.present?
-    period += translate_date(to_date(end_date)).to_s
+    period += translate_date(to_date(end_date, end_date: true)).to_s
+
     period
   end
 
-  def to_date(month_year)
-    Date.strptime(month_year, '%m.%y')
+  def to_date(month_year, end_date: false)
+    parsed_date = Date.strptime(month_year, '%m.%y')
+    return parsed_date unless end_date
+
+    current_date = Time.zone.today
+
+    if parsed_date.month == current_date.month && parsed_date.year == current_date.year
+      current_date
+    else
+      parsed_date.end_of_month
+    end
   end
 
   def translate_date(date)
@@ -72,10 +82,11 @@ module StatsHelper
   end
 
   def date_translations(params, dates: {})
-    end_date = to_date(params[:end_date])
-    compare_to_end_date = to_date(params[:compare_to_end_date])
+    end_date = to_date(params[:end_date], end_date: true)
+    compare_to_end_date = to_date(params[:compare_to_end_date], end_date: true)
     dates[params[:end_date]] = translate_date(end_date)
     dates[params[:compare_to_end_date]] = translate_date(compare_to_end_date)
+
     dates
   end
 end

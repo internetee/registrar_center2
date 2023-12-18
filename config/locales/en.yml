@@ -66,7 +66,7 @@ en:
       [~, January, February, March, April, May, June, July, August, September, October, November, December]
     formats:
       default: "%Y-%m-%d"
-      month_year: "%B, %Y"
+      month_year: "%d %B %Y"
       month_year_short: "%b, %Y"
   
   auth:
@@ -638,9 +638,9 @@ en:
         - ['Choose', '']
         - ['Previous month', 'previous_month']
       distribution:
-        chart_title: "Market share and distribution in %{date}"
+        chart_title: "Market share and distribution %{date}"
       growth_rate:
-        chart_title: "Market share and growth rate in %{date}"
+        chart_title: "Market share and growth rate %{date}"
         chart_subtitle: "Comparing to results from %{date}"
 
   xml_console:

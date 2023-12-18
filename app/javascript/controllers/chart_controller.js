@@ -205,12 +205,8 @@ export default class extends Controller {
         var curData = data['current'], prevData = data['previous'];
         this.setLegends(curData[data_type]);
         var apndx = ((data_type == 'market_share') ? '%' : '');
-        // console.log(curData[data_type]);
-        // console.log(this.getData(curData[data_type], prevData[data_type], data_type).slice());
         const newPrevData = this.filterData(prevData[data_type]),
         newCurData = this.filterData(curData[data_type]);
-        // console.log(newPrevData);
-        // console.log(this.getData(newCurData, newPrevData, data_type).slice());
         return [{ color: 'rgba(158, 159, 163, 0.5)',
                   pointPlacement: -0.15,
                   linkedTo: 'main',
@@ -281,7 +277,6 @@ export default class extends Controller {
         } else {
             this.hiddenRegistrars = this.hiddenRegistrars.filter(function(e) { return e !== name });
         }
-        // console.log(this.hiddenRegistrars);
         this.updateChart(data_type);
     }
     getData(curData, prevData, data_type) {

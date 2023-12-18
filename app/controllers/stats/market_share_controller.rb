@@ -44,8 +44,7 @@ module Stats
 
     def set_default_search_params
       @search_params = params[:search]&.to_unsafe_h || {}
-      today = Time.zone.today
-      end_date = @search_params[:end_date].presence || format_date(today)
+      end_date = @search_params[:end_date].presence || format_date(Time.zone.today)
       last_month = Date.strptime(end_date, '%m.%y').last_month
       compare_to_date = @search_params[:compare_to_end_date].presence || format_date(last_month)
       @search_params[:end_date] = end_date
