@@ -14,6 +14,7 @@ export default class Datepicker {
     init() {
         const that = this;
         let dateFormat = that.target.getAttribute('dateFormat');
+        let minDate = that.target.getAttribute('minDate');
         if (dateFormat == "m.y") {
           that.options['plugins'] = [
               new monthSelectPlugin({
@@ -23,6 +24,9 @@ export default class Datepicker {
               })
           ];
           that.options['maxDate'] = new Date();
+          if (minDate) {
+            that.options['minDate'] = new Date(minDate);
+          }
         }
         let options = {
             allowInput: true,

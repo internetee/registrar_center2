@@ -12,12 +12,7 @@
                 <%= form.label :period, t('stats.market_share.index.period'), class: 'form--label' %>
                 <div class="form--field">
                     <div class="form--input small">
-                        <%= form.date_field :start_date, class: 'datepicker', value: params[:search]&.dig(:start_date), dateFormat: 'm.y' %>
-                        <div class="form--suffix"><i class="fas fa-calendar"></i></div>
-                    </div>
-                    <span class="form--sep">-</span>
-                    <div class="form--input small">
-                        <%= form.date_field :end_date, class: 'datepicker', value: params[:search]&.dig(:end_date), dateFormat: 'm.y' %>
+                        <%= form.date_field :end_date, class: 'datepicker', value: params[:search]&.dig(:end_date), dateFormat: 'm.y', minDate: '2015/12/01' %>
                         <div class="form--suffix"><i class="fas fa-calendar"></i></div>
                     </div>
                 </div>
@@ -27,12 +22,7 @@
                     <%= form.label :compare_period, t('stats.market_share.index.compare_to'), class: 'form--label' %>
                     <div class="form--field">
                         <div class="form--input small">
-                            <%= form.date_field :compare_to_start_date, class: 'datepicker', value: params[:search]&.dig(:compare_to_start_date), dateFormat: 'm.y' %>
-                            <div class="form--suffix"><i class="fas fa-calendar"></i></div>
-                        </div>
-                        <span class="form--sep">-</span>
-                        <div class="form--input small">
-                            <%= form.date_field :compare_to_end_date, class: 'datepicker', value: params[:search]&.dig(:compare_to_end_date), dateFormat: 'm.y' %>
+                            <%= form.date_field :compare_to_end_date, class: 'datepicker', value: params[:search]&.dig(:compare_to_end_date), dateFormat: 'm.y', minDate: '2015/12/01' %>
                             <div class="form--suffix"><i class="fas fa-calendar"></i></div>
                         </div>
                     </div>

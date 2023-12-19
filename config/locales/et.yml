@@ -607,8 +607,8 @@ et:
         title: "Statistika"
         market_share: "Turuosa ja jaotus"
         market_share_growth: "Turuosa ja kasvumäär"
-        period: "Periood"
-        compare_to: "Võrdlusperiood"
+        period: "Kuu"
+        compare_to: "Võrdluskuu"
         domains: "Domeenid"
         registrars: "Registripidajad"
         csv:

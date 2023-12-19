@@ -605,7 +605,7 @@ en:
         title: "Stats"
         market_share: "Market share and distribution"
         market_share_growth: "Market share and growth rate"
-        period: "Period"
+        period: "Month"
         compare_to: "Compare to"
         domains: "Domains"
         registrars: "Registrars"
