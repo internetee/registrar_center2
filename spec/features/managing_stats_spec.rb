@@ -9,11 +9,10 @@ RSpec.feature 'managing statistics' do
       visit market_share_path
       expect(page).to have_content('Stats')
 
-      page.fill_in 'search_start_date', with: '01.22'
       page.fill_in 'search_end_date', with: '09.22'
 
       click_button('Filter')
-      expect(page).to have_current_path(/search\[start_date\]=01.22/)
+      expect(page).to have_current_path(/search\[end_date\]=09.22/)
     end
   end
 
@@ -38,7 +37,6 @@ RSpec.feature 'managing statistics' do
       visit market_share_path(type: 'distribution')
       expect(page).to have_content('Stats')
 
-      page.fill_in 'search_start_date', with: '01.22'
       page.fill_in 'search_end_date', with: '09.22'
 
       click_link('Download CSV')
