@@ -11,11 +11,11 @@
                                                               placeholder: t('invoices.index.search_number'),
                                                               value: params[:search]&.dig(:number_str_matches) %>
                 </div>
-                <%= toggle_filter %>
+                <%= toggle_filter(reverse: params[:search].present?) %>
             </div>
         </div>
     </div>
-    <div id="filters" class="form--filters">
+    <div id="filters" class="form--filters <%= 'open' if params[:search] %>">
         <div class="row bottom-xs">
             <div class="col-xs-auto">
                 <%= form.label :due_date_gteq, t('invoices.index.due_date'), class: 'form--label' %>

@@ -68,7 +68,7 @@ et:
       [~, Jaan, Veeb, Märts, Apr, Mai, Juuni, Juuli, Aug, Sep, Okt, Nov, Det]
     formats:
       default: "%Y-%m-%d"
-      month_year: "%B, %Y"
+      month_year: "%d %B %Y"
       month_year_short: "%b, %Y"
   
   auth:
@@ -607,8 +607,8 @@ et:
         title: "Statistika"
         market_share: "Turuosa ja jaotus"
         market_share_growth: "Turuosa ja kasvumäär"
-        period: "Periood"
-        compare_to: "Võrdlusperiood"
+        period: "Kuu"
+        compare_to: "Võrdluskuu"
         domains: "Domeenid"
         registrars: "Registripidajad"
         csv:

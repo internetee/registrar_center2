@@ -9,11 +9,11 @@
                     <%= form.text_field :name_matches, 'aria-label': t(:search), class: 'input search',
                                                        placeholder: t(:search), value: params[:search]&.dig(:name_matches) %>
                 </div>
-                <%= toggle_filter %>
+                <%= toggle_filter(reverse: params[:search].present?) %>
             </div>
         </div>
     </div>
-    <div id="filters" class="form--filters">
+    <div id="filters" class="form--filters <%= 'open' if params[:search] %>">
         <div class="row bottom-xs">
             <div class="col-md-4 col-xs-12">
                 <%= form.label :registrant_code_eq, t('domains.index.registrant_name'), class: 'form--label' %>
