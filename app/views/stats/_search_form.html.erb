@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-md-12 col-xs center-xs">
             <div class="text-center">
-                <%= toggle_filter %>
+                <%= toggle_filter(reverse: params[:search].present?) %>
             </div>
         </div>
     </div>
-    <div id="filters" class="form--filters">
+    <div id="filters" class="form--filters <%= 'open' if params[:search] %>">
         <div class="row bottom-xs">
             <div class="col-md-5 col-xs-12">
                 <%= form.label :period, t('stats.market_share.index.period'), class: 'form--label' %>

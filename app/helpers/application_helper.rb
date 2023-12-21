@@ -26,11 +26,10 @@ module ApplicationHelper
     end
   end
 
-  def toggle_filter
+  def toggle_filter(reverse: false)
     button_tag(data: { toggle: 'filters' }, type: '', class: 'button button--toggle') do
-      out = []
-      out << tag.span(t(:open_filter))
-      out << tag.span(t(:close_filter))
+      out = [tag.span(t(:open_filter)), tag.span(t(:close_filter))]
+      out.reverse! if reverse
       out << tag.i(nil, class: 'fas fa-filter')
       safe_join(out)
     end
