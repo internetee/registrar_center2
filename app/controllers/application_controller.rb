@@ -29,9 +29,7 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
 
   def sign_out
     session[:uuid] = nil
-    Rails.cache.instance_variable_get(:@data)&.each_key do |key|
-      Rails.cache.delete(key) unless key.match?(/distribution_data|growth_rate_data/)
-    end
+    clear_cache
   end
 
   def sign_in(uuid)
@@ -77,14 +75,10 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
 
   def store_auth_info(token:, request_ip:, data:)
     uuid = SecureRandom.uuid
-    Rails.cache.write(uuid, { username: data[:username],
-                              registrar_name: data[:registrar_name],
-                              role: data[:roles].first,
-                              legaldoc_mandatory: data[:legaldoc_mandatory],
-                              address_processing: data[:address_processing],
-                              token: token,
-                              request_ip: request_ip,
-                              abilities: data[:abilities] }, expires_in: 18.hours)
+    data = construct_auth_info(token, request_ip, data)
+    encrypted_data = Encryptor.encrypt(data.to_json)
+    Rails.cache.write(uuid, encrypted_data, expires_in: 18.hours)
+
     uuid
   end
 
@@ -129,16 +123,38 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
     flash.now[:alert] = msg
 
     turbo_stream_render = if dialog
-      turbo_stream.update_all('.dialog_flash', partial: 'common/dialog_flash')
-    else
-      turbo_stream.update('flash', partial: 'common/flash')
-    end
+                            turbo_stream.update_all('.dialog_flash', partial: 'common/dialog_flash')
+                          else
+                            turbo_stream.update('flash', partial: 'common/flash')
+                          end
 
     render turbo_stream: turbo_stream_render
   end
 
+  def construct_auth_info(token, request_ip, data)
+    {
+      username: data[:username],
+      registrar_name: data[:registrar_name],
+      role: data[:roles].first,
+      legaldoc_mandatory: data[:legaldoc_mandatory],
+      address_processing: data[:address_processing],
+      token: token, request_ip: request_ip,
+      abilities: data[:abilities]
+    }
+  end
+
   def auth_info
-    Rails.cache.fetch(session[:uuid])&.symbolize_keys
+    cached_data = Rails.cache.fetch(session[:uuid]) || ''
+    decrypted_data = Encryptor.decrypt(cached_data)
+    return unless decrypted_data
+
+    JSON.parse(decrypted_data).symbolize_keys
+  end
+
+  def clear_cache
+    Rails.cache.instance_variable_get(:@data)&.each_key do |key|
+      Rails.cache.delete(key) unless key.match?(/distribution_data|growth_rate_data/)
+    end
   end
 
   def default_url_options
