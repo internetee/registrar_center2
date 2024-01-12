@@ -1,41 +1,8 @@
-class ApplicationController < ActionController::Base # rubocop:disable Metrics/ClassLength
+class ApplicationController < ActionController::Base
   include Pagy::Backend
-
-  helper_method :current_user, :logged_in?, :can?
-  before_action :set_locale
-
-  def current_user
-    @current_user ||= OpenStruct.new(auth_info) if auth_info
-  end
-
-  def can?(action, subject)
-    return false if current_user.abilities[:can].blank?
-    return false if current_user.abilities[:can][action].blank?
-
-    current_user.abilities[:can][action].keys.include? subject
-  end
-
-  def authorize!(action, subject)
-    return if can? action, subject
-
-    respond_to do |format|
-      format.html { redirect_to dashboard_url, alert: 'Authorization error' }
-    end
-  end
-
-  def logged_in?
-    current_user != nil
-  end
-
-  def sign_out
-    session[:uuid] = nil
-    clear_cache
-  end
-
-  def sign_in(uuid)
-    session[:uuid] = uuid
-    cookies.delete(:request_ip)
-  end
+  include Authentication
+  include Authorization
+  include Localization
 
   def reset_bulk_change_cache
     @attrs&.slice!(:type, :form_steps)
@@ -71,15 +38,6 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
       format.html { respond_html(msg) }
       format.turbo_stream { respond_turbo_stream(msg, dialog) }
     end
-  end
-
-  def store_auth_info(token:, request_ip:, data:)
-    uuid = SecureRandom.uuid
-    data = construct_auth_info(token, request_ip, data)
-    encrypted_data = Encryptor.encrypt(data.to_json)
-    Rails.cache.write(uuid, encrypted_data, expires_in: 18.hours)
-
-    uuid
   end
 
   private
@@ -129,64 +87,5 @@ class ApplicationController < ActionController::Base # rubocop:disable Metrics/C
                           end
 
     render turbo_stream: turbo_stream_render
-  end
-
-  def construct_auth_info(token, request_ip, data)
-    {
-      username: data[:username],
-      registrar_name: data[:registrar_name],
-      role: data[:roles].first,
-      legaldoc_mandatory: data[:legaldoc_mandatory],
-      address_processing: data[:address_processing],
-      token: token, request_ip: request_ip,
-      abilities: data[:abilities]
-    }
-  end
-
-  def auth_info
-    cached_data = Rails.cache.fetch(session[:uuid]) || ''
-    decrypted_data = Encryptor.decrypt(cached_data)
-    return unless decrypted_data
-
-    JSON.parse(decrypted_data).symbolize_keys
-  end
-
-  def clear_cache
-    Rails.cache.instance_variable_get(:@data)&.each_key do |key|
-      Rails.cache.delete(key) unless key.match?(/distribution_data|growth_rate_data/)
-    end
-  end
-
-  def default_url_options
-    { locale: I18n.locale }
-  end
-
-  def set_locale
-    I18n.locale = extract_locale || I18n.default_locale
-    @pagy_locale = I18n.locale.to_s
-  end
-
-  def extract_locale
-    set_locale_cookie_if_present
-    locale = cookies[:locale]
-
-    return locale.to_sym if valid_locale?(locale)
-
-    log_invalid_locale(locale)
-    nil
-  end
-
-  def set_locale_cookie_if_present
-    cookies.permanent[:locale] = params[:locale] if params[:locale].present?
-  end
-
-  def valid_locale?(locale)
-    I18n.available_locales.map(&:to_s).include?(locale)
-  end
-
-  def log_invalid_locale(locale)
-    notice = "#{locale} #{t(:no_translation)}"
-    # flash.now[:notice] = notice
-    logger.error notice
   end
 end

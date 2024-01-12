@@ -32,7 +32,8 @@ RSpec.describe Auth::TaraController, type: :controller do
 
   it 'does not receive callback if user already logged in' do
     session[:uuid] = uuid
-    Rails.cache.write(uuid, auth_data_legal)
+    encrypted_data = Encryptor.encrypt(auth_data_legal.to_json)
+    Rails.cache.write(uuid, encrypted_data)
     VCR.use_cassette("#{cassette_path}/#{option[:method]}", match_requests_on: %i[path method]) do
       send(option[:http_method], option[:method], params: option[:params])
     end
