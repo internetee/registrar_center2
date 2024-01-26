@@ -19,7 +19,8 @@ RSpec.shared_examples 'Base controller with auth' do |options|
   options.each do |option|
     it 'successfully checks for auth info in session' do
       session[:uuid] = uuid
-      Rails.cache.write(uuid, auth_data_legal)
+      encrypted_data = Encryptor.encrypt(auth_data_legal.to_json)
+      Rails.cache.write(uuid, encrypted_data)
       VCR.use_cassette("#{cassette_path}/#{option[:method]}", match_requests_on: %i[path method]) do
         # p VCR.current_cassette.file
         send(option[:http_method], option[:method],
@@ -47,7 +48,8 @@ RSpec.shared_examples 'Base controller with auth' do |options|
 
     it 'redirects to auth controller if failed auth' do
       session[:uuid] = uuid
-      Rails.cache.write(uuid, auth_data_fail)
+      encrypted_data = Encryptor.encrypt(auth_data_fail.to_json)
+      Rails.cache.write(uuid, encrypted_data)
       VCR.use_cassette("#{cassette_path}/#{option[:method]}-auth-fail", match_requests_on: %i[path method]) do
         # p VCR.current_cassette.file
         send(option[:http_method], option[:method], params: option[:params])
