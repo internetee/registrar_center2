@@ -20,15 +20,17 @@ class ApiConnector
   end
 
   def call_action(**args)
+    Rails.logger.debug("Calling action: #{self.class::ACTION} with args: #{args}")
     __send__(self.class::ACTION, **args)
   end
 
   private
 
   def request(url:, method:, params: nil, headers: nil)
+    Rails.logger.debug("Sending #{method} request to #{url} with params: #{params} and headers: #{headers}")
     request = faraday_request(url: url, headers: headers)
     response = send_request(request, method, url, params)
-    success = response.status == 200
+    success = [200, 201].include?(response.status)
     body = process_response_body(response)
 
     OpenStruct.new(body: body, success: success, type: response['content-type'])
@@ -52,6 +54,7 @@ class ApiConnector
   end
 
   def process_response_body(response)
+    Rails.logger.debug("Processing response with content type: #{response['content-type']} and body: #{response.body}")
     case response['content-type']
     when 'application/pdf', 'application/octet-stream'
       { data: response.body, message: response.headers['content-disposition'] }

@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html { respond_html(msg) }
       format.turbo_stream { respond_turbo_stream(msg, dialog) }
+      format.json { render json: { error: msg }, status: :unprocessable_entity }
     end
   end
 

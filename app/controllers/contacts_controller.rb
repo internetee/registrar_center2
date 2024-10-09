@@ -3,7 +3,6 @@
 class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
   before_action :set_pagy_params, only: %i[index show]
 
-  # rubocop:disable Metrics/MethodLength
   # Get all the contacts
   def index
     conn = ApiConnector::Contacts::All.new(**auth_info)
@@ -13,17 +12,9 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
                               offset: pdf_or_csv_request? ? nil : @offset)
     handle_response(result); return if performed?
 
-    @ident_types = [['Vali', '']] + @response.ident_types
-    @statuses = @response.statuses
-    @contacts = @response.contacts
-    @pagy = Pagy.new(count: @response.count, items: session[:page_size], page: @page)
-    respond_to do |format|
-      format.html
-      format.csv { format_csv }
-      format.pdf { format_pdf }
-    end
+    set_instance_variables
+    respond_to_formats
   end
-  # rubocop:enable Metrics/MethodLength
 
   def search
     conn = ApiConnector::Contacts::Finder.new(**auth_info)
@@ -38,13 +29,9 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
 
   # Show the contact info
   def show
-    conn = ApiConnector::Contacts::Reader.new(**auth_info)
-    result = conn.call_action(id: params[:contact_code], per_page: session[:page_size],
-                              page: @page, domain_filter: params[:contact_types],
-                              q: search_params)
-    handle_response(result); return if performed?
+    fetch_contact
+    return if performed?
 
-    @contact = @response.contact
     @domains = @contact[:domains]
     @contact_types = ApplicationHelper::CONTACT_TYPE.merge(registrant: 'Registrant')
     @pagy = Pagy.new(count: @contact[:domains_count], items: session[:page_size], page: @page)
@@ -72,12 +59,7 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
   end
 
   def create
-    conn = ApiConnector::Contacts::Creator.new(**auth_info)
-    result = conn.call_action(payload: contact_payload)
-    handle_response(result); return if performed?
-
-    flash.notice = @message
-    redirect_to contact_path(contact_code: @response.contact[:code])
+    handle_contact_action(ApiConnector::Contacts::Creator)
   end
 
   def edit
@@ -89,11 +71,15 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
   end
 
   def update
-    conn = ApiConnector::Contacts::Updater.new(**auth_info)
-    result = conn.call_action(payload: contact_payload)
+    handle_contact_action(ApiConnector::Contacts::Updater)
+  end
+
+  def verify
+    conn = ApiConnector::Contacts::Verifier.new(**auth_info)
+    result = conn.call_action(id: params[:contact_code])
     handle_response(result); return if performed?
 
-    flash.notice = @message
+    flash.notice = 'Successfully created identification request'
     redirect_to contact_path(contact_code: @response.contact[:code])
   end
 
@@ -105,31 +91,74 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
                                     :city, :street, :state, :zip, :legal_document)
   end
 
-  # rubocop:disable Metrics/MethodLength
+  def set_instance_variables
+    @ident_types = [['Vali', '']] + @response.ident_types
+    @statuses = @response.statuses
+    @contacts = @response.contacts
+    @pagy = Pagy.new(count: @response.count, items: session[:page_size], page: @page)
+  end
+
+  def respond_to_formats
+    respond_to do |format|
+      format.html
+      format.csv { format_csv }
+      format.pdf { format_pdf }
+    end
+  end
+
+  def handle_contact_action(conn_class)
+    conn = conn_class.new(**auth_info)
+    result = conn.call_action(payload: contact_payload)
+    handle_response(result); return if performed?
+
+    flash.notice = @message
+    redirect_to contact_path(contact_code: @response.contact[:code])
+  end
+
+  def fetch_contact
+    conn = ApiConnector::Contacts::Reader.new(**auth_info)
+    result = conn.call_action(
+      id: params[:contact_code],
+      per_page: session[:page_size],
+      page: @page,
+      domain_filter: params[:contact_types],
+      q: search_params
+    )
+    handle_response(result)
+    @contact = @response&.contact
+  end
+
   def contact_payload
     {
       id: contact_params[:code],
       name: contact_params[:name],
       email: contact_params[:email],
       phone: contact_params[:phone],
-      ident: {
-        ident: contact_params[:ident],
-        ident_type: contact_params[:ident_type],
-        ident_country_code: contact_params[:ident_country_code],
-      },
-      addr: if current_user.address_processing
-              {
-                country_code: contact_params[:country_code],
-                city: contact_params[:city],
-                street: contact_params[:street],
-                zip: contact_params[:zip],
-                state: contact_params[:state],
-              }
-            end,
+      ident: contact_ident_payload,
+      addr: contact_address_payload,
       legal_document: transform_file_params(contact_params[:legal_document]),
     }
   end
-  # rubocop:enable Metrics/MethodLength
+
+  def contact_ident_payload
+    {
+      ident: contact_params[:ident],
+      ident_type: contact_params[:ident_type],
+      ident_country_code: contact_params[:ident_country_code],
+    }
+  end
+
+  def contact_address_payload
+    return unless current_user.address_processing
+
+    {
+      country_code: contact_params[:country_code],
+      city: contact_params[:city],
+      street: contact_params[:street],
+      zip: contact_params[:zip],
+      state: contact_params[:state],
+    }
+  end
 
   def format_csv
     raw_csv = ContactListCsvPresenter.new(objects: @contacts,

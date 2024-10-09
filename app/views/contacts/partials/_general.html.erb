@@ -23,5 +23,18 @@
             <th><%= t('contacts.show.phone') %></th>
             <td><%= @contact[:phone] %></td>
         </tr>
+        <% if @contact[:verified_at].present? %>
+            <tr>
+                <th><%= t('contacts.show.verification') %></th>
+                <td>
+                    Verified on <%= l(@contact[:verified_at].to_datetime, format: :long) %>
+                </td>
+            </tr>
+        <% elsif @contact[:ident_request_sent_at].present? %>
+            <tr>
+                <th><%= t('contacts.show.verification') %></th>
+                <td>Identification requested on <%= l(@contact[:ident_request_sent_at].to_datetime, format: :long) %></td>
+            </tr>
+        <% end %>
     </tbody>
 </table>

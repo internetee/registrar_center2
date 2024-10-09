@@ -21,6 +21,7 @@ en:
   enable: "Enable"
   disable: "Disable"
   transfer: "Transfer"
+  verify: "Verify"
   add_credit: "Add credit"
   choose_file: "Choose file"
   created_at: "Created"
@@ -377,6 +378,10 @@ en:
       registrar_name: "Registrar"
       valid_to: "Valid to"
       roles: "Roles"
+      verification: "Verification status"
+      requested_at: "Requested at"
+      verified_at: "Verified at"
+      verify_confirm_html: "Are you sure you want to send identification request to contact <span>%{code}</span>?"
       contact_types:
         registrant: "Registrant"
         tech: "Technical contact"
