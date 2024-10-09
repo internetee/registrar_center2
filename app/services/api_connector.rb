@@ -54,7 +54,7 @@ class ApiConnector
   end
 
   def process_response_body(response)
-    Rails.logger.debug("Processing response with content type: #{response['content-type']} and body: #{response.body}")
+    Rails.logger.debug("Processing response with content type: #{response['content-type']}")
     case response['content-type']
     when 'application/pdf', 'application/octet-stream'
       { data: response.body, message: response.headers['content-disposition'] }
