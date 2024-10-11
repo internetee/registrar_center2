@@ -79,7 +79,7 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
     result = conn.call_action(id: params[:contact_code])
     handle_response(result); return if performed?
 
-    flash.notice = 'Successfully created identification request'
+    flash.notice = 'Successfully sent identification request'
     redirect_to contact_path(contact_code: @response.contact[:code])
   end
 
