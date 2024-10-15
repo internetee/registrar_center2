@@ -105,6 +105,13 @@ RSpec.describe ContactsController, type: :controller do
       params: {
         contact_code: '1111111:5A0D95F4'
       }
+    },
+    {
+      method: :download_poi,
+      http_method: :get,
+      params: {
+        contact_code: '1111111:5A0D95F4'
+      }
     }
   ]
 

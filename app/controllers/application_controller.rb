@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
     msg = res.body[:message]
 
     case res.body[:code]
-    when 2202, 503, 401
+    when 2202, 401
       respond_with_log_out(msg)
     when 2000..2500
       respond(msg, dialog: dialog)

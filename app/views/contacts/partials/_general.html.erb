@@ -27,11 +27,12 @@
             <th><%= t('contacts.show.verification') %></th>
             <td>
                 <% if @contact[:verified_at].present? %>
-                    Verified on <%= l(@contact[:verified_at].to_datetime, format: :long) %>
+                    <%= t('contacts.show.verified_on') %> <%= l(@contact[:verified_at].to_datetime, format: :long) %>
+                    <%= icon_link_to 'fas fa-file-pdf', download_poi_contact_path(contact_code: @contact[:code]), class: 'simple_tooltip', data: { 'tippy-content': t('contacts.show.download_poi') } %>
                 <% elsif @contact[:ident_request_sent_at].present? %>
-                    Identification requested on <%= l(@contact[:ident_request_sent_at].to_datetime, format: :long) %>
+                    <%= t('contacts.show.ident_requested_on') %> <%= l(@contact[:ident_request_sent_at].to_datetime, format: :long) %>
                 <% else %>
-                    Unverified
+                    <%= t('contacts.show.unverified') %>
                 <% end %>   
             </td>
         </tr>

@@ -6,7 +6,6 @@ RSpec.feature 'viewing domains' do
   scenario 'with wrong response content type' do
     VCR.use_cassette 'controllers/domains_controller/index-content-type-fail', record: :once do
       visit domains_path
-      expect(page).to have_current_path(login_path)
       expect(page).to have_content('Unsupported content type')
     end
   end

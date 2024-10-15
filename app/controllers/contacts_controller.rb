@@ -83,6 +83,16 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
     redirect_to contact_path(contact_code: @response.contact[:code])
   end
 
+  def download_poi
+    conn = ApiConnector::Contacts::PoiDownloader.new(**auth_info)
+    result = conn.call_action(id: params[:contact_code])
+    handle_response(result); return if performed?
+
+    send_data(@response, type: 'application/pdf',
+                         disposition: 'attachment',
+                         filename: @message.match(/filename=(\"?)(.+)\1/)[2])
+  end
+
   private
 
   def contact_params
