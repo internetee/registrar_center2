@@ -51,6 +51,8 @@ Rails.application.routes.draw do
     post 'contacts/update', to: 'contacts#update', as: :update_contact
     get 'contact/delete', to: 'contacts#delete', as: :delete_contact
     delete 'contacts/destroy', to: 'contacts#destroy', as: :destroy_contact
+    post 'contact/verify', to: 'contacts#verify', as: :verify_contact
+    get 'contact/download_poi', to: 'contacts#download_poi', as: :download_poi_contact
     resources :contacts, except: %i[destroy update show edit]
 
     get 'invoices/:id/download', to: 'invoices#download', as: :download_invoice

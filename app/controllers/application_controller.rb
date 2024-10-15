@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html { respond_html(msg) }
       format.turbo_stream { respond_turbo_stream(msg, dialog) }
+      format.json { render json: { error: msg }, status: :unprocessable_entity }
     end
   end
 
@@ -53,7 +54,7 @@ class ApplicationController < ActionController::Base
     msg = res.body[:message]
 
     case res.body[:code]
-    when 2202, 503, 401
+    when 2202, 401
       respond_with_log_out(msg)
     when 2000..2500
       respond(msg, dialog: dialog)

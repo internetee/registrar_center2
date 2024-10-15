@@ -1,0 +1,15 @@
+<div class="dialog" id="contact_verify">
+    <div class="wrapper wrapper__small">
+        <div class="paper paper--text__left">
+            <div class="paper--header">
+                <%= button_tag(class: 'button--close', type: '') do %>
+                    <i class="fas fa-times"></i>
+                <% end %>
+                <h2 id="title"><%= t('contacts.show.verify_confirm_html', code: @contact[:code]) %></h2>
+            </div>
+            <div class="paper--content">
+                <%= button_to t(:send), verify_contact_path(contact_code: @contact[:code]), data: { turbo: false }, class: 'button button--primary' %>
+            </div>
+        </div>
+    </div>
+</div>
