@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://st-tara.infra.tld.ee:443/api/auth/v1/token
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.10
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Fri, 27 Sep 2024 07:42:56 GMT
+      Server:
+      - Apache/2.4.59 (Debian)
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"41181942760aafc432f897e9096c842e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - '0734493e-6319-45a9-a4ec-4384f0f20048'
+      X-Runtime:
+      - '0.012991'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Content-Length:
+      - '169'
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"eyJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX2lkIjoyNCwiZXhwIjoxNzI3NDIzMDk2fQ.FkfmVSr3wdCkXHRd5dvlUnVUAqZr1nwWXw-RPvJnuZM","token_type":"Bearer","expires_in":120}'
+  recorded_at: Fri, 27 Sep 2024 07:42:56 GMT
+- request:
+    method: get
+    uri: https://st-tara.infra.tld.ee:443/api/ident/v1/identification_requests/9178a393-2f4b-4646-88b6-4ac4cf5b83ba?id=9178a393-2f4b-4646-88b6-4ac4cf5b83ba
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 27 Sep 2024 07:42:56 GMT
+      Server:
+      - Apache/2.4.59 (Debian)
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"8aa1234eeefe292f64e242864b0f1d22"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 7f4617cf-6009-40ae-bdea-f71f8e666178
+      X-Runtime:
+      - '0.021705'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Vary:
+      - Origin
+      Content-Length:
+      - '444'
+    body:
+      encoding: UTF-8
+      string: '{"id":"9178a393-2f4b-4646-88b6-4ac4cf5b83ba","link":"https://st-tara-auth.infra.tld.ee/ident/init/9178a393-2f4b-4646-88b6-4ac4cf5b83ba","link_expires_at":"2024-10-11T10:29:16.435+03:00","claims_required":[{"type":"sub","value":"EE60001019906"}],"completed_at":null,"status":"pending","email":null,"created_at":"2024-09-27T10:29:16.441+03:00","result":{},"client_id":"oidc-39eecff6-015f-488d-a14a-085a77493c33-24","reference":"1111111:5A0D95F4"}'
+  recorded_at: Fri, 27 Sep 2024 07:42:56 GMT
+recorded_with: VCR 6.2.0

@@ -21,6 +21,7 @@ et:
   enable: "Aktiveeri"
   disable: "Deaktiveeri"
   transfer: "Too üle"
+  verify: "Verifitseeri"
   add_credit: "Lisa krediiti"
   choose_file: "Vali fail arvutist"
   created_at: "Loodud"
@@ -379,10 +380,18 @@ et:
       registrar_name: "Registripidaja"
       valid_to: "Kehtiv kuni"
       roles: "Rollid"
+      verification: "Tuvastuse staatus"
+      requested_at: "Taotletud"
+      verified_at: "Verifitseeritud"
+      verify_confirm_html: "Kas olete kindel, et soovite saata kontaktile <span>%{code}</span> tuvastamistaotlust?"
+      verified_on: "Verifitseeritud"
+      ident_requested_on: "Identifitseerimine taotletud"
+      unverified: "Verifitseerimata"
       contact_types:
         registrant: "Registreerija"
         tech: "Tehniline kontakt"
         admin: "Admin kontakt"
+      download_poi: "Laadi alla isikutõend"
 
     delete:
       title: "Kustuta kontakt"

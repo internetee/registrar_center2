@@ -100,7 +100,7 @@ http_interactions:
         Interneti SA","reg_no":"90010019","iban":"EE557700771000598731","bank":"LHV
         Pank","swift":"LHVBEE22","vat_no":"EE101286464","address":"Paldiski mnt 80,
         Tallinn, Harjumaa, 10617","country":"Estonia","phone":"+372 727 1000","url":"www.internet.ee","email":"info@internet.ee","contact_name":"Martti
-        Õigus"},"buyer":{"name":"Sergei ","reg_no":"14836742","address":"Rõugu 2/2,
-        Tallinn, Harju, 13522","country":"Estonia","phone":"55631806","url":"https://bankwiser.eu","email":"sergei.tsoganov@internet.ee"},"items":[{"description":"prepayment","unit":"piece","quantity":1,"price":"66.0","sum_without_vat":"66.0","vat_amount":"13.2","total":"79.2"}],"recipient":"eleanore_funk@konopelski-bahringer.com","monthly_invoice":false}}}'
+        Õigus"},"buyer":{"name":"Sergei ","reg_no":"14836742","address":"Rougu 212,
+        Tallinn, Harju, 13555","country":"Estonia","phone":"55631806","url":"https://bankwiser.eu","email":"sergei.tsoganov@internet.ee"},"items":[{"description":"prepayment","unit":"piece","quantity":1,"price":"66.0","sum_without_vat":"66.0","vat_amount":"13.2","total":"79.2"}],"recipient":"eleanore_funk@konopelski-bahringer.com","monthly_invoice":false}}}'
   recorded_at: Fri, 09 Sep 2022 10:20:10 GMT
 recorded_with: VCR 6.1.0
