@@ -314,10 +314,10 @@ glob-parent@^5.1.2, glob-parent@~5.1.2:
   dependencies:
     is-glob "^4.0.1"
 
-highcharts@^10.2.0:
-  version "10.3.3"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-10.3.3.tgz#b8acca24f2d4b1f2f726540734166e59e07b35c4"
-  integrity sha512-r7wgUPQI9tr3jFDn3XT36qsNwEIZYcfgz4mkKEA6E4nn5p86y+u1EZjazIG4TRkl5/gmGRtkBUiZW81g029RIw==
+highcharts@^12.0.0:
+  version "12.0.2"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-12.0.2.tgz#4f53248d3cd5a50b3042a9ebec309c70dc58f4d1"
+  integrity sha512-DKZFNn2Mk3EUmOfJIvIgPqBjUoKDkDW9WY1nT9zrhfB9SSyg5yVbVEFrw267C4+Hzg4U1H/0i0Z6S3VYJwg6qQ==
 
 immutable@^4.0.0:
   version "4.3.4"
