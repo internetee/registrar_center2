@@ -326,10 +326,19 @@ h4 {
 }
 
 .turbo-progress-bar {
-  height: 5px;
+    height: 5px;
 }
 
 .rediconcolor {
-  color: $red;
+    color: $red;
+}
+
+.verified-image {
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    width: 200px;
+    height: auto;
+    opacity: 0.5;
 }
 
