@@ -15,7 +15,7 @@
                 <% options = "<option value=''></option><option value=#{v['code']} selected>#{contact}</option>" %>
                 <%= dynamic_select_tag "domain[contacts_attributes][#{k}][code]", v['code'].present? ? raw(options) : [],
                                                                                   class: 'contact_dynamic_select',
-                                                                                  required: true,
+                                                                                  required: false,
                                                                                  'data-nested-form-target': 'contact' %>
             </div>
         </div>
