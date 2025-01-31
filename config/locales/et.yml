@@ -384,6 +384,7 @@ et:
       requested_at: "Taotletud"
       verified_at: "Verifitseeritud"
       verify_confirm_html: "Kas olete kindel, et soovite saata kontaktile <span>%{code}</span> tuvastamistaotlust?"
+      reverify_confirm_html: "Kas olete kindel, et soovite kontaktile <span>%{code}</span> tuvastamistaotlust uuesti saata? See kustutab kõik eelnevad tuvastamise teated."
       verified_on: "Verifitseeritud"
       ident_requested_on: "Identifitseerimine taotletud"
       unverified: "Verifitseerimata"

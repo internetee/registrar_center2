@@ -382,6 +382,7 @@ en:
       requested_at: "Requested at"
       verified_at: "Verified at"
       verify_confirm_html: "Are you sure you want to send identification request to contact <span>%{code}</span>?"
+      reverify_confirm_html: "Are you sure you want to resend identification request to contact <span>%{code}</span>? This will delete any previous verification information."
       verified_on: "Verified on"
       ident_requested_on: "Identification requested on"
       unverified: "Unverified"
