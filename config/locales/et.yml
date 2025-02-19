@@ -554,6 +554,7 @@ et:
       updated: "Muudetud"
       by: "[%{user}]"
       submit_csr: "Esita CSR"
+      generate_p12: "Genereeri P12"
     edit:
       title: "Api kasutaja"
 
@@ -586,6 +587,10 @@ et:
         expired: "Aegunud"
         revoked: "Tühistatud"
         valid: "Kehtiv"
+      private_key: "Privaatvõti"
+      p12: "P12 Sertifikaat"
+      expires_at: "Aegub"
+      type: "Tüüp"
 
   white_ips:
     index:

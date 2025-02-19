@@ -1,0 +1,22 @@
+<div class="page--block--header">
+    <div class="row between-xs">
+        <div class="col-xs-auto">
+            <h2><%= t('certificates.show.private_key') %></h2>
+        </div>
+        <div class="col-xs-auto">
+            <%= 
+                link_to "#{t(:download)} <i class='fas fa-download'></i>".html_safe,
+                  download_api_user_certificate_path(@certificate[:api_user_id], @certificate[:id], 'private_key'),
+                  data: { turbo: false }
+            %>
+        </div>
+    </div>
+</div>
+<table class="table table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('certificates.show.type') %></th>
+            <td><%= @certificate[:private_key].dig('type') %></td>
+        </tr>
+    </tbody>
+</table> 

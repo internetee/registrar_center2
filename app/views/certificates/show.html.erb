@@ -38,4 +38,24 @@
             </div>
         </div>
     <% end %>
+    
+    <% unless @certificate[:private_key].blank? %>
+        <div class="page--block">
+            <div class="wrapper">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <%= render 'certificates/partials/private_key' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+    <% unless @certificate[:p12].blank? %>
+        <div class="page--block">
+            <div class="wrapper">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <%= render 'certificates/partials/p12' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
 </div>

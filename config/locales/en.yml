@@ -552,6 +552,7 @@ en:
       updated: "Updated"
       by: "by %{user}"
       submit_csr: "Submit CSR"
+      generate_p12: "Generate P12"
     edit:
       title: "Api User"
 
@@ -584,6 +585,10 @@ en:
         expired: "Expired"
         revoked: "Revoked"
         valid: "Valid"
+      private_key: "Private Key"
+      p12: "P12 Certificate"
+      expires_at: "Expires At"
+      type: "Type"
 
   white_ips:
     index:

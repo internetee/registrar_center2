@@ -4,7 +4,8 @@
             <h2><%= t('api_users.show.certificates') %></h2>
         </div>
         <div class="col-xs-auto">
-            <%= link_to "#{t('api_users.show.submit_csr')} <i class='fas fa-upload'></i>".html_safe, 'javascript: void(0);', 'data-dialog': 'upload_csr' %>
+            <%= link_to "#{t('api_users.show.submit_csr')} <i class='fas fa-upload'></i>".html_safe, 'javascript: void(0);', 'data-dialog': 'upload_csr' %><br />
+            <%= button_to "#{t('api_users.show.generate_p12')} <i class='fas fa-upload'></i>".html_safe, create_p12_certificates_path(api_user_id: @api_user[:id]) %>
         </div>
     </div>
 </div>

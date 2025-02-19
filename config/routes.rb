@@ -94,7 +94,11 @@ Rails.application.routes.draw do
       end
     end
     resources :white_ips, except: %i[new edit]
-    resources :certificates, only: %i[create]
+    resources :certificates, only: %i[create] do
+      scope module: :certificates do
+        post 'p12', to: 'p12#create', as: :create_p12, on: :collection
+      end
+    end
   end
 end
 # rubocop:enable Metrics/BlockLength
