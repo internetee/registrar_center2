@@ -591,6 +591,9 @@ et:
       p12: "P12 Sertifikaat"
       expires_at: "Aegub"
       type: "Tüüp"
+      partials:
+        p12:
+          import_to_browser: "Impordi brauserisse"
 
   white_ips:
     index:

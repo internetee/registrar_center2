@@ -7,7 +7,8 @@
             <%= 
                 link_to "#{t(:download)} <i class='fas fa-download'></i>".html_safe,
                   download_api_user_certificate_path(@certificate[:api_user_id], @certificate[:id], 'p12'),
-                  data: { turbo: false }
+                  data: { turbo: false },
+                  class: 'mr-2'
             %>
         </div>
     </div>
