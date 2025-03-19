@@ -14,10 +14,16 @@
     </div>
 </div>
 <table class="table table__basic">
-    <tbody>
+    <thead>
         <tr>
             <th><%= t('certificates.show.expires_at') %></th>
+            <th><%= t('certificates.show.password') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
             <td><%= l @certificate[:expires_at].to_datetime if @certificate[:expires_at].present? %></td>
+            <td><%= @certificate[:p12][:password] if @certificate[:p12].present? && @certificate[:p12][:password].present? %></td>
         </tr>
     </tbody>
 </table> 
