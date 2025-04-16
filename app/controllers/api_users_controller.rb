@@ -46,15 +46,6 @@ class ApiUsersController < BaseController
     redirect_to account_path
   end
 
-  def create_invite
-    conn = ApiConnector::ApiUsers::CertificateInvite.new(**auth_info)
-    result = conn.call_action(id: params[:id])
-    handle_response(result); return if performed?
-
-    flash.notice = @message
-    redirect_to api_user_path(params[:id])
-  end
-
   private
 
   def api_user_params

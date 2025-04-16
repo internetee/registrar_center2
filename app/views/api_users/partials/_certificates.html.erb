@@ -4,12 +4,6 @@
             <h2><%= t('api_users.show.certificates') %></h2>
         </div>
         <div class="col-xs-auto">
-            <% if current_user.super_user? %>
-                <%= link_to "#{t('api_users.show.create_invite')} <i class='fas fa-envelope'></i>".html_safe, 
-                    create_invite_api_user_path(@api_user[:id]), 
-                    class: 'button button--secondary mr-2',
-                    data: { confirm: t('api_users.show.create_invite_confirm') } %>
-            <% end %>
             <%= link_to "#{t('api_users.show.submit_csr')} <i class='fas fa-upload'></i>".html_safe, 'javascript: void(0);', 'data-dialog': 'upload_csr', class: 'mr-2' %>
             <%= button_to "#{t('api_users.show.generate_p12')} <i class='fas fa-key'></i>".html_safe, 
                 create_p12_certificates_path(api_user_id: @api_user[:id]), 
