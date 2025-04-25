@@ -1,0 +1,29 @@
+<div class="page--block--header">
+    <div class="row between-xs">
+        <div class="col-xs-auto">
+            <h2><%= t('certificates.show.p12') %></h2>
+        </div>
+        <div class="col-xs-auto">
+            <%= 
+                link_to "#{t(:download)} <i class='fas fa-download'></i>".html_safe,
+                  download_api_user_certificate_path(@certificate[:api_user_id], @certificate[:id], 'p12'),
+                  data: { turbo: false },
+                  class: 'mr-2'
+            %>
+        </div>
+    </div>
+</div>
+<table class="table table__basic">
+    <thead>
+        <tr>
+            <th><%= t('certificates.show.expires_at') %></th>
+            <th><%= t('certificates.show.password') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= l @certificate[:expires_at].to_datetime if @certificate[:expires_at].present? %></td>
+            <td><%= @certificate[:p12][:password] if @certificate[:p12].present? && @certificate[:p12][:password].present? %></td>
+        </tr>
+    </tbody>
+</table> 
