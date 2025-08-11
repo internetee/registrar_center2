@@ -1,0 +1,87 @@
+# qlty.sh configuration file
+# Based on existing .codeclimate.yml but adapted for qlty.sh
+
+# Ruby analysis configuration
+ruby:
+  enabled: true
+  rubocop:
+    enabled: true
+    config_file: .rubocop.yml
+    exclude:
+      - "app/models/"
+      - "bin/"
+      - "config/"
+      - "db/"
+      - "test/"
+      - "spec/"
+      - "vendor/"
+    rules:
+      - "Rubocop/Style/ClassAndModuleChildren: false"
+      - "Rubocop/Style/Semicolon: false"
+  
+  brakeman:
+    enabled: true
+    exclude:
+      - "mass_assign_permit!"
+  
+  bundler-audit:
+    enabled: true
+  
+  duplication:
+    enabled: true
+    threshold: 3
+    mass_threshold:
+      ruby: 100
+      javascript: 100
+
+# JavaScript analysis configuration
+javascript:
+  enabled: true
+  eslint:
+    enabled: true
+    config_file: .eslintrc.js
+    exclude:
+      - "app/javascript"
+      - "vendor/"
+
+# General code quality checks
+general:
+  fixme:
+    enabled: true
+    patterns:
+      - "TODO"
+      - "FIXME"
+      - "XXX"
+    exclude:
+      - "TODO"
+  
+  method_complexity:
+    enabled: true
+    max_lines: 40
+    max_complexity: 25
+
+# Exclude patterns for analysis
+exclude:
+  - "app/models/"
+  - "app/javascript"
+  - "bin/"
+  - "config/"
+  - "db/"
+  - "test/"
+  - "spec/"
+  - "vendor/"
+  - "CHANGELOG.md"
+  - "*.lock"
+  - "node_modules/"
+  - "coverage/"
+
+# Style guide integration
+style_guides:
+  - "https://raw.githubusercontent.com/internetee/style-guide/master/.rubocop-ruby.yml"
+  - "https://raw.githubusercontent.com/internetee/style-guide/master/.rubocop-rails.yml"
+
+# Analysis settings
+analysis:
+  parallel: true
+  timeout: 300
+  memory_limit: "2G"
