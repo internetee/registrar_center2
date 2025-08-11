@@ -53,17 +53,7 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Setup qlty.sh
-        run: |
-          curl -sSL https://qlty.sh/install.sh | bash
-          
-      - name: Run qlty.sh analysis
-        env:
-          QLTY_TOKEN: ${{ secrets.QLTY_TOKEN }}
-        run: |
-          qlty analyze \
-            --repo="${{ github.repository }}" \
-            --pr="${{ github.event.number }}" \
-            --commit="${{ github.sha }}" \
-            --base="${{ github.event.pull_request.base.sha }}" \
-            --coverage-path="coverage/.resultset.json"
+      - uses: qltysh/qlty-action/coverage@v2
+        with:
+          oidc: true
+          files: coverage/.resultset.json
