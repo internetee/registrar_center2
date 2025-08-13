@@ -1,5 +1,5 @@
 name: Github Testing
-on: [push]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -31,27 +31,6 @@ jobs:
           sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
         if: github.event_name == 'push'
 
-      - name: Set ENV for codeclimate (pull_request)
-        run: |
-          git fetch --no-tags --prune --depth=1 origin +refs/heads/$GITHUB_HEAD_REF:refs/remotes/origin/$GITHUB_HEAD_REF
-          echo "GIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
-          echo "GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)" >> $GITHUB_ENV
-        if: github.event_name == 'pull_request'
-
-      - name: Set ENV for codeclimate (push)
-        run: |
-          echo "GIT_BRANCH=$GITHUB_REF" >> $GITHUB_ENV
-          echo "GIT_COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
-        if: github.event_name == 'push'
-
-      - name: Prepare CodeClimate
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          curl -LSs 'https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64' >./cc-test-reporter;
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
-
       - name: Run Tests
         env:
           REPP_HOST: http://registry:3000
@@ -59,47 +38,35 @@ jobs:
           RAILS_ENV: test
           COVERAGE: true
           DISABLE_SPRING: 1
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         run: |
           cp config/application.yml.sample config/application.yml
           yarn install --check-files && yarn sass-migrator division **/*.scss
           bundle exec rails assets:precompile
           bundle exec rspec
-      - name: Save coverage
-        run: ./cc-test-reporter format-coverage --output coverage/codeclimate.${{ matrix.ruby }}.json
 
-      - uses: actions/upload-artifact@v4.3.3
+      - name: Upload coverage files
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ matrix.ruby }}
-          path: coverage/codeclimate.${{ matrix.ruby }}.json
+          path: coverage/
+          retention-days: 1
 
-  upload_coverage:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-22.04 ]
-        ruby: [ '3.2.2' ]
+  code_quality:
     runs-on: ubuntu-22.04
-
-    env:
-      CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      CC_TEST_REPORTER_URL: https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-
     needs: test
-
+    if: github.event_name == 'pull_request'
     steps:
-      - name: Download test coverage reporter
-        run: curl -L $CC_TEST_REPORTER_URL > cc-test-reporter
-
-      - name: Give test coverage reporter executable permissions
-        run: chmod +x cc-test-reporter
-
-      - uses: actions/download-artifact@v4.1.7
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Download coverage files
+        uses: actions/download-artifact@v4
         with:
           name: coverage-${{ matrix.ruby }}
-          path: coverage
-
-      - name: Aggregate & upload results to Code Climate
-        run: |
-          ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
-          ./cc-test-reporter upload-coverage
+          path: coverage/
+      
+      - uses: qltysh/qlty-action/coverage@v2
+        with:
+          oidc: true
+          files: coverage/.resultset.json
