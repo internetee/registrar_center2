@@ -68,7 +68,15 @@ jobs:
       - name: Setup application config
         run: cp config/application.yml.sample config/application.yml
 
+      - name: Install and build assets
+        run: |
+          yarn install --check-files && yarn sass-migrator division **/*.scss
+          bundle exec rails assets:precompile
+
       - name: Run Tests
+        env:
+          REPP_HOST: http://registry:3000
+          REPP_ENDPOINT: /repp/v1
         run: rake
 
       - name: Setup qlty.sh
