@@ -68,7 +68,7 @@ jobs:
       - name: Download coverage files
         uses: actions/download-artifact@v4
         with:
-          name: coverage-${{ matrix.ruby }}
+          name: coverage-3.2.2
           path: coverage/
       
       - name: Check coverage files
