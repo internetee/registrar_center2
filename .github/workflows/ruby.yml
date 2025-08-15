@@ -76,6 +76,7 @@ jobs:
 
       - name: Remove wkhtmltopdf-binary gem
         run: |
+          bundle config set frozen false
           bundle remove wkhtmltopdf-binary
           bundle install
 
