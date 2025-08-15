@@ -1,12 +1,35 @@
 name: Github Testing
 on: [push, pull_request]
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
+  bundle_audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+          bundler-cache: true
+      - name: config bundler
+        run: |
+          bundle config set without 'development staging production'
+          bundle config set deployment 'true'
+          bundle env
+          head -n1 $(which bundle)
+      - name: Install bundle-audit
+        run: gem install bundle-audit
+      - name: Bundle Audit Check
+        run: gem exec bundle-audit check --update
+
   test:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-22.04 ]
+        os: [ ubuntu-24.04 ]
         ruby: [ '3.2.2' ]
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.ruby == 'debug' }}
@@ -20,7 +43,7 @@ jobs:
       - name: config bundler
         run:  |
           bundle config set without 'development staging production'
-          bundle config set deployment '[secure]'
+          bundle config set deployment 'true'
           bundle env
           head -n1 $(which bundle)
 
@@ -44,6 +67,35 @@ jobs:
           bundle exec rails assets:precompile
           bundle exec rspec
 
+      - name: Setup qlty.sh
+        run: |
+          curl -sSL https://qlty.sh/install.sh | bash
+          export PATH="$HOME/.qlty/bin:$PATH"
+          qlty --version
+
+      - name: Initialize qlty.sh
+        run: |
+          export PATH="$HOME/.qlty/bin:$PATH"
+          qlty init --no
+
+      - name: Run qlty.sh analysis
+        run: |
+          export PATH="$HOME/.qlty/bin:$PATH"
+          qlty check
+
+      - name: Upload coverage to qlty.sh
+        uses: qltysh/qlty-action/coverage@v1
+        with:
+          oidc: true
+          files: coverage/.resultset.json
+
+      - name: Upload qlty report
+        uses: actions/upload-artifact@v4
+        with:
+          name: qlty-report-${{ matrix.ruby }}
+          path: qlty-report.json
+          retention-days: 1
+
       - name: Upload coverage files
         uses: actions/upload-artifact@v4
         with:
@@ -52,7 +104,7 @@ jobs:
           retention-days: 1
 
   code_quality:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: test
     if: github.event_name == 'pull_request'
     steps:
