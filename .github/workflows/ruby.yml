@@ -30,19 +30,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-24.04 ]
-        ruby: [ '3.2.2' ]
+        os: [ubuntu-24.04]
+        ruby: ['3.2.2']
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.ruby == 'debug' }}
-    steps:
+    env:
+      RAILS_ENV: test
+      COVERAGE: true
+      DISABLE_SPRING: 1
 
+    steps:
       - uses: actions/checkout@v5
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: true
+
       - name: config bundler
-        run:  |
+        run: |
           bundle config set without 'development staging production'
           bundle config set deployment 'true'
           bundle env
@@ -60,26 +65,8 @@ jobs:
           gem install simplecov -v '<= 0.17.1'
           bundle install
 
-      - name: Install wkhtmltopdf (push)
-        run: |
-          sudo apt-get install -y xfonts-base xfonts-75dpi
-          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-          sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-        if: github.event_name == 'push'
-
       - name: Run Tests
-        env:
-          REPP_HOST: http://registry:3000
-          REPP_ENDPOINT: /repp/v1
-          RAILS_ENV: test
-          COVERAGE: true
-          DISABLE_SPRING: 1
-        run: |
-          cp config/application.yml.sample config/application.yml
-          yarn install --check-files && yarn sass-migrator division **/*.scss
-          bundle exec rails assets:precompile
-          bundle exec rspec
-        continue-on-error: true
+        run: rake
 
       - name: Setup qlty.sh
         run: |
@@ -103,98 +90,13 @@ jobs:
           oidc: true
           files: coverage/.resultset.json
 
-      - name: Upload qlty report
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: qlty-report-${{ matrix.ruby }}
           path: qlty-report.json
-          retention-days: 1
 
-      - name: Upload coverage files
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ matrix.ruby }}
           path: coverage/
-          retention-days: 1
-
-  code_quality:
-    runs-on: ubuntu-24.04
-    needs: test
-    if: github.event_name == 'pull_request'
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-      
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2.2'
-          bundler-cache: true
-      
-      - name: Install dependencies
-        run: |
-          gem install rubocop
-
-      - name: Setup qlty.sh
-        run: |
-          curl -sSL https://qlty.sh/install.sh | bash
-          export PATH="$HOME/.qlty/bin:$PATH"
-          qlty --version
-      
-      - name: Download coverage files
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage-3.2.2
-          path: coverage/
-      
-      - name: Check coverage files
-        run: |
-          echo "=== Coverage Files ==="
-          ls -la coverage/
-          echo "=== Coverage Content ==="
-          if [ -f coverage/.resultset.json ]; then
-            echo "Coverage file exists and has $(wc -l < coverage/.resultset.json) lines"
-          else
-            echo "Coverage file NOT found!"
-          fi
-      
-      - name: Run RuboCop
-        run: rubocop --format json --out .rubocop.json
-        continue-on-error: true
-      
-      - name: Show RuboCop summary
-        run: |
-          echo "=== RuboCop Results ==="
-          rubocop --format simple
-      
-      - name: Upload RuboCop results
-        uses: actions/upload-artifact@v4
-        with:
-          name: rubocop-results
-          path: .rubocop.json
-          retention-days: 1
-      
-      - name: Run qlty locally
-        run: |
-          export PATH="$HOME/.qlty/bin:$PATH"
-          echo "=== Qlty Version ==="
-          qlty --version
-          echo "=== Qlty Check ==="
-          qlty check --sample 5
-      
-      - name: Run qlty with coverage
-        run: |
-          export PATH="$HOME/.qlty/bin:$PATH"
-          echo "=== Qlty Coverage Analysis ==="
-          qlty check --coverage coverage/.resultset.json --sample 10
-      
-      - name: Run qlty with RuboCop results
-        run: |
-          export PATH="$HOME/.qlty/bin:$PATH"
-          echo "=== Qlty RuboCop Analysis ==="
-          if [ -f .rubocop.json ]; then
-            qlty check --lint .rubocop.json --sample 10
-          else
-            echo "RuboCop results file not found"
-          fi
           
