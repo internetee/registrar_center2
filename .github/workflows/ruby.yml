@@ -65,6 +65,9 @@ jobs:
           gem install simplecov -v '<= 0.17.1'
           bundle install
 
+      - name: Setup application config
+        run: cp config/application.yml.sample config/application.yml
+
       - name: Run Tests
         run: rake
 
