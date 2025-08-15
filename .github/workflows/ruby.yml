@@ -12,7 +12,7 @@ jobs:
     continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.ruby == 'debug' }}
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -56,9 +56,14 @@ jobs:
     needs: test
     if: github.event_name == 'pull_request'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+      
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+          bundler-cache: true
       
       - name: Download coverage files
         uses: actions/download-artifact@v4
@@ -66,7 +71,54 @@ jobs:
           name: coverage-${{ matrix.ruby }}
           path: coverage/
       
-      - uses: qltysh/qlty-action/coverage@v2
+      - name: Check coverage files
+        run: |
+          echo "=== Coverage Files ==="
+          ls -la coverage/
+          echo "=== Coverage Content ==="
+          if [ -f coverage/.resultset.json ]; then
+            echo "Coverage file exists and has $(wc -l < coverage/.resultset.json) lines"
+          else
+            echo "Coverage file NOT found!"
+          fi
+      
+      - name: Run RuboCop
+        run: bundle exec rubocop --format json --out .rubocop.json
+      
+      - name: Show RuboCop summary
+        run: |
+          echo "=== RuboCop Results ==="
+          bundle exec rubocop --format simple
+      
+      - name: Upload RuboCop results
+        uses: actions/upload-artifact@v4
         with:
-          oidc: true
-          files: coverage/.resultset.json
+          name: rubocop-results
+          path: .rubocop.json
+          retention-days: 1
+      
+      - name: Run qlty locally
+        run: |
+          curl -sSL https://get.qlty.sh | bash
+          export PATH="$HOME/.qlty/bin:$PATH"
+          echo "=== Qlty Version ==="
+          qlty --version
+          echo "=== Qlty Check ==="
+          qlty check --sample 5
+      
+      - name: Run qlty with coverage
+        run: |
+          export PATH="$HOME/.qlty/bin:$PATH"
+          echo "=== Qlty Coverage Analysis ==="
+          qlty check --coverage coverage/.resultset.json --sample 10
+      
+      - name: Run qlty with RuboCop results
+        run: |
+          export PATH="$HOME/.qlty/bin:$PATH"
+          echo "=== Qlty RuboCop Analysis ==="
+          if [ -f .rubocop.json ]; then
+            qlty check --lint .rubocop.json --sample 10
+          else
+            echo "RuboCop results file not found"
+          fi
+          
