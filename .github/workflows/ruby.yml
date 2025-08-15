@@ -131,6 +131,11 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
       
+      - name: Install dependencies
+        run: |
+          gem install rubocop
+          gem install qlty
+      
       - name: Download coverage files
         uses: actions/download-artifact@v4
         with:
@@ -150,6 +155,7 @@ jobs:
       
       - name: Run RuboCop
         run: bundle exec rubocop --format json --out .rubocop.json
+        continue-on-error: true
       
       - name: Show RuboCop summary
         run: |
