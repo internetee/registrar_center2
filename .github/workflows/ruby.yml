@@ -68,6 +68,12 @@ jobs:
       - name: Setup application config
         run: cp config/application.yml.sample config/application.yml
 
+      - name: Install wkhtmltopdf
+        run: |
+          sudo apt-get install -y xfonts-base xfonts-75dpi
+          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+          sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+
       - name: Install and build assets
         run: |
           yarn install --check-files && yarn sass-migrator division **/*.scss
