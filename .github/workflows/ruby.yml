@@ -74,6 +74,11 @@ jobs:
           sudo apt-get install -y wkhtmltopdf xfonts-base xfonts-75dpi
           wkhtmltopdf --version
 
+      - name: Remove wkhtmltopdf-binary gem
+        run: |
+          bundle remove wkhtmltopdf-binary
+          bundle install
+
       - name: Install and build assets
         run: |
           yarn install --check-files && yarn sass-migrator division **/*.scss
