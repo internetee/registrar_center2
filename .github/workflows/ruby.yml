@@ -159,13 +159,13 @@ jobs:
           fi
       
       - name: Run RuboCop
-        run: bundle exec rubocop --format json --out .rubocop.json
+        run: rubocop --format json --out .rubocop.json
         continue-on-error: true
       
       - name: Show RuboCop summary
         run: |
           echo "=== RuboCop Results ==="
-          bundle exec rubocop --format simple
+          rubocop --format simple
       
       - name: Upload RuboCop results
         uses: actions/upload-artifact@v4
