@@ -83,6 +83,7 @@ jobs:
         env:
           REPP_HOST: http://registry:3000
           REPP_ENDPOINT: /repp/v1
+          WICKED_PDF_PATH: /usr/bin/wkhtmltopdf
         run: rake
 
       - name: Setup qlty.sh
