@@ -80,6 +80,10 @@ jobs:
           bundle remove wkhtmltopdf-binary
           bundle install
 
+      - name: Configure WickedPdf
+        run: |
+          echo "WickedPdf.config = { exe_path: '/usr/bin/wkhtmltopdf' }" >> config/initializers/wicked_pdf.rb
+
       - name: Install and build assets
         run: |
           yarn install --check-files && yarn sass-migrator division **/*.scss
