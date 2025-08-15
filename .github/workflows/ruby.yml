@@ -134,7 +134,12 @@ jobs:
       - name: Install dependencies
         run: |
           gem install rubocop
-          gem install qlty
+
+      - name: Setup qlty.sh
+        run: |
+          curl -sSL https://qlty.sh/install.sh | bash
+          export PATH="$HOME/.qlty/bin:$PATH"
+          qlty --version
       
       - name: Download coverage files
         uses: actions/download-artifact@v4
@@ -171,7 +176,6 @@ jobs:
       
       - name: Run qlty locally
         run: |
-          curl -sSL https://get.qlty.sh | bash
           export PATH="$HOME/.qlty/bin:$PATH"
           echo "=== Qlty Version ==="
           qlty --version
