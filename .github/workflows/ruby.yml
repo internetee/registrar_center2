@@ -113,7 +113,7 @@ jobs:
           qlty check
 
       - name: Upload coverage to qlty.sh
-        uses: qltysh/qlty-action/coverage@v1
+        uses: qltysh/qlty-action/coverage@v2
         with:
           oidc: true
           files: coverage/.resultset.json
