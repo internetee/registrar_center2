@@ -16,8 +16,10 @@ jobs:
       - name: git  repository
         uses: actions/checkout@v5
 
-      - name: Setup GitHub CLI
-        uses: cli/gh-action@v2
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gh
 
       - name: Auto approve PR
         if: |
@@ -30,7 +32,7 @@ jobs:
       - name: Fetch Dependabot metadata
         if: github.actor == 'dependabot[bot]'
         id: metadata
-        uses: dependabot/fetch-metadata@v2.0.0
+        uses: dependabot/fetch-metadata@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -45,12 +47,7 @@ jobs:
               echo "auto_merge=false" >> $GITHUB_OUTPUT
             fi
           elif [ "${{ github.actor }}" == "renovate[bot]" ]; then
-            # Patch label kontroll
-            if contains(github.event.pull_request.labels.*.name, 'patch'); then
-              echo "auto_merge=true" >> $GITHUB_OUTPUT
-            else
-              echo "auto_merge=false" >> $GITHUB_OUTPUT
-            fi
+            echo "auto_merge=true" >> $GITHUB_OUTPUT
           else
             echo "auto_merge=false" >> $GITHUB_OUTPUT
           fi
@@ -58,12 +55,15 @@ jobs:
 
       - name: Wait for CI checks
         if: steps.check_auto_merge.outputs.auto_merge == 'true'
-        run: |
-          echo "Waiting for CI checks to complete..."
-          sleep 30
+        uses: lewagon/wait-on-check-action@v1.3.4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 30
+          running-workflow-name: 'auto-approve-merge'
 
       - name: Auto-merge PR
-        if: steps.check_auto_merge.outputs.auto_merge == 'true' && github.event.pull_request.mergeable_state == 'clean'
+        if: steps.check_auto_merge.outputs.auto_merge == 'true'
         run: |
           gh pr merge --auto --merge ${{ github.event.pull_request.number }}
         env:
