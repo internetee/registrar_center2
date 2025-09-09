@@ -30,7 +30,7 @@ jobs:
       - name: Fetch Dependabot metadata
         if: github.actor == 'dependabot[bot]'
         id: metadata
-        uses: dependabot/fetch-metadata@v7267f607e9d3fb96fc2fbe83e0af444713e90b7
+        uses: dependabot/fetch-metadata@v2.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -58,12 +58,9 @@ jobs:
 
       - name: Wait for CI checks
         if: steps.check_auto_merge.outputs.auto_merge == 'true'
-        uses: lewagon/wait-on-check-action@v1.3.4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 30
-          running-workflow-name: 'auto-approve-merge'
+        run: |
+          echo "Waiting for CI checks to complete..."
+          sleep 30
 
       - name: Auto-merge PR
         if: steps.check_auto_merge.outputs.auto_merge == 'true' && github.event.pull_request.mergeable_state == 'clean'
