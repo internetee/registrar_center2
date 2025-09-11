@@ -113,9 +113,10 @@ jobs:
           qlty check
 
       - name: Upload coverage to qlty.sh
+        if: github.event_name == 'push'
         uses: qltysh/qlty-action/coverage@v2
         with:
-          oidc: true
+          token: ${{ secrets.QLTY_TOKEN }}
           files: coverage/.resultset.json
 
       - uses: actions/upload-artifact@v4
