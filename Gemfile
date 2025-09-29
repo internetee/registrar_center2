@@ -4,22 +4,22 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
+gem 'rails', '~> 7.0.8', '>= 7.0.8.1'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem 'sprockets-rails'
+gem 'sprockets-rails', '>= 3.5.0'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 6.0'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem 'jsbundling-rails'
+gem 'jsbundling-rails', '>= 1.2.0'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails'
+gem 'turbo-rails', '>= 1.5.0'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem 'stimulus-rails'
+gem 'stimulus-rails', '>= 1.3.0'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
@@ -42,7 +42,7 @@ gem 'bootsnap', require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
-gem 'cssbundling-rails', '>= 0.2.4'
+gem 'cssbundling-rails', '>= 1.3.0'
 
 gem 'faraday'
 
@@ -55,8 +55,8 @@ gem 'countries', require: 'countries/global'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
-gem 'omniauth', '>=2.0.0'
-gem 'omniauth-rails_csrf_protection'
+gem 'omniauth', '>= 2.1.2'
+gem 'omniauth-rails_csrf_protection', '>= 1.0.2'
 gem 'omniauth-tara', github: 'internetee/omniauth-tara'
 # gem 'omniauth-tara', path: 'vendor/gems/omniauth-tara'
 
@@ -65,7 +65,7 @@ gem 'coderay', '~> 1.1', '>= 1.1.2'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 6.0.4'
 end
 
 group :development do
@@ -82,7 +82,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
+  gem 'capybara', '>= 3.40.0'
   gem 'capybara-screenshot'
   gem 'faker'
   gem 'fuubar'
