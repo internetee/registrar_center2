@@ -147,6 +147,8 @@ en:
         registrant_name: "Registrant name"
         registrant_code: "Registrant code"
         expire_time: "Expire date"
+        force_delete: "Force delete"
+        force_delete_reason: "Force delete reason"
 
     form:
       info: "Info"
