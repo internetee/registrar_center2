@@ -40,6 +40,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y wkhtmltopdf
 
+      - name: Configure WickedPdf to use system wkhtmltopdf
+        run: |
+          echo "export WKHTMLTOPDF_PATH=/usr/bin/wkhtmltopdf" >> $GITHUB_ENV
+
       - name: Run tests
         env:
           REPP_HOST: http://registry:3000
