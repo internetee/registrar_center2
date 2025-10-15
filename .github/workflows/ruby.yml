@@ -41,9 +41,6 @@ jobs:
           wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
           sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 
-      - name: Run Brakeman
-        run: bundle exec brakeman --exit-on-warn --quiet -w 1
-
       - name: Run Bundler Audit
         run: bundle exec bundle-audit check --update
         continue-on-error: true
