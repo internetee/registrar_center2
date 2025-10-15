@@ -4,9 +4,20 @@
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true,
-      "automergeType": "pr"
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": false,
+      "automergeType": "pr",
+      "addLabels": ["patch"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "automerge": false,
+      "addLabels": ["minor"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "addLabels": ["major"]
     },
     {
       "depTypeList": ["ruby", "bundler", "Gemfile", "Gemfile.lock"],
@@ -15,6 +26,10 @@
     {
       "depTypeList": [".ruby-version"],
       "addLabels": ["ruby-version"]
+    },
+    {
+      "matchDepTypes": ["action"],
+      "addLabels": ["patch"]
     }
   ],
   "docker": {
