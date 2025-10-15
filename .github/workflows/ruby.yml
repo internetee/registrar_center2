@@ -23,6 +23,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
+      - name: Remove wkhtmltopdf-binary for CI
+        run: |
+          sed -i '/wkhtmltopdf-binary/d' Gemfile
+          bundle install
+
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
@@ -47,7 +52,6 @@ jobs:
           RAILS_ENV: test
           COVERAGE: true
           DISABLE_SPRING: 1
-          WKHTMLTOPDF_PATH: /usr/bin/wkhtmltopdf
         run: |
           cp config/application.yml.sample config/application.yml
           yarn add --dev postcss-import
