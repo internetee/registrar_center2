@@ -51,9 +51,6 @@ jobs:
           cp config/application.yml.sample config/application.yml
           yarn add --dev postcss-import
           yarn install --check-files
-          # Configure WickedPdf to use system wkhtmltopdf
-          echo "WickedPdf.config ||= {}" >> config/environments/test.rb
-          echo "WickedPdf.config[:exe_path] = '/usr/bin/wkhtmltopdf'" >> config/environments/test.rb
           bundle exec rails assets:precompile
           bundle exec rspec
 
