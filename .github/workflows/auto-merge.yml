@@ -50,14 +50,14 @@ jobs:
               echo "update_type=$UPDATE_TYPE" >> $GITHUB_OUTPUT
             fi
           elif [ "${{ github.actor }}" == "renovate[bot]" ]; then
-            # Check if the PR has the 'patch' label
+            # Check if the PR has the 'patch' label but NOT 'minor' or 'major' labels
             LABELS=$(gh pr view ${{ github.event.pull_request.number }} --json labels -q '.labels[].name' | tr '\n' ' ')
-            if [[ "$LABELS" == *"patch"* ]]; then
+            if [[ "$LABELS" == *"patch"* ]] && [[ "$LABELS" != *"minor"* ]] && [[ "$LABELS" != *"major"* ]]; then
               echo "auto_merge=true" >> $GITHUB_OUTPUT
-              echo "update_type=renovate-patch" >> $GITHUB_OUTPUT
+              echo "update_type=renovate-patch-only" >> $GITHUB_OUTPUT
             else
               echo "auto_merge=false" >> $GITHUB_OUTPUT
-              echo "update_type=renovate-non-patch" >> $GITHUB_OUTPUT
+              echo "update_type=renovate-non-patch-or-mixed" >> $GITHUB_OUTPUT
             fi
           else
             echo "auto_merge=false" >> $GITHUB_OUTPUT
