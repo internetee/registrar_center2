@@ -30,7 +30,13 @@
     {
       "matchDepTypes": ["action"],
       "addLabels": ["github-actions"],
-      "removeLabels": ["patch", "minor", "major"]
+      "removeLabels": ["patch", "minor", "major", "dependencies"]
+    },
+    {
+      "matchDepTypes": ["action"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["github-actions-major"],
+      "removeLabels": ["patch", "minor", "major", "dependencies"]
     }
   ],
   "docker": {
