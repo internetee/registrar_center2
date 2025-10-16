@@ -150,6 +150,8 @@ et:
         registrant_name: "Registreerija nimi"
         registrant_code: "Registreerija kood"
         expire_time: "Aegumisaeg"
+        force_delete: "Sundkustutamine"
+        force_delete_reason: "Sundkustutamise põhjus"
 
     form:
       info: "Info"
