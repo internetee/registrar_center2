@@ -29,7 +29,8 @@
     },
     {
       "matchDepTypes": ["action"],
-      "addLabels": ["patch"]
+      "addLabels": ["github-actions"],
+      "removeLabels": ["patch", "minor", "major"]
     }
   ],
   "docker": {
