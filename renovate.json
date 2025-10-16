@@ -29,7 +29,7 @@
     },
     {
       "matchDepTypes": ["action"],
-      "addLabels": ["patch"]
+      "addLabels": ["action"]
     }
   ],
   "docker": {
