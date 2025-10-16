@@ -12,14 +12,12 @@
     {
       "matchUpdateTypes": ["minor"],
       "automerge": false,
-      "addLabels": ["minor"],
-      "removeLabels": ["patch"]
+      "addLabels": ["minor"]
     },
     {
       "matchUpdateTypes": ["major"],
       "automerge": false,
-      "addLabels": ["major"],
-      "removeLabels": ["patch", "minor"]
+      "addLabels": ["major"]
     },
     {
       "depTypeList": ["ruby", "bundler", "Gemfile", "Gemfile.lock"],
@@ -30,15 +28,8 @@
       "addLabels": ["ruby-version"]
     },
     {
-      "matchManagers": ["github-actions"],
-      "addLabels": ["github-actions"],
-      "removeLabels": ["patch", "minor", "major", "dependencies"]
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["major"],
-      "addLabels": ["github-actions-major"],
-      "removeLabels": ["patch", "minor", "major", "dependencies"]
+      "matchDepTypes": ["action"],
+      "addLabels": ["action"]
     }
   ],
   "docker": {
