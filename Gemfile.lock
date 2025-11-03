@@ -78,6 +78,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
     attr_required (1.0.1)
+    base64 (0.3.0)
     bindata (2.4.15)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -144,7 +145,8 @@ GEM
       bindata
       faraday (~> 2.0)
       faraday-follow_redirects
-    jwt (2.7.1)
+    jwt (3.1.2)
+      base64
     launchy (2.5.2)
       addressable (~> 2.8)
     loofah (2.21.3)
