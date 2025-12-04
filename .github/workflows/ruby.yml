@@ -1,105 +1,143 @@
-name: Github Testing
-on: [push]
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on: [push, pull_request]
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   test:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-22.04 ]
-        ruby: [ '3.2.2' ]
+        os: [ubuntu-24.04]
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.ruby == 'debug' }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: config bundler
+          bundler-cache: true
+
+      - name: Config bundler
         run:  |
           bundle config set without 'development staging production'
           bundle config set deployment '[secure]'
           bundle env
           head -n1 $(which bundle)
 
-      - name: Install wkhtmltopdf (push)
+      - name: Install wkhtmltopdf
         run: |
-          sudo apt-get install -y xfonts-base xfonts-75dpi
-          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-          sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-        if: github.event_name == 'push'
+          sudo apt-get update
+          sudo apt-get install -y wkhtmltopdf
 
-      - name: Set ENV for codeclimate (pull_request)
-        run: |
-          git fetch --no-tags --prune --depth=1 origin +refs/heads/$GITHUB_HEAD_REF:refs/remotes/origin/$GITHUB_HEAD_REF
-          echo "GIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
-          echo "GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)" >> $GITHUB_ENV
-        if: github.event_name == 'pull_request'
-
-      - name: Set ENV for codeclimate (push)
-        run: |
-          echo "GIT_BRANCH=$GITHUB_REF" >> $GITHUB_ENV
-          echo "GIT_COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
-        if: github.event_name == 'push'
-
-      - name: Prepare CodeClimate
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          curl -LSs 'https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64' >./cc-test-reporter;
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
-
-      - name: Run Tests
+      - name: Run tests
         env:
           REPP_HOST: http://registry:3000
           REPP_ENDPOINT: /repp/v1
           RAILS_ENV: test
           COVERAGE: true
           DISABLE_SPRING: 1
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         run: |
           cp config/application.yml.sample config/application.yml
-          yarn install --check-files && yarn sass-migrator division **/*.scss
+          yarn add --dev postcss-import
+          yarn install --check-files
           bundle exec rails assets:precompile
           bundle exec rspec
-      - name: Save coverage
-        run: ./cc-test-reporter format-coverage --output coverage/codeclimate.${{ matrix.ruby }}.json
 
-      - uses: actions/upload-artifact@v4.3.3
+      - name: Debug coverage files
+        if: always()
+        run: |
+          echo "Checking coverage directory:"
+          ls -la coverage/ || echo "No coverage directory found"
+          echo "Looking for .resultset.json:"
+          find . -name "*.resultset.json" -type f || echo "No .resultset.json found"
+          echo "Checking if .resultset.json exists in coverage:"
+          ls -la coverage/.resultset.json || echo "No .resultset.json in coverage directory"
+
+      - name: Upload coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: coverage-${{ matrix.ruby }}
-          path: coverage/codeclimate.${{ matrix.ruby }}.json
+          name: coverage
+          path: |
+            coverage/.resultset.json
+            coverage/index.html
+            coverage/assets/
+          include-hidden-files: true
 
-  upload_coverage:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-22.04 ]
-        ruby: [ '3.2.2' ]
-    runs-on: ubuntu-22.04
-
-    env:
-      CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      CC_TEST_REPORTER_URL: https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-
+  code_quality:
+    runs-on: ubuntu-24.04
     needs: test
-
     steps:
-      - name: Download test coverage reporter
-        run: curl -L $CC_TEST_REPORTER_URL > cc-test-reporter
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-      - name: Give test coverage reporter executable permissions
-        run: chmod +x cc-test-reporter
-
-      - uses: actions/download-artifact@v4.1.7
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          name: coverage-${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Setup qlty.sh
+        run: |
+          curl -sSL https://qlty.sh/install.sh | bash
+          export PATH="$HOME/.qlty/bin:$PATH"
+          qlty --version
+
+      - name: Initialize qlty.sh
+        run: |
+          export PATH="$HOME/.qlty/bin:$PATH"
+          qlty init --no
+
+      - name: Install dependencies
+        run: |
+          cp config/application.yml.sample config/application.yml
+          yarn add --dev postcss-import
+          yarn install --check-files
+
+      - name: Run qlty.sh analysis
+        continue-on-error: true
+        run: |
+          export PATH="$HOME/.qlty/bin:$PATH"
+          qlty check
+
+      - name: Download coverage artifact
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage
           path: coverage
 
-      - name: Aggregate & upload results to Code Climate
+      - name: Debug coverage files after download
+        if: always()
         run: |
-          ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
-          ./cc-test-reporter upload-coverage
+          echo "Checking coverage directory structure:"
+          ls -la coverage/
+          echo "Looking for all JSON files:"
+          find coverage -type f -name "*.json" | head -10
+          echo "Looking for .resultset.json:"
+          find coverage -name "*.resultset.json" -type f
+          echo "Checking if coverage/coverage exists:"
+          ls -la coverage/coverage/ || echo "No coverage/coverage directory"
+          echo "Checking for any .resultset files:"
+          find coverage -name "*.resultset*" -type f
+          echo "Checking what's in the artifact root:"
+          ls -la ./
+          echo "Looking for .resultset.json in root:"
+          find . -name "*.resultset.json" -type f
+
+      - name: Upload coverage to qlty.sh
+        if: always()
+        uses: qltysh/qlty-action/coverage@v2
+        with:
+          token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+          files: coverage/**/*.resultset.json
