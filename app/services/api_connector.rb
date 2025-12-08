@@ -83,7 +83,9 @@ class ApiConnector
       headers: headers.present? ? base_headers.merge!(headers) : base_headers,
       ssl: ca_auth_params
     ) do |faraday|
-      faraday.response :logger, nil, { headers: true, bodies: false, errors: true, log_level: :debug }
+      unless Rails.env.test?
+        faraday.response :logger, nil, { headers: true, bodies: false, errors: true, log_level: :debug }
+      end
     end
   end
 
