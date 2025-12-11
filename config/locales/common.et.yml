@@ -25,9 +25,11 @@ et:
       dispute_committee: "Domeenivaidluste Komisjon"
       registrars: "Registripidajad"
       list_of_accredited_registrars: "Akrediteeritud registripidajate nimekiri"
+      list_of_accredited_registrars_url: "https://www.internet.ee/registripidaja/akrediteeritud-registripidajad"
       terms_and_conditions_for_registrars: "Akrediteeritud registripidajaks saamine"
-      partner_programme: |
-        "Elite Partner" programm
+      terms_and_conditions_for_registrars_url: "https://www.internet.ee/registripidaja/kuidas-saada-ee-akrediteeritud-registripidajaks"
+      partner_programme: "\"Elite Partner\" programm"
+      partner_programme_url: "https://www.internet.ee/registripidaja/kuidas-saada-ee-elite-partneriks"
       estonian_internet: "Meist"
       contact_us: "Võta meiega ühendust!"
       management: "Juhtimine"
