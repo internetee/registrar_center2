@@ -431,6 +431,8 @@ en:
       billing_iban: "Billing IBAN"
       edit_account: "Edit account"
       edit_info: "Required for sending e-invoices to the bank"
+      accept_pdf_invoices: "Accept PDF invoices"
+      accept_pdf_invoices_info: "When enabled, you will receive invoices as PDF attachments via email"
       auto_reload: "Balance Auto-Reload"
       auto_reload_info: "Automatically reload your balance when it drops to a minimum threshold"
       enabled: "Enabled"

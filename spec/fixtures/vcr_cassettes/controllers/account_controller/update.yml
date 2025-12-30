@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/accounts
     body:
       encoding: UTF-8
-      string: '{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434"}}'
+      string: '{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434","accept_pdf_invoices":true}}'
     headers:
       Authorization:
       - "<TOKEN>"
@@ -50,6 +50,6 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"code":1000,"message":"Your account has been updated","data":{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434"}}}'
+      string: '{"code":1000,"message":"Your account has been updated","data":{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434","accept_pdf_invoices":true}}}'
   recorded_at: Fri, 09 Sep 2022 10:20:02 GMT
 recorded_with: VCR 6.1.0
