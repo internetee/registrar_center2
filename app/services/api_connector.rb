@@ -5,12 +5,14 @@ class ApiConnector
   require 'faraday/net_http'
   Faraday.default_adapter = :net_http
 
+  DEFAULT_REQUESTER = 'webclient'
+
   attr_reader :auth_token, :request_ip
 
   def initialize(username:, password: nil, token: nil, **other_options)
     @auth_token = token || generate_token(username: username, password: password)
     @request_ip = other_options[:request_ip]
-    @requester = other_options[:requester]
+    @requester = other_options[:requester] || DEFAULT_REQUESTER
     @user_cert = other_options[:user_cert]
     @user_cert_cn = other_options[:user_cert_cn]
   end
@@ -66,6 +68,8 @@ class ApiConnector
   end
 
   def generate_token(username:, password:)
+    return if username.blank? || password.blank?
+
     Base64.urlsafe_encode64("#{username}:#{password}")
   end
 
@@ -78,18 +82,39 @@ class ApiConnector
       url: url,
       headers: headers.present? ? base_headers.merge!(headers) : base_headers,
       ssl: ca_auth_params
-    )
+    ) do |faraday|
+      unless Rails.env.test?
+        faraday.response :logger, nil, { headers: true, bodies: false, errors: true, log_level: :debug }
+      end
+    end
   end
 
   def ca_auth_params
     return if Rails.env.test?
 
-    client_cert = File.read(ENV['cert_path'])
-    client_key = File.read(ENV['key_path'])
-    {
-      client_cert: OpenSSL::X509::Certificate.new(client_cert),
+    cert_path = ENV['cert_path']
+    key_path = ENV['key_path']
+
+    Rails.logger.debug "[ApiConnector] Certificate path: #{cert_path}"
+    Rails.logger.debug "[ApiConnector] Key path: #{key_path}"
+    Rails.logger.debug "[ApiConnector] Certificate exists: #{File.exist?(cert_path.to_s)}"
+    Rails.logger.debug "[ApiConnector] Key exists: #{File.exist?(key_path.to_s)}"
+
+    client_cert = File.read(cert_path)
+    client_key = File.read(key_path)
+
+    # Extract CN from certificate for debugging
+    cert_obj = OpenSSL::X509::Certificate.new(client_cert)
+    cn = cert_obj.subject.to_a.find { |a| a[0] == 'CN' }&.dig(1)
+    Rails.logger.debug "[ApiConnector] Certificate CN: #{cn}"
+
+    params = {
+      client_cert: cert_obj,
       client_key: OpenSSL::PKey::RSA.new(client_key),
     }
+    # Disable SSL verification in development (self-signed certificates)
+    params[:verify] = false if Rails.env.development?
+    params
   end
 
   def base_headers

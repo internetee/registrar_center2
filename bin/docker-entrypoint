@@ -1,0 +1,59 @@
+#!/bin/bash
+set -e
+
+# Remove a potentially pre-existing server.pid for Rails
+rm -f /opt/webapps/app/tmp/pids/server.pid
+
+# Ensure proper environment variables are set for Rails in production mode
+if [ "$RAILS_ENV" == "production" ] || [ "$RAILS_ENV" == "staging" ]; then
+  # Check if the master key is provided
+  if [ -n "$RAILS_MASTER_KEY" ]; then
+    echo "RAILS_MASTER_KEY environment variable is set. Using Rails credentials system."
+  # If no master key, check for secret key base
+  elif [ -n "$SECRET_KEY_BASE" ]; then
+    echo "SECRET_KEY_BASE environment variable is set. Using direct secret key configuration."
+  else
+    echo "WARNING: Neither RAILS_MASTER_KEY nor SECRET_KEY_BASE environment variables are set."
+    echo "Generating a temporary SECRET_KEY_BASE. This is okay for testing but NOT recommended for real production use."
+    export SECRET_KEY_BASE=$(openssl rand -hex 64)
+  fi
+fi
+
+# # Wait for PostgreSQL to be available if database connection settings are provided
+# if [ -n "$POSTGRES_HOST" ]; then
+#   echo "Checking PostgreSQL connection..."
+#   until pg_isready -h $POSTGRES_HOST -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} 2>/dev/null; do
+#     echo "Waiting for PostgreSQL to be available..."
+#     sleep 1
+#   done
+#   echo "PostgreSQL is available."
+# else
+#   echo "POSTGRES_HOST environment variable is not set. Skipping PostgreSQL connection check."
+# fi
+
+# # Set up database if needed (useful for initial deployments)
+# if [ "${DB_SETUP:-false}" = "true" ]; then
+#   echo "Setting up database..."
+#   bundle exec rails db:setup
+# fi
+
+# # Run database migrations if needed
+# if [ "${AUTO_MIGRATE:-false}" = "true" ]; then
+#   echo "Running database migrations..."
+#   bundle exec rails db:migrate
+# fi
+
+# Precompile assets if needed and not already done during build
+if [ "${PRECOMPILE_ASSETS:-false}" = "true" ] && { [ ! -d /opt/webapps/app/public/assets ] || [ -z "$(ls -A /opt/webapps/app/public/assets)" ]; }; then
+  echo "Precompiling assets..."
+  bundle exec rails assets:precompile
+fi
+
+# Check for readiness probe file for Kubernetes
+mkdir -p /opt/webapps/app/tmp/k8s
+touch /opt/webapps/app/tmp/k8s/ready
+
+echo "Rails application is ready to serve requests!"
+
+# Execute the container's main process (what's set as CMD in the Dockerfile)
+exec "$@" 
