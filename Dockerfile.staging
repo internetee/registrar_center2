@@ -87,6 +87,9 @@ RUN yarn install --check-files
 
 COPY . .
 
+# Create application.yml from sample for asset precompilation
+RUN cp config/application.yml.sample config/application.yml
+
 RUN bundle exec rails assets:precompile
 
 EXPOSE 3000
