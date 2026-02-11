@@ -33,17 +33,24 @@ jobs:
     # environment: staging
 
     steps:
-      - name: ✅ Validate inputs
+      - name: ✅ Validate inputs and compute ref
+        id: compute_ref
         run: |
-          if [[ "${{ inputs.deploy_target }}" == "pr" && -z "${{ inputs.pr_number }}" ]]; then
-            echo "::error::PR number is required when deploy target is 'pr'"
-            exit 1
+          if [[ "${{ inputs.deploy_target }}" == "pr" ]]; then
+            PR_NUMBER="${{ inputs.pr_number }}"
+            if [[ -z "${PR_NUMBER}" ]]; then
+              echo "::error::PR number is required when deploy target is 'pr'"
+              exit 1
+            fi
+            echo "ref=refs/pull/${PR_NUMBER}/merge" >> $GITHUB_OUTPUT
+          else
+            echo "ref=main" >> $GITHUB_OUTPUT
           fi
 
       - name: ⬇️ Checkout application code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.deploy_target == 'main' && 'main' || format('refs/pull/{0}/merge', inputs.pr_number) }}
+          ref: ${{ steps.compute_ref.outputs.ref }}
 
       - name: 🔑 Configure AWS Credentials (for ECR and EKS)
         uses: aws-actions/configure-aws-credentials@v4
