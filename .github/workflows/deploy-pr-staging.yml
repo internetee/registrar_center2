@@ -9,7 +9,7 @@ on:
         type: choice
         options:
           - pr
-          - master
+          - main
         default: pr
       pr_number:
         description: 'Number of PR to deploy (only digits, e.g., 2889). Required only for PR deploy.'
