@@ -43,7 +43,7 @@ jobs:
       - name: ⬇️ Checkout application code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.deploy_target == 'master' && 'master' || format('refs/pull/{0}/merge', inputs.pr_number) }}
+          ref: ${{ inputs.deploy_target == 'main' && 'main' || format('refs/pull/{0}/merge', inputs.pr_number) }}
 
       - name: 🔑 Configure AWS Credentials (for ECR and EKS)
         uses: aws-actions/configure-aws-credentials@v4
@@ -54,7 +54,7 @@ jobs:
       - name: 🛠️ Build and Tag Docker image
         id: docker_build
         run: |
-          if [[ "${{ inputs.deploy_target }}" == "master" ]]; then
+          if [[ "${{ inputs.deploy_target }}" == "main" ]]; then
             SHORT_SHA=$(git rev-parse --short HEAD)
             TAG="master-${SHORT_SHA}"
           else
@@ -98,7 +98,7 @@ jobs:
               "app_name": "registrar",
               "image_tag": "${{ steps.docker_build.outputs.IMAGE_TAG }}",
               "namespace": "${{ env.APP_NAME }}",
-              "pr_number": "${{ inputs.deploy_target == 'master' && '0' || inputs.pr_number }}"
+              "pr_number": "${{ inputs.deploy_target == 'main' && '0' || inputs.pr_number }}"
               "source_repo": "internetee/registrar_center2"
             }
             
