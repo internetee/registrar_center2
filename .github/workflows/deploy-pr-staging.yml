@@ -104,7 +104,7 @@ jobs:
             {
               "app_name": "registrar",
               "image_tag": "${{ steps.docker_build.outputs.IMAGE_TAG }}",
-              "namespace": "${{ env.APP_NAME }}",
+              "namespace": "${{ inputs.deploy_target == 'main' && 'registrar' || env.APP_NAME }}",
               "pr_number": "${{ inputs.deploy_target == 'main' && '0' || inputs.pr_number }}",
               "source_repo": "internetee/registrar_center2"
             }
