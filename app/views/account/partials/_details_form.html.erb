@@ -31,6 +31,17 @@
                             <%= tooltip t('account.show.edit_info') %>
                         </div>
                     </div>
+                    <div class="form--row">
+                        <%= form.label :accept_pdf_invoices, t('account.show.accept_pdf_invoices'), class: 'form--label' %>
+                        <div class="form--field">
+                            <div class="form--input">
+                                <%= form.check_box :accept_pdf_invoices,
+                                                   checked: @account[:accept_pdf_invoices],
+                                                   class: 'checkbox' %>
+                            </div>
+                            <%= tooltip t('account.show.accept_pdf_invoices_info') %>
+                        </div>
+                    </div>
                     <div class="form--actions">
                         <%= form.submit t(:save), class: 'button button--primary' %>
                     </div>
