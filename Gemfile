@@ -44,7 +44,7 @@ gem 'bootsnap', require: false
 
 gem 'cssbundling-rails', '>= 0.2.4'
 
-gem 'faraday'
+gem 'faraday', '>= 2.14.1'
 
 gem 'pagy'
 
