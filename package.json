@@ -19,7 +19,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.4",
     "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "^7.1.0",
+    "@hotwired/turbo-rails": "^8.0.18",
     "choices.js": "^10.2.0",
     "epic-spinners": "^2.0.0",
     "esbuild": "^0.27.0",
