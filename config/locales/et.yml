@@ -433,6 +433,8 @@ et:
       billing_iban: "Arvete IBAN"
       edit_account: "Muuda andmed"
       edit_info: "Vajalik e-arvete panka saatmiseks"
+      accept_pdf_invoices: "Aktsepteeri PDF arveid"
+      accept_pdf_invoices_info: "Kui aktiveeritud, saate arveid PDF manustena e-posti teel"
       auto_reload: "Krediidi automaatne laadimine"
       auto_reload_info: "Laadige oma saldo automaatselt uuesti, kui see langeb miinimumläveni"
       enabled: "Aktiveeritud"

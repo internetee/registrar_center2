@@ -15,6 +15,12 @@
                 <h4><%= @account[:iban].present? ? @account[:iban] : '-' %></h4>
             </div>
         </div>
+        <div class="form--row">
+            <%= label_tag nil, t('account.show.accept_pdf_invoices'), class: 'form--label' %>
+            <div class="form--field">
+                <h4><%= @account[:accept_pdf_invoices] ? t('account.show.enabled') : t('account.show.disabled') %></h4>
+            </div>
+        </div>
         <div class="form--actions">
             <%= link_to t(:edit), 'javascript: void(0);', 'data-dialog': 'edit_account_details', class: 'button button--primary' %>
         </div>
