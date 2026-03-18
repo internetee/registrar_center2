@@ -1,24 +1,24 @@
-FROM ruby:3.2.2
+FROM internetee/ruby:3.2.2-node18-no-chrome
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    npm \
-    build-essential \
-    git \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    wkhtmltopdf \
+    && apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 
+RUN npm install -g n
+RUN n stable
 RUN npm install -g yarn@latest
+RUN npm install -g sass-migrator
 
+RUN mkdir -p /opt/webapps/app/tmp/pids
 WORKDIR /opt/webapps/app
 
 COPY Rakefile Gemfile Gemfile.lock ./
 
-# Use this for local gem troubleshooting:
-# ADD vendor/gems/omniauth-tara ./vendor/gems/omniauth-tara
-# ADD vendor/gems/omniauth ./vendor/gems/omniauth
-
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 COPY package.json yarn.lock ./
+RUN yarn install --check-files
+RUN sass-migrator --verbose division **/*.scss
 
-# RUN yarn cache clean
-RUN yarn install --check-files && yarn sass-migrator division **/*.scss
+EXPOSE 3000
