@@ -21,7 +21,7 @@ jobs:
     continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.ruby == 'debug' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
@@ -80,7 +80,7 @@ jobs:
     needs: test
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
