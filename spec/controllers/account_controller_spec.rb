@@ -18,6 +18,7 @@ RSpec.describe AccountController, type: :controller do
         account: {
           billing_email: Faker::Internet.email,
           iban: Faker::Bank.iban,
+          accept_pdf_invoices: '1',
         },
       },
     },
