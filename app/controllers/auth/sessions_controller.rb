@@ -22,7 +22,6 @@ module Auth
         username: auth_params[:username],
         password: auth_params[:password],
         request_ip: cookies[:request_ip] || request.ip,
-        requester: 'webclient',
         user_cert: request.env['HTTP_SSL_CLIENT_CERT'],
         user_cert_cn: request.env['HTTP_SSL_CLIENT_S_DN_CN'],
       }

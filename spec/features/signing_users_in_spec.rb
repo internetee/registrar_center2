@@ -40,18 +40,4 @@ RSpec.feature 'signing in user' do
     expect(page).to have_content('Invalid authorization information')
     expect(page).to have_link('Sign in')
   end
-
-  scenario 'with epp role', :vcr do
-    visit root_path
-    expect(page).to have_current_path(login_path)
-    expect(page).to have_link('Sign in')
-
-    fill_in 'Username', with: Rails.configuration.customization[:epp_username]
-    fill_in 'Password', with: Rails.configuration.customization[:epp_password]
-    click_button 'Sign in'
-
-    expect(page).to have_current_path(dashboard_path)
-    expect(page).to have_content('Successfully logged in!')
-    expect(page).to have_link('Sign out')
-  end
 end

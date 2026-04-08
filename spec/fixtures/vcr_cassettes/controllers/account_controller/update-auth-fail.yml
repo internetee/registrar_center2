@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/accounts
     body:
       encoding: UTF-8
-      string: '{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434"}}'
+      string: '{"account":{"billing_email":"eleanore_funk@konopelski-bahringer.com","iban":"GB76MOYJ60313695860434","accept_pdf_invoices":true}}'
     headers:
       Authorization:
       - "<TOKEN>"
