@@ -76,13 +76,15 @@ class AccountController < BaseController
   def account_params
     params.require(:account).permit(:billing_email, :iban,
                                     :auto_reload_amount,
-                                    :auto_reload_threshold, :user_id)
+                                    :auto_reload_threshold, :user_id,
+                                    :accept_pdf_invoices)
   end
 
   def account_payload
     {
       billing_email: account_params[:billing_email],
       iban: account_params[:iban],
+      accept_pdf_invoices: account_params[:accept_pdf_invoices] == '1',
     }
   end
 

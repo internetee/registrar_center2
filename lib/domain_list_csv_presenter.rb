@@ -18,6 +18,8 @@ class DomainListCsvPresenter < CsvPresenter
       registrant_name
       registrant_code
       expire_time
+      force_delete
+      force_delete_reason
     ]
 
     columns.map! { |column| view.t("domains.index.csv.#{column}") }
@@ -32,6 +34,8 @@ class DomainListCsvPresenter < CsvPresenter
     row[2] = domain.registrant[:name]
     row[3] = domain.registrant[:code]
     row[4] = view.l(domain.expire_time.to_datetime, format: :date)
+    row[5] = domain.statuses&.key?('serverForceDelete') ? 1 : 0
+    row[6] = domain.statuses&.dig('serverForceDelete').to_s
 
     CSV::Row.new([], row)
   end
