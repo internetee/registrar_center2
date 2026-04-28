@@ -1,4 +1,4 @@
-name: Auto approve & merge patch PRs
+name: Auto approve & merge patch/minor PRs
 
 on:
   pull_request:
@@ -42,7 +42,7 @@ jobs:
         run: |
           if [ "${{ github.actor }}" == "dependabot[bot]" ]; then
             UPDATE_TYPE="${{ steps.metadata.outputs.update-type }}"
-            if [[ "$UPDATE_TYPE" == "version-update:semver-patch" ]]; then
+            if [[ "$UPDATE_TYPE" == "version-update:semver-patch" || "$UPDATE_TYPE" == "version-update:semver-minor" ]]; then
               echo "auto_merge=true" >> $GITHUB_OUTPUT
               echo "update_type=$UPDATE_TYPE" >> $GITHUB_OUTPUT
             else
@@ -50,14 +50,13 @@ jobs:
               echo "update_type=$UPDATE_TYPE" >> $GITHUB_OUTPUT
             fi
           elif [ "${{ github.actor }}" == "renovate[bot]" ]; then
-            # Check if the PR has the 'patch' label but NOT 'minor' or 'major' labels
             LABELS=$(gh pr view ${{ github.event.pull_request.number }} --json labels -q '.labels[].name' | tr '\n' ' ')
-            if [[ "$LABELS" == *"patch"* ]] && [[ "$LABELS" != *"minor"* ]] && [[ "$LABELS" != *"major"* ]]; then
+            if [[ "$LABELS" != *"major"* ]] && ( [[ "$LABELS" == *"patch"* ]] || [[ "$LABELS" == *"minor"* ]] ); then
               echo "auto_merge=true" >> $GITHUB_OUTPUT
-              echo "update_type=renovate-patch-only" >> $GITHUB_OUTPUT
+              echo "update_type=renovate-patch-or-minor" >> $GITHUB_OUTPUT
             else
               echo "auto_merge=false" >> $GITHUB_OUTPUT
-              echo "update_type=renovate-non-patch-or-mixed" >> $GITHUB_OUTPUT
+              echo "update_type=renovate-non-patch-minor-or-major" >> $GITHUB_OUTPUT
             fi
           else
             echo "auto_merge=false" >> $GITHUB_OUTPUT
