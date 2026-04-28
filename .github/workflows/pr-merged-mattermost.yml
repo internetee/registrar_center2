@@ -11,47 +11,64 @@ permissions:
 
 jobs:
   notify:
-    if: github.event.pull_request.merged == true &&
-       (
-         github.event.pull_request.user.login == 'renovate[bot]' ||
-         github.event.pull_request.user.login == 'dependabot[bot]' ||
-         github.event.pull_request.user.login == 'snyk-bot'
-       ) &&
-       (
-         github.event.pull_request.merged_by.login == 'github-actions[bot]' ||
-         github.event.pull_request.merged_by.login == 'renovate[bot]'
-       )
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Check if PR was auto-merged
+        id: check_auto_merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Check if PR was merged by a bot or has auto-merge label
+          ACTOR="${{ github.actor }}"
+          LABELS=$(gh pr view $PR_NUMBER --json labels -q '.labels[].name' | tr '\n' ' ')
+          
+          if [[ "$ACTOR" == *"[bot]" ]] || [[ "$LABELS" == *"auto-merge"* ]] || [[ "$LABELS" == *"patch"* ]]; then
+            echo "is_auto_merged=true" >> $GITHUB_OUTPUT
+            echo "merge_type=$ACTOR" >> $GITHUB_OUTPUT
+          else
+            echo "is_auto_merged=false" >> $GITHUB_OUTPUT
+            echo "merge_type=manual" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build short changelog
+        id: changelog
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          COMMITS=$(gh pr view $PR_NUMBER --json commits -q '.commits[].messageHeadline')
+          if [ -z "$COMMITS" ]; then
+            echo "text=No commit messages found" >> $GITHUB_OUTPUT
+          else
+            echo "text=$(echo "$COMMITS" | jq -r '.[]' | head -n 10 | sed 's/^/- /')" >> $GITHUB_OUTPUT
+          fi
+
       - name: Send Mattermost notification
+        if: steps.check_auto_merge.outputs.is_auto_merged == 'true'
         env:
           MATTERMOST_BOT_TOKEN: ${{ secrets.MATTERMOST_BOT_TOKEN }}
           MATTERMOST_CHANNEL_ID: ${{ secrets.MATTERMOST_CHANNEL_ID }}
           MATTERMOST_BASE_URL: ${{ secrets.MATTERMOST_BASE_URL }}
           REPO: ${{ github.repository }}
-          ACTOR: ${{ github.event.pull_request.merged_by.login }}
+          ACTOR: ${{ github.actor }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_URL: ${{ github.event.pull_request.html_url }}
           MERGED_AT: ${{ github.event.pull_request.merged_at }}
+          CHANGELOG: ${{ steps.changelog.outputs.text }}
+          MERGE_TYPE: ${{ steps.check_auto_merge.outputs.merge_type }}
         run: |
           if [ -z "$MATTERMOST_BOT_TOKEN" ] || [ -z "$MATTERMOST_CHANNEL_ID" ] || [ -z "$MATTERMOST_BASE_URL" ]; then
             echo "Missing Mattermost secrets (MATTERMOST_BOT_TOKEN, MATTERMOST_CHANNEL_ID, MATTERMOST_BASE_URL)" >&2
             exit 1
           fi
-
-          # Escape quotes and backslashes in PR title for JSON
-          ESCAPED_TITLE=$(echo "$PR_TITLE" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | tr '\n' ' ')
-
-          # Build JSON payload safely
-          PAYLOAD=$(jq -n \
-            --arg channel "$MATTERMOST_CHANNEL_ID" \
-            --arg message "[$REPO] PR #$PR_NUMBER: \"$ESCAPED_TITLE\" was merged by $ACTOR.\nMerged at: $MERGED_AT\nLink: $PR_URL" \
-            '{channel_id: $channel, message: $message}')
-
-          # Send to Mattermost
           curl -sS -X POST \
             -H "Authorization: Bearer $MATTERMOST_BOT_TOKEN" \
             -H "Content-Type: application/json" \
-            -d "$PAYLOAD" \
+            -d "{\"channel_id\":\"$MATTERMOST_CHANNEL_ID\",\"message\":\"[$REPO] PR #$PR_NUMBER: \\\"$PR_TITLE\\\" was auto-merged by $MERGE_TYPE.\\nMerged at: $MERGED_AT\\nLink: $PR_URL\\nChangelog:\\n$CHANGELOG\"}" \
             "$MATTERMOST_BASE_URL/api/v4/posts"
