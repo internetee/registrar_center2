@@ -86,11 +86,29 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
 
   # NB! This method is used for both single and bulk transfers
   def transfer
-    conn = ApiConnector::Transfers::Creator.new(**auth_info)
-    result = conn.call_action(payload: domain_payload)
-    handle_response(result); return if performed?
+    # ВРЕМЕННО: если есть batch_file, отправляем сырой CSV файл на новый эндпойнт для тестирования
+    if domain_params[:batch_file].present?
+      csv_content = Base64.decode64(domain_params[:batch_file])
+      conn = ApiConnector::Domains::CsvTransfer.new(**auth_info)
+      result = conn.call_action(csv_content: csv_content)
+      handle_response(result); return if performed?
+      
+      # Если дошли до этой точки, значит запрос прошел успешно
+      # Показываем ответ от сервиса или создаем сообщение о трансфере
+      if @response && @response.respond_to?(:transferred) && @response.respond_to?(:failed)
+        create_transfer_message(@response)
+      else
+        flash.notice = @message || "Domain transfer operation completed successfully"
+      end
+    else
+      # Оригинальная логика для single transfer
+      conn = ApiConnector::Transfers::Creator.new(**auth_info)
+      result = conn.call_action(payload: domain_payload)
+      handle_response(result); return if performed?
 
-    create_transfer_message(@response)
+      create_transfer_message(@response)
+    end
+    
     reset_bulk_change_cache
     redirect_to domains_path
   end
@@ -196,7 +214,9 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
       nameservers: nameservers_attributes(domain_params),
       dns_keys: dnskeys_attributes(domain_params),
       legal_document: transform_file_params(domain_params[:legal_document]),
-      batch_file: parse_csv(domain_params[:batch_file]),
+      # ВРЕМЕННО ЗАКОММЕНТИРОВАНО ДЛЯ ТЕСТИРОВАНИЯ ПРЯМОЙ ОТПРАВКИ CSV
+      # batch_file: parse_csv(domain_params[:batch_file]),
+      batch_file: [], # Временная заглушка
       exp_date: domain_params[:exp_date],
     }
   end
@@ -227,16 +247,17 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     domain_params[:dnskeys_attributes].values.reject { |d| d[:public_key].blank? }
   end
 
-  def parse_csv(params)
-    return if params.blank?
+  # ВРЕМЕННО ЗАКОММЕНТИРОВАНО ДЛЯ ТЕСТИРОВАНИЯ ПРЯМОЙ ОТПРАВКИ CSV
+  # def parse_csv(params)
+  #   return if params.blank?
 
-    csv = CSV.parse(Base64.decode64(params), headers: true)
-    transfers = []
-    csv.each do |row|
-      transfers << { domain_name: row['Domain'], transfer_code: row['Transfer code'] }
-    end
-    transfers
-  end
+  #   csv = CSV.parse(Base64.decode64(params), headers: true)
+  #   transfers = []
+  #   csv.each do |row|
+  #     transfers << { domain_name: row['Domain'], transfer_code: row['Transfer code'] }
+  #   end
+  #   transfers
+  # end
 
   def format_csv
     raw_csv = DomainListCsvPresenter.new(objects: @domains,
