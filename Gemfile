@@ -24,8 +24,8 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+# Redis for Action Cable (production) and Rails.cache (production)
+gem 'redis', '~> 5.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -52,13 +52,15 @@ gem 'wicked'
 
 gem 'countries', require: 'countries/global'
 
+# gem 'voog_footer', path: 'vendor/gems/voog_footer'
+gem 'voog_footer', github: 'internetee/voog_footer'
+
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
 gem 'omniauth', '>=2.0.0'
 gem 'omniauth-rails_csrf_protection'
-gem 'omniauth-tara', github: 'internetee/omniauth-tara'
-# gem 'omniauth-tara', path: 'vendor/gems/omniauth-tara'
+gem 'omniauth_openid_connect'
 
 gem 'coderay', '~> 1.1', '>= 1.1.2'
 

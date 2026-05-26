@@ -49,6 +49,3 @@ yarn-error.log
 .yarnrc.yml
 
 Dockerfile.dev
-Dockerfile.dev.v2
-
-Dockerfile.dev.v2
