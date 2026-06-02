@@ -55,7 +55,10 @@ VCR.configure do |config|
       !http_message.body.valid_encoding?
   end
   record_mode = ENV['VCR'] ? ENV['VCR'].to_sym : :once
-  config.default_cassette_options = { record: record_mode }
+  config.default_cassette_options = {
+    record: record_mode,
+    match_requests_on: %i[path method]
+  }
 end
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

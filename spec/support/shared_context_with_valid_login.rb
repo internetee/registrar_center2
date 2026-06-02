@@ -6,7 +6,7 @@ RSpec.shared_context 'Common context with valid login' do
     allow(Rails).to receive(:cache).and_return(memory_store)
     Rails.cache.clear
 
-    VCR.use_cassette cassette do
+    VCR.use_cassette cassette, match_requests_on: %i[path method] do
       visit root_path
 
       fill_in 'Username', with: Rails.configuration.customization[:username]
