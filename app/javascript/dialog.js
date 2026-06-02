@@ -27,7 +27,9 @@ export default class Dialog {
                 let userData = JSON.parse(elem.dataset.apiUser);
                 this.target.querySelector('#api_user_username').value = userData["name"] || "";
                 this.target.querySelector('#api_user_password').value = userData["password"] || "";
-                this.target.querySelector('#api_user_identity_code').value = userData["identity_code"] || "";
+                this.target.querySelector('#api_user_subject').value = userData["subject"] || "";
+                const emailField = this.target.querySelector('#api_user_email');
+                if (emailField) emailField.value = userData["email"] || "";
                 this.target.querySelector('#api_user_active').checked = userData["active"] || false;
                 this.target.querySelector('#api_user_id').value = userData["id"] || null;
                 break;

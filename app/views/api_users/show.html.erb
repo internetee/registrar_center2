@@ -14,6 +14,12 @@
                                              'data-dialog': 'edit_api_user',
                                              'data-api-user': "#{@api_user.to_json}" %>
                 </div>
+                <% if can?(:manage, 'ApiUser') %>
+                    <div class="col-xs-auto">
+                        <%= link_to t(:verify), 'javascript: void(0);', class: 'button button--secondary',
+                                                                     'data-dialog': 'api_user_verify' %>
+                    </div>
+                <% end %>
                 <div class="col-xs-auto">
                      <%= link_to t(:delete), 'javascript: void(0);', class: 'button button--danger',
                                                                      'data-dialog': 'api_user_delete' %>
@@ -23,7 +29,7 @@
     </div>
     <div class="page--block">
         <div class="wrapper">
-            <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="col-xs-12 col-md-8 col-md-offset-2" style="position: relative;">
                 <%= render 'api_users/partials/details' %>
             </div>
         </div>
@@ -37,5 +43,6 @@
     </div>
 </div>
 <%= render 'api_users/partials/api_user_form', url: api_user_path(@api_user[:id]), method: :patch %>
+<%= render 'api_users/partials/verify_confirm_form' if can?(:manage, 'ApiUser') %>
 <%= render 'api_users/partials/delete_form' %>
 <%= render 'api_users/partials/upload_csr_form' %>

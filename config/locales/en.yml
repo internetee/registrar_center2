@@ -74,6 +74,7 @@ en:
     sessions:
       logged_in: "Successfully logged in!"
       logged_out: "Logged out!"
+      password_changed_sign_in_again: "Password changed. Please sign in again."
       already_authenticated: "Already authenticated!"
       already_signed_out: "Already signed out!"
       new:
@@ -530,7 +531,7 @@ en:
       csv:
         username: "Username"
         password: "Password"
-        identity_code: "Identity Code"
+        subject: "Login subject"
         role: "Role"
         active: "Active"
         accredited: "Accredited"
@@ -545,7 +546,9 @@ en:
       details: "Details"
       username: "Username"
       password: "Password"
-      identity_code: "Identity Code"
+      show_password: "Show"
+      hide_password: "Hide"
+      login_subject: "Login subject"
       role: "Role"
       active: "Active"
       delete_warning_html: "Are you sure you want to delete api user <span class = 'number'>%{name}</span>?"
@@ -559,8 +562,30 @@ en:
       renew_certificate: "Renew"
       revoke_certificate: "Revoke"
       no_certificates: "No certificates found. Use the buttons above to create a new certificate."
+      email: "Email"
+      verification_status: "Verification status"
+      verified_on: "Verified on"
+      ident_requested_on: "Identification requested on"
+      unverified: "Not verified"
+      pending_registrar_review: "Awaiting registrar confirmation since"
+      verify_confirm_html: "Send identity verification email to API user %{name}?"
+      reverify_confirm_html: "Re-send identity verification email to API user %{name}? Previous verification will be cleared."
+      download_poi: "Download proof of identity"
+      approve_verification: "Confirm identity"
+      reject_verification: "Reject"
+      reject_confirm: "Reject this identification and clear pending status?"
+      created: "Created"
+      updated: "Updated"
+      by: "by %{user}"
+      status_labels:
+        verified: "Verified"
+        pending_review: "Pending review"
+        requested: "Requested"
+        unverified: "Unverified"
     edit:
       title: "Api User"
+      subject_placeholder: "Example: EE60001019906 or GBAB123456"
+      subject_important_info: "Important: changing login subject resets verification status. The API user must complete identity verification again."
 
   certificates:
     new:

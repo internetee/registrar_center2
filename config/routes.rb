@@ -87,6 +87,12 @@ Rails.application.routes.draw do
     end
 
     resources :api_users, except: %i[new edit] do
+      member do
+        post 'verify', to: 'api_users#verify'
+        get 'download_poi', to: 'api_users#download_poi'
+        post 'approve_verification', to: 'api_users#approve_verification'
+        post 'reject_verification', to: 'api_users#reject_verification'
+      end
       resources :certificates, only: %i[show] do
         member do
           get 'download/:type', to: 'certificates#download', as: :download

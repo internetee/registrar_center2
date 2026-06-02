@@ -29,6 +29,7 @@ class ApiConnector
   private
 
   def request(url:, method:, params: nil, headers: nil)
+    params = params_with_locale(params)
     Rails.logger.debug("Sending #{method} request to #{url} with params: #{params} and headers: #{headers}")
     request = faraday_request(url: url, headers: headers)
     response = send_request(request, method, url, params)
@@ -51,8 +52,15 @@ class ApiConnector
   def send_non_get_request(request, method, params)
     request.send(method) do |req|
       req.headers['Content-Type'] = 'application/json'
-      req.body = params.to_json
+      req.body = (params || {}).to_json
     end
+  end
+
+  def params_with_locale(params)
+    locale_param = { locale: I18n.locale }
+    return locale_param if params.nil?
+
+    params.merge(locale_param)
   end
 
   def process_response_body(response)

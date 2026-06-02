@@ -33,6 +33,12 @@ class ApiUsersController < BaseController
     result = conn.call_action(payload: api_user_payload)
     handle_response(result, dialog: true); return if performed?
 
+    if changed_own_password?
+      sign_out
+      redirect_to login_url, notice: t('auth.sessions.password_changed_sign_in_again')
+      return
+    end
+
     flash.notice = @message
     redirect_to api_user_path(@response.api_user[:id])
   end
@@ -46,11 +52,48 @@ class ApiUsersController < BaseController
     redirect_to account_path
   end
 
+  def verify
+    conn = ApiConnector::ApiUsers::Verifier.new(**auth_info)
+    result = conn.call_action(id: params[:id])
+    handle_response(result); return if performed?
+
+    flash.notice = @message
+    redirect_to api_user_path(params[:id])
+  end
+
+  def download_poi
+    conn = ApiConnector::ApiUsers::PoiDownloader.new(**auth_info)
+    result = conn.call_action(id: params[:id])
+    handle_response(result); return if performed?
+
+    send_data(@response, type: 'application/pdf',
+                         disposition: 'attachment',
+                         filename: @message.match(/filename=(\"?)(.+)\1/)[2])
+  end
+
+  def approve_verification
+    conn = ApiConnector::ApiUsers::VerificationApprover.new(**auth_info)
+    result = conn.call_action(id: params[:id], payload: approve_verification_payload)
+    handle_response(result); return if performed?
+
+    flash.notice = @message
+    redirect_to api_user_path(params[:id])
+  end
+
+  def reject_verification
+    conn = ApiConnector::ApiUsers::VerificationRejecter.new(**auth_info)
+    result = conn.call_action(id: params[:id])
+    handle_response(result); return if performed?
+
+    flash.notice = @message
+    redirect_to api_user_path(params[:id])
+  end
+
   private
 
   def api_user_params
     params.require(:api_user).permit(:username, :password,
-                                     :identity_code, :roles, :active, :id)
+                                     :subject, :email, :roles, :active, :id)
   end
 
   def format_csv
@@ -68,9 +111,18 @@ class ApiUsersController < BaseController
       id: api_user_params[:id],
       username: api_user_params[:username],
       plain_text_password: api_user_params[:password],
-      identity_code: api_user_params[:identity_code],
+      subject: api_user_params[:subject],
+      email: api_user_params[:email],
       roles: [api_user_params[:roles]],
       active: api_user_params[:active] == 'true',
     }
+  end
+
+  def approve_verification_payload
+    { api_user: params.fetch(:api_user, {}).permit(:subject) }
+  end
+
+  def changed_own_password?
+    api_user_params[:password].present? && api_user_params[:username] == current_user&.username
   end
 end
