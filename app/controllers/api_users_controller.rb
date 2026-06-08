@@ -123,6 +123,31 @@ class ApiUsersController < BaseController
   end
 
   def changed_own_password?
-    api_user_params[:password].present? && api_user_params[:username] == current_user&.username
+    return false unless updating_self?
+
+    submitted = api_user_params[:password].to_s
+    return false if submitted.blank?
+
+    submitted != current_password_from_token
+  end
+
+  def updating_self?
+    if current_user_id.present? && api_user_params[:id].present?
+      api_user_params[:id].to_s == current_user_id.to_s
+    else
+      api_user_params[:username] == current_user&.username
+    end
+  end
+
+  def current_user_id
+    auth_info&.dig(:id)
+  end
+
+  def current_password_from_token
+    return nil if current_user&.token.blank?
+
+    Base64.urlsafe_decode64(current_user.token).split(':', 2).last
+  rescue ArgumentError
+    nil
   end
 end
