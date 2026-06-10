@@ -83,6 +83,24 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
     redirect_to contact_path(contact_code: @response.contact[:code])
   end
 
+  def approve_verification
+    conn = ApiConnector::Contacts::VerificationApprover.new(**auth_info)
+    result = conn.call_action(id: params[:contact_code])
+    handle_response(result); return if performed?
+
+    flash.notice = @message
+    redirect_to contact_path(contact_code: params[:contact_code])
+  end
+
+  def reject_verification
+    conn = ApiConnector::Contacts::VerificationRejecter.new(**auth_info)
+    result = conn.call_action(id: params[:contact_code])
+    handle_response(result); return if performed?
+
+    flash.notice = @message
+    redirect_to contact_path(contact_code: params[:contact_code])
+  end
+
   def download_poi
     conn = ApiConnector::Contacts::PoiDownloader.new(**auth_info)
     result = conn.call_action(id: params[:contact_code])

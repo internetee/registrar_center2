@@ -52,6 +52,8 @@ Rails.application.routes.draw do
     get 'contact/delete', to: 'contacts#delete', as: :delete_contact
     delete 'contacts/destroy', to: 'contacts#destroy', as: :destroy_contact
     post 'contact/verify', to: 'contacts#verify', as: :verify_contact
+    post 'contact/approve_verification', to: 'contacts#approve_verification', as: :approve_verification_contact
+    post 'contact/reject_verification', to: 'contacts#reject_verification', as: :reject_verification_contact
     get 'contact/download_poi', to: 'contacts#download_poi', as: :download_poi_contact
     resources :contacts, except: %i[destroy update show edit]
 

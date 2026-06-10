@@ -389,6 +389,15 @@ en:
       verified_on: "Verified on"
       ident_requested_on: "Identification requested on"
       unverified: "Unverified"
+      pending_registrar_review: "Awaiting registrar confirmation since"
+      approve_verification: "Confirm identity"
+      reject_verification: "Reject"
+      reject_confirm: "Reject this identification and clear pending status?"
+      status_labels:
+        verified: "Verified"
+        pending_review: "Pending review"
+        requested: "Requested"
+        unverified: "Unverified"
       contact_types:
         registrant: "Registrant"
         tech: "Technical contact"

@@ -395,6 +395,15 @@ et:
       verified_on: "Verifitseeritud"
       ident_requested_on: "Identifitseerimine taotletud"
       unverified: "Verifitseerimata"
+      pending_registrar_review: "Ootab registripidaja kinnitust alates"
+      approve_verification: "Kinnita isikusamasus"
+      reject_verification: "Lükka tagasi"
+      reject_confirm: "Lükka see identifitseerimine tagasi ja tühista ootel staatus?"
+      status_labels:
+        verified: "Verifitseeritud"
+        pending_review: "Ootab kinnitust"
+        requested: "Taotletud"
+        unverified: "Verifitseerimata"
       contact_types:
         registrant: "Registreerija"
         tech: "Tehniline kontakt"
