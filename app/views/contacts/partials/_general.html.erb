@@ -47,8 +47,6 @@
                     </div>
                 <% elsif @contact[:ident_request_sent_at].present? %>
                     <div><%= t('contacts.show.ident_requested_on') %> <%= l(@contact[:ident_request_sent_at].to_datetime, format: :long) %></div>
-                <% else %>
-                    <div><%= t('contacts.show.unverified') %></div>
                 <% end %>
             </td>
         </tr>
