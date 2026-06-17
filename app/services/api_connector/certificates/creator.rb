@@ -18,6 +18,7 @@ class ApiConnector
       def cert_params(payload)
         {
           certificate: payload.compact_blank.as_json,
+          locale: I18n.locale
         }
       end
     end
