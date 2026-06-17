@@ -93,7 +93,8 @@ class ApiUsersController < BaseController
 
   def api_user_params
     params.require(:api_user).permit(:username, :password,
-                                     :subject, :email, :roles, :active, :id)
+                                     :subject, :country_code, :identity_number,
+                                     :email, :roles, :active, :id)
   end
 
   def format_csv
@@ -107,19 +108,29 @@ class ApiUsersController < BaseController
   end
 
   def api_user_payload
+    subject = composed_subject
+
     {
       id: api_user_params[:id],
       username: api_user_params[:username],
       plain_text_password: api_user_params[:password],
-      subject: api_user_params[:subject],
+      subject: subject,
+      country_code: api_user_params[:country_code],
       email: api_user_params[:email],
       roles: [api_user_params[:roles]],
       active: api_user_params[:active] == 'true',
     }
   end
 
-  def approve_verification_payload
-    { api_user: params.fetch(:api_user, {}).permit(:subject) }
+  def composed_subject
+    # Keep backward compatibility with old single subject input.
+    return api_user_params[:subject] if api_user_params[:subject].present?
+
+    country_code = api_user_params[:country_code].to_s.upcase.strip
+    identity_number = api_user_params[:identity_number].to_s.strip
+    return '' if country_code.blank? || identity_number.blank?
+
+    "#{country_code}#{identity_number}"
   end
 
   def changed_own_password?
@@ -150,4 +161,5 @@ class ApiUsersController < BaseController
   rescue ArgumentError
     nil
   end
+
 end

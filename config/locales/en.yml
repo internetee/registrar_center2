@@ -594,6 +594,8 @@ en:
     edit:
       title: "Api User"
       subject_placeholder: "Example: EE60001019906 or GBAB123456"
+      identity_number: "Identity code / document number"
+      identity_number_placeholder: "Example: 60001019906 or AB123456"
       subject_important_info: "Important: changing login subject resets verification status. The API user must complete identity verification again."
 
   certificates:

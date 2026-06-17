@@ -600,6 +600,8 @@ et:
     edit:
       title: "Api kasutaja"
       subject_placeholder: "Näide: EE60001019906 või GBAB123456"
+      identity_number: "Isikukood / dokumendi number"
+      identity_number_placeholder: "Näide: 60001019906 või AB123456"
       subject_important_info: "Oluline: sisselogimise identifikaatori muutmisel tühistatakse tuvastuse staatus. API kasutaja peab läbima isikutuvastuse uuesti."
 
   certificates:
