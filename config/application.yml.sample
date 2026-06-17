@@ -24,7 +24,7 @@ shared:
     secret: '123'
     redirect_uri: 'https://registrar-center.test/auth/tara/callback'
     ory_hydra_private: 'https://test-auth.eeid.ee/hydra-private'
-    scope: ['openid', 'idcard', 'mid', 'smartid']
+    scope: ['openid']
     discovery: false
     # use keys only if discovery false
     keys: 

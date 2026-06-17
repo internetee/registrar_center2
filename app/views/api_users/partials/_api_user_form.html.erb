@@ -26,15 +26,41 @@
                                 <%= form.label :password, "#{t('api_users.show.password')} *", class: 'form--label' %>
                                 <div class="form--field">
                                     <div class="form--input">
-                                        <%= form.text_field :password, required: true, class: 'input', value: @api_user&.dig(:password) %>
+                                        <%= form.password_field :password, required: true, class: 'input', value: @api_user&.dig(:password), autocomplete: 'new-password' %>
                                     </div>
                                 </div>
                             </div>
                             <div class="form--row">
-                                <%= form.label :identity_code, "#{t('api_users.show.identity_code')}", class: 'form--label' %>
+                                <%= form.label :email, t('api_users.show.email'), class: 'form--label' %>
                                 <div class="form--field">
                                     <div class="form--input">
-                                        <%= form.text_field :identity_code, required: false, class: 'input', value: @api_user&.dig(:identity_code) %>
+                                        <%= form.email_field :email, class: 'input', value: @api_user&.dig(:email) %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% current_subject = @api_user&.dig(:subject).to_s %>
+                            <% subject_country = current_subject[/\A[A-Za-z]{2}/]&.upcase %>
+                            <% subject_number = current_subject.sub(/\A[A-Za-z]{2}/, '') %>
+                            <div class="form--row">
+                                <%= form.label :country_code, t('contacts.form.country'), class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= simple_select_tag "api_user[country_code]",
+                                                              ApplicationController.helpers.all_country_options(subject_country),
+                                                              { required: false, id: 'api_user_country_code' } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form--row">
+                                <%= form.label :identity_number, t('api_users.edit.identity_number'), class: 'form--label' %>
+                                <div class="form--field">
+                                    <div class="form--input">
+                                        <%= form.text_field :identity_number,
+                                                            required: false,
+                                                            class: 'input',
+                                                            value: subject_number,
+                                                            placeholder: t('api_users.edit.identity_number_placeholder') %>
+                                        <small class="text-muted"><%= t('api_users.edit.subject_important_info') %></small>
                                     </div>
                                 </div>
                             </div>

@@ -15,7 +15,7 @@ class ApiUserListCsvPresenter < CsvPresenter
     columns = %w[
       username
       password
-      identity_code
+      subject
       role
       active
       accredited
@@ -33,7 +33,7 @@ class ApiUserListCsvPresenter < CsvPresenter
     row = []
     row[0] = user.name
     row[1] = user.password
-    row[2] = user.identity_code
+    row[2] = user.subject
     row[3] = user.roles
     row[4] = user.active
     row[5] = user.accredited

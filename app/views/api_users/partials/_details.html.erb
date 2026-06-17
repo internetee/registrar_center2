@@ -7,23 +7,41 @@
             <th><%= t('api_users.show.username') %></th>
             <td><%= @api_user[:name] %></td>
         </tr>
+        <% if @api_user[:email].present? %>
+            <tr>
+                <th><%= t('api_users.show.email') %></th>
+                <td><%= @api_user[:email] %></td>
+            </tr>
+        <% end %>
         <tr>
             <th><%= t('api_users.show.password') %></th>
-            <td><%= @api_user[:password] %></td>
+            <td>
+                <% password = @api_user[:password].to_s %>
+                <span data-controller="password-reveal" class="api-user-password-reveal" style="display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                    <%= tag.span(password.present? ? '•' * [password.length, 8].max : '—',
+                                 data: { password_reveal_target: 'value', password: password }) %>
+                    <% if password.present? %>
+                        <button type="button"
+                                class="button button--link api-user-password-reveal__toggle"
+                                data-password-reveal-target="toggle"
+                                data-action="password-reveal#toggle"
+                                data-show-label="<%= t('api_users.show.show_password') %>"
+                                data-hide-label="<%= t('api_users.show.hide_password') %>">
+                            <%= t('api_users.show.show_password') %>
+                        </button>
+                    <% end %>
+                </span>
+            </td>
         </tr>
-        <% if @api_user[:identity_code].present? %>
+        <% if @api_user[:subject].present? %>
             <tr>
-                <th><%= t('api_users.show.identity_code') %></th>
-                <td><%= @api_user[:identity_code] %></td>
+                <th><%= t('api_users.show.login_subject') %></th>
+                <td><%= @api_user[:subject] %></td>
             </tr>
         <% end %>
         <tr>
             <th><%= t('api_users.show.role') %></th>
             <td><%= @api_user[:roles] %></td>
-        </tr>
-        <tr>
-            <th><%= t('api_users.show.active') %></th>
-            <td><% if @api_user[:active] %><i class="fas fa-check"></i><% end %></td>
         </tr>
         <tr>
             <th><%= t('api_users.show.created') %></th>
@@ -32,6 +50,39 @@
         <tr>
             <th><%= t('api_users.show.updated') %></th>
             <td><%= "#{l @api_user[:updated_at].to_datetime} #{t('api_users.show.by', user: creator(@api_user[:updator]))}" %></td>
+        </tr>
+        <% if can?(:manage, 'ApiUser') %>
+            <tr>
+                <th><%= t('api_users.show.verification_status') %></th>
+                <td>
+                    <%= verification_status_badge(@api_user) %>
+                    <% if @api_user[:verified_at].present? %>
+                        <div><%= t('api_users.show.verified_on') %> <%= l(@api_user[:verified_at].to_datetime) %></div>
+                        <% if @api_user[:verification_id].present? %>
+                            <%= icon_link_to 'far fa-file-pdf', download_poi_api_user_path(@api_user[:id]), class: 'simple_tooltip', data: { 'tippy-content': t('contacts.show.download_poi') } %>
+                            <%= image_tag "verified_#{I18n.locale}.png", alt: "Verified", class: "verified-image" %>
+                        <% end %>
+                    <% elsif @api_user[:verification_pending_at].present? %>
+                        <div>
+                            <%= t('api_users.show.pending_registrar_review') %>
+                            <%= l(@api_user[:verification_pending_at].to_datetime) %>
+                        </div>
+                        <% if @api_user[:verification_id].present? %>
+                            <%= icon_link_to 'far fa-file-pdf', download_poi_api_user_path(@api_user[:id]), class: 'simple_tooltip', data: { 'tippy-content': t('contacts.show.download_poi') } %>
+                        <% end %>
+                        <div style="display: flex; gap: 8px; align-items: center; margin-top: 8px;">
+                            <%= button_to t('api_users.show.approve_verification'), approve_verification_api_user_path(@api_user[:id]), method: :post, class: 'button button--primary small', data: { turbo: false } %>
+                            <%= button_to t('api_users.show.reject_verification'), reject_verification_api_user_path(@api_user[:id]), method: :post, class: 'button button--danger small', data: { turbo: false, confirm: t('api_users.show.reject_confirm') } %>
+                        </div>
+                    <% elsif @api_user[:ident_request_sent_at].present? %>
+                        <div><%= t('api_users.show.ident_requested_on') %> <%= l(@api_user[:ident_request_sent_at].to_datetime) %></div>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+        <tr>
+            <th><%= t('api_users.show.active') %></th>
+            <td><% if @api_user[:active] %><i class="fas fa-check"></i><% end %></td>
         </tr>
     </tbody>
 </table>

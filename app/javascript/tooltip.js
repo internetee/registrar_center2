@@ -9,7 +9,6 @@ export default class Tooltip {
     
     init() {
         tippy(this.selector, {
-            flipOnUpdate: true,
             trigger: this.trigger,
         });
     }

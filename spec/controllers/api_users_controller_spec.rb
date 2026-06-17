@@ -21,7 +21,7 @@ RSpec.describe ApiUsersController, type: :controller do
         api_user: {
           username: Faker::Internet.username,
           password: Faker::Internet.password,
-          identity_code: Faker::Number.unique.number(digits: 5),
+          subject: "EE#{Faker::Number.unique.number(digits: 11)}",
           roles: 'super',
           active: 'true',
         },
@@ -36,7 +36,7 @@ RSpec.describe ApiUsersController, type: :controller do
           id: '2',
           username: Faker::Internet.username,
           password: Faker::Internet.password,
-          identity_code: Faker::Number.unique.number(digits: 5),
+          subject: "EE#{Faker::Number.unique.number(digits: 11)}",
           roles: 'super',
           active: 'false',
         },

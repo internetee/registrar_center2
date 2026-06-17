@@ -67,6 +67,10 @@ et:
       [~, Jaanuar, Veebruar, Märts, Aprill, Mai, Juuni, Juuli, August, September, Oktoober, November, Detsember]
     abbr_month_names:
       [~, Jaan, Veeb, Märts, Apr, Mai, Juuni, Juuli, Aug, Sep, Okt, Nov, Det]
+    day_names:
+      [pühapäev, esmaspäev, teisipäev, kolmapäev, neljapäev, reede, laupäev]
+    abbr_day_names:
+      [P, E, T, K, N, R, L]
     formats:
       default: "%Y-%m-%d"
       month_year: "%d %B %Y"
@@ -76,6 +80,7 @@ et:
     sessions:
       logged_in: "Sisselogimine õnnestus!"
       logged_out: "Välja logitud!"
+      password_changed_sign_in_again: "Parool on muudetud. Palun logige uuesti sisse."
       already_authenticated: "Juba autentitud!"
       already_signed_out: "Juba välja logitud!"
       new:
@@ -390,6 +395,15 @@ et:
       verified_on: "Verifitseeritud"
       ident_requested_on: "Identifitseerimine taotletud"
       unverified: "Verifitseerimata"
+      pending_registrar_review: "Ootab registripidaja kinnitust alates"
+      approve_verification: "Kinnita isikusamasus"
+      reject_verification: "Lükka tagasi"
+      reject_confirm: "Lükka see identifitseerimine tagasi ja tühista ootel staatus?"
+      status_labels:
+        verified: "Verifitseeritud"
+        pending_review: "Ootab kinnitust"
+        requested: "Taotletud"
+        unverified: "Verifitseerimata"
       contact_types:
         registrant: "Registreerija"
         tech: "Tehniline kontakt"
@@ -532,7 +546,7 @@ et:
       csv:
         username: "Kasutajanimi"
         password: "Parool"
-        identity_code: "Isikukood"
+        subject: "Sisselogimise identifikaator"
         role: "Roll"
         active: "Aktiveeritud"
         accredited: "Akrediteeritud"
@@ -547,7 +561,9 @@ et:
       details: "Detailid"
       username: "Kasutajanimi"
       password: "Parool"
-      identity_code: "Isikukood"
+      show_password: "Näita"
+      hide_password: "Peida"
+      login_subject: "Sisselogimise identifikaator"
       role: "Roll"
       active: "Aktiveeritud"
       delete_warning_html: "Kas olete kindel, et soovite kustutada kasutaja <span class = 'number'>%{name}</span>?"
@@ -559,8 +575,34 @@ et:
       by: "[%{user}]"
       submit_csr: "Esita CSR"
       generate_p12: "Genereeri P12"
+      email: "E-post"
+      verification_status: "Tuvastuse staatus"
+      verified_on: "Kinnitatud"
+      ident_requested_on: "Identifitseerimine taotletud"
+      unverified: "Verifitseerimata"
+      pending_registrar_review: "Ootab registripidaja kinnitust alates"
+      verify_confirm_html: "Saada API kasutajale %{name} isikutuvastuse link?"
+      reverify_confirm_html: "Saada API kasutajale %{name} uus isikutuvastuse link? Varasem kinnitus tühistatakse."
+      download_poi: "Laadi alla tõend isiku kohta"
+      approve_verification: "Kinnita isikusamasus"
+      reject_verification: "Lükka tagasi"
+      reject_confirm: "Kas lükata see identifitseerimine tagasi ja tühistada ootel staatus?"
+      expires_at: "Aegub"
+      actions: "Tegevused"
+      renew_certificate: "Uuenda"
+      revoke_certificate: "Tühista"
+      no_certificates: "Sertifikaate ei leitud."
+      status_labels:
+        verified: "Kinnitatud"
+        pending_review: "Ootel"
+        requested: "Taotletud"
+        unverified: "Verifitseerimata"
     edit:
       title: "Api kasutaja"
+      subject_placeholder: "Näide: EE60001019906 või GBAB123456"
+      identity_number: "Isikukood / dokumendi number"
+      identity_number_placeholder: "Näide: 60001019906 või AB123456"
+      subject_important_info: "Oluline: sisselogimise identifikaatori muutmisel tühistatakse tuvastuse staatus. API kasutaja peab läbima isikutuvastuse uuesti."
 
   certificates:
     new:
