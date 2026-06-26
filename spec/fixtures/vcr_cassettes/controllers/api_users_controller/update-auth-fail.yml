@@ -5,7 +5,7 @@ http_interactions:
     uri: http://registry:3000/repp/v1/api_users/2
     body:
       encoding: UTF-8
-      string: '{"api_user":{"username":"dane","plain_text_password":"YGijjyhPklja","identity_code":"91210","roles":["super"],"active":false}}'
+      string: '{"api_user":{"username":"dane","plain_text_password":"YGijjyhPklja","subject":"EE91210","roles":["super"],"active":false}}'
     headers:
       Authorization:
       - "<TOKEN>"

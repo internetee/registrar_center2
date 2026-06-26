@@ -30,7 +30,7 @@ RSpec.feature 'bulk domain transfer' do
     click_button 'Next step'
     expect(page).to have_content('Upload CSV file')
 
-    VCR.insert_cassette('controllers/domains_controller/transfer-fail')
+    VCR.insert_cassette('controllers/domains_controller/transfer-fail', match_requests_on: %i[path method])
 
     find('form input[type="file"]').set("#{Rails.root}/spec/fixtures/files/one_domain_transfer.csv")
     click_button 'Next step'

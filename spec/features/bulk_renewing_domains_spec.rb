@@ -21,7 +21,7 @@ RSpec.feature 'bulk renewing domains' do
     session = Capybara.current_session.driver.request.session
     expect(Rails.cache.exist?(session.id)).to be(true)
 
-    VCR.use_cassette('controllers/dashboard_controller/index') do
+    VCR.use_cassette('controllers/dashboard_controller/index', match_requests_on: %i[path method]) do
       visit dashboard_path
     end
 

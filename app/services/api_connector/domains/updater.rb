@@ -17,10 +17,14 @@ class ApiConnector
 
       private
 
+      PRESERVE_EMPTY_ARRAY_KEYS = %i[contacts].freeze
+
       def domain_params(payload)
-        {
-          domain: payload.compact_blank.as_json,
-        }
+        preserved = payload.slice(*PRESERVE_EMPTY_ARRAY_KEYS)
+        domain = payload.except(*PRESERVE_EMPTY_ARRAY_KEYS).compact_blank.as_json
+        preserved.each { |key, value| domain[key.to_s] = value unless value.nil? }
+
+        { domain: domain }
       end
     end
   end

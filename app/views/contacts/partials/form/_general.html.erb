@@ -19,8 +19,7 @@
                 <div class="form--input">
                     <%= form.email_field :email, class: 'input',
                                                  value: @contact&.dig(:email),
-                                                 required: true,
-                                                 pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" %>
+                                                 required: true %>
                 </div>
             </div>
         </div>

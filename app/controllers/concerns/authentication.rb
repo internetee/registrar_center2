@@ -48,6 +48,7 @@ module Authentication
 
   def construct_auth_info(token, request_ip, data)
     {
+      id: data[:id],
       username: data[:username],
       registrar_name: data[:registrar_name],
       role: data[:roles].first,

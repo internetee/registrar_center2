@@ -21,3 +21,6 @@ application.register("xml-console", XmlConsoleController)
 
 import CookieConsentController from "./cookie_consent_controller.js"
 application.register("cookie-consent", CookieConsentController)
+
+import PasswordRevealController from "./password_reveal_controller.js"
+application.register("password-reveal", PasswordRevealController)

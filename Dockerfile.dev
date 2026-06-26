@@ -1,6 +1,7 @@
 FROM internetee/ruby:3.2.2-node18-no-chrome
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
     wkhtmltopdf \
     && apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
@@ -14,6 +15,8 @@ RUN mkdir -p /opt/webapps/app/tmp/pids
 WORKDIR /opt/webapps/app
 
 COPY Rakefile Gemfile Gemfile.lock ./
+
+# ADD vendor/gems/voog_footer ./vendor/gems/voog_footer
 
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 
