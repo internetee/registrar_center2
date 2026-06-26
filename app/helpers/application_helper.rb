@@ -1,5 +1,6 @@
 module ApplicationHelper
   include Pagy::Frontend
+  include VoogFooterHelper
 
   CONTACT_TYPE = {
     tech: 'TechDomainContact',

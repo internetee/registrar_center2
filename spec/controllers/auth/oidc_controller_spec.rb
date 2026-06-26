@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Auth::TaraController, type: :controller do
+RSpec.describe Auth::OidcController, type: :controller do
   let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
   let(:uuid) { Faker::Internet.uuid }
   let(:username) { Rails.configuration.customization[:username] }
   let(:token) { Rails.configuration.customization[:token] }
   let(:uid) { "EE#{Rails.configuration.customization[:id_code]}" }
   let(:auth_data_legal) { { username: username, token: token } }
-  let(:cassette_path) { 'controllers/auth/tara_controller' }
+  let(:cassette_path) { 'controllers/auth/oidc_controller' }
   option = {
     method: :callback,
     http_method: :get,

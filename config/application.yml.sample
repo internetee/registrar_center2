@@ -12,7 +12,18 @@ shared:
   eis_billing_system_base_url: 'http://eis_billing_system:3000'
   billing_secret: ''
 
-  tara:
+  voog_site_url: "https://www.internet.ee"
+  voog_api_key: ""
+  voog_site_fetching_enabled: "false"
+  voog_footer_cache_ttl: "3600"
+  # Optional; default is verify in production/staging, skip in development/test (like auction_center HttpRequester)
+  # voog_ssl_verify: "false"
+
+  # Redis (set per deploy; use different DB indexes for staging vs production):
+  # REDIS_CABLE_URL: redis://redis:6379/1   # Action Cable (config/cable.yml)
+  # REDIS_CACHE_URL: redis://redis:6379/2   # Rails.cache (production.rb / staging.rb)
+
+  oidc:
     scheme: 'https'
     host: 'test-auth.eeid.ee'
     # port: 4444
@@ -22,7 +33,7 @@ shared:
     jwks_uri: '/hydra-public/.well-known/jwks.json'
     identifier: '123'
     secret: '123'
-    redirect_uri: 'https://registrar-center.test/auth/tara/callback'
+    redirect_uri: 'https://registrar-center.test/auth/oidc/callback'
     ory_hydra_private: 'https://test-auth.eeid.ee/hydra-private'
     scope: ['openid']
     discovery: false

@@ -1,4 +1,15 @@
 et:
+  omniauth:
+    errors:
+      access_denied: "Juurdepääs keelatud"
+      invalid_request: "Vigane päring"
+      invalid_scope: "Vigane skoop"
+      invalid_target: "Vigane sihtkoht"
+      invalid_client: "Vigane klient"
+      invalid_grant: "Vigane luba"
+      invalid_code: "Vigane kood"
+      invalid_token: "Vigane token"
+      user_cancel: "Sisselogimine tühistatud"
   sign_in: "Sisene"
   sign_out: "Logi välja"
   back: "Tagasi"
@@ -37,6 +48,7 @@ et:
   clear_filter: "Tühista filter"
   no_translation: "tõlge pole saadaval"
   session_expired: "Sessioon on aegunud. Jätkamiseks logige sisse."
+  sign_in_cancelled: "Sisselogimine tühistatud"
   months:
     one: "1 kuu"
     other: "%{count} kuud"

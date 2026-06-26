@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://registry:3000/repp/v1/registrar/auth/tara_callback
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"uid":"EE<ID_CODE>"}}'
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      Requester:
+      - webclient
+      User-Agent:
+      - Faraday v2.7.10
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"b7f1aed365d253d05d061cc946037812"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b66f37c5-97b2-4536-bef4-f233a4c6065b
+      X-Runtime:
+      - '0.641240'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"id":5,"username":"apiuser","roles":["super"],"registrar_name":"Registrar","legaldoc_mandatory":true,"address_processing":true,"abilities":{"can":{"manage":{"Account":[],"poll":[],"repp":[],"Invoice":[],"deposit":[],"balance_auto_reload":[],"ApiUser":[],"WhiteIp":[],"Certificate":[]},"create":{"Epp::Server":[],"epp_login":[],"Epp::Domain":[],"Epp::Contact":[],"registrant_domain_update_confirm":[]},"new":{"Epp::Server":[],"epp_login":[],"Epp::Domain":[],"Epp::Contact":[],"registrant_domain_update_confirm":[]},"info":{"Epp::Domain":[],"Epp::Contact":[]},"check":{"Epp::Domain":[],"Epp::Contact":[]},"renew":{"Epp::Domain":[],"Epp::Contact":[]},"remove_hold":{"Epp::Domain":[]},"update":{"Epp::Domain":[],"Epp::Contact":[]},"edit":{"Epp::Domain":[],"Epp::Contact":[]},"transfer":{"Epp::Domain":[],"Epp::Contact":[]},"delete":{"Epp::Domain":[],"Epp::Contact":[]},"view_full_info":{"Epp::Contact":[]},"verify":{"Epp::Contact":[]},"view_<PASSWORD>":{"Epp::Contact":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]}},"cannot":{}},"name":"apiuser","accreditation_date":"2026-05-11T12:39:06.172+03:00","accreditation_expire_date":"2028-05-11T12:39:06.172+03:00","registrar_reg_no":"<ID_CODE>","registrar_email":"sergeit6@gmail.com","code":"123","token":"YXBpdXNlcjphcGlzdWVy"}}'
+  recorded_at: Tue, 26 May 2026 09:12:03 GMT
+- request:
+    method: get
+    uri: http://registry:3000/repp/v1/registrar/auth
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<TOKEN>"
+      Request-Ip:
+      - 0.0.0.0
+      Requester:
+      - tara
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Etag:
+      - W/"2ecf608c72e5815f45ad86b0913efecb"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 7194f904-901c-41dc-b4b0-4a1b1adf5213
+      X-Runtime:
+      - '0.045021'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"code":1000,"message":"Command completed successfully","data":{"id":5,"username":"apiuser","roles":["super"],"registrar_name":"Registrar","legaldoc_mandatory":true,"address_processing":true,"abilities":{"can":{"manage":{"Account":[],"poll":[],"repp":[],"Invoice":[],"deposit":[],"balance_auto_reload":[],"ApiUser":[],"WhiteIp":[],"Certificate":[]},"create":{"Epp::Server":[],"epp_login":[],"Epp::Domain":[],"Epp::Contact":[],"registrant_domain_update_confirm":[]},"new":{"Epp::Server":[],"epp_login":[],"Epp::Domain":[],"Epp::Contact":[],"registrant_domain_update_confirm":[]},"info":{"Epp::Domain":[],"Epp::Contact":[]},"check":{"Epp::Domain":[],"Epp::Contact":[]},"renew":{"Epp::Domain":[],"Epp::Contact":[]},"remove_hold":{"Epp::Domain":[]},"update":{"Epp::Domain":[],"Epp::Contact":[]},"edit":{"Epp::Domain":[],"Epp::Contact":[]},"transfer":{"Epp::Domain":[],"Epp::Contact":[]},"delete":{"Epp::Domain":[],"Epp::Contact":[]},"view_full_info":{"Epp::Contact":[]},"verify":{"Epp::Contact":[]},"view_<PASSWORD>":{"Epp::Contact":[]},"read":{"AccountActivity":[]},"index":{"AccountActivity":[]},"show":{"AccountActivity":[],"dashboard":[]}},"cannot":{}}}}'
+  recorded_at: Tue, 26 May 2026 09:12:03 GMT
+recorded_with: VCR 6.2.0

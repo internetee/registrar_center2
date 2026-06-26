@@ -1,4 +1,15 @@
 en:
+  omniauth:
+    errors:
+      access_denied: "Access denied"
+      invalid_request: "Invalid request"
+      invalid_scope: "Invalid scope"
+      invalid_target: "Invalid target"
+      invalid_client: "Invalid client"
+      invalid_grant: "Invalid grant"
+      invalid_code: "Invalid code"
+      invalid_token: "Invalid token"
+      user_cancel: "User canceled authentication"
   sign_in: "Sign in"
   sign_out: "Sign out"
   back: "Back"
@@ -37,6 +48,7 @@ en:
   clear_filter: "Clear filter"
   no_translation: "translation not available"
   session_expired: "Your session has expired. Please sign in to continue."
+  sign_in_cancelled: "Sign in cancelled"
   months:
     one: "1 month"
     other: "%{count} months"

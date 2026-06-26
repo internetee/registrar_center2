@@ -1,22 +1,31 @@
 module Auth
-  class TaraController < AuthController
+  class OidcController < AuthController
     before_action :require_no_authentication, only: :callback
 
+    # GET /auth/oidc/callback
     def callback
-      conn = ApiConnector::Auth::OmniauthTaraChecker.new(username: nil)
-      result = conn.call_action(params: tara_callback_params)
+      conn = ApiConnector::Auth::OmniauthChecker.new(username: nil)
+      result = conn.call_action(params: oidc_callback_params)
       handle_response(result); return if performed?
 
       create { user_payload }
     end
 
+    # GET /auth/oidc/cancel
     def cancel
+      message_key = params[:message]
+
+      translated = if message_key.present?
+        I18n.t("omniauth.errors.#{message_key}", default: message_key.humanize)
+      end
+
+      flash[:alert] = translated.presence || t(:sign_in_cancelled)
       redirect_to login_url
     end
 
     private
 
-    def tara_callback_params
+    def oidc_callback_params
       {
         auth: {
           uid: omniauth_user_hash.try(:uid),
