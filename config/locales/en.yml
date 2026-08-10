@@ -231,7 +231,9 @@ en:
       flag: "Flag"
       public_key: "Public key"
       regenerate: "Regenerate transfer code"
-    
+      cancel_pending_update: "Cancel registrant change"
+      cancel_pending_update_confirm: "Cancel the pending registrant change of this domain?"
+
     edit:
       title: "Edit domain"
 
