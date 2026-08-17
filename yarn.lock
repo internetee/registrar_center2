@@ -252,10 +252,10 @@ epic-spinners@^2.0.0:
   resolved "https://registry.yarnpkg.com/epic-spinners/-/epic-spinners-2.0.0.tgz#47be27c1b6007ccd4e30cf3bc6a8b5f1ca230e4a"
   integrity sha512-nU7xF7NoXrObmIGdXYwj1hfE3EH3jDVQ8oi1S5wG0yutrQILMJ3Xs0ZQEdGIjBQnFveDrAs/61m8/vm5SMvObA==
 
-esbuild-rails@^1.0.3:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/esbuild-rails/-/esbuild-rails-1.0.7.tgz#3c8f76dc891d5b2105cb683ace0a15d11c91a973"
-  integrity sha512-6LuKQnYY32fisBSJoMeDQm1V4MB17P95oV8Er145j77Yr7sDE6TpKKtXeprApN3YxE2rQUeU3il4LR3GHh5fIw==
+esbuild-rails@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/esbuild-rails/-/esbuild-rails-1.0.8.tgz#c9185059daa7727cd08d8730c238301f47eeab21"
+  integrity sha512-28iJUq8Ng4X8jydBcWGiuXYJQBKCCMMz0eSvLNDJhypDR9LTu5jlno2tQSqJNFiHM8oDW6Y1hGRu/KFBsRx/Rw==
   dependencies:
     fast-glob "^3.2.12"
 
