@@ -36,6 +36,8 @@ module Authentication
   private
 
   def auth_info
+    return if session[:uuid].blank?
+
     cached_data = Rails.cache.fetch(session[:uuid]) || ''
     decrypted_data = Encryptor.decrypt(cached_data)
     return unless decrypted_data
