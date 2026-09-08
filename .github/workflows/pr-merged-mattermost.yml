@@ -16,6 +16,8 @@ jobs:
   notify:
     if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    env:
+      GH_REPO: ${{ github.repository }}
     steps:
       - name: Find merged bot PR
         id: pr
@@ -65,11 +67,12 @@ jobs:
       - name: Build short changelog
         if: steps.pr.outputs.notify == 'true'
         id: changelog
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ steps.pr.outputs.number }}
         run: |
-          TEXT=$(gh pr view "$PR_NUMBER" --json commits --jq '.commits[:10] | map("- " + .messageHeadline) | join("\n")')
+          TEXT=$(gh pr view "$PR_NUMBER" --repo "$GH_REPO" --json commits --jq '.commits[:10] | map("- " + .messageHeadline) | join("\n")')
           if [ -z "$TEXT" ]; then
             TEXT="No commit messages found"
           fi
