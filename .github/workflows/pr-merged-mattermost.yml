@@ -53,7 +53,8 @@ jobs:
           fi
           AUTHOR=$(echo "$PR" | jq -r '.user.login // .author.login')
           LABELS=$(echo "$PR" | jq -r '[.labels[].name] | join(" ")')
-          if [[ "$AUTHOR" == *"[bot]" ]] || [[ "$LABELS" == *"auto-merge"* ]] || [[ "$LABELS" == *"patch"* ]] || [[ "$LABELS" == *"minor"* ]]; then
+          echo "author=$AUTHOR labels=$LABELS"
+          if [[ "$AUTHOR" == "dependabot" || "$AUTHOR" == "dependabot[bot]" || "$AUTHOR" == "renovate" || "$AUTHOR" == "renovate[bot]" || "$AUTHOR" == *"[bot]" ]] || [[ "$LABELS" == *"auto-merge"* ]] || [[ "$LABELS" == *"patch"* ]] || [[ "$LABELS" == *"minor"* ]]; then
             echo "notify=true" >> "$GITHUB_OUTPUT"
             echo "author=$AUTHOR" >> "$GITHUB_OUTPUT"
             echo "number=$(echo "$PR" | jq -r '.number')" >> "$GITHUB_OUTPUT"
