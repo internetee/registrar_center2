@@ -1,15 +1,20 @@
 name: Notify Mattermost on merged PRs
 
 on:
+  workflow_run:
+    workflows: ["Auto approve & merge patch/minor PRs"]
+    types: [completed]
   push:
     branches: [main]
 
 permissions:
   contents: read
   pull-requests: read
+  actions: read
 
 jobs:
   notify:
+    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Find merged bot PR
@@ -18,21 +23,41 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          RUN_STARTED: ${{ github.event.workflow_run.run_started_at }}
         run: |
-          PR=$(gh api "repos/${REPO}/commits/${SHA}/pulls" --jq '[.[] | select(.base.ref == "main" and .merged_at != null)] | .[0] // empty')
+          if [ "$EVENT_NAME" = "workflow_run" ]; then
+            PR=$(gh pr list --repo "$REPO" --head "$HEAD_BRANCH" --base main --state merged --json number,title,url,author,labels,mergedAt --jq '.[0] // empty')
+            if [ -n "$PR" ] && [ -n "$RUN_STARTED" ]; then
+              MERGED_AT=$(echo "$PR" | jq -r '.mergedAt // .merged_at')
+              MERGED_EPOCH=$(date -d "$MERGED_AT" +%s)
+              STARTED_EPOCH=$(date -d "$RUN_STARTED" +%s)
+              if [ "$MERGED_EPOCH" -lt $((STARTED_EPOCH - 60)) ]; then
+                echo "notify=false" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+            fi
+          else
+            if [ "${{ github.actor }}" = "github-actions[bot]" ]; then
+              echo "notify=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            PR=$(gh api "repos/${REPO}/commits/${SHA}/pulls" --jq '[.[] | select(.base.ref == "main" and .merged_at != null)] | .[0] // empty')
+          fi
           if [ -z "$PR" ]; then
             echo "notify=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          AUTHOR=$(echo "$PR" | jq -r '.user.login')
+          AUTHOR=$(echo "$PR" | jq -r '.user.login // .author.login')
           LABELS=$(echo "$PR" | jq -r '[.labels[].name] | join(" ")')
           if [[ "$AUTHOR" == *"[bot]" ]] || [[ "$LABELS" == *"auto-merge"* ]] || [[ "$LABELS" == *"patch"* ]] || [[ "$LABELS" == *"minor"* ]]; then
             echo "notify=true" >> "$GITHUB_OUTPUT"
             echo "author=$AUTHOR" >> "$GITHUB_OUTPUT"
             echo "number=$(echo "$PR" | jq -r '.number')" >> "$GITHUB_OUTPUT"
             echo "title=$(echo "$PR" | jq -r '.title')" >> "$GITHUB_OUTPUT"
-            echo "url=$(echo "$PR" | jq -r '.html_url')" >> "$GITHUB_OUTPUT"
-            echo "merged_at=$(echo "$PR" | jq -r '.merged_at')" >> "$GITHUB_OUTPUT"
+            echo "url=$(echo "$PR" | jq -r '.html_url // .url')" >> "$GITHUB_OUTPUT"
+            echo "merged_at=$(echo "$PR" | jq -r '.merged_at // .mergedAt')" >> "$GITHUB_OUTPUT"
           else
             echo "notify=false" >> "$GITHUB_OUTPUT"
           fi
