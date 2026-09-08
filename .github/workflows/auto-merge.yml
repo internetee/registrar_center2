@@ -97,8 +97,17 @@ jobs:
         if: steps.check_auto_merge.outputs.auto_merge == 'true' && steps.ci_status.outputs.ci_passed == 'true'
         id: merge_pr
         run: |
-          set +e
-          gh pr merge --auto --merge ${{ github.event.pull_request.number }}
-          set -e
+          PR_NUMBER='${{ github.event.pull_request.number }}'
+          if gh pr merge --auto --merge "$PR_NUMBER"; then
+            echo "Auto-merge enabled or completed for PR #$PR_NUMBER"
+          else
+            STATE=$(gh pr view "$PR_NUMBER" --json state -q .state)
+            if [ "$STATE" = "MERGED" ]; then
+              echo "PR #$PR_NUMBER was already merged"
+            else
+              echo "Failed to auto-merge PR #$PR_NUMBER (state=$STATE)" >&2
+              exit 1
+            fi
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
