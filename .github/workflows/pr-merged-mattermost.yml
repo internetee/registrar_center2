@@ -1,7 +1,7 @@
 name: Notify Mattermost on merged PRs
 
 on:
-  pull_request:
+  pull_request_target:
     types: [closed]
     branches: [main]
 
@@ -16,20 +16,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
 
       - name: Check if PR was auto-merged
         id: check_auto_merge
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          ACTOR: ${{ github.actor }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
-          # Check if PR was merged by a bot or has auto-merge label
-          ACTOR="${{ github.actor }}"
           LABELS=$(gh pr view $PR_NUMBER --json labels -q '.labels[].name' | tr '\n' ' ')
-          
-          if [[ "$ACTOR" == *"[bot]" ]] || [[ "$LABELS" == *"auto-merge"* ]] || [[ "$LABELS" == *"patch"* ]]; then
+
+          if [[ "$PR_AUTHOR" == *"[bot]" ]] || [[ "$ACTOR" == *"[bot]" ]] || [[ "$LABELS" == *"auto-merge"* ]] || [[ "$LABELS" == *"patch"* ]] || [[ "$LABELS" == *"minor"* ]]; then
             echo "is_auto_merged=true" >> $GITHUB_OUTPUT
-            echo "merge_type=$ACTOR" >> $GITHUB_OUTPUT
+            echo "merge_type=$PR_AUTHOR" >> $GITHUB_OUTPUT
           else
             echo "is_auto_merged=false" >> $GITHUB_OUTPUT
             echo "merge_type=manual" >> $GITHUB_OUTPUT
