@@ -32,7 +32,7 @@ et:
       pendingRenew_text: "Renew command has been processed for the domain registration, but the action has not been completed by the server."
       pendingTransfer: "pendingTransfer"
       pendingTransfer_text: "Transfer command has been processed for the domain registration, but the action has not been completed by the server."
-      pendingUpdate": "pendingUpdate"
+      pendingUpdate: "pendingUpdate"
       pendingUpdate_text: "Update command has been processed for the domain registration, but the action has not been completed by the server."
       serverAdminChangeProhibited: "serverAdminChangeProhibited"
       serverAdminChangeProhibited_text: "Requests to replace admin contacts are rejected."
