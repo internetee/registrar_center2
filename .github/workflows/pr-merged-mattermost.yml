@@ -12,6 +12,10 @@ permissions:
   pull-requests: read
   actions: read
 
+concurrency:
+  group: mattermost-${{ github.event.workflow_run.head_branch || github.sha }}
+  cancel-in-progress: true
+
 jobs:
   notify:
     if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
@@ -35,7 +39,7 @@ jobs:
               MERGED_AT=$(echo "$PR" | jq -r '.mergedAt // .merged_at')
               MERGED_EPOCH=$(date -d "$MERGED_AT" +%s)
               STARTED_EPOCH=$(date -d "$RUN_STARTED" +%s)
-              if [ "$MERGED_EPOCH" -lt $((STARTED_EPOCH - 60)) ]; then
+              if [ "$MERGED_EPOCH" -lt "$STARTED_EPOCH" ]; then
                 echo "notify=false" >> "$GITHUB_OUTPUT"
                 exit 0
               fi
