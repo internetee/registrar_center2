@@ -129,6 +129,13 @@ RSpec.describe DomainsController, type: :controller do
       params: {
           domain_name: domain,
       },
+    },
+    {
+      method: :cancel_pending_update,
+      http_method: :delete,
+      params: {
+          domain_name: domain,
+      },
     }
   ]
 
