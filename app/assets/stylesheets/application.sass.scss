@@ -78,6 +78,28 @@ $fa-font-path: "font-awesome/webfonts";
 
 @import "vanilla-cookieconsent/dist/cookieconsent";
 
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout--main {
+  flex: 1 0 auto;
+}
+
+.layout--footer {
+  flex-shrink: 0;
+}
+
 /* To make working required attribute */
 .choices[data-type*="select-one"] select.choices__input, .not_visible {
   display: block !important;

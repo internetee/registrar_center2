@@ -7,16 +7,16 @@ Rails.application.routes.draw do
     get 'login', to: 'auth/sessions#new'
     get 'logout', to: 'auth/sessions#destroy'
 
-    match '/auth/tara/callback', via: %i[get post], to: 'auth/tara#callback'
-    match '/auth/tara/cancel', via: %i[get post delete], to: 'auth/tara#cancel',
-                               as: :tara_cancel
+    match '/auth/oidc/callback', via: %i[get post], to: 'auth/oidc#callback'
+    match '/auth/oidc/cancel', via: %i[get post delete], to: 'auth/oidc#cancel',
+                               as: :oidc_cancel
 
     # Failure mechanism for OmniAuth: if a strategy fails for
     # any reason this endpoint will be invoked. The default behavior
     # is to redirect to `/auth/failure` except in the case of
     # a development `RACK_ENV`, in which case an exception will
     # be raised.
-    get '/auth/failure', to: 'auth/tara#cancel'
+    get '/auth/failure', to: 'auth/oidc#cancel'
 
     get 'dashboard', to: 'dashboard#index', as: :dashboard
 
