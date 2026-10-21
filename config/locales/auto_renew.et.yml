@@ -1,0 +1,36 @@
+et:
+  auto_renew:
+    preference: "Automaatne pikendamine"
+    preference_hint: "Pikenda domeeni aegumisel. Selle valiku väljalülitamine peatab ainult tulevased pikendamised; ajapikenduse perioodil pikendamise tühistamiseks kasuta tagasimakse nuppu."
+    enabled: "Lubatud"
+    disabled: "Keelatud"
+    cycle_id: "Pikendamistsükli ID"
+    state: "Pikendamise olek"
+    original_expire_time: "Algne aegumisaeg"
+    expire_time: "Uus aegumisaeg"
+    cancellation_deadline: "Tühistamise tähtaeg"
+    attempts: "Pikendamiskatsete arv"
+    cancel: "Tühista automaatne pikendamine ja tagasta tasu"
+    cancel_confirmation: "Kas tühistada see automaatne pikendamine ja tagastada tasu? Lisatud aasta eemaldatakse ja tulevane automaatne pikendamine lülitatakse välja."
+    domain: "Domeen"
+    event: "Automaatse pikendamise sündmus"
+    states:
+      fundingRetry: "Ootab raha või uut katset"
+      autoRenewPeriod: "Automaatse pikendamise ajapikenduse periood"
+      completed: "Lõpetatud"
+      reversed: "Tühistatud ja tasu tagastatud"
+      fundingFailed: "Raha ei laekunud"
+      cancelled: "Tühistatud"
+    events:
+      renewed: "Domeen automaatselt pikendatud"
+      fundingWarning: "Automaatseks pikendamiseks pole piisavalt raha"
+      renewProhibited: "Automaatne pikendamine on blokeeritud"
+      fundingFailed: "Automaatne pikendamine ebaõnnestus; valik lülitati välja"
+    filters:
+      auto_renew_eq: "Automaatne pikendamine lubatud"
+      auto_renew_grace: "Automaatse pikendamise ajapikenduse perioodil"
+      auto_renew_funding_retry: "Automaatne pikendamine ootab raha või uut katset"
+  domains:
+    index:
+      csv:
+        auto_renew: "Automaatne pikendamine lubatud"
