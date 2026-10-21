@@ -94,7 +94,7 @@ RSpec.feature 'domain automatic renewal' do
     expect(page).to have_content('Cancellation deadline passed')
   end
 
-  %w[fundingRetry completed reversed fundingFailed cancelled].each do |state|
+  %w[fundingRetry completed reversed cancelled].each do |state|
     scenario "details label #{state} without offering a refund" do
       cycle[:state] = state
       stub_repp(:get, '/domains/example.ee?locale=en', { domain: domain })
@@ -141,5 +141,31 @@ RSpec.feature 'domain automatic renewal' do
     expect(page).to have_content(cycle[:id])
     expect(page).to have_content('Cancellation deadline')
     expect(page).to have_content('Renewal attempts')
+  end
+
+  {
+    en: 'Automatic renewal overdue; domain goes out of zone. Renewal attempts continue until the domain is deleted.',
+    et: 'Automaatne pikendamine on üle tähtaja; domeen eemaldatakse tsoonist. Pikendamiskatsed jätkuvad kuni domeeni kustutamiseni.'
+  }.each do |locale, message|
+    scenario "dashboard renders an overdue renewal still awaiting retry in #{locale}" do
+      cycle[:state] = 'fundingRetry'
+      cycle[:expire_time] = nil
+      notification = { id: 1, text: 'Renewal notice', created_at: '2027-03-16T00:00:00+02:00',
+                       attached_obj_type: 'DomainAutoRenewal',
+                       attached_obj_data: { event: 'renewalOverdue', domain: domain[:name], cycle: cycle } }
+      stub_repp(:get, "/registrar/summary?locale=#{locale}",
+                { balance: { amount: '100.00', currency: 'EUR' }, domains: 1, contacts: 1,
+                  notifications_count: 1, notification: notification })
+
+      visit dashboard_path(locale: locale)
+
+      expect(page).to have_content(message)
+      expect(page).to have_content(domain[:name])
+      expect(page).to have_content(cycle[:id])
+      expect(page).to have_content(I18n.t('auto_renew.states.fundingRetry', locale: locale, raise: true))
+      expect(page).to have_content(I18n.t('auto_renew.cancellation_deadline', locale: locale, raise: true))
+      expect(page).to have_content(I18n.t('auto_renew.attempts', locale: locale, raise: true))
+      expect(page).not_to have_content(I18n.t('auto_renew.expire_time', locale: locale, raise: true))
+    end
   end
 end

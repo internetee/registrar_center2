@@ -19,13 +19,12 @@ et:
       autoRenewPeriod: "Automaatse pikendamise ajapikenduse periood"
       completed: "Lõpetatud"
       reversed: "Tühistatud ja tasu tagastatud"
-      fundingFailed: "Raha ei laekunud"
       cancelled: "Tühistatud"
     events:
       renewed: "Domeen automaatselt pikendatud"
       fundingWarning: "Automaatseks pikendamiseks pole piisavalt raha"
       renewProhibited: "Automaatne pikendamine on blokeeritud"
-      fundingFailed: "Automaatne pikendamine ebaõnnestus; valik lülitati välja"
+      renewalOverdue: "Automaatne pikendamine on üle tähtaja; domeen eemaldatakse tsoonist. Pikendamiskatsed jätkuvad kuni domeeni kustutamiseni."
     filters:
       auto_renew_eq: "Automaatne pikendamine lubatud"
       auto_renew_grace: "Automaatse pikendamise ajapikenduse perioodil"

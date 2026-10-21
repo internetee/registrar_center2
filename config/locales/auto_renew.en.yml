@@ -19,13 +19,12 @@ en:
       autoRenewPeriod: "Automatic renewal grace period"
       completed: "Completed"
       reversed: "Reversed and refunded"
-      fundingFailed: "Funding failed"
       cancelled: "Cancelled"
     events:
       renewed: "Domain automatically renewed"
       fundingWarning: "Insufficient funds for automatic renewal"
       renewProhibited: "Automatic renewal is blocked"
-      fundingFailed: "Automatic renewal failed; preference disabled"
+      renewalOverdue: "Automatic renewal overdue; domain goes out of zone. Renewal attempts continue until the domain is deleted."
     filters:
       auto_renew_eq: "Automatic renewal enabled"
       auto_renew_grace: "In automatic renewal grace period"
