@@ -54,12 +54,32 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   end
 
   def update
+    auto_renew_changed = auto_renew_preference_changed?
+    return if performed?
+
     conn = ApiConnector::Domains::Updater.new(**auth_info)
-    result = conn.call_action(payload: domain_payload)
+    result = conn.call_action(payload: domain_payload.except(:auto_renew))
+    handle_response(result); return if performed?
+
+    if auto_renew_changed
+      result = ApiConnector::Domains::AutoRenewUpdater.new(**auth_info).call_action(
+        payload: { name: domain_params[:name], enabled: auto_renew_preference }
+      )
+      handle_response(result); return if performed?
+    end
+
+    flash.notice = @message
+    redirect_to domain_path(domain_name: domain_params[:name])
+  end
+
+  def update_auto_renew
+    payload = params.require(:auto_renew).permit(:enabled, :cycle_id).to_h.symbolize_keys
+    conn = ApiConnector::Domains::AutoRenewUpdater.new(**auth_info)
+    result = conn.call_action(payload: payload.merge(name: params[:domain_name]))
     handle_response(result); return if performed?
 
     flash.notice = @message
-    redirect_to domain_path(domain_name: @response.domain[:name])
+    redirect_to domain_path(domain_name: params[:domain_name])
   end
 
   def renew
@@ -123,7 +143,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     params.require(:domain)
           .permit(:id, :verified, :auth_code, :name, :reserved_pw, :exp_date,
                   :period_unit, :period, :admin_contact, :tech_contact,
-                  :code, :verified, :transfer_code, :legal_document, :batch_file,
+                  :code, :verified, :transfer_code, :legal_document, :batch_file, :auto_renew,
                   registrant: [%i[code verified]],
                   contacts_attributes: [%i[code type action]],
                   nameservers_attributes: [%i[id hostname ipv4 ipv6 action]],
@@ -133,6 +153,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   # rubocop:disable Metrics/MethodLength
   def default_params
     ret = {}
+    ret[:auto_renew] = false
 
     ret[:period] = Rails.configuration.customization[:default_domain_period]
 
@@ -163,6 +184,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     ret = default_params
     ret[:name] = domain[:name]
     ret[:dispute] = domain[:dispute]
+    ret[:auto_renew] = domain.dig(:auto_renew, :enabled) == true
 
     ret[:registrant] = "#{domain[:registrant][:code]} #{domain[:registrant][:name]}"
 
@@ -188,6 +210,7 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
   def domain_payload
     {
       name: domain_params[:name],
+      auto_renew: auto_renew_preference,
       reserved_pw: domain_params[:reserved_pw],
       transfer_code: domain_params[:transfer_code],
       registrant: domain_params[:registrant],
@@ -201,6 +224,21 @@ class DomainsController < BaseController # rubocop:disable Metrics/ClassLength
     }
   end
   # rubocop:enable Metrics/MethodLength
+
+  def auto_renew_preference_changed?
+    return false unless domain_params.key?(:auto_renew)
+
+    conn = ApiConnector::Domains::Reader.new(**auth_info)
+    result = conn.call_action(domain_name: domain_params[:name])
+    handle_response(result)
+    return false if performed?
+
+    auto_renew_preference != (@response.domain.dig(:auto_renew, :enabled) == true)
+  end
+
+  def auto_renew_preference
+    ActiveModel::Type::Boolean.new.cast(domain_params[:auto_renew])
+  end
 
   def contacts_attributes(domain_params)
     return [] if domain_params[:contacts_attributes].blank?

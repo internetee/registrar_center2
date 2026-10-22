@@ -62,6 +62,16 @@
                     </div>
                 </div>
             </div>
+            <% %i[auto_renew_eq auto_renew_grace auto_renew_funding_retry].each do |filter| %>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form--field checkbox">
+                        <%= check_box_tag "search[#{filter}]", 'true', params[:search]&.dig(filter) == 'true' %>
+                        <%= label_tag "search_#{filter}" do %>
+                            <span><%= t("auto_renew.filters.#{filter}") %></span>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
             <div class="col-md-4 col-xs-12">
                 <div class="form--actions">
                     <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
