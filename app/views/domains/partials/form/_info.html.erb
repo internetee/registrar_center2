@@ -27,13 +27,15 @@
         <% end %>
         <div class="form--row">
             <div class="form--field">
-                <div class="checkbox">
-                    <%= form.check_box :auto_renew, { checked: @domain_params[:auto_renew] }, 'true', 'false' %>
-                    <%= form.label :auto_renew do %>
-                        <span><%= t('auto_renew.preference') %></span>
-                    <% end %>
+                <div class="form--input">
+                    <div class="checkbox">
+                        <%= form.check_box :auto_renew, { checked: @domain_params[:auto_renew] }, 'true', 'false' %>
+                        <%= form.label :auto_renew do %>
+                            <span><%= t('auto_renew.preference') %></span>
+                        <% end %>
+                    </div>
+                    <small class="text-muted"><%= t('auto_renew.preference_hint') %></small>
                 </div>
-                <p><%= t('auto_renew.preference_hint') %></p>
             </div>
         </div>
     </div>
