@@ -20,6 +20,7 @@ class DomainListCsvPresenter < CsvPresenter
       expire_time
       force_delete
       force_delete_reason
+      auto_renew
     ]
 
     columns.map! { |column| view.t("domains.index.csv.#{column}") }
@@ -36,6 +37,7 @@ class DomainListCsvPresenter < CsvPresenter
     row[4] = view.l(domain.expire_time.to_datetime, format: :date)
     row[5] = domain.statuses&.key?('serverForceDelete') ? 1 : 0
     row[6] = domain.statuses&.dig('serverForceDelete').to_s
+    row[7] = domain.auto_renew&.dig(:enabled) ? 1 : 0
 
     CSV::Row.new([], row)
   end

@@ -1,0 +1,20 @@
+<tr>
+    <th><%= t('auto_renew.cycle_id') %></th>
+    <td><%= cycle[:id] %></td>
+</tr>
+<tr>
+    <th><%= t('auto_renew.state') %></th>
+    <td><%= t("auto_renew.states.#{cycle[:state]}") %></td>
+</tr>
+<% %i[original_expire_time expire_time cancellation_deadline].each do |field| %>
+    <% if cycle[field].present? %>
+        <tr>
+            <th><%= t("auto_renew.#{field}") %></th>
+            <td><%= l cycle[field].to_datetime %></td>
+        </tr>
+    <% end %>
+<% end %>
+<tr>
+    <th><%= t('auto_renew.attempts') %></th>
+    <td><%= cycle[:attempts] %></td>
+</tr>
