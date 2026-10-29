@@ -5,7 +5,14 @@
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
 name: "Ruby on Rails CI"
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -18,7 +25,8 @@ jobs:
       matrix:
         os: [ubuntu-24.04]
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.ruby == 'debug' }}
+    env:
+      BUNDLE_FROZEN: "true"
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -26,14 +34,16 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Config bundler
-        run:  |
-          bundle config set without 'development staging production'
-          bundle config set deployment '[secure]'
-          bundle env
-          head -n1 $(which bundle)
+      - name: Verify gems match Gemfile.lock
+        run: |
+          bundle check
+          ruby -v
+          bundler -v
+          sha256sum Gemfile.lock
+          bundle list
 
       - name: Install wkhtmltopdf
         run: |
@@ -78,6 +88,8 @@ jobs:
   code_quality:
     runs-on: ubuntu-24.04
     needs: test
+    env:
+      BUNDLE_FROZEN: "true"
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -85,6 +97,7 @@ jobs:
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: .ruby-version
           bundler-cache: true
 
       - name: Setup qlty.sh

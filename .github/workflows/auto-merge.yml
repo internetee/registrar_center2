@@ -10,6 +10,10 @@ permissions:
   pull-requests: write
   checks: read
 
+concurrency:
+  group: auto-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   auto-approve-merge:
     runs-on: ubuntu-latest
@@ -97,8 +101,23 @@ jobs:
         if: steps.check_auto_merge.outputs.auto_merge == 'true' && steps.ci_status.outputs.ci_passed == 'true'
         id: merge_pr
         run: |
-          set +e
-          gh pr merge --auto --merge ${{ github.event.pull_request.number }}
-          set -e
+          PR_NUMBER='${{ github.event.pull_request.number }}'
+          if gh pr merge --merge "$PR_NUMBER"; then
+            echo "Merged PR #$PR_NUMBER"
+            exit 0
+          fi
+          STATE=$(gh pr view "$PR_NUMBER" --json state -q .state)
+          if [ "$STATE" = "MERGED" ]; then
+            echo "PR #$PR_NUMBER was already merged"
+            exit 0
+          fi
+          gh pr merge --auto --merge "$PR_NUMBER"
+          STATE=$(gh pr view "$PR_NUMBER" --json state -q .state)
+          if [ "$STATE" = "MERGED" ]; then
+            echo "Merged PR #$PR_NUMBER via auto-merge"
+            exit 0
+          fi
+          echo "Failed to merge PR #$PR_NUMBER (state=$STATE)" >&2
+          exit 1
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
