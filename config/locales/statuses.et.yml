@@ -32,7 +32,7 @@ et:
       pendingRenew_text: "Domeeni registreeringu pikendamine on ootel."
       pendingTransfer: "Registripidaja vahetus ootel"
       pendingTransfer_text: "Registripidaja vahetus on ootel."
-      pendingUpdate": "Andmete muutmine ootel"
+      pendingUpdate: "Andmete muutmine ootel"
       pendingUpdate_text: "Oodatakse registreerija kinnitust registreerija vahetuse päringule"
       serverAdminChangeProhibited: "Halduskontakti vahetus keelatud"
       serverAdminChangeProhibited_text: "Domeeni halduskontakti(de) muutmine on keelatud"

@@ -238,7 +238,9 @@ et:
       flag: "Lipp"
       public_key: "Avalik võti"
       regenerate: "Regenerate transfer code"
-    
+      cancel_pending_update: "Tühista registreerija vahetus"
+      cancel_pending_update_confirm: "Kas tühistada selle domeeni ootel registreerija vahetus?"
+
     edit:
       title: "Muuda domeeni"
 
