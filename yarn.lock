@@ -499,10 +499,10 @@ sass-migrator@^1.5.6:
   resolved "https://registry.yarnpkg.com/sass-migrator/-/sass-migrator-1.7.3.tgz#0ac232b530d78a1b84dfaf24aaccdfd03159acf6"
   integrity sha512-8JMZ15HMvjE8X3i1NhPu2GQzEIT74xrGACq6J9RzdbJ49N1Fl0lFvfX03+hAQN0MKNYKASq6fx1VZLa5NuwBWw==
 
-sass@^1.106.1:
-  version "1.106.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.106.1.tgz#53b3df8ebfe0e5e0bc111afe54bd2f6fda089f9c"
-  integrity sha512-kD+Gi66vycZcbJt+42NC4z4PXNMcCajVrJPhqoKKXy5cOBMmJQt052CxIBcRjwYXeImHYOpu/ydWWGZQIenl7A==
+sass@^1.107.1:
+  version "1.107.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.107.1.tgz#a8a461744666e31f8973041a6b9ae7fcb265befd"
+  integrity sha512-aJ1/LvxOOb04YhmiBjzZn3jVwdHKol+OVhoMV6fFl02fF9T3i+5Mg9l/CnzqtM+NX5Jn5o3lAbs/ZJivTCLHfQ==
   dependencies:
     chokidar "^5.0.0"
     immutable "^5.1.5"
