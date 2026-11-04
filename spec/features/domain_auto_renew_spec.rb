@@ -116,7 +116,10 @@ RSpec.feature 'domain automatic renewal' do
                           body: { code: 1000, data: { statuses: [], domains: [domain], count: 1, new_domain: [] } }.to_json)
 
     visit domains_path
-    expect(page).to have_content('Automatic renewal grace period')
+    headers = all('table.table thead th').map(&:text)
+    cells = all('table.table tbody tr:first-child td').map { |td| td.text.strip }
+    expect(cells[headers.index('Automatic renewal')]).to eq('Enabled')
+    expect(cells[headers.index('Renewal state')]).to eq('Automatic renewal grace period')
     check 'Automatic renewal enabled'
     check 'In automatic renewal grace period'
     check 'Automatic renewal awaiting funding or retry'

@@ -5,9 +5,11 @@
     <td>
         <% if domain[:auto_renew].present? %>
             <%= t(domain[:auto_renew][:enabled] ? 'auto_renew.enabled' : 'auto_renew.disabled') %>
-            <% if (cycle = domain[:auto_renew][:cycle]).present? %>
-                <span class="chip"><%= t("auto_renew.states.#{cycle[:state]}") %></span>
-            <% end %>
+        <% end %>
+    </td>
+    <td>
+        <% if (cycle = domain.dig(:auto_renew, :cycle)).present? %>
+            <%= t("auto_renew.states.#{cycle[:state]}") %>
         <% end %>
     </td>
     <td class="table--action">
