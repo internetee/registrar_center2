@@ -20,6 +20,7 @@ class ApiConnector
         {
           domain: {
             name: payload[:name],
+            auto_renew: payload[:auto_renew] == true,
             reserved_pw: payload[:reserved_pw],
             registrant: payload[:registrant][:code],
             period_unit: payload[:period][-1].to_s,
