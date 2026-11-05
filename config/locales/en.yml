@@ -137,6 +137,8 @@ en:
       nameserver: "Nameserver"
       date_range: "Date range"
       status: "Status"
+      only_pending: "Only domains with pending operations"
+      pending: "Pending operation"
       expire_time: "Expire date"
       items: 
         zero: "domains"
@@ -233,6 +235,13 @@ en:
       regenerate: "Regenerate transfer code"
       cancel_pending_update: "Cancel registrant change"
       cancel_pending_update_confirm: "Cancel the pending registrant change of this domain?"
+      pending: "Pending operation"
+      pending_requested_at: "Requested"
+      resend_pending_notification: "Resend confirmation email"
+      pending_kinds:
+        registrant_change_confirmation: "Registrant change confirmation sent"
+        registrant_change_notice: "New registrant notified"
+        delete_confirmation: "Delete confirmation sent"
 
     edit:
       title: "Edit domain"
