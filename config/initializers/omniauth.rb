@@ -2,30 +2,32 @@ OpenIDConnect.logger = Rails.logger
 OpenIDConnect.debug!
 
 OpenIDConnect.http_config do |config|
-  config.proxy = Rails.configuration.customization.dig(:tara, :proxy)
+  config.proxy = Rails.configuration.customization.dig(:oidc, :proxy)
 end
 
 OmniAuth.config.logger = Rails.logger
 # Block GET requests to avoid exposing self to CVE-2015-9284
 OmniAuth.config.allowed_request_methods = [:post]
 
-signing_keys = Rails.configuration.customization.dig(:tara, :keys).to_json
-issuer = Rails.configuration.customization.dig(:tara, :issuer)
-host = Rails.configuration.customization.dig(:tara, :host)
-port = Rails.configuration.customization.dig(:tara, :port)
-authorization_endpoint = Rails.configuration.customization.dig(:tara, :authorization_endpoint)
-token_endpoint = Rails.configuration.customization.dig(:tara, :token_endpoint)
-jwks_uri = Rails.configuration.customization.dig(:tara, :jwks_uri)
-identifier = Rails.configuration.customization.dig(:tara, :identifier)
-secret = Rails.configuration.customization.dig(:tara, :secret)
-redirect_uri = Rails.configuration.customization.dig(:tara, :redirect_uri)
-scheme = Rails.configuration.customization.dig(:tara, :scheme)
-scope = Rails.configuration.customization.dig(:tara, :scope)
-discovery = Rails.configuration.customization.dig(:tara, :discovery)
+OmniAuth.config.failure_raise_out_environments = []
+
+signing_keys = Rails.configuration.customization.dig(:oidc, :keys).to_json
+issuer = Rails.configuration.customization.dig(:oidc, :issuer)
+host = Rails.configuration.customization.dig(:oidc, :host)
+port = Rails.configuration.customization.dig(:oidc, :port)
+authorization_endpoint = Rails.configuration.customization.dig(:oidc, :authorization_endpoint)
+token_endpoint = Rails.configuration.customization.dig(:oidc, :token_endpoint)
+jwks_uri = Rails.configuration.customization.dig(:oidc, :jwks_uri)
+identifier = Rails.configuration.customization.dig(:oidc, :identifier)
+secret = Rails.configuration.customization.dig(:oidc, :secret)
+redirect_uri = Rails.configuration.customization.dig(:oidc, :redirect_uri)
+scheme = Rails.configuration.customization.dig(:oidc, :scheme)
+scope = Rails.configuration.customization.dig(:oidc, :scope)
+discovery = Rails.configuration.customization.dig(:oidc, :discovery)
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider 'tara', {
-    name: 'tara',
+  provider :openid_connect, {
+    name: :oidc,
     scope: scope,
     state: SecureRandom.hex(10),
     client_signing_alg: :RS256,
