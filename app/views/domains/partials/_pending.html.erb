@@ -1,0 +1,21 @@
+<div class="page--block--header">
+    <h2><%= t('domains.show.pending') %></h2>
+</div>
+<table class="table__basic">
+    <tbody>
+        <tr>
+            <th><%= t('domains.show.pending_requested_at') %></th>
+            <td><%= l @domain[:pending][:requested_at].to_datetime %></td>
+        </tr>
+        <% @domain[:pending][:notifications].each do |n| %>
+            <tr>
+                <th><%= t("domains.show.pending_kinds.#{n[:kind]}") %></th>
+                <td><%= l n[:sent_at].to_datetime %> &rarr; <%= n[:recipients].join(', ') %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= link_to t('domains.show.resend_pending_notification'),
+            domain_resend_pending_notification_path(domain_name: @domain[:name]),
+            class: 'button button--primary',
+            data: { 'turbo-method': 'post' } %>

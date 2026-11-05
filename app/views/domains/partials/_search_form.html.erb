@@ -63,6 +63,12 @@
                 </div>
             </div>
             <div class="col-md-4 col-xs-12">
+                <label class="form--label">
+                    <%= check_box_tag 'search[with_pending_operation]', '1', params[:search]&.dig(:with_pending_operation).present? %>
+                    <%= t('domains.index.only_pending') %>
+                </label>
+            </div>
+            <div class="col-md-4 col-xs-12">
                 <div class="form--actions">
                     <%= button_tag t(:filter), type: 'submit', class: 'button button--primary small' %>
                     <%= link_to t(:clear_filter), "#{url_for(request.params.except(:search, :search_terms))}", class: 'button button--link' %>

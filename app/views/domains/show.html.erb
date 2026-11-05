@@ -43,6 +43,7 @@
         <div class="wrapper">
             <div class="col-xs-12 col-md-8 col-md-offset-2">
                 <%= render 'domains/partials/statuses' %>
+                <%= render 'domains/partials/pending' if @domain[:pending] %>
             </div>
         </div>
     </div>
