@@ -87,7 +87,7 @@ group :test do
   gem 'faker'
   gem 'fuubar'
   gem 'selenium-webdriver'
-  gem 'simplecov', '0.22.0', require: false
+  gem 'simplecov', '1.2.0', require: false
   gem 'vcr'
   gem 'webmock'
 end
