@@ -144,6 +144,8 @@ et:
       nameserver: "Nimeserver"
       date_range: "Ajavahemik"
       status: "Staatus"
+      only_pending: "Ainult ootel toimingutega domeenid"
+      pending: "Ootel toiming"
       expire_time: "Kehtiv kuni"
       items: 
         zero: "domeene"
@@ -240,6 +242,13 @@ et:
       regenerate: "Regenerate transfer code"
       cancel_pending_update: "Tühista registreerija vahetus"
       cancel_pending_update_confirm: "Kas tühistada selle domeeni ootel registreerija vahetus?"
+      pending: "Ootel toiming"
+      pending_requested_at: "Taotletud"
+      resend_pending_notification: "Saada kinnituskiri uuesti"
+      pending_kinds:
+        registrant_change_confirmation: "Registreerija vahetuse kinnituskiri saadetud"
+        registrant_change_notice: "Uut registreerijat teavitatud"
+        delete_confirmation: "Kustutamise kinnituskiri saadetud"
 
     edit:
       title: "Muuda domeeni"

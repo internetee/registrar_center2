@@ -46,6 +46,15 @@
             </div>
         </div>
     </div>
+    <% if @domain[:pending] %>
+        <div class="page--block">
+            <div class="wrapper">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <%= render 'domains/partials/pending' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
     <div class="page--block">
         <div class="wrapper">
             <div class="col-xs-12 col-md-8 col-md-offset-2">
