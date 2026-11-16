@@ -133,6 +133,14 @@ class ApiUsersController < BaseController
     "#{country_code}#{identity_number}"
   end
 
+  # Without a subject the registry falls back to the subject returned by eeID.
+  def approve_verification_payload
+    return {} if params[:api_user].blank?
+
+    subject = composed_subject
+    subject.present? ? { api_user: { subject: subject } } : {}
+  end
+
   def changed_own_password?
     return false unless updating_self?
 
