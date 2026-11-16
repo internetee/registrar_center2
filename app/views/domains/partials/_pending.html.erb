@@ -13,6 +13,11 @@
                 <td><%= l n[:sent_at].to_datetime %> &rarr; <%= n[:recipients].join(', ') %></td>
             </tr>
         <% end %>
+        <% if @domain[:pending][:notifications].empty? %>
+            <tr>
+                <td colspan="2"><%= t('domains.show.pending_notifications_queued') %></td>
+            </tr>
+        <% end %>
     </tbody>
 </table>
 <%= link_to t('domains.show.resend_pending_notification'),

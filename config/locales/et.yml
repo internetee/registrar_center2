@@ -244,6 +244,7 @@ et:
       cancel_pending_update_confirm: "Kas tühistada selle domeeni ootel registreerija vahetus?"
       pending: "Ootel toiming"
       pending_requested_at: "Taotletud"
+      pending_notifications_queued: "Teavituskirju pole veel saadetud. Need saadetakse umbes minut pärast taotlust; nende nägemiseks värskendage lehte."
       resend_pending_notification: "Saada kinnituskiri uuesti"
       pending_kinds:
         registrant_change_confirmation: "Registreerija vahetuse kinnituskiri saadetud"

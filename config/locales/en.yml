@@ -237,6 +237,7 @@ en:
       cancel_pending_update_confirm: "Cancel the pending registrant change of this domain?"
       pending: "Pending operation"
       pending_requested_at: "Requested"
+      pending_notifications_queued: "Notification emails have not been sent yet. They go out about a minute after the request; refresh the page to see them."
       resend_pending_notification: "Resend confirmation email"
       pending_kinds:
         registrant_change_confirmation: "Registrant change confirmation sent"
