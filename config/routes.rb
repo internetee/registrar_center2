@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index', as: :dashboard
 
     post 'domains/update', to: 'domains#update', as: :update_domain
+    put 'domain/auto_renew', to: 'domains#update_auto_renew', as: :domain_auto_renew
     get 'domains/delete', to: 'domains#delete', as: :delete_domain
     get 'domain', to: 'domains#show', as: :domain
     put 'domain/regenerate_transfer_code', to: 'domains#regenerate_transfer_code', as: :domain_regenerate_transfer_code
