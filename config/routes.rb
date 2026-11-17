@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     delete 'domains/destroy', to: 'domains#destroy', as: :destroy_domain
     delete 'domain/cancel_pending_update', to: 'domains#cancel_pending_update',
                                            as: :domain_cancel_pending_update
+    post 'domain/resend_pending_notification', to: 'domains#resend_pending_notification',
+                                               as: :domain_resend_pending_notification
     resources :domains, except: %i[destroy update show edit]
 
     resources :bulk_change, only: %i[show update], controller: 'steps_controllers/bulk_change'

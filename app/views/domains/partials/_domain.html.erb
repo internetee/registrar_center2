@@ -1,5 +1,9 @@
 <tr>
-    <td><%= link_to domain[:name], domain_path(domain_name: domain[:name]), 'data-turbo': true %></td>
+    <td><%= link_to domain[:name], domain_path(domain_name: domain[:name]), 'data-turbo': true %>
+        <% if (domain[:statuses].keys & %w[pendingUpdate pendingDeleteConfirmation pendingDelete]).any? %>
+            <i class="fas fa-hourglass-half simple_tooltip" data-tippy-content="<%= t('domains.index.pending') %>"></i>
+        <% end %>
+    </td>
     <td><%= link_to domain[:registrant][:name], contact_path(contact_code: domain[:registrant][:code]), 'data-turbo': true %></td>
     <td><%= l domain[:expire_time].to_datetime %></td>
     <td class="table--action">
