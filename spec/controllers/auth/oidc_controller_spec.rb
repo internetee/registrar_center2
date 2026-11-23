@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Auth::TaraController, type: :controller do
+RSpec.describe Auth::OidcController, type: :controller do
   let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
   let(:uuid) { Faker::Internet.uuid }
   let(:username) { Rails.configuration.customization[:username] }
   let(:token) { Rails.configuration.customization[:token] }
   let(:uid) { "EE#{Rails.configuration.customization[:id_code]}" }
   let(:auth_data_legal) { { username: username, token: token } }
-  let(:cassette_path) { 'controllers/auth/tara_controller' }
+  let(:cassette_path) { 'controllers/auth/oidc_controller' }
   option = {
     method: :callback,
     http_method: :get,
@@ -19,7 +19,7 @@ RSpec.describe Auth::TaraController, type: :controller do
     request.env['omniauth.auth'] = OmniAuth::AuthHash.new(uid: uid)
   end
 
-  it 'successfully receives callback from tara and logs in user' do
+  it 'successfully receives callback from oidc and logs in user' do
     session[:uuid] = nil
     VCR.use_cassette("#{cassette_path}/#{option[:method]}", match_requests_on: %i[path method]) do
       send(option[:http_method], option[:method], params: option[:params])
