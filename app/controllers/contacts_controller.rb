@@ -74,6 +74,15 @@ class ContactsController < BaseController # rubocop:disable Metrics/ClassLength
     handle_contact_action(ApiConnector::Contacts::Updater)
   end
 
+  def copy
+    conn = ApiConnector::Contacts::Copier.new(**auth_info)
+    result = conn.call_action(id: params[:contact_code])
+    handle_response(result); return if performed?
+
+    flash.notice = t('.copied', code: params[:contact_code])
+    redirect_to contact_path(contact_code: @response.contact[:code])
+  end
+
   def verify
     conn = ApiConnector::Contacts::Verifier.new(**auth_info)
     result = conn.call_action(id: params[:contact_code])

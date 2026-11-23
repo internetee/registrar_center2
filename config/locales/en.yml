@@ -22,6 +22,7 @@ en:
   disable: "Disable"
   transfer: "Transfer"
   verify: "Verify"
+  copy: "Copy"
   add_credit: "Add credit"
   choose_file: "Choose file"
   created_at: "Created"
@@ -382,6 +383,7 @@ en:
 
     show:
       general: "General"
+      copy_confirm: "Create a new contact with the data of %{code}? The copy gets a new ID and authinfo, no domains, statuses or identity verification."
       domains: "Domains"
       code: "ID"
       auth_info: "Authinfo pw"
@@ -415,6 +417,9 @@ en:
         tech: "Technical contact"
         admin: "Admin contact"
       download_poi: "Download Proof of Identity"
+
+    copy:
+      copied: "Contact %{code} copied"
 
     delete:
       title: "Delete contact"
