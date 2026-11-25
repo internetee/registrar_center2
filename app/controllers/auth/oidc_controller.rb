@@ -1,10 +1,10 @@
 module Auth
-  class TaraController < AuthController
+  class OidcController < AuthController
     before_action :require_no_authentication, only: :callback
 
     def callback
-      conn = ApiConnector::Auth::OmniauthTaraChecker.new(username: nil)
-      result = conn.call_action(params: tara_callback_params)
+      conn = ApiConnector::Auth::OmniauthOidcChecker.new(username: nil)
+      result = conn.call_action(params: oidc_callback_params)
       handle_response(result); return if performed?
 
       create { user_payload }
@@ -16,7 +16,7 @@ module Auth
 
     private
 
-    def tara_callback_params
+    def oidc_callback_params
       {
         auth: {
           uid: omniauth_user_hash.try(:uid),
