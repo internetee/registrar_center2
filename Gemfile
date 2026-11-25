@@ -59,8 +59,8 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
 gem 'omniauth', '>=2.0.0'
-gem 'omniauth-rails_csrf_protection'
 gem 'omniauth_openid_connect'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'coderay', '~> 1.1', '>= 1.1.2'
 

@@ -2,24 +2,15 @@ module Auth
   class OidcController < AuthController
     before_action :require_no_authentication, only: :callback
 
-    # GET /auth/oidc/callback
     def callback
-      conn = ApiConnector::Auth::OmniauthChecker.new(username: nil)
+      conn = ApiConnector::Auth::OmniauthOidcChecker.new(username: nil)
       result = conn.call_action(params: oidc_callback_params)
       handle_response(result); return if performed?
 
       create { user_payload }
     end
 
-    # GET /auth/oidc/cancel
     def cancel
-      message_key = params[:message]
-
-      translated = if message_key.present?
-        I18n.t("omniauth.errors.#{message_key}", default: message_key.humanize)
-      end
-
-      flash[:alert] = translated.presence || t(:sign_in_cancelled)
       redirect_to login_url
     end
 

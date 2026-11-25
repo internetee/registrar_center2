@@ -20,6 +20,15 @@
                         <%= link_to t(:delete), delete_domain_path(domain_name: @domain[:name]), class: 'button button--danger' %>
                     </div>
                 <% end %>
+                <% if @domain[:statuses].key?('pendingUpdate') %>
+                    <div class="col-xs-auto">
+                        <%= link_to t('.cancel_pending_update'),
+                                    domain_cancel_pending_update_path(domain_name: @domain[:name]),
+                                    class: 'button button--danger',
+                                    data: { 'turbo-method': 'delete',
+                                            turbo_confirm: t('.cancel_pending_update_confirm') } %>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>
@@ -37,6 +46,15 @@
             </div>
         </div>
     </div>
+    <% if @domain[:pending] %>
+        <div class="page--block">
+            <div class="wrapper">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <%= render 'domains/partials/pending' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
     <div class="page--block">
         <div class="wrapper">
             <div class="col-xs-12 col-md-8 col-md-offset-2">

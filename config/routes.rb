@@ -7,16 +7,16 @@ Rails.application.routes.draw do
     get 'login', to: 'auth/sessions#new'
     get 'logout', to: 'auth/sessions#destroy'
 
-    namespace :auth do
-      match '/oidc/callback', via: %i[get post], to: 'oidc#callback', as: :oidc_callback
-      match '/oidc/cancel', via: %i[get post delete], to: 'oidc#cancel', as: :oidc_cancel
-      # Failure mechanism for OmniAuth: if a strategy fails for
-      # any reason this endpoint will be invoked. The default behavior
-      # is to redirect to `/auth/failure` except in the case of
-      # a development `RACK_ENV`, in which case an exception will
-      # be raised.
-      get '/failure', to: 'oidc#cancel'
-    end
+    match '/auth/oidc/callback', via: %i[get post], to: 'auth/oidc#callback'
+    match '/auth/oidc/cancel', via: %i[get post delete], to: 'auth/oidc#cancel',
+                               as: :oidc_cancel
+
+    # Failure mechanism for OmniAuth: if a strategy fails for
+    # any reason this endpoint will be invoked. The default behavior
+    # is to redirect to `/auth/failure` except in the case of
+    # a development `RACK_ENV`, in which case an exception will
+    # be raised.
+    get '/auth/failure', to: 'auth/oidc#cancel'
 
     get 'dashboard', to: 'dashboard#index', as: :dashboard
 
@@ -31,6 +31,10 @@ Rails.application.routes.draw do
     post 'domains/transfer', to: 'domains#transfer', as: :domain_transfer
     post 'domains/renew', to: 'domains#renew', as: :domain_renew
     delete 'domains/destroy', to: 'domains#destroy', as: :destroy_domain
+    delete 'domain/cancel_pending_update', to: 'domains#cancel_pending_update',
+                                           as: :domain_cancel_pending_update
+    post 'domain/resend_pending_notification', to: 'domains#resend_pending_notification',
+                                               as: :domain_resend_pending_notification
     resources :domains, except: %i[destroy update show edit]
 
     resources :bulk_change, only: %i[show update], controller: 'steps_controllers/bulk_change'

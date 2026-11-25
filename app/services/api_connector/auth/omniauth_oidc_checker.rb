@@ -2,7 +2,7 @@
 
 class ApiConnector
   module Auth
-    class OmniauthChecker < ApiConnector
+    class OmniauthOidcChecker < ApiConnector
       ACTION = 'check_omniauth_user_info'
       ENDPOINT = {
         method: 'post',

@@ -19,7 +19,7 @@ RSpec.describe Auth::OidcController, type: :controller do
     request.env['omniauth.auth'] = OmniAuth::AuthHash.new(uid: uid)
   end
 
-  it 'successfully receives callback from tara and logs in user' do
+  it 'successfully receives callback from oidc and logs in user' do
     session[:uuid] = nil
     VCR.use_cassette("#{cassette_path}/#{option[:method]}", match_requests_on: %i[path method]) do
       send(option[:http_method], option[:method], params: option[:params])
