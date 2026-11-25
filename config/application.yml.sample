@@ -13,7 +13,6 @@ shared:
   billing_secret: ''
 
   voog_site_url: "https://www.internet.ee"
-  voog_api_key: ""
   voog_site_fetching_enabled: "false"
   voog_footer_cache_ttl: "3600"
   # Optional; default is verify in production/staging, skip in development/test (like auction_center HttpRequester)

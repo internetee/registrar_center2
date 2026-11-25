@@ -129,8 +129,8 @@ RSpec.describe VoogFooterHelper, type: :helper do
       columns = helper.footer_navigation_columns
 
       expect(columns.map { |c| c[:name] }).to eq(["Help and info", "Registrars"])
-      expect(columns.first[:links].map { |l| l[:label] }).to eq(["FAQ", ".ee Statistics"])
-      expect(columns.first[:links].map { |l| l[:key] }).not_to include(:cookie_settings)
+      expect(columns.first[:links].map { |l| l[:label] }).to eq(["FAQ", ".ee Statistics", "Cookie Settings"])
+      expect(columns.last[:links].map { |l| l[:key] }).not_to include(:cookie_settings)
       expect(columns.first[:links].first[:url]).to eq("https://www.internet.ee/faq")
     end
 
@@ -163,9 +163,7 @@ RSpec.describe VoogFooterHelper, type: :helper do
 
       expect(links.map { |l| l[:label] }).to eq(["Content Management", "Cookie Settings", "FAQ"])
       expect(cookie[:url]).to eq("javascript:void(0)")
-      expect(cookie[:html_options]).to include(
-        target: '_blank',
-        rel: 'noopener',
+      expect(cookie[:html_options]).to eq(
         title: 'Cookie Settings',
         'data-cc': 'c-settings'
       )
