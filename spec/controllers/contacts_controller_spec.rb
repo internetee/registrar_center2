@@ -100,6 +100,13 @@ RSpec.describe ContactsController, type: :controller do
       },
     },
     {
+      method: :copy,
+      http_method: :post,
+      params: {
+        contact_code: '1111111:5A0D95F4'
+      }
+    },
+    {
       method: :verify,
       http_method: :post,
       params: {

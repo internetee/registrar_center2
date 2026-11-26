@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     post 'contacts/update', to: 'contacts#update', as: :update_contact
     get 'contact/delete', to: 'contacts#delete', as: :delete_contact
     delete 'contacts/destroy', to: 'contacts#destroy', as: :destroy_contact
+    post 'contact/copy', to: 'contacts#copy', as: :copy_contact
     post 'contact/verify', to: 'contacts#verify', as: :verify_contact
     post 'contact/approve_verification', to: 'contacts#approve_verification', as: :approve_verification_contact
     post 'contact/reject_verification', to: 'contacts#reject_verification', as: :reject_verification_contact

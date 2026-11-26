@@ -22,6 +22,7 @@ et:
   disable: "Deaktiveeri"
   transfer: "Too üle"
   verify: "Verifitseeri"
+  copy: "Kopeeri"
   add_credit: "Lisa krediiti"
   choose_file: "Vali fail arvutist"
   created_at: "Loodud"
@@ -388,6 +389,7 @@ et:
 
     show:
       general: "Üldinfo"
+      copy_confirm: "Kas luua uus kontakt kontakti %{code} andmetega? Koopia saab uue ID ja authinfo, sellel pole domeene, staatuseid ega isikutuvastust."
       domains: "Domeenid"
       code: "ID"
       auth_info: "Authinfo pw"
@@ -421,6 +423,9 @@ et:
         tech: "Tehniline kontakt"
         admin: "Admin kontakt"
       download_poi: "Laadi alla isikutõend"
+
+    copy:
+      copied: "Kontakt %{code} kopeeritud"
 
     delete:
       title: "Kustuta kontakt"
