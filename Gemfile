@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
+gem 'rails', '~> 8.0.5', '>= 8.0.5.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -13,16 +13,16 @@ gem 'sprockets-rails'
 gem 'puma', '~> 6.0'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem 'jsbundling-rails'
+gem 'jsbundling-rails', '>= 1.2.0'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails'
+gem 'turbo-rails', '>= 1.5.0'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'jbuilder'
+gem 'jbuilder', '>= 2.12.0'
 
 # Redis for Action Cable (production) and Rails.cache (production)
 gem 'redis', '~> 5.0'
@@ -55,25 +55,25 @@ gem 'countries', require: 'countries/global'
 # gem 'voog_footer', path: 'vendor/gems/voog_footer'
 gem 'voog_footer', github: 'internetee/voog_footer'
 
-gem 'wicked_pdf'
+gem 'wicked_pdf', '>= 2.8.0'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
-gem 'omniauth', '>=2.0.0'
+gem 'omniauth', '>= 2.1.2'
 gem 'omniauth_openid_connect'
-gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-rails_csrf_protection', '>= 1.0.2'
 
 gem 'coderay', '~> 1.1', '>= 1.1.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 6.0.4'
 end
 
 group :development do
   gem 'brakeman', require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
+  gem 'web-console', '>= 4.3.0'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem 'rack-mini-profiler'
@@ -85,7 +85,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'capybara-screenshot'
+  gem 'capybara-screenshot', '>= 1.0.27'
   gem 'faker'
   gem 'fuubar'
   gem 'selenium-webdriver'
