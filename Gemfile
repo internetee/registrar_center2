@@ -56,7 +56,7 @@ gem 'countries', require: 'countries/global'
 gem 'voog_footer', github: 'internetee/voog_footer'
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.10'
 
 gem 'omniauth', '>=2.0.0'
 gem 'omniauth_openid_connect'
