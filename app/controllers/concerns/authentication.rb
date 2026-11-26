@@ -15,8 +15,8 @@ module Authentication
   end
 
   def sign_out
+    clear_auth_cache
     session[:uuid] = nil
-    clear_cache
   end
 
   def sign_in(uuid)
@@ -60,9 +60,11 @@ module Authentication
     }
   end
 
-  def clear_cache
-    Rails.cache.instance_variable_get(:@data)&.each_key do |key|
-      Rails.cache.delete(key) unless key.match?(/distribution_data|growth_rate_data/)
-    end
+  # Auth session payload (uuid) and bulk-change wizard state (session.id) only.
+  # Leaves stats (distribution_data, growth_rate_data) and Voog footer (voog_footer/links/*) intact.
+  def clear_auth_cache
+    auth_uuid = session[:uuid]
+    Rails.cache.delete(auth_uuid) if auth_uuid.present?
+    Rails.cache.delete(session.id)
   end
 end
