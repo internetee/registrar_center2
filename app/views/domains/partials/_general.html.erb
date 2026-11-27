@@ -24,6 +24,27 @@
             <th><%= t(:valid_to) %></th>
             <td><%= l @domain[:expire_time].to_datetime %></td>
         </tr>
+        <% if @domain[:auto_renew].present? %>
+            <tr>
+                <th><%= t('auto_renew.preference') %></th>
+                <td><%= t(@domain[:auto_renew][:enabled] ? 'auto_renew.enabled' : 'auto_renew.disabled') %></td>
+            </tr>
+            <% if (cycle = @domain[:auto_renew][:cycle]).present? %>
+                <%= render 'domains/partials/auto_renew_cycle', cycle: cycle %>
+                <% if cycle[:state] == 'autoRenewPeriod' %>
+                    <tr>
+                        <td colspan="2">
+                            <%= form_with url: domain_auto_renew_path(domain_name: @domain[:name]), method: :put,
+                                          data: { turbo_confirm: t('auto_renew.cancel_confirmation') } do %>
+                                <%= hidden_field_tag 'auto_renew[enabled]', 'false' %>
+                                <%= hidden_field_tag 'auto_renew[cycle_id]', cycle[:id] %>
+                                <%= submit_tag t('auto_renew.cancel'), class: 'button button--danger' %>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        <% end %>
         <tr>
             <th><%= t(:created_at) %></th>
             <td><%= l @domain[:created_at].to_datetime %></td>

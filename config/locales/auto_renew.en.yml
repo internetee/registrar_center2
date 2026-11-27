@@ -1,0 +1,36 @@
+en:
+  auto_renew:
+    preference: "Automatic renewal"
+    preference_hint: "Renew at expiry. Disabling this preference only stops future renewals; use the refund button to reverse a renewal during its grace period."
+    enabled: "Enabled"
+    disabled: "Disabled"
+    cycle_id: "Renewal cycle ID"
+    state: "Renewal state"
+    original_expire_time: "Original expiry"
+    expire_time: "New expiry"
+    cancellation_deadline: "Cancellation deadline"
+    attempts: "Renewal attempts"
+    cancel: "Cancel automatic renewal and refund"
+    cancel_confirmation: "Cancel this automatic renewal and refund its charge? The renewed year will be removed and future automatic renewal disabled."
+    domain: "Domain"
+    event: "Automatic renewal event"
+    states:
+      fundingRetry: "Waiting for funding or retry"
+      autoRenewPeriod: "Automatic renewal grace period"
+      completed: "Completed"
+      failed: "Failed"
+      reversed: "Reversed and refunded"
+      cancelled: "Cancelled"
+    events:
+      renewed: "Domain automatically renewed"
+      fundingWarning: "Insufficient funds for automatic renewal. Renewal is retried daily until the cancellation deadline."
+      renewProhibited: "Automatic renewal is blocked. Renewal is retried daily until the cancellation deadline."
+      renewalFailed: "Domain not renewed by the cancellation deadline. Automatic renewal attempts for this expiry have stopped; the preference remains enabled."
+    filters:
+      auto_renew_eq: "Automatic renewal enabled"
+      auto_renew_grace: "In automatic renewal grace period"
+      auto_renew_funding_retry: "Automatic renewal awaiting funding or retry"
+  domains:
+    index:
+      csv:
+        auto_renew: "Automatic renewal enabled"

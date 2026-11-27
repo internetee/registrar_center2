@@ -27,6 +27,18 @@
                     </tr>
                     <tr height="15px"></tr>
                     <% if @notification[:attached_obj_data].present? %>
+                        <% if @notification[:attached_obj_type] == 'DomainAutoRenewal' %>
+                            <% data = @notification[:attached_obj_data] %>
+                            <tr>
+                                <th class="text-right"><%= t('auto_renew.event') %></th>
+                                <td><%= t("auto_renew.events.#{data[:event]}") %></td>
+                            </tr>
+                            <tr>
+                                <th class="text-right"><%= t('auto_renew.domain') %></th>
+                                <td><%= data[:domain] %></td>
+                            </tr>
+                            <%= render 'domains/partials/auto_renew_cycle', cycle: data[:cycle] if data[:cycle].present? %>
+                        <% end %>
                         <% if ['DomainTransfer', 'ContactUpdateAction'].include? @notification[:attached_obj_type] %>
                             <% @notification[:attached_obj_data].each do |k, v| %>
                                 <tr>
